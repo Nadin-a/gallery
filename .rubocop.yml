@@ -1,0 +1,28 @@
+AbcSize:
+  Max: 25
+ClassLength:
+  Max: 250
+MethodLength:
+   Max: 50
+LineLength:
+   Max: 120
+
+Documentation:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+AllCops:
+  Include:
+    - '**/Rakefile'
+    - '**/config.ru'
+  Exclude:
+    - 'Gemfile'
+    - 'Gemfile.lock'
+    - 'Guardfile'
+    - 'Rakefile'
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - !ruby/regexp /old_and_unused\.rb$/
