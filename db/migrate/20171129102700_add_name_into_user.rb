@@ -1,5 +1,7 @@
 class AddNameIntoUser < ActiveRecord::Migration[5.1]
   def change
-    add_column :users, :name, :string
+    create_table :categories do |t|
+      t.string :name, null: false, default: ''
+    end
   end
 end
