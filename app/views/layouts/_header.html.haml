@@ -1,0 +1,17 @@
+%header.navbar.navbar-inverse
+  %container Header страницы
+  %nav
+    %ul.nav.navbar-nav.navbar-right
+      %li
+        =link_to 'Home', root_path
+      %li
+        =link_to 'Categories', root_path
+        - if user_signed_in?
+          = link_to "Sign out", destroy_user_session_path, method: :delete
+        - else
+          %li
+            = link_to 'Log In', new_user_session_path
+          %li
+            = link_to 'SignUp', new_user_registration_path
+
+-# navbar-fixed-top

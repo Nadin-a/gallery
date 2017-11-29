@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+
+gem 'devise'
 gem 'rails', '~> 5.1.4'
 gem 'pg'
 gem 'puma'
@@ -17,6 +18,7 @@ end
 group :development do
   gem 'listen'
   gem 'spring'
+  gem 'letter_opener'
   gem 'spring-watcher-listen'
   gem 'better_errors'
   gem 'binding_of_caller'
