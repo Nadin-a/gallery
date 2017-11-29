@@ -7,7 +7,10 @@
       %li
         =link_to 'Categories', root_path
         - if user_signed_in?
-          = link_to "Sign out", destroy_user_session_path, method: :delete
+          %li
+            =link_to('Profile', edit_user_registration_path(@user))
+          %li
+            = link_to "Sign out", destroy_user_session_path, method: :delete
         - else
           %li
             = link_to 'Log In', new_user_session_path
