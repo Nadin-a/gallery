@@ -4,7 +4,9 @@
   .field
     = f.label :email
     %br/
-    = f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email)
+    = f.email_field :email, autofocus: true,
+     value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class:'form-control',
+     placeholder:'Email'
   .actions
-    = f.submit "Resend confirmation instructions"
-= render "devise/shared/links"
+    = f.submit 'Resend confirmation instructions', class: 'btn btn-primary active'
+= render 'devise/shared/links'

@@ -4,7 +4,7 @@
   .field
     = f.label :email
     %br/
-    = f.email_field :email, autofocus: true
+    = f.email_field :email, autofocus: true, class:'form-control', placeholder:'Email'
   .actions
-    = f.submit "Resend unlock instructions"
-= render "devise/shared/links"
+    = f.submit 'Resend unlock instructions', class: 'btn btn-primary active'
+= render 'devise/shared/links'
