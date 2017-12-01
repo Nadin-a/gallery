@@ -1,19 +1,9 @@
 # frozen_string_literal: true
 
 class Category < ApplicationRecord
-  has_many :subscribers,
-           class_name:  'Subscription',
-           foreign_key: :user_id,
-           dependent: :destroy
+  belongs_to :owner, optional: true, foreign_key: :owner_id, class_name: 'User'
+  has_and_belongs_to_many :users
 
-  has_many :users,
-           through: :subscribers,
-           source: :user
-
-  validates :user, presence: true
-  validates :name,
-            presence: true,
-            length: { maximum: 30 }
-
-  belongs_to :user
+  validates :name, presence: true, length: { maximum: 30 }, uniqueness: true
+  validates :owner, presence: true
 end

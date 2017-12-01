@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171129155923) do
+ActiveRecord::Schema.define(version: 20171130112648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,18 +19,17 @@ ActiveRecord::Schema.define(version: 20171129155923) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
+    t.bigint "owner_id"
     t.index ["name"], name: "index_categories_on_name"
-    t.index ["user_id", "created_at"], name: "index_categories_on_user_id_and_created_at"
-    t.index ["user_id"], name: "index_categories_on_user_id"
+    t.index ["owner_id", "created_at"], name: "index_categories_on_owner_id_and_created_at"
+    t.index ["owner_id"], name: "index_categories_on_owner_id"
   end
 
-  create_table "subscriptions", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "category_id"
-    t.index ["category_id"], name: "index_subscriptions_on_category_id"
-    t.index ["user_id", "category_id"], name: "index_subscriptions_on_user_id_and_category_id", unique: true
-    t.index ["user_id"], name: "index_subscriptions_on_user_id"
+  create_table "categories_users", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_categories_users_on_category_id"
+    t.index ["user_id"], name: "index_categories_users_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -56,5 +55,5 @@ ActiveRecord::Schema.define(version: 20171129155923) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "categories", "users"
+  add_foreign_key "categories", "users", column: "owner_id"
 end

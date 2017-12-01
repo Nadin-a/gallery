@@ -1,0 +1,18 @@
+.p
+  .strong
+    Name:
+    %br
+    = @category.name
+    %br
+    Created by:
+    %br
+    = @category.owner.name
+    %br
+    Created at:
+    %br
+    = @category.created_at
+    - if current_user == @category.owner
+      =link_to('Delete', category_path, method: :delete)
+    - else
+      = render 'subscribe_form'
+

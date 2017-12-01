@@ -1,8 +1,19 @@
-User.create!(name: 'Example User',
+User.create!(name: 'Nadia',
              email: 'example@example.org',
              password: 'password',
              password_confirmation: 'password')
+User.create!(name: 'Susan',
+             email: 'susan@email.org',
+             password: 'password',
+             password_confirmation: 'password')
+User.create!(name: 'Larry',
+             email: 'larry@mail.org',
+             password: 'password',
+             password_confirmation: 'password')
 Category.create!(name: 'cars',
-                 user_id: 1)
-Subscription.create!(user: 1,
-                     category: 1)
+                 owner_id: 1)
+Category.create!(name: 'cats',
+                 owner_id: 2)
+Category.create!(name: 'cities',
+                 owner_id: 3)
+

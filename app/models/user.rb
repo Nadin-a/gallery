@@ -6,20 +6,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :subscriptions,
-           class_name:  'Subscription',
-           foreign_key: :category_id,
-           dependent: :destroy
+  has_many :owned_categories, dependent: :destroy, foreign_key: :owner_id, class_name: 'Category'
 
-  has_many :categories,
-           through: :subscriptions,
-           source: :category
+  has_and_belongs_to_many :categories
 
-  validates :name,
-            presence: true,
-            length: { maximum: 50 }
+  validates :name, presence: true, length: { maximum: 50 }
 
-  has_many :categories,
-           dependent: :destroy
-
+  def subscribe?(category)
+    categories.include? category
+  end
 end

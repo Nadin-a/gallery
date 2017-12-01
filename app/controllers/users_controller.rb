@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-class PagesController < ApplicationController
+class UsersController < ApplicationController
   before_action :authenticate_user!
 
-  def destroy
-    User.find(params[:id]).destroy
-    flash[:success] = 'User deleted'
-  end
+
+  def show; end
+
+  def destroy; end
 end

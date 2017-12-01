@@ -9,6 +9,7 @@ gem 'uglifier'
 gem 'jbuilder'
 gem 'haml-rails'
 gem 'bootstrap-sass'
+gem 'jquery-rails'
 
 group :development, :test do
   gem 'rspec-rails'

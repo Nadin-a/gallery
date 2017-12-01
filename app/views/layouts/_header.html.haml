@@ -5,12 +5,18 @@
       %li
         =link_to 'Home', root_path
       %li
-        =link_to 'Categories', root_path
+        =link_to 'All categories', categories_path
         - if user_signed_in?
           %li
-            =link_to('Profile', edit_user_registration_path(@user))
+            =link_to('Profile', edit_user_registration_path(current_user))
           %li
-            = link_to "Sign out", destroy_user_session_path, method: :delete
+            =link_to('Created categories', owned_categories_path)
+          %li
+            =link_to('Favorite categories', favorite_categories_path)
+          %li
+            =link_to('Create category', new_category_path)
+          %li
+            =link_to "Sign out", destroy_user_session_path, method: :delete
         - else
           %li
             = link_to 'Log In', new_user_session_path
