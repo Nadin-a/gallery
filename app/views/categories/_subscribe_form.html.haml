@@ -1,8 +1,7 @@
 #subscribe_form
 - if user_signed_in?
-  - if current_user.subscribe?(@category)
-    = form_with(url: unsubscribe_category_path(@category), mehtod: :delete, class: 'js-unsubscribe-category') do |f|
-      = f.submit 'Unsubscribe', class: 'btn'
-  - else
-    = form_with(url: subscribe_category_path(@category), mehtod: :post, class: 'js-subscribe-category') do |f|
-      = f.submit 'Subscribe', class: 'btn btn-primary'
+  - path = current_user.subscribe?(@category) ? unsubscribe_category_path : subscribe_category_path
+  - method  = current_user.subscribe?(@category) ? 'delete' : 'post'
+  - subscribed = current_user.subscribe?(@category) ? 1 : 0
+  %button{role: 'button',class: "js-subscribtion-category btn#{subscribed == 1 ? '' : ' btn-primary'}", data: {subscribed: subscribed},
+  action: path, method: method  }

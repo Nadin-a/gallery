@@ -25,4 +25,5 @@ group :development do
   gem 'binding_of_caller'
   gem 'rubocop', require: false
   gem 'scss_lint', require: false
+  # gem 'eslint-rails'
 end

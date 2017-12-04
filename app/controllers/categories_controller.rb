@@ -8,11 +8,28 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @category = Category.find(params[:id])
+    @category = find_category
   end
 
   def new
     @category = Category.new
+  end
+
+  def edit
+    @category = find_category
+    unless current_user == @category.owner
+     redirect_to root_path
+    end
+  end
+
+  def update
+    @category = find_category
+    if @category.update(categories_params)
+      flash[:success] = 'Category updated'
+      redirect_to @category
+    else
+      render 'edit'
+    end
   end
 
   def create
@@ -26,7 +43,7 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    @category = Category.find(params[:id]).destroy
+    @category = find_category
     flash[:success] = 'Category deleted'
     redirect_to categories_path
   end
@@ -40,7 +57,7 @@ class CategoriesController < ApplicationController
   end
 
   def subscribe
-    @category = Category.find(params[:id])
+    @category = find_category
     current_user.categories << @category
     respond_to do |format|
       format.html { redirect_to @category }
@@ -49,11 +66,11 @@ class CategoriesController < ApplicationController
   end
 
   def unsubscribe
-    @category = Category.find(params[:id])
+    @category = find_category
     current_user.categories.delete(@category)
     respond_to do |format|
       format.html { redirect_to @category }
-      format.json { render :show, status: :no_content }
+      format.json { render :show, status: :created }
     end
   end
 
@@ -64,4 +81,7 @@ class CategoriesController < ApplicationController
     params.require(:category).permit(:name)
   end
 
+  def find_category
+    Category.find(params[:id])
+  end
 end

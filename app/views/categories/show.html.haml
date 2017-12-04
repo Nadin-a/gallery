@@ -12,6 +12,7 @@
     %br
     = @category.created_at
     - if current_user == @category.owner
+      =link_to('Update', edit_category_path)
       =link_to('Delete', category_path, method: :delete)
     - else
       = render 'subscribe_form'

@@ -1,0 +1,11 @@
+%h2 Edit category
+.row
+  .col-md-6
+    .col-md-offset-3
+= form_for @category do |f|
+  = render 'categories/shared/error_messages', object: f.object
+  .field
+    = f.label :name
+    = f.text_field :name, autofocus: true, class:'form-control', placeholder:'Name'
+  .actions
+    = f.submit 'Update',  class: 'btn btn-primary active'
