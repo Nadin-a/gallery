@@ -1,0 +1,12 @@
+- @images.each do |image|
+  .col-sm-4
+    %br
+    = link_to(image.title, category_image_path(image.category_id, image))
+    %br
+    = image_tag(image.picture.thumb.url)
+    %br
+      - if user_signed_in?
+        - if current_user == Category.find_by(id: image.category_id).owner
+          =link_to('Update', edit_category_image_path(image.category_id, image))
+          =link_to('Delete', category_image_path(image.category_id, image), method: :delete, data: { confirm: 'You sure?' })
+= will_paginate @images

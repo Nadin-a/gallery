@@ -1,19 +1,40 @@
+- if flash[:error]
+  .error
+    %p
+      = h flash[:error]
+- if flash[:success]
+  .success
+    %p
+      = h flash[:success]
 .p
   .strong
-    Name:
+    .col-sm-4
+      Name:
+      %br
+      = @category.name
+    .col-sm-4
+      Created by:
+      %br
+      = @category.owner.name
+    .col-sm-4
+      Created at:
+      %br
+      = @category.created_at
+    %hr
+      .separator
     %br
-    = @category.name
     %br
-    Created by:
+    - if user_signed_in?
+      - if current_user == @category.owner
+        =link_to('Add image', new_category_image_path(@category))
+        |
+        =link_to('Update', edit_category_path)
+        |
+        =link_to('Delete', category_path, method: :delete, data: { confirm: 'You sure?' })
+      - else
+        = render 'subscribe_form'
     %br
-    = @category.owner.name
-    %br
-    Created at:
-    %br
-    = @category.created_at
-    - if current_user == @category.owner
-      =link_to('Update', edit_category_path)
-      =link_to('Delete', category_path, method: :delete)
-    - else
-      = render 'subscribe_form'
+      %hr
+        .separator
+    = render partial: 'images/shared/list'
 

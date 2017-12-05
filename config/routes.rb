@@ -13,5 +13,7 @@ Rails.application.routes.draw do
       post :subscribe
       delete :unsubscribe
     end
+
+    resources :images
   end
 end

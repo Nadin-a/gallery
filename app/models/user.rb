@@ -7,10 +7,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :owned_categories, dependent: :destroy, foreign_key: :owner_id, class_name: 'Category'
-
   has_and_belongs_to_many :categories
 
   validates :name, presence: true, length: { maximum: 50 }
+
+  def feed
+    @feed = Image.where(category_id: categories) # owned_categories
+  end
 
   def subscribe?(category)
     categories.include? category

@@ -1,0 +1,16 @@
+.col-lg-9
+  %h2 New image in
+  = @category.name
+  = form_for [@category, @image] do |f|
+    = render 'images/shared/error_messages', object: f.object
+    .field
+      = f.label :title
+      = f.text_field :title, autofocus: true, class:'form-control', placeholder:'Title of the picture'
+    .field
+      = f.label :description
+      = f.text_field :description, autofocus: true, class:'form-control', placeholder:'Description of the picture'
+      %br
+      = f.file_field :picture, accept: 'image/jpeg,image/gif,image/png'
+    %br
+    .actions
+      = f.submit 'Add', class: 'btn btn-primary active'

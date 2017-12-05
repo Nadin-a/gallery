@@ -1,7 +1,7 @@
-%header.navbar.navbar-inverse
-  %container Header страницы
+.navbar.navbar-default.navbar-static-top.navbar-inverse
+  .container
   %nav
-    %ul.nav.navbar-nav.navbar-right
+    %ul.nav.navbar-nav
       %li
         =link_to 'Home', root_path
       %li
@@ -23,4 +23,3 @@
           %li
             = link_to 'SignUp', new_user_registration_path
 
--# navbar-fixed-top

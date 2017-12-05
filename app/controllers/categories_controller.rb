@@ -1,14 +1,15 @@
 # frozen_string_literal: true
 
 class CategoriesController < ApplicationController
-  before_action :authenticate_user!, expect: %i[index show]
+  before_action :authenticate_user!, except: %i[index show]
+  before_action :set_category, except: %i[index new owned favorite create]
 
   def index
     @categories = Category.all
   end
 
   def show
-    @category = find_category
+    @images = @category.images.paginate(page: params[:page], per_page: 5)
   end
 
   def new
@@ -16,14 +17,12 @@ class CategoriesController < ApplicationController
   end
 
   def edit
-    @category = find_category
     unless current_user == @category.owner
-     redirect_to root_path
+      redirect_to root_path
     end
   end
 
   def update
-    @category = find_category
     if @category.update(categories_params)
       flash[:success] = 'Category updated'
       redirect_to @category
@@ -36,15 +35,18 @@ class CategoriesController < ApplicationController
     @category = current_user.owned_categories.build(categories_params)
     if @category.save
       flash[:success] = 'Category created'
-      redirect_to categories_path
+      redirect_to @category
     else
       render 'new'
     end
   end
 
   def destroy
-    @category = find_category
-    flash[:success] = 'Category deleted'
+    if current_user.owned_categories.destroy @category
+      flash[:success] = 'Category deleted!'
+    else
+      flash[:error] = 'Category was not deleted!'
+    end
     redirect_to categories_path
   end
 
@@ -57,7 +59,6 @@ class CategoriesController < ApplicationController
   end
 
   def subscribe
-    @category = find_category
     current_user.categories << @category
     respond_to do |format|
       format.html { redirect_to @category }
@@ -66,7 +67,6 @@ class CategoriesController < ApplicationController
   end
 
   def unsubscribe
-    @category = find_category
     current_user.categories.delete(@category)
     respond_to do |format|
       format.html { redirect_to @category }
@@ -81,7 +81,7 @@ class CategoriesController < ApplicationController
     params.require(:category).permit(:name)
   end
 
-  def find_category
-    Category.find(params[:id])
+  def set_category
+    @category = Category.find(params[:id])
   end
 end

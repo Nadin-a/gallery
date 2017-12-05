@@ -1,25 +1,28 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email
+.col-lg-9
+  %h2 Sign up
+  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    = devise_error_messages!
+    .field
+      = f.label :email
+      %br/
+      = f.email_field :email, autofocus: true, class:'form-control', placeholder:'Email'
+    .field
+      = f.label :name
+      %br/
+      = f.text_field :name, autofocus: true, class:'form-control', placeholder:'Name'
+    .field
+      = f.label :password
+      - if @minimum_password_length
+        %em
+          (#{@minimum_password_length} characters minimum)
+      %br/
+      = f.password_field :password, autocomplete: 'off', class:'form-control', placeholder:'Password'
+    .field
+      = f.label :password_confirmation
+      %br/
+      = f.password_field :password_confirmation, autocomplete: 'off', class:'form-control', placeholder:'Confirmation'
     %br/
-    = f.email_field :email, autofocus: true, class:'form-control', placeholder:'Email'
-  .field
-    = f.label :name
-    %br/
-    = f.text_field :name, autofocus: true, class:'form-control', placeholder:'Name'
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: 'off', class:'form-control', placeholder:'Password'
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: 'off', class:'form-control', placeholder:'Confirmation'
-  .actions
-    = f.submit 'Sign up',class: 'btn btn-primary active'
-= render 'devise/shared/links'
+    .actions
+      = f.submit 'Sign up',class: 'btn btn-primary active'
+    %br
+  = render 'devise/shared/links'

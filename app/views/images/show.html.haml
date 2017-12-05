@@ -1,0 +1,37 @@
+- if flash[:error]
+  .error
+    %p
+      = h flash[:error]
+- if flash[:success]
+  .success
+    %p
+      = h flash[:success]
+.p
+  .strong
+    .col-sm-3
+      Title:
+      %br
+      = @image.title
+    .col-sm-3
+      = @image.description
+    .col-sm-3
+      Category:
+      %br
+      = @category.name
+    .col-sm-3
+      Owner:
+      %br
+      = @category.owner.name
+    %hr
+      .separator
+    = image_tag(@image.picture)
+    %br
+    Uploaded at:
+    %br
+    = @image.created_at
+    %hr
+      .separator
+        - if user_signed_in? && current_user == @category.owner
+          =link_to('Update', edit_category_image_path(@category, @image))
+          |
+          =link_to('Delete', category_image_path(@category, @image), method: :delete, data: { confirm: 'You sure?' })
