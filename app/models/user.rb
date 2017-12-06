@@ -8,11 +8,13 @@ class User < ApplicationRecord
 
   has_many :owned_categories, dependent: :destroy, foreign_key: :owner_id, class_name: 'Category'
   has_and_belongs_to_many :categories
+  has_many :comments, dependent: :destroy, foreign_key: :author_id, class_name: 'Comment'
+  has_many :images, through: :comments
 
   validates :name, presence: true, length: { maximum: 50 }
 
   def feed
-    @feed = Image.where(category_id: categories) # owned_categories
+    @feed = Image.where(category_id: categories).or(Image.where(category_id: owned_categories))
   end
 
   def subscribe?(category)

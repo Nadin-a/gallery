@@ -1,7 +1,7 @@
 .col-lg-9
   %h2 New category
   = form_for @category do |f|
-    = render 'categories/shared/error_messages', object: f.object
+    = render 'shared/error_messages', object: f.object
     .field
       = f.label :name
       = f.text_field :name, autofocus: true, class:'form-control', placeholder:'Name'

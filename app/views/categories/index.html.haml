@@ -1,12 +1,2 @@
-- if flash[:error]
-  .error
-    %p
-      = h flash[:error]
-- if flash[:success]
-  .success
-    %p
-      = h flash[:success]
 %h1 All categories
-= render 'categories/shared/list'
-//, categories: @categories
-
+= render 'shared/list_of_categories'

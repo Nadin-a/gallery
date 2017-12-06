@@ -2,6 +2,8 @@
 
 class Image < ApplicationRecord
   belongs_to :category
+  has_many :comments, dependent: :destroy, foreign_key: :image_id, class_name: 'Comment'
+  has_many :users, through: :comments
 
   default_scope -> { order(created_at: :desc) }
 

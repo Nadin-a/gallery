@@ -2,7 +2,7 @@
   %h2 New image in
   = @category.name
   = form_for [@category, @image] do |f|
-    = render 'images/shared/error_messages', object: f.object
+    = render 'shared/error_messages', object: f.object
     .field
       = f.label :title
       = f.text_field :title, autofocus: true, class:'form-control', placeholder:'Title of the picture'

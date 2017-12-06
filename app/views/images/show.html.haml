@@ -1,11 +1,4 @@
-- if flash[:error]
-  .error
-    %p
-      = h flash[:error]
-- if flash[:success]
-  .success
-    %p
-      = h flash[:success]
+= render partial: 'shared/flash_messages'
 .p
   .strong
     .col-sm-3
@@ -31,7 +24,11 @@
     = @image.created_at
     %hr
       .separator
-        - if user_signed_in? && current_user == @category.owner
-          =link_to('Update', edit_category_image_path(@category, @image))
-          |
-          =link_to('Delete', category_image_path(@category, @image), method: :delete, data: { confirm: 'You sure?' })
+        - if user_signed_in?
+          - if current_user == @category.owner
+            =link_to('Update', edit_category_image_path(@category, @image))
+            |
+            =link_to('Delete', category_image_path(@category, @image), method: :delete, data: { confirm: 'You sure?' })
+    %hr
+      .separator
+        = render partial: 'shared/comment_form'

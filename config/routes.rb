@@ -14,6 +14,8 @@ Rails.application.routes.draw do
       delete :unsubscribe
     end
 
-    resources :images
+    resources :images do
+      resources :comments, only: %i[create destroy]
+    end
   end
 end

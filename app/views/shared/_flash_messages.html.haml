@@ -1,0 +1,8 @@
+- if flash[:error]
+  .alert.alert-danger
+    %p
+      = h flash[:error]
+- if flash[:success]
+  .alert.alert-success
+    %p
+      = h flash[:success]

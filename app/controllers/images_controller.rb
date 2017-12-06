@@ -2,13 +2,9 @@
 
 class ImagesController < ApplicationController
   before_action :set_category
-  before_action :set_image, except: %i[index new]
-  before_action :authenticate_user!, except: %i[index show]
-
-
-  def index
-    redirect_to home_path
-  end
+  before_action :set_image, except: %i[new]
+  before_action :authenticate_user!, except: %i[show]
+  before_action :correct_user, except: %i[show]
 
   def show; end
 
@@ -26,11 +22,7 @@ class ImagesController < ApplicationController
     end
   end
 
-  def edit
-    unless current_user == @category.owner
-      redirect_to root_path
-    end
-  end
+  def edit; end
 
   def update
     if @image.update(image_update_params)
@@ -65,4 +57,11 @@ class ImagesController < ApplicationController
   def set_category
     @category = Category.find(params[:category_id])
   end
+
+  def correct_user
+    set_image
+    @category = current_user.owned_categories.find_by(id: @image.category_id)
+    redirect_to root_url if @category.nil?
+  end
+
 end

@@ -1,11 +1,4 @@
-- if flash[:error]
-  .error
-    %p
-      = h flash[:error]
-- if flash[:success]
-  .success
-    %p
-      = h flash[:success]
+= render partial: 'shared/flash_messages'
 .p
   .strong
     .col-sm-4
@@ -36,5 +29,5 @@
     %br
       %hr
         .separator
-    = render partial: 'images/shared/list'
+    = render partial: 'shared/list_of_images'
 

@@ -3,6 +3,7 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
   before_action :set_category, except: %i[index new owned favorite create]
+  before_action :correct_user, only: %i[edit update destroy] # only owner can delete
 
   def index
     @categories = Category.all
@@ -14,12 +15,6 @@ class CategoriesController < ApplicationController
 
   def new
     @category = Category.new
-  end
-
-  def edit
-    unless current_user == @category.owner
-      redirect_to root_path
-    end
   end
 
   def update
@@ -84,4 +79,10 @@ class CategoriesController < ApplicationController
   def set_category
     @category = Category.find(params[:id])
   end
+
+  def correct_user
+    @category = current_user.owned_categories.find_by(id: params[:id])
+    redirect_to root_url if @category.nil?
+  end
+
 end
