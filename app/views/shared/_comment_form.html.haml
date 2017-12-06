@@ -1,7 +1,9 @@
-= form_for(@comment) do |f|
-  = render 'shared/error_messages', object: f.object
-  .field
-    = f.text_area :content, placeholder: 'New comment...'
-  %br
-  .actions
-    = f.submit 'Post', class: 'btn btn-primary'
+- if user_signed_in?
+  = form_for [@category, @image, @comment]  do |f|
+    = render 'shared/error_messages', object: f.object
+    .field
+      = hidden_field_tag :image_id, @image.id
+      = f.text_area :content, placeholder: 'New comment...'
+    %br
+    .actions
+      = f.submit 'Post', class: 'btn btn-primary'

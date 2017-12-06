@@ -10,5 +10,6 @@
     = render 'layouts/header'
     .container
       .row
+        = render partial: 'shared/flash_messages'
         = yield
     = render 'layouts/footer'

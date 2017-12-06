@@ -17,22 +17,24 @@ class CategoriesController < ApplicationController
     @category = Category.new
   end
 
-  def update
-    if @category.update(categories_params)
-      flash[:success] = 'Category updated'
-      redirect_to @category
-    else
-      render 'edit'
-    end
-  end
-
   def create
     @category = current_user.owned_categories.build(categories_params)
     if @category.save
       flash[:success] = 'Category created'
       redirect_to @category
     else
+      flash[:error] = @category.errors.full_messages
       render 'new'
+    end
+  end
+
+  def update
+    if @category.update(categories_params)
+      flash[:success] = 'Category updated'
+      redirect_to @category
+    else
+      flash[:error] = @category.errors.full_messages
+      render 'edit'
     end
   end
 

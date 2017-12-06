@@ -1,17 +1,14 @@
-= render partial: 'shared/flash_messages'
 .p
   .strong
-    .col-sm-3
+    .col-sm-4
       Title:
       %br
       = @image.title
-    .col-sm-3
-      = @image.description
-    .col-sm-3
+    .col-sm-4
       Category:
       %br
       = @category.name
-    .col-sm-3
+    .col-sm-4
       Owner:
       %br
       = @category.owner.name
@@ -19,9 +16,15 @@
       .separator
     = image_tag(@image.picture)
     %br
-    Uploaded at:
     %br
-    = @image.created_at
+    .col-sm-12
+      = @image.description
+    %br
+    %br
+      Uploaded at:
+      %br
+      = @image.created_at
+      =# render partial: 'images/like_form'
     %hr
       .separator
         - if user_signed_in?
@@ -29,6 +32,9 @@
             =link_to('Update', edit_category_image_path(@category, @image))
             |
             =link_to('Delete', category_image_path(@category, @image), method: :delete, data: { confirm: 'You sure?' })
+            %hr
+              .separator
+        = render partial: 'shared/list_of_comments'
     %hr
       .separator
         = render partial: 'shared/comment_form'

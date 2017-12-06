@@ -1,0 +1,7 @@
+#like_form
+- if user_signed_in?
+  - path = current_user.like?(@image) ? image_likes_path : like_path
+  - method  = current_user.like?(@image) ? 'delete' : 'post'
+  - liked = current_user.like?(@image) ? 1 : 0
+  %button{role: 'button',class: "js-like-image btn#{liked == 1 ? '' : ' btn-primary'}", data: {liked: liked},
+  action: path, method: method  }

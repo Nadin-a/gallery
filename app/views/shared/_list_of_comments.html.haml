@@ -1,0 +1,11 @@
+- @comments.each do |comment|
+  %br
+  = User.find(comment.user_id).name
+  say:
+  %br
+  = comment.content
+  %br
+  = comment.created_at
+  %br
+%br
+= will_paginate @comments
