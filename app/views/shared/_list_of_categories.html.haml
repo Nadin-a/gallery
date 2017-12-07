@@ -2,4 +2,9 @@
   %hr
     .separator
   %br
-  = link_to(category.name, category_path(category.id))
+    .col-sm-10
+      = link_to(category.name, category_path(category.id))
+    .col-sm-2
+      Followers:
+      = category.users.count
+

@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   end
 
   def popular_images
-    @images = Image.all.paginate(page: params[:page], per_page: 5)
+    @images = Image.all.paginate(page: params[:page], per_page: 20)
   end
 
   def last_comments

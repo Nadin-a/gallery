@@ -16,4 +16,6 @@ Category.create!(name: 'cats',
                  owner_id: 2)
 Category.create!(name: 'cities',
                  owner_id: 3)
-
+Comment.create!(user_id: 1,
+                image_id: 39,
+                content: 'nice')

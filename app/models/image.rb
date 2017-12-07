@@ -7,7 +7,8 @@ class Image < ApplicationRecord
   has_many :likes, dependent: :destroy, class_name: 'Like'
   has_many :liking_users, through: :likes, source: :user
 
-  default_scope -> { order(created_at: :desc) }
+ # default_scope -> { select("count(likes.id) AS likes_count").joins(:likes).group("images.id").order("likes_count DESC").limit(5) }
+
 
   mount_uploader :picture, PictureUploader
 
