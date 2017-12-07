@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class CommentPolicy < ApplicationPolicy
   def index?
     true
   end
 
   def create?
-    user
+    true if user
   end
 
   def update?

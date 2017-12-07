@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ImagePolicy < ApplicationPolicy
   def index?
     true

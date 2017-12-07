@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 class LikePolicy < ApplicationPolicy
   def index?
     true
   end
 
   def create?
-    user
+    true if user
   end
 
   def update?
-    true if user && user == like.user
+    false
   end
 
   def destroy?
