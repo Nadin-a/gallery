@@ -3,10 +3,10 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
   before_action :set_category, except: %i[index new owned favorite create]
-  before_action :correct_user, only: %i[edit update destroy] # only owner can delete
 
   def index
     @categories = Category.all
+    authorize @categories
   end
 
   def show
@@ -15,10 +15,12 @@ class CategoriesController < ApplicationController
 
   def new
     @category = Category.new
+    authorize @category
   end
 
   def create
     @category = current_user.owned_categories.build(categories_params)
+    authorize @category
     if @category.save
       flash[:success] = 'Category created'
       redirect_to @category
@@ -49,10 +51,12 @@ class CategoriesController < ApplicationController
 
   def owned
     @categories = current_user.owned_categories
+    authorize @categories
   end
 
   def favorite
     @categories = current_user.categories
+    authorize @categories
   end
 
   def subscribe
@@ -80,11 +84,6 @@ class CategoriesController < ApplicationController
 
   def set_category
     @category = Category.find(params[:id])
+    authorize @category
   end
-
-  def correct_user
-    @category = current_user.owned_categories.find_by(id: params[:id])
-    redirect_to root_url if @category.nil?
-  end
-
 end

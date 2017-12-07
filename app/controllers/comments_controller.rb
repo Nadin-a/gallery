@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @image.comments.build(comment_params)
+    authorize @comment
     current_user.comments << @comment
     if @comment.save
       flash[:success] = 'Comment created!'
@@ -34,10 +35,12 @@ class CommentsController < ApplicationController
 
   def set_image
     @image = Image.find(params[:image_id])
+    authorize @image
   end
 
   def set_category
     @category = Category.find(params[:category_id])
+    authorize @category
   end
 
 end

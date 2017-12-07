@@ -1,9 +1,11 @@
 - if user_signed_in?
-  - path = current_user.subscribe?(@category) ? unsubscribe_category_path : subscribe_category_path
-  - method  = current_user.subscribe?(@category) ? 'delete' : 'post'
-  - subscribed = current_user.subscribe?(@category) ? 1 : 0
-  %button{role: 'button',class: "js-subscribtion-category btn#{subscribed == 1 ? '' : ' btn-primary'}", data: {subscribed: subscribed},
-  action: path, method: method  }
+  - if current_user != @category.owner
+    - path = current_user.subscribe?(@category) ? unsubscribe_category_path : subscribe_category_path
+    - method  = current_user.subscribe?(@category) ? 'delete' : 'post'
+    - subscribed = current_user.subscribe?(@category) ? 1 : 0
+    %button{role: 'button',class: "js-subscribtion-category btn#{subscribed == 1 ? '' : ' btn-primary'}", data: {subscribed: subscribed},
+    action: path, method: method  }
+%br
 %label_tag{ class: "js-count-followers-label" }
   Followers:
   = @category.users.count

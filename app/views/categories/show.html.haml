@@ -23,8 +23,7 @@
         =link_to('Update', edit_category_path)
         |
         =link_to('Delete', category_path, method: :delete, data: { confirm: 'You sure?' })
-      - else
-        = render 'subscribe_form'
+    = render 'subscribe_form'
     %br
       %hr
         .separator

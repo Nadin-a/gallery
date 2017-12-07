@@ -9,20 +9,24 @@ class ImagesController < ApplicationController
   def show
     @comment = current_user.comments.build if user_signed_in?
     @comments = @image.comments.paginate(page: params[:page], per_page: 10)
-    @like =
-      if current_user.like? @image
-        @image.likes.find_by(user_id: current_user)
-      else
-        current_user.likes.build
-      end
+    if user_signed_in?
+      @like =
+        if current_user.like? @image
+          @image.likes.find_by(user_id: current_user)
+        else
+          current_user.likes.build
+        end
+    end
   end
 
   def new
     @image = @category.images.build
+    authorize @image
   end
 
   def create
     @image = @category.images.build(image_create_params)
+    authorize @image
     if @image.save
       flash[:success] = 'Image uploaded'
       redirect_to category_path(@category)
@@ -67,9 +71,11 @@ class ImagesController < ApplicationController
 
   def set_image
     @image = @category.images.find(params[:id])
+    authorize @image
   end
 
   def set_category
     @category = Category.find(params[:category_id])
+    authorize @category
   end
 end

@@ -8,6 +8,7 @@ class LikesController < ApplicationController
 
   def create
     @like = @image.likes.build
+    authorize @like
     current_user.likes << @like
     if @like.save
       respond_to do |format|
@@ -29,13 +30,16 @@ class LikesController < ApplicationController
 
   def set_like
     @like = @image.likes.find_by(user_id: current_user)
+    authorize @like
   end
 
   def set_image
     @image = Image.find(params[:image_id])
+    authorize @image
   end
 
   def set_category
     @category = Category.find(params[:category_id])
+    authorize @category
   end
 end
