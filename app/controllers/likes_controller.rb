@@ -1,31 +1,41 @@
 # frozen_string_literal: true
 
-class PagesController < ApplicationController
-  before_action :authenticate_user!, only: %i[create destroy]
+class LikesController < ApplicationController
+  before_action :set_category
   before_action :set_image
+  before_action :set_like, only: :destroy
+  before_action :authenticate_user!, only: %i[create destroy]
 
   def create
-    @like = @image.likes.build(like_params)
-    current_user.likes << @image
+    @like = @image.likes.build
+    current_user.likes << @like
     if @like.save
       respond_to do |format|
-        format.html { redirect_to @like }
+        format.html { redirect_to @image }
         format.json { render @image, status: :created }
       end
     end
   end
 
-  def destroy;
+  def destroy
+    @like.destroy
+    respond_to do |format|
+      format.html { redirect_to @image }
+      format.json { render @image, status: :created }
+    end
   end
 
   private
 
-  def like_params
-    params.require(:comment).permit(:image_id)
+  def set_like
+    @like = @image.likes.find_by(user_id: current_user)
   end
 
   def set_image
     @image = Image.find(params[:image_id])
   end
 
+  def set_category
+    @category = Category.find(params[:category_id])
+  end
 end

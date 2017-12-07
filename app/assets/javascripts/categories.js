@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
   $subscribe_btn = $('.js-subscribtion-category');
+  $followers_label = $('.js-count-followers-label');
 
   if (($subscribe_btn.attr('data-subscribed')) == 1) {
     $subscribe_btn.html('Unsubscribe');
@@ -26,6 +27,7 @@ $(document).ready(function () {
         else {
           $btn.unsubscribe(category);
         }
+        $followers_label.html('Followers: ' + category.followers)
       },
       error: function (error) {
         alert('Error. Please try again')
@@ -55,7 +57,5 @@ $(document).ready(function () {
     })(jQuery);
 
   });
-
-  
 
 });

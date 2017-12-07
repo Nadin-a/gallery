@@ -1,16 +1,17 @@
 $(document).ready(function () {
 
-  $subscribe_btn = $('.js-like-image');
+  $like_btn = $('.js-like-image');
+  $like_label = $('.js-count-like-label');
 
-  if (($subscribe_btn.attr('data-liked')) == 1) {
-    $subscribe_btn.html('Remove like');
+  if (($like_btn.attr('data-liked')) == 1) {
+    $like_btn.html('Unlike');
   }
   else {
-    $subscribe_btn.html('Like');
+    $like_btn.html('Like');
   }
 
 
-  $subscribe_btn.click(function () {
+  $like_btn.click(function () {
 
     let $btn = $(this);
     let flag = $btn.attr('data-liked');
@@ -26,37 +27,36 @@ $(document).ready(function () {
         else {
           $btn.unlike(image);
         }
+        $like_label.html(image.likes)
       },
       error: function (error) {
-        alert('Error. Please try again')
+        alert('Error. Please try again ')
       }
     });
 
 
+    (function ($) {
+      $.fn.like = function (image) {
+        $btn.addClass('btn-primary').val('Like');
+        $btn.attr('method', 'post');
+        $btn.attr('action', image.like_path);
+        $btn.attr('data-liked', 0);
+        $btn.html('Like');
+        return this;
+      };
+    })(jQuery);
+
+    (function ($) {
+      $.fn.unlike = function (image) {
+        $btn.removeClass('btn-primary').val('Unlike');
+        $btn.attr('method', 'delete');
+        $btn.attr('action', image.unlike_path);
+        $btn.attr('data-liked', 1);
+        $btn.html('Unlike');
+        return this;
+      };
+    })(jQuery);
+
   });
-
-  (function ($) {
-    $.fn.like = function (image) {
-      $btn.addClass('btn-primary').val('Like');
-      $btn.attr('method', 'post');
-      $btn.attr('action', image.subscribe_path);
-      $btn.attr('data-subscribed', 0);
-      $btn.html('Subscribe');
-      return this;
-    };
-  })(jQuery);
-
-  (function ($) {
-    $.fn.unlike = function (image) {
-      $btn.removeClass('btn-primary').val('Remove like');
-      $btn.attr('method', 'delete');
-      $btn.attr('action', image.unsubscribe_path);
-      $btn.attr('data-subscribed', 1);
-      $btn.html('Unsubscribe');
-      return this;
-    };
-  })(jQuery);
-
-
 
 });

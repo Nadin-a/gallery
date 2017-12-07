@@ -9,6 +9,12 @@ class ImagesController < ApplicationController
   def show
     @comment = current_user.comments.build if user_signed_in?
     @comments = @image.comments.paginate(page: params[:page], per_page: 10)
+    @like =
+      if current_user.like? @image
+        @image.likes.find_by(user_id: current_user)
+      else
+        current_user.likes.build
+      end
   end
 
   def new
@@ -26,7 +32,8 @@ class ImagesController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit;
+  end
 
   def update
     if @image.update(image_update_params)

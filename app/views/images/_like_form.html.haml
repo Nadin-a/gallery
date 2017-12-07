@@ -1,7 +1,9 @@
-#like_form
+%br
 - if user_signed_in?
-  - path = current_user.like?(@image) ? image_likes_path : like_path
+  - path = current_user.like?(@image) ? category_image_like_path(@category, @image) : category_image_likes_path(@category, @image)
   - method  = current_user.like?(@image) ? 'delete' : 'post'
   - liked = current_user.like?(@image) ? 1 : 0
   %button{role: 'button',class: "js-like-image btn#{liked == 1 ? '' : ' btn-primary'}", data: {liked: liked},
   action: path, method: method  }
+%label_tag{ class: "js-count-like-label" }
+  = @image.likes.count
