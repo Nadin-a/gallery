@@ -5,7 +5,6 @@ class CommentsController < ApplicationController
   before_action :set_image
   before_action :authenticate_user!, only: %i[create destroy]
 
-
   def create
     @comment = @image.comments.build(comment_params)
     authorize @comment

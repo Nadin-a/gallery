@@ -8,5 +8,6 @@
   = time_ago_in_words(comment.created_at)
   ago
   %br
+  = image_tag(comment.image.picture.small_thumb.url)
 %br
 = will_paginate @comments

@@ -11,7 +11,8 @@
     .col-sm-4
       Created at:
       %br
-      = @category.created_at
+      = time_ago_in_words(@category.created_at)
+      ago
     %hr
       .separator
     %br

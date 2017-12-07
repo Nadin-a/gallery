@@ -21,9 +21,12 @@
       = @image.description
     %br
     %br
+    .col-sm-8
       Uploaded at:
       %br
-      = @image.created_at
+      = time_ago_in_words(@image.created_at)
+      ago
+    .col-sm-4
       = render partial: 'images/like_form'
     %hr
       .separator

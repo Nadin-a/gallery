@@ -20,6 +20,8 @@ gem "pundit"
 group :development, :test do
   gem 'rspec-rails'
   gem 'faker'
+  gem 'factory_bot_rails'
+  gem 'pundit-matchers'
 end
 
 group :development do

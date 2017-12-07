@@ -4,7 +4,10 @@ class ImagesController < ApplicationController
   before_action :set_category
   before_action :set_image, except: %i[new create]
   before_action :authenticate_user!, except: %i[show]
-  # before_action :correct_user, except: %i[show]
+
+  def index
+    @images = Image.all.paginate(page: params[:page], per_page: 5)
+  end
 
   def show
     @comment = current_user.comments.build if user_signed_in?
