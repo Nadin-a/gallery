@@ -10,11 +10,10 @@ class LikesController < ApplicationController
     @like = @image.likes.build
     authorize @like
     current_user.likes << @like
-    if @like.save
-      respond_to do |format|
-        format.html { redirect_to @image }
-        format.json { render @image, status: :created }
-      end
+    return unless @like.save
+    respond_to do |format|
+      format.html { redirect_to @image }
+      format.json { render @image, status: :created }
     end
   end
 

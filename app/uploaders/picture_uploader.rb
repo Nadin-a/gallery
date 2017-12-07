@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class PictureUploader < CarrierWave::Uploader::Base
-
   include CarrierWave::MiniMagick
   process resize_to_limit: [600, 600]
 
@@ -34,11 +33,11 @@ class PictureUploader < CarrierWave::Uploader::Base
   # end
 
   version :thumb do
-    process resize_to_fill: [200,200]
+    process resize_to_fill: [200, 200]
   end
 
   version :small_thumb, from_version: :thumb do
-    process resize_to_fill: [50, 50]
+    process resize_to_fill: [100, 100]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

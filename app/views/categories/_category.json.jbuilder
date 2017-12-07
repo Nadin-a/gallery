@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.(category, :id, :name, :created_at, :updated_at)
 
 json.followers category.users.count

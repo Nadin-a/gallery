@@ -1,13 +1,17 @@
 - @comments.each do |comment|
-  %br
-  = User.find(comment.user_id).name
-  say:
-  %br
-  = comment.content
-  %br
-  = time_ago_in_words(comment.created_at)
-  ago
-  %br
-  = image_tag(comment.image.picture.small_thumb.url)
+  .row
+    .col-sm-10
+      %br
+      = User.find(comment.user_id).name
+      say:
+      %br
+      = comment.content
+      %br
+      = time_ago_in_words(comment.created_at)
+      ago
+    .col-sm-2
+      = link_to(image_tag(comment.image.picture.small_thumb.url), category_image_path(comment.image.category, comment.image))
+  %hr
+    .separator
 %br
 = will_paginate @comments
