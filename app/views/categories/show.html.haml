@@ -26,7 +26,7 @@
         %a{remote: true, "data-target": '#updateCategoryModal', "data-toggle": 'modal', href: edit_category_path(@category)}
           Update
         |
-        =link_to('Delete', category_path, method: :delete, data: { confirm: 'You sure?' })
+        =link_to('Delete', category_path, method: :delete, data: { confirm: 'You sure?', toggle:'tooltip',placement:'left' }, title:'Delete this category')
     = render 'subscribe_form'
     %br
       %hr

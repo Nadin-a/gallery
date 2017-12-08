@@ -2,7 +2,7 @@
 = render 'shared/list_of_categories'
 %hr
   .separator
-%a{remote: true, "data-target": '#myModal', "data-toggle": 'modal', href: new_category_path}
-  create
+%button{type: 'button', remote: true, href: new_category_path, class:'btn btn-primary', data: {target: '#myModal', toggle: 'modal'}}
+  Create own category
 = render partial: 'categories/new'
 
