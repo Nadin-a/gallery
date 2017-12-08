@@ -21,13 +21,8 @@ class ImagesController < ApplicationController
       end
   end
 
-  def new
-    @image = @category.images.build(image_create_params)
-    authorize @image
-  end
-
   def create
-    @image = @category.images.build(image_create_params)
+    @image = @category.images.build(image_params)
     authorize @image
     if @image.save
       flash[:success] = 'Image uploaded'
@@ -40,7 +35,7 @@ class ImagesController < ApplicationController
   def edit; end
 
   def update
-    if @image.update(image_update_params)
+    if @image.update(image_params)
       flash[:success] = 'Image updated'
     else
       flash[:error] = @image.errors.full_messages
@@ -60,11 +55,7 @@ class ImagesController < ApplicationController
   private
 
   # Never trust parameters from the scary internet, only allow the white list through.
-  def image_create_params
-    params.require(:image).permit(:title, :description, :picture)
-  end
-
-  def image_update_params
+  def image_params
     params.require(:image).permit(:title, :description, :picture)
   end
 

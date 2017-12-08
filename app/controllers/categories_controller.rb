@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
   before_action :set_category, except: %i[index new owned favorite create]
 
   def index
-    @categories = Category.all
+    @categories = Category.ordered_by_popularity
     authorize @categories
   end
 

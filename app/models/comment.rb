@@ -8,5 +8,7 @@ class Comment < ApplicationRecord
   validates :image, presence: true
   validates :content, presence: true, length: { maximum: 200 }
 
-  default_scope -> { order(created_at: :desc) }
+  def self.default_scope
+    order(created_at: :desc)
+  end
 end

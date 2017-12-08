@@ -1,10 +1,16 @@
 - @categories.each do |category|
-  %hr
-    .separator
   %br
     .col-sm-10
       = link_to(category.name, category_path(category.id))
+      %br
+      Created
+      = time_ago_in_words(category.created_at)
     .col-sm-2
+      Images:
+      = category.images.count
+      %br
       Followers:
       = category.users.count
-
+  %br
+  %hr
+    .separator

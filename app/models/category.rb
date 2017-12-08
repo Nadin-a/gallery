@@ -8,5 +8,11 @@ class Category < ApplicationRecord
   validates :name, presence: true, length: { maximum: 30 }, uniqueness: true
   validates :owner, presence: true
 
-  default_scope -> { order(created_at: :desc) }
+  def self.default_scope
+    order(created_at: :desc)
+  end
+
+  def self.ordered_by_popularity
+    unscoped.select('categories.*, count(images.id) AS images_count').joins(:images).group(:id).order('images_count desc')
+  end
 end

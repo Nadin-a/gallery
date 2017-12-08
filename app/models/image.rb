@@ -15,10 +15,12 @@ class Image < ApplicationRecord
   validates :picture, presence: true
   validate  :picture_size
 
-  default_scope -> { order(updated_at: :desc) }
+  def self.default_scope
+    order(created_at: :desc)
+  end
 
   def self.ordered_by_likes
-    select('images.*, count(likes.id) AS likes_count').joins(:likes).group(:id).order('likes_count desc')
+    unscoped.select('images.*, count(likes.id) AS likes_count').joins(:likes).group(:id).order('likes_count desc')
   end
 
   private
