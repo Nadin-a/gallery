@@ -7,9 +7,6 @@ class Image < ApplicationRecord
   has_many :likes, dependent: :destroy, class_name: 'Like'
   has_many :liking_users, through: :likes, source: :user
 
- # default_scope -> { select("count(likes.id) AS likes_count").joins(:likes).group("images.id").order("likes_count DESC").limit(5) }
-
-
   mount_uploader :picture, PictureUploader
 
   validates :category, presence: true
@@ -17,6 +14,12 @@ class Image < ApplicationRecord
   validates :description, length: { maximum: 240 }
   validates :picture, presence: true
   validate  :picture_size
+
+  default_scope -> { order(updated_at: :desc) }
+
+  def self.ordered_by_likes
+    select('images.*, count(likes.id) AS likes_count').joins(:likes).group(:id).order('likes_count desc')
+  end
 
   private
 

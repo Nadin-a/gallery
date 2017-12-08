@@ -19,9 +19,12 @@
     %br
     - if user_signed_in?
       - if current_user == @category.owner
-        =link_to('Add image', new_category_image_path(@category))
+        %a{remote: true, "data-target": '#createImageModal', "data-toggle": 'modal', href: new_category_image_path(@category)}
+          Add image
         |
-        =link_to('Update', edit_category_path)
+
+        %a{remote: true, "data-target": '#updateCategoryModal', "data-toggle": 'modal', href: edit_category_path(@category)}
+          Update
         |
         =link_to('Delete', category_path, method: :delete, data: { confirm: 'You sure?' })
     = render 'subscribe_form'
@@ -29,4 +32,5 @@
       %hr
         .separator
     = render partial: 'shared/list_of_images'
-
+= render partial: 'images/new'
+= render partial: 'categories/edit'

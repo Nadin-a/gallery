@@ -12,7 +12,7 @@ class ImagesController < ApplicationController
   def show
     @comment = current_user.comments.build if user_signed_in?
     @comments = @image.comments.paginate(page: params[:page], per_page: 10)
-    return if user_signed_in?
+    return unless user_signed_in?
     @like =
       if current_user.like? @image
         @image.likes.find_by(user_id: current_user)
@@ -22,7 +22,7 @@ class ImagesController < ApplicationController
   end
 
   def new
-    @image = @category.images.build
+    @image = @category.images.build(image_create_params)
     authorize @image
   end
 
@@ -31,11 +31,10 @@ class ImagesController < ApplicationController
     authorize @image
     if @image.save
       flash[:success] = 'Image uploaded'
-      redirect_to category_path(@category)
     else
       flash[:error] = @image.errors.full_messages
-      render 'new'
     end
+    redirect_to category_path(@category)
   end
 
   def edit; end
@@ -43,11 +42,10 @@ class ImagesController < ApplicationController
   def update
     if @image.update(image_update_params)
       flash[:success] = 'Image updated'
-      redirect_to category_image_path(@category, @image)
     else
       flash[:error] = @image.errors.full_messages
-      render 'edit'
     end
+    redirect_to category_image_path(@category, @image)
   end
 
   def destroy
@@ -67,7 +65,7 @@ class ImagesController < ApplicationController
   end
 
   def image_update_params
-    params.require(:image).permit(:title, :description)
+    params.require(:image).permit(:title, :description, :picture)
   end
 
   def set_image

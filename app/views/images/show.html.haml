@@ -12,9 +12,8 @@
       Owner:
       %br
       = @category.owner.name
-    %hr
-      .separator
-    = image_tag(@image.picture)
+    .col-sm-12
+      = image_tag(@image.picture)
     %br
     %br
     .col-sm-12
@@ -32,7 +31,8 @@
       .separator
         - if user_signed_in?
           - if current_user == @category.owner
-            =link_to('Update', edit_category_image_path(@category, @image))
+            %a{remote: true, "data-target": '#updateImageModal', "data-toggle": 'modal', href: edit_category_image_path(@category, @image)}
+              Update
             |
             =link_to('Delete', category_image_path(@category, @image), method: :delete, data: { confirm: 'You sure?' })
             %hr
@@ -41,3 +41,4 @@
     %hr
       .separator
         = render partial: 'shared/comment_form'
+= render 'images/edit', locals: {category: @category, image: @image}

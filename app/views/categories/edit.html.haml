@@ -1,9 +1,0 @@
-.col-lg-9
-  %h2 Edit category
-  = form_for @category do |f|
-    = render 'shared/error_messages', object: f.object
-    .field
-      = f.label :name
-      = f.text_field :name, autofocus: true, class:'form-control', placeholder:'Name'
-    .actions
-      = f.submit 'Update',  class: 'btn btn-primary active'

@@ -6,7 +6,7 @@ class ImagePolicy < ApplicationPolicy
   end
 
   def create?
-    user
+    user && image.category.owner == user
   end
 
   def update?

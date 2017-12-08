@@ -34,11 +34,9 @@ class LikesController < ApplicationController
 
   def set_image
     @image = Image.find(params[:image_id])
-    authorize @image
   end
 
   def set_category
     @category = Category.find(params[:category_id])
-    authorize @category
   end
 end

@@ -1,2 +1,8 @@
 %h1 My Categories
 = render 'shared/list_of_categories'
+%hr
+  .separator
+%a{remote: true, "data-target": '#myModal', "data-toggle": 'modal', href: new_category_path}
+  create
+= render partial: 'categories/new'
+

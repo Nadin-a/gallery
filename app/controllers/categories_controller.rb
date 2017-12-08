@@ -10,7 +10,8 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @images = @category.images.paginate(page: params[:page], per_page: 5)
+    @image = @category.images.build
+    @images = @category.images.paginate(page: params[:page], per_page: 5).order(created_at: :desc)
   end
 
   def new
@@ -26,18 +27,17 @@ class CategoriesController < ApplicationController
       redirect_to @category
     else
       flash[:error] = @category.errors.full_messages
-      render 'new'
+      redirect_to categories_path
     end
   end
 
   def update
     if @category.update(categories_params)
       flash[:success] = 'Category updated'
-      redirect_to @category
     else
       flash[:error] = @category.errors.full_messages
-      render 'edit'
     end
+    redirect_to @category
   end
 
   def destroy
@@ -46,12 +46,14 @@ class CategoriesController < ApplicationController
     else
       flash[:error] = 'Category was not deleted!'
     end
-    redirect_to categories_path
+    redirect_to owned_categories_path
   end
 
   def owned
+    @category = Category.new
     @categories = current_user.owned_categories
     authorize @categories
+    authorize @category
   end
 
   def favorite

@@ -1,0 +1,26 @@
+#createImageModal.modal.fade{"aria-labelledby": 'myModalLabel', role: 'dialog', tabindex: '-1'}
+  .modal-dialog{role: 'document'}
+    .modal-content
+      .modal-header
+        %button.close{"aria-label": 'Close', "data-dismiss": 'modal', type: 'button'}
+          %span{"aria-hidden": 'true'} ×
+        %h4#createImageModalLabel.modal-title
+          New image in
+          = @category.name
+        .modal-body
+          .col-lg-12
+            = form_for [@category, @image] do |f|
+              = render 'shared/error_messages', object: f.object
+              .field
+                = f.label :title
+                = f.text_field :title, autofocus: true, class:'form-control', placeholder:'Title of the picture'
+              .field
+                = f.label :description
+                = f.text_field :description, autofocus: true, class:'form-control', placeholder:'Description of the picture'
+              %br
+                = f.file_field :picture, accept: 'image/jpeg,image/gif,image/png'
+              %br
+              .actions
+                .modal-footer
+                  %button.btn.btn-default{"data-dismiss": 'modal', type: 'button'} Close
+                  = f.submit 'Add', class: 'btn btn-primary active'
