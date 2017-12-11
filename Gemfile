@@ -17,6 +17,7 @@ gem 'will_paginate'
 gem 'jquery-rails'
 gem "pundit"
 gem 'activeadmin'
+gem 'ahoy_matey'
 
 group :development, :test do
   gem 'rspec-rails'
