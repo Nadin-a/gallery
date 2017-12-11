@@ -25,6 +25,10 @@ group :development, :test do
   gem 'pundit-matchers'
 end
 
+group :test do
+  gem 'shoulda-matchers'
+end
+
 group :development do
   gem 'listen'
   gem 'spring'

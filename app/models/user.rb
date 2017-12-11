@@ -14,7 +14,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy, class_name: 'Like'
   has_many :liked_images, through: :likes, source: :image
 
-  validates :name, presence: true, length: { maximum: 50 }
+  validates :name, presence: true, length: { maximum: 20 }, uniqueness: true
 
   def feed
     @feed = Image.where(category_id: categories).or(Image.where(category_id: owned_categories))
