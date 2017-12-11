@@ -26,6 +26,8 @@ describe Comment do
   describe 'Associations' do
     it { is_expected.to belong_to(:user) }
     it { is_expected.to belong_to(:image) }
+    it { is_expected.to have_db_index('image_id') }
+    it { is_expected.to have_db_index('user_id') }
   end
 
   describe 'Validations' do

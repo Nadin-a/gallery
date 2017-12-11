@@ -32,6 +32,8 @@ describe Category do
     it { is_expected.to belong_to(:owner) }
     it { is_expected.to have_and_belong_to_many(:users) }
     it { is_expected.to have_many(:images) }
+    it { is_expected.to have_db_index('name') }
+    it { is_expected.to have_db_index('owner_id') }
   end
 
   describe 'Validations' do

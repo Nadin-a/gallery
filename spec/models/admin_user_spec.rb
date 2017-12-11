@@ -21,4 +21,9 @@ RSpec.describe AdminUser, type: :model do
     subject.password = 'a' * 3
     expect(subject).to_not be_valid
   end
+  describe 'Associations' do
+    it { is_expected.to  have_db_index('confirmation_token') }
+    it { is_expected.to  have_db_index('email') }
+    it { is_expected.to  have_db_index('reset_password_token') }
+  end
 end

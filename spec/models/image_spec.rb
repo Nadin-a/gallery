@@ -41,6 +41,8 @@ describe Image do
     it { is_expected.to have_many(:users) }
     it { is_expected.to have_many(:likes) }
     it { is_expected.to have_many(:liking_users) }
+    it { is_expected.to have_db_index('category_id') }
+    it { is_expected.to have_db_index('title') }
   end
 
   describe 'Validations' do
