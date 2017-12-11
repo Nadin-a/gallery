@@ -41,3 +41,4 @@ end
 users = User.all
 users.each { |user| user.categories << Category.find(Random.rand(1..3)) }
 
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

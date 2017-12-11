@@ -16,6 +16,7 @@ gem 'bootstrap-will_paginate'
 gem 'will_paginate'
 gem 'jquery-rails'
 gem "pundit"
+gem 'activeadmin'
 
 group :development, :test do
   gem 'rspec-rails'
