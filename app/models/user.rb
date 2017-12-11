@@ -10,11 +10,13 @@ class User < ApplicationRecord
   has_and_belongs_to_many :categories
   has_many :comments, dependent: :destroy, class_name: 'Comment'
   has_many :commented_images, through: :comments, source: :image
-
   has_many :likes, dependent: :destroy, class_name: 'Like'
   has_many :liked_images, through: :likes, source: :image
 
+  mount_uploader :avatar, AvatarUploader
+
   validates :name, presence: true, length: { maximum: 20 }, uniqueness: true
+  validate  :avatar_size
 
   def feed
     @feed = Image.where(category_id: categories).or(Image.where(category_id: owned_categories))
@@ -26,5 +28,12 @@ class User < ApplicationRecord
 
   def like?(image)
     liked_images.include? image
+  end
+
+  private
+
+  def avatar_size
+    return unless avatar.size > 5.megabytes
+    errors.add(:avatar, 'should be less than 5MB')
   end
 end
