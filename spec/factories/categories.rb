@@ -6,6 +6,11 @@ FactoryBot.define do
     owner { FactoryBot.build(:user) }
   end
 
+  factory :uncorrect_category, class: Category do
+    name ''
+    owner { FactoryBot.build(:user) }
+  end
+
   factory :random_category, class: Category do
     name Faker::Witcher.monster
     owner { FactoryBot.build(:user) }

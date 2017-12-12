@@ -32,6 +32,13 @@ describe Image do
   it 'is valid with valid attributes' do
     expect(subject).to be_valid
   end
+  it 'can check who like' do
+    user = FactoryBot.build(:user)
+    user.liked_images << subject
+    check = subject.liked_by? user
+    expect(check).to be true
+  end
+
   describe 'Associations' do
     it { is_expected.to belong_to(:category) }
     it { is_expected.to have_many(:comments) }

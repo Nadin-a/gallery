@@ -3,7 +3,6 @@
 require 'rails_helper'
 
 describe Category do
-  let(:owner) {FactoryBot.build(:user)}
   subject {
     FactoryBot.build(:category)
   }
@@ -27,6 +26,12 @@ describe Category do
   end
   it 'is valid with valid attributes' do
     expect(subject).to be_valid
+  end
+  it 'can check own subscribers' do
+    user = FactoryBot.build(:user)
+    user.categories << subject
+    check = subject.has_subscriber? user
+    expect(check).to be true
   end
 
   describe 'Associations' do
