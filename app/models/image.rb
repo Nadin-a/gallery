@@ -23,6 +23,11 @@ class Image < ApplicationRecord
     unscoped.select('images.*, count(likes.id) AS likes_count').joins(:likes).group(:id).order('likes_count desc')
   end
 
+
+  def liked_by? user
+    user.liked_images.include? self
+  end
+
   private
 
   # Validates the size of an uploaded picture.

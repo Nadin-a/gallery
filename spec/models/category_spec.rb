@@ -3,9 +3,9 @@
 require 'rails_helper'
 
 describe Category do
-  let(:owner) { User.new(name: 'User', email: 'email@mail.com', password: 'password', password_confirmation: 'password', confirmed_at: Time.now)}
+  let(:owner) {FactoryBot.build(:user)}
   subject {
-    described_class.new(name: 'cars', owner: owner)
+    FactoryBot.build(:category)
   }
   it 'has a valid factory' do
     FactoryBot.build(:category).should be_valid
@@ -28,8 +28,9 @@ describe Category do
   it 'is valid with valid attributes' do
     expect(subject).to be_valid
   end
+
   describe 'Associations' do
-    it { is_expected.to belong_to(:owner) }
+    it { is_expected.to belong_to(:owner).with_foreign_key(:owner_id) }
     it { is_expected.to have_and_belong_to_many(:users) }
     it { is_expected.to have_many(:images) }
     it { is_expected.to have_db_index('name') }

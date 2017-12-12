@@ -39,6 +39,10 @@ end
 end
 
 users = User.all
-users.each { |user| user.categories << Category.find(Random.rand(1..3)) }
+users.each do |user|
+  category = Category.find(Random.rand(1..3))
+  user.categories << category if user != category.owner
+end
+
 
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password', confirmed_at: Time.now) if Rails.env.development?

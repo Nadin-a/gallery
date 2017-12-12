@@ -22,14 +22,6 @@ class User < ApplicationRecord
     @feed = Image.where(category_id: categories).or(Image.where(category_id: owned_categories))
   end
 
-  def subscribe?(category)
-    categories.include? category
-  end
-
-  def like?(image)
-    liked_images.include? image
-  end
-
   private
 
   def avatar_size

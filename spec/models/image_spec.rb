@@ -3,14 +3,11 @@
 require 'rails_helper'
 
 describe Image do
-  let(:owner) { User.new(name: 'User', email: 'email@mail.com', password: 'password', password_confirmation: 'password', confirmed_at: Time.now)}
-  let(:category){Category.new(name: 'cars', owner: owner)}
   subject {
-    described_class.new(title: 'picture', description: 'some description',
-                        category: category, picture: Rails.root.join("app/assets/images/test_picture.jpg").open)
+    FactoryBot.build(:image)
   }
   it 'has a valid factory' do
-    #FactoryBot.build(:image).should be_valid
+    FactoryBot.build(:image).should be_valid
   end
   it 'is not valid without a title' do
     subject.title = nil

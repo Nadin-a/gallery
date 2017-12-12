@@ -3,10 +3,10 @@
 require 'rails_helper'
 
 describe Comment do
-  let(:user) { User.new(name: 'User', email: 'email@mail.com', password: 'password', password_confirmation: 'password', confirmed_at: Time.now)}
-  let(:category){Category.new(name: 'cars', owner: user)}
-  let(:image){ Image.new(title: 'picture', description: 'some description', category: category, picture: Rails.root.join("app/assets/images/test_picture.jpg").open) }
-  subject { described_class.new(user: user, image: image, content: 'some content') }
+  subject {FactoryBot.build(:comment) }
+  it 'has a valid factory' do
+    FactoryBot.build(:comment).should be_valid
+  end
   it 'is not valid without a content' do
     subject.content = nil
     expect(subject).to_not be_valid

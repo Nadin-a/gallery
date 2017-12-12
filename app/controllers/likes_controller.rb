@@ -18,10 +18,11 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    @like.destroy
-    respond_to do |format|
-      format.html { redirect_to @image }
-      format.json { render @image, status: :created }
+    if @like.destroy
+      respond_to do |format|
+        format.html { redirect_to @image }
+        format.json { render @image, status: :created }
+      end
     end
   end
 

@@ -1,8 +1,8 @@
 - if user_signed_in?
   - if current_user != @category.owner
-    - path = current_user.subscribe?(@category) ? unsubscribe_category_path : subscribe_category_path
-    - method  = current_user.subscribe?(@category) ? 'delete' : 'post'
-    - subscribed = current_user.subscribe?(@category) ? 1 : 0
+    - path = @category.has_subscriber?(current_user) ? unsubscribe_category_path : subscribe_category_path
+    - method  = @category.has_subscriber?(current_user) ? 'delete' : 'post'
+    - subscribed = @category.has_subscriber?(current_user) ? 1 : 0
     %button{role: 'button',class: "js-subscribtion-category btn#{subscribed == 1 ? '' : ' btn-primary'}", data: {subscribed: subscribed},
     action: path, method: method  }
 %br

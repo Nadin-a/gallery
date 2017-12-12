@@ -14,7 +14,7 @@ class ImagesController < ApplicationController
     @comments = @image.comments.paginate(page: params[:page], per_page: 10)
     return unless user_signed_in?
     @like =
-      if current_user.like? @image
+      if @image.liked_by?(current_user)
         @image.likes.find_by(user_id: current_user)
       else
         current_user.likes.build
