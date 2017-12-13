@@ -1,12 +1,13 @@
 ActiveAdmin.register User do
   actions :all
-  permit_params :name, :email, :avatar, :password, :password_confirmation
+  permit_params :name, :email, :avatar, :confirmed_at
 
   index do
     id_column
     column :name
     column :email
     column :avatar
+    column :confirmed_at
     actions
   end
 
@@ -14,9 +15,8 @@ ActiveAdmin.register User do
     f.inputs 'Details' do
       f.input :name
       f.input :email
-      f.input :password
-      f.input :password_confirmation
       f.input :avatar
+      f.input :confirmed_at
       f.actions
     end
   end

@@ -27,7 +27,7 @@ $(document).ready(function () {
         else {
           $btn.unsubscribe(category);
         }
-        $followers_label.html('Followers: ' + category.followers)
+        //$followers_label.html('Followers: ' + category.followers)
       },
       error: function (error) {
         alert('Error. Please try again')

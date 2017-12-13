@@ -27,7 +27,7 @@
           Update
         |
         =link_to('Delete', category_path, method: :delete, data: { confirm: 'You sure?', toggle:'tooltip',placement:'left' }, title:'Delete this category')
-    = render 'subscribe_form'
+    = render 'shared/subscribe_form', category: @category
     %br
       %hr
         .separator

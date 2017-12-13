@@ -1,16 +1,24 @@
 - @categories.each do |category|
   %br
     .col-sm-10
-      = link_to(category.name, category_path(category.id))
-      %br
-      Created
-      = time_ago_in_words(category.created_at)
+      %h4
+        = link_to(category.name, category_path(category.id))
     .col-sm-2
       Images:
       = category.images.count
-      %br
-      Followers:
-      = category.users.count
-  %br
-  %hr
-    .separator
+      = render 'shared/subscribe_form', category: category
+      -#%br
+      -#Followers:
+      -#= category.users.count
+      - if current_user == category.owner
+        = link_to('delete', category_path(category), method: :delete, data: { confirm: 'You sure?', toggle:'tooltip',placement:'left' }, title:'Delete this category')
+    .col-sm-12
+      - images = category.images.count <= 3? category.images.all : category.images.first(3)
+      - images.each do |image|
+        = link_to(image_tag(image.picture.small_thumb.url), category_image_path(image.category, image))
+    .col-sm-12
+    Created
+    = time_ago_in_words(category.created_at)
+    ago
+    .hr
+      .separator

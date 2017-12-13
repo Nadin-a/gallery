@@ -21,17 +21,24 @@ Category.create!(name: 'cats',
 Category.create!(name: 'cities',
                  owner_id: 3)
 
-15.times do |n|
+
+15.times do
+  rand = Random.rand(1..2)
   title = Faker::Lorem.word
   description = Faker::Lorem.sentence
-  picture = Rails.root.join("app/assets/images/test_picture.jpg").open
+  picture =
+    if rand == 1
+      Rails.root.join('app/assets/images/big_image.jpg').open
+    else
+      Rails.root.join('app/assets/images/large-photo.jpeg').open
+    end
   Image.create!(title: title,
                 description: description,
                 picture: picture,
                 category_id: Random.rand(1..3))
 end
 
-20.times do |n|
+20.times do
   content = Faker::Lorem.word
   Comment.create!(content: content,
                   user_id: Random.rand(1..3),

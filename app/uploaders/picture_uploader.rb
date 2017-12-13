@@ -2,7 +2,7 @@
 
 class PictureUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
-  process resize_to_limit: [600, 600]
+  process resize_to_limit: [1000, 1000]
 
   if Rails.env.production?
     storage :fog

@@ -4,15 +4,13 @@ FactoryBot.define do
   factory :category do
     name 'Cars'
     owner { FactoryBot.build(:user) }
-  end
 
-  factory :uncorrect_category, class: Category do
-    name ''
-    owner { FactoryBot.build(:user) }
-  end
+    factory :uncorrect_category do
+      name ''
+    end
 
-  factory :random_category, class: Category do
-    name Faker::Witcher.monster
-    owner { FactoryBot.build(:user) }
+    factory :random_category do
+      name Faker::Witcher.monster
+    end
   end
 end

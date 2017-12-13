@@ -10,28 +10,22 @@ class CategoryPolicy < ApplicationPolicy
   end
 
   def update?
-    true if user && user == category.owner
+    user == category.owner
   end
-
-  def destroy?
-    true if user && user == category.owner
-  end
+  alias destroy? update?
 
   def owned?
-    true if user
+    user
   end
 
   def favorite?
-    true if user
+    user
   end
 
   def subscribe?
-    true if user && user != category.owner
+    user != category.owner
   end
-
-  def unsubscribe?
-    true if user && user != category.owner
-  end
+  alias unsubscribe? subscribe?
 
   private
 

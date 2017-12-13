@@ -3,6 +3,7 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
   before_action :set_category, except: %i[index new owned favorite create]
+  before_action :set_new_category, only: %i[new index owned favorite]
 
   def index
     @categories = Category.ordered_by_popularity
@@ -14,10 +15,7 @@ class CategoriesController < ApplicationController
     @images = @category.images.paginate(page: params[:page], per_page: 5).order(created_at: :desc)
   end
 
-  def new
-    @category = Category.new
-    authorize @category
-  end
+  def new; end
 
   def create
     @category = current_user.owned_categories.build(categories_params)
@@ -50,7 +48,6 @@ class CategoriesController < ApplicationController
   end
 
   def owned
-    @category = Category.new
     @categories = current_user.owned_categories
     authorize @categories
     authorize @category
@@ -88,4 +85,10 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     authorize @category
   end
+
+  def set_new_category
+    @category = Category.new
+    authorize @category
+  end
+
 end
