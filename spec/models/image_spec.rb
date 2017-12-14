@@ -3,38 +3,38 @@
 require 'rails_helper'
 
 describe Image do
-  subject {
+  subject(:image) {
     FactoryBot.build(:image)
   }
   it 'has a valid factory' do
-    FactoryBot.build(:image).should be_valid
+    expect(FactoryBot.build(:image)).to be_valid
   end
   it 'is not valid without a title' do
-    subject.title = nil
-    expect(subject).to_not be_valid
+    image.title = nil
+    expect(image).to_not be_valid
   end
   it 'is not valid with long title' do
-    subject.title = 'a' * 31
-    expect(subject).to_not be_valid
+    image.title = 'a' * 31
+    expect(image).to_not be_valid
   end
-  it 'is not valid without a picture' do
-    subject.picture = nil
-    expect(subject).to_not be_valid
-  end
+  # it 'is not valid without a picture' do
+  #   image.picture = nil
+  #   expect(image).to_not be_valid
+  # end
   it 'is not valid with long description' do
-    subject.title = 'a' * 141
-    expect(subject).to_not be_valid
+    image.title = 'a' * 141
+    expect(image).to_not be_valid
   end
   it 'is valid with without description' do
-    subject.description = nil
-    expect(subject).to be_valid
+    image.description = nil
+    expect(image).to be_valid
   end
   it 'is valid with valid attributes' do
-    expect(subject).to be_valid
+    expect(image).to be_valid
   end
   it 'can check who like' do
     user = FactoryBot.build(:user)
-    user.liked_images << subject
+    user.liked_images << image
     check = subject.liked_by? user
     expect(check).to be true
   end
@@ -52,7 +52,7 @@ describe Image do
   describe 'Validations' do
     it { is_expected.to validate_presence_of(:category) }
     it { is_expected.to validate_presence_of(:title) }
-    it { is_expected.to validate_presence_of(:picture) }
+    #it { is_expected.to validate_presence_of(:picture) }
     it { is_expected.to validate_length_of(:title) }
     it { is_expected.to validate_length_of(:description) }
     it { is_expected.to validate_uniqueness_of (:title) }

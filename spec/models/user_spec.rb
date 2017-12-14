@@ -3,43 +3,44 @@
 require 'rails_helper'
 
 describe User do
-  subject {
+  subject(:user) {
     FactoryBot.build(:user)
   }
+
   it 'has a valid factory' do
-    FactoryBot.build(:user).should be_valid
+    expect(FactoryBot.build(:user)).to be_valid
   end
   it 'is invalid without a name' do
-    subject.name = nil
-    expect(subject).to_not be_valid
+    user.name = nil
+    expect(user).to_not be_valid
   end
   it 'is invalid with long name' do
-    subject.name = 'a' * 21
-    expect(subject).to_not be_valid
+    user.name = 'a' * 21
+    expect(user).to_not be_valid
   end
   it 'is invalid without an e-mail' do
-    subject.email = nil
-    expect(subject).to_not be_valid
+    user.email = nil
+    expect(user).to_not be_valid
   end
   it 'is invalid without a correct e-mail' do
-    subject.email = 'uncorrect email'
-    expect(subject).to_not be_valid
+    user.email = 'uncorrect email'
+    expect(user).to_not be_valid
   end
   it 'is invalid without a password' do
-    subject.password = nil
-    expect(subject).to_not be_valid
+    user.password = nil
+    expect(user).to_not be_valid
   end
   it 'is invalid without a correct password' do
-    subject.password = 'a' * 3
-    expect(subject).to_not be_valid
+    user.password = 'a' * 3
+    expect(user).to_not be_valid
   end
   it 'is invalid without a matching password confirmation' do
-    subject.password = 'password'
-    subject.password_confirmation = 'foobar'
-    expect(subject).to_not be_valid
+    user.password = 'password'
+    user.password_confirmation = 'foobar'
+    expect(user).to_not be_valid
   end
   it 'is valid with valid attributes' do
-    expect(subject).to be_valid
+    expect(user).to be_valid
   end
 
 

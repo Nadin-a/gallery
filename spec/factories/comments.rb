@@ -3,13 +3,15 @@
 FactoryBot.define do
   factory :comment do
     content 'some content'
-    user {FactoryBot.build(:user)}
-    image {FactoryBot.build(:image)}
-  end
+    user { FactoryBot.build(:user) }
+    image { FactoryBot.build(:image) }
 
-  factory :random_comments, class: Comment do
-    content Faker::Lorem.word
-    user {FactoryBot.build(:user)}
-    image {FactoryBot.build(:image)}
+    factory :random_comment do
+      content Faker::Lorem.word
+    end
+
+    factory :invalid_comment do
+      content ''
+    end
   end
 end

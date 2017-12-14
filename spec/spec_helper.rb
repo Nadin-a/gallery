@@ -18,6 +18,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'pundit/matchers'
 require 'support/controller_helpers'
+include ActionDispatch::TestProcess
 
 
 RSpec.configure do |config|
@@ -55,7 +56,7 @@ RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers, type: :view
 
 
-
+  config.fixture_path = "#{::Rails.root}/spec/fixtures"
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
 =begin

@@ -4,14 +4,16 @@ FactoryBot.define do
   factory :image do
     title 'title'
     description 'some description'
-    picture Rails.root.join("app/assets/images/test_picture.jpg").open
-    category {FactoryBot.build(:category) }
-  end
+    picture { fixture_file_upload(Rails.root.join('spec', 'fixtures', 'test_picture.jpg'), 'image/jpg') }
+    category
 
-  factory :random_image, class: Image do
-    title Faker::Lorem.word
-    description Faker::Lorem.sentence
-    picture Rails.root.join("app/assets/images/test_picture.jpg").open
-    category {FactoryBot.build(:category) }
+    factory :random_image do
+      title Faker::Name.first_name
+      description Faker::Lorem.sentence
+    end
+
+    factory :invalid_image do
+      title ''
+    end
   end
 end

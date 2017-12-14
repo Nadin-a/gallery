@@ -3,26 +3,28 @@
 require 'rails_helper'
 
 describe Comment do
-  subject {FactoryBot.build(:comment) }
+  subject(:comment) { FactoryBot.build(:comment) }
+
   it 'has a valid factory' do
-    FactoryBot.build(:comment).should be_valid
+    expect(FactoryBot.build(:comment)).to be_valid
   end
   it 'is not valid without a content' do
-    subject.content = nil
-    expect(subject).to_not be_valid
+    comment.content = nil
+    expect(comment).to_not be_valid
   end
   it 'is not valid with long content' do
-    subject.content = 'a' * 201
-    expect(subject).to_not be_valid
+    comment.content = 'a' * 201
+    expect(comment).to_not be_valid
   end
   it 'is not valid without a user' do
-    subject.user = nil
-    expect(subject).to_not be_valid
+    comment.user = nil
+    expect(comment).to_not be_valid
   end
   it 'is not valid without a user' do
-    subject.image = nil
-    expect(subject).to_not be_valid
+    comment.image = nil
+    expect(comment).to_not be_valid
   end
+
   describe 'Associations' do
     it { is_expected.to belong_to(:user) }
     it { is_expected.to belong_to(:image) }

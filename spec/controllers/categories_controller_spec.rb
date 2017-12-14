@@ -1,24 +1,45 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe CategoriesController, type: :controller do
-  let!(:user){FactoryBot.create(:user)}
+  let!(:user) { FactoryBot.create(:user) }
+  let!(:second_user) { FactoryBot.create(:random_user) }
   let!(:category) { FactoryBot.create(:category, owner: user) }
   let(:uncorrect_category) { FactoryBot.build(:uncorrect_category) }
+  let!(:image) { FactoryBot.create(:image, category: category) }
+
   before { sign_in(user) }
 
   describe 'GET #index' do
     it 'renders the :index view' do
       get :index
-      expect(response.status).to eq(200)
       expect(response).to render_template('index')
-      expect(response.body).to eq ''
     end
-
   end
+
+  describe 'GET #owned' do
+    it 'renders the :owned view' do
+      get :owned
+      expect(response).to render_template('owned')
+    end
+  end
+
+  describe 'GET #favorite' do
+    it 'renders the :favorite view' do
+      get :favorite
+      expect(response).to render_template('favorite')
+    end
+  end
+
   describe 'GET #show' do
     it 'show category' do
       get :show, params: {id: category.id}
       expect(assigns(:category)).to eq(category)
+    end
+
+    it 'render show' do
+      get :show, params: {id: category.id}
       expect(response).to render_template :show
     end
   end
@@ -36,36 +57,83 @@ RSpec.describe CategoriesController, type: :controller do
         category = FactoryBot.build(:random_category)
         post :create, params: {category: category.attributes}
         expect(response).to redirect_to(Category.first)
-        expect(response.status).to eq(302)
+        expect(flash[:success]).to_not be_nil
       end
     end
 
-    context 'with invalid attributes' do # add redirect with login
+    context 'with invalid attributes' do
       it 'does not save the new category' do
         expect {
           post :create, params: {category: uncorrect_category.attributes}
         }.to_not change(Category, :count)
+        expect(flash[:error]).to_not be_nil
+      end
+    end
+
+    describe 'POST #subscribe' do
+      before { sign_in(second_user) }
+      it 'subscribe category' do
+        post :subscribe, params: {id: category.id}, format: :json
+        expect(second_user.categories.count).to eq 1
+      end
+
+      it 'unsubscribe category' do
+        delete :unsubscribe, params: {id: category.id}, format: :json
+        expect(second_user.categories.count).to eq 0
       end
     end
   end
 
   describe 'PUT update' do
+    let(:category_params) { {id: category.id, category: {name: 'Houses'}} }
+    let(:invalid_category_params) { {id: category.id, category: {name: ''}} }
+
     context 'valid attributes' do
       it 'located the requested category' do
-        category_params = { id: category.id, category: { name: 'Houses' } }
         expect {
           put :update, params: category_params
         }.to change { category.reload.name }.from('Cars').to('Houses')
-        #expect(category.reload.name).to eq(category_params[:category][:name])
-        #expect(response).to redirect_to(category)
       end
 
-      it "redirects to the updated category" do
-        category_params = { id: category.id, category: { name: 'Houses' } }
+      it 'redirects to the updated category' do
         put :update, params: category_params
         expect(response).to redirect_to(category)
+        expect(flash[:success]).to_not be_nil
+      end
+    end
+
+    context 'invalid attributes' do
+      it 'can`t update category' do
+        put :update, params: invalid_category_params
+        expect(response).to_not be_success
+        expect(flash[:error]).to_not be_nil
       end
 
+      it 'redirect to index' do
+        put :update, params: invalid_category_params
+        expect(response).to redirect_to(category)
+        expect(flash[:error]).to_not be_nil
+      end
+    end
+  end
+
+  describe 'DELETE destroy' do
+    it 'delete the category' do
+      expect {
+        delete :destroy, params: {id: category.id}
+      }.to change(Category, :count).by(-1)
+    end
+
+    it 'redirects to owned_categories' do
+      delete :destroy, params: {id: category.id}
+      expect(response).to redirect_to owned_categories_path
+      expect(flash[:success]).to_not be_nil
+    end
+
+    it 'delete with images' do
+      expect {
+        delete :destroy, params: {id: category.id}
+      }.to change(Image, :count).by(-1)
     end
   end
 end

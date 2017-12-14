@@ -3,17 +3,18 @@
 require 'rails_helper'
 
 describe Like do
-  subject { FactoryBot.build(:like) }
+  subject(:like) { FactoryBot.build(:like) }
+
   it 'has a valid factory' do
-    FactoryBot.build(:like).should be_valid
+    expect(FactoryBot.build(:like)).to be_valid
   end
   it 'is not valid without a user' do
-    subject.user = nil
-    expect(subject).to_not be_valid
+    like.user = nil
+    expect(like).to_not be_valid
   end
   it 'is not valid without a user' do
-    subject.image = nil
-    expect(subject).to_not be_valid
+    like.image = nil
+    expect(like).to_not be_valid
   end
   describe 'Associations' do
     it { is_expected.to belong_to(:user) }
