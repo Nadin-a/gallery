@@ -1,5 +1,3 @@
 %h1 My Favorite Categories
 = render 'shared/list_of_categories'
-%button{type: 'button', remote: true, href: new_category_path, class:'btn btn-primary', data: {target: '#myModal', toggle: 'modal'}}
-  Create own category
-= render partial: 'categories/new'
+= render 'shared/create_new_category'

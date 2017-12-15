@@ -1,36 +1,38 @@
-.p
-  .strong
-    .col-sm-4
+.well
+  .col-sm-3
+    %b
       Name:
-      %br
+    %br
       = @category.name
-    .col-sm-4
+  .col-sm-3
+    %b
       Created by:
-      %br
-      =  @category.owner.name
-    .col-sm-4
+    %br
+    =  @category.owner.name
+  .col-sm-3
+    %b
       Created at:
-      %br
-      = time_ago_in_words(@category.created_at)
-      ago
-    %hr
-      .separator
     %br
-    %br
-    - if user_signed_in?
-      - if current_user == @category.owner
-        %a{remote: true, "data-target": '#createImageModal', "data-toggle": 'modal', href: new_category_image_path(@category)}
-          Add image
-        |
+    = time_ago_in_words(@category.created_at)
+    ago
+  .col-sm-3
+    .pull-right
+      = render 'shared/subscribe_form', category: @category
+      %label_tag{ class: 'js-count-followers-label' }
+        = @category.users.count
+  %hr
+    .separator
+- if user_signed_in?
+  - if current_user == @category.owner
+    %a{remote: true, "data-target": '#createImageModal', "data-toggle": 'modal', href: new_category_image_path(@category)}
+      Add image
+    |
 
-        %a{remote: true, "data-target": '#updateCategoryModal', "data-toggle": 'modal', href: edit_category_path(@category)}
-          Update
-        |
-        =link_to('Delete', category_path, method: :delete, data: { confirm: 'You sure?', toggle:'tooltip',placement:'left' }, title:'Delete this category')
-    = render 'shared/subscribe_form', category: @category
-    %br
-      %hr
-        .separator
-    = render partial: 'shared/list_of_images'
+    %a{remote: true, "data-target": '#updateCategoryModal', "data-toggle": 'modal', href: edit_category_path(@category)}
+      Update
+    |
+    =link_to('Delete', category_path, method: :delete, data: { confirm: 'You sure?', toggle:'tooltip',placement:'left' }, title:'Delete this category')
+  %br
+  = render partial: 'shared/list_of_images'
 = render partial: 'images/new'
 = render partial: 'categories/edit'

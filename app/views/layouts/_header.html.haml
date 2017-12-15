@@ -1,35 +1,40 @@
-.navbar.navbar-default.navbar-static-top.navbar-inverse
-  .container
-  %nav.navbar-header
-    %ul.nav.navbar-nav
-      %li
-        =link_to 'Home', root_path
-      %li.dropdown
-        %a.dropdown-toggle{href: '#', "data-toggle": 'dropdown'}
-          Categories
-          %b.caret
-        %ul.dropdown-menu
+%nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse
+  .container-fluid
+    .navbar-header
+      %button.navbar-toggle.collapsed{"data-target" => "#navbar-main", "data-toggle" => "collapse", :type => "button"}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand{href: root_path}  Gallery
+    #navbar-main.collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li.active
+          =link_to 'Home', root_path
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+              Categories
+              %span.caret
+            %ul.dropdown-menu
+              %li
+                =link_to 'All categories', categories_path
+                - if user_signed_in?
+                  %li.divider
+                  %li
+                    =link_to('My categories', owned_categories_path)
+                  %li
+                    =link_to('Favorite categories', favorite_categories_path)
+            %li
+              =link_to 'Popular images', popular_images_path
+            %li
+              =link_to 'Last comments', last_comments_path
+      %ul.nav.navbar-nav.navbar-right
+        - if user_signed_in?
           %li
-            =link_to 'All categories', categories_path
-            - if user_signed_in?
-              %li.divider
-              %li
-                =link_to('My categories', owned_categories_path)
-              %li
-                =link_to('Favorite categories', favorite_categories_path)
-      %li
-        =link_to 'Popular images', popular_images_path
-      %li
-        =link_to 'Last comments', last_comments_path
-  %nav.navbar-header.navbar-right
-    %ul.nav.navbar-nav
-      - if user_signed_in?
-        %li
-          =link_to('Profile', edit_user_registration_path(current_user))
-        %li
-          =link_to "Sign out", destroy_user_session_path, method: :delete
-      - else
-        %li
-          = link_to 'Log In', new_user_session_path
-        %li
-          = link_to 'SignUp', new_user_registration_path
+            =link_to('Profile', edit_user_registration_path(current_user))
+          %li
+            =link_to "Sign out", destroy_user_session_path, method: :delete
+        - else
+          %li
+            = link_to 'Log In', new_user_session_path
+          %li
+            = link_to 'SignUp', new_user_registration_path

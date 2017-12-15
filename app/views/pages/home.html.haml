@@ -1,5 +1,9 @@
 = content_for(:title, 'Home')
-- unless @images.empty?
+- if @images.empty?
+  .container.row
+    %h2
+      You have not any images. Subscribe on any category or add own image and you will see it here!
+- else
   #carousel-example-generic.carousel.slide{'data-ride': 'carousel'}
     / Indicators
     %ol.carousel-indicators

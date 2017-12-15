@@ -1,17 +1,19 @@
-- @images.each_slice(3) do |images|
+- @images.each_slice(2) do |images|
   - images.each do |image|
-    .col-sm-4
-      %br
-        = link_to(image.title, category_image_path(image.category, image), { data:{ toggle:'tooltip',placement:'left'}, title:'Open this image'})
-        %br
-        = link_to(image_tag(image.picture.thumb.url), category_image_path(image.category, image),{ data:{ toggle:'tooltip',placement:'left'}, title:'Open this image'})
-        %br
-          - if user_signed_in?
-            - if current_user == Category.find(image.category_id).owner
-              -#%a{remote: true, "data-target": '#updateImageModal', "data-toggle": 'modal', href: edit_category_image_path(image.category, image)}
-              -#  Update
-              -#  = #render 'images/edit', locals: {category: image.category, image: image}
-              =link_to('Delete', category_image_path(image.category, image), method: :delete, data: { confirm: 'You sure?', toggle:'tooltip',placement:'left'}, title:'Delete this image')
-              %br
+    .col-xs-12.col-md-4
+      .panel.panel-default
+        .panel-image.hide-panel-body
+          %img.panel-image-preview
+            = link_to(image_tag(image.picture.thumb.url), category_image_path(image.category, image),{ data:{ toggle:'tooltip',placement:'left'}, title:'Open this image'})
+          .panel-body
+            %p
+              = link_to(image.title, category_image_path(image.category, image), { data:{ toggle:'tooltip',placement:'left'}, title:'Open full size'})
+            %p
+              = image.description
 .col-sm-12
   = will_paginate @images
+
+:css
+  body{
+    color: #2E2F30;
+  }

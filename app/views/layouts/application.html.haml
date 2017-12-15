@@ -6,10 +6,19 @@
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
+    %script{:async => "", :defer => "defer", :src => "https://www.google.com/recaptcha/api.js"}
+    :javascript
+      function onSubmit(token) {
+        document.getElementById("demo-form").submit();
+      }
     %body
     = render 'layouts/header'
-    .container
-      .row
-        = render partial: 'shared/flash_messages'
-        = yield
+    - if action_name != 'home'
+      .container
+        .row
+          .col-sm-12
+            = render partial: 'shared/flash_messages'
+            = yield
+    -else
+      = yield
     = render 'layouts/footer'

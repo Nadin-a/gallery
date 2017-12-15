@@ -3,8 +3,8 @@
   - path = @image.liked_by?(current_user) ? category_image_like_path(@category, @image) : category_image_likes_path(@category, @image)
   - method  = @image.liked_by?(current_user)  ? 'delete' : 'post'
   - liked = @image.liked_by?(current_user)  ? 1 : 0
-  %button{role: 'button',class: "js-like-image btn#{liked == 1 ? '' : ' btn-primary'}", data: {liked: liked},
-  action: path, method: method  }
+  %a.btn{class: "js-like-image btn#{liked == 1 ? ' btn-default' : ' btn-success'}", data: {liked: liked},
+  action: path, method: method }
 %label_tag{ class: "js-count-like-label" }
-  Likes:
   = @image.likes.count
+

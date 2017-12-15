@@ -4,10 +4,10 @@ $(document).ready(function () {
   $like_label = $('.js-count-like-label');
 
   if (($like_btn.attr('data-liked')) == 1) {
-    $like_btn.html('Unlike');
+    $like_btn.html('<span class="glyphicon glyphicon-thumbs-down"></span>');
   }
   else {
-    $like_btn.html('Like');
+    $like_btn.html('<span class="glyphicon glyphicon-thumbs-up"></span>');
   }
 
 
@@ -27,7 +27,7 @@ $(document).ready(function () {
         else {
           $btn.unlike(image);
         }
-        $like_label.html('Likes: ' + image.likes)
+        $like_label.html(image.likes)
       },
       error: function (error) {
         alert('Error. Please try again ')
@@ -37,22 +37,22 @@ $(document).ready(function () {
 
     (function ($) {
       $.fn.like = function (image) {
-        $btn.addClass('btn-primary').val('Like');
+        $btn.addClass('btn-success').val('Like');
         $btn.attr('method', 'post');
         $btn.attr('action', image.like_path);
         $btn.attr('data-liked', 0);
-        $btn.html('Like');
+        $btn.html('<span class="glyphicon glyphicon-thumbs-up"></span></a>');
         return this;
       };
     })(jQuery);
 
     (function ($) {
       $.fn.unlike = function (image) {
-        $btn.removeClass('btn-primary').val('Unlike');
+        $btn.removeClass('btn-success').addClass('btn-default').val('Unlike');
         $btn.attr('method', 'delete');
         $btn.attr('action', image.unlike_path);
         $btn.attr('data-liked', 1);
-        $btn.html('Unlike');
+        $btn.html('<span class="glyphicon glyphicon-thumbs-down"></span>');
         return this;
       };
     })(jQuery);

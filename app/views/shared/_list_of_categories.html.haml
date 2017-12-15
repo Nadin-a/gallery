@@ -1,24 +1,38 @@
 - @categories.each do |category|
-  %br
-    .col-sm-10
-      %h4
-        = link_to(category.name, category_path(category.id))
-    .col-sm-2
-      Images:
-      = category.images.count
-      = render 'shared/subscribe_form', category: category
-      -#%br
-      -#Followers:
-      -#= category.users.count
+  .panel.panel-default
+    .panel-body
+      .col-sm-12
+        %h4
+          = link_to(category.name, category_path(category.id))
+        %hr
+          .separator
+      .col-sm-10
+        - images = category.images.count <= 4? category.images.all : category.images.first(4)
+        - images.each do |image|
+          = link_to(image_tag(image.picture.small_thumb.url), category_image_path(image.category, image), class: 'small_img')
+      .col-sm-2
+        .pull-right
+          Images:
+          = category.images.count
+          %br
+          = render 'shared/subscribe_form', category: category
+    .panel-footer
+      Created
+      = time_ago_in_words(category.created_at)
+      ago
       - if current_user == category.owner
+        |
         = link_to('delete', category_path(category), method: :delete, data: { confirm: 'You sure?', toggle:'tooltip',placement:'left' }, title:'Delete this category')
-    .col-sm-12
-      - images = category.images.count <= 3? category.images.all : category.images.first(3)
-      - images.each do |image|
-        = link_to(image_tag(image.picture.small_thumb.url), category_image_path(image.category, image))
-    .col-sm-12
-    Created
-    = time_ago_in_words(category.created_at)
-    ago
-    .hr
-      .separator
+.col-sm-12
+  = will_paginate @categories
+
+:css
+  img:hover{
+      width: 120px;
+  }
+  body{
+    color: #2E2F30;
+  }
+
+
+

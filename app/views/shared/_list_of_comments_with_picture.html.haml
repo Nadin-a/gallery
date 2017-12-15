@@ -1,18 +1,23 @@
 - @comments.each do |comment|
-  .row
-    .col-sm-10
-      %br
-        = User.find(comment.user_id).name
-        = image_tag(User.find(comment.user_id).avatar) if User.find(comment.user_id).avatar?
-      say:
-      %br
-      = comment.content
-      %br
+  .panel.panel-default
+    .panel-body
+      .col-sm-10
+        %br
+          = User.find(comment.user_id).name
+          = image_tag(User.find(comment.user_id).avatar) if User.find(comment.user_id).avatar?
+        %hr
+          .separator
+        = comment.content
+      .col-sm-2
+        .pull-right
+          = link_to(image_tag(comment.image.picture.small_thumb.url), category_image_path(comment.image.category, comment.image))
+    .panel-footer
       = time_ago_in_words(comment.created_at)
       ago
-    .col-sm-2
-      = link_to(image_tag(comment.image.picture.small_thumb.url), category_image_path(comment.image.category, comment.image))
-  %hr
-    .separator
 %br
 = will_paginate @comments
+
+:css
+  body{
+    color: #2E2F30;
+  }

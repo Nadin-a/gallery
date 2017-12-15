@@ -1,4 +1,4 @@
-.col-lg-9
+.col-lg-6
   %h2 Log in
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     = devise_error_messages!
@@ -17,6 +17,6 @@
         = f.label :remember_me
     %br
     .actions
-      = f.submit 'Log in', class: 'btn btn-primary active'
+      = f.submit 'Log in', class: 'btn btn-primary active '
     %br
   = render 'devise/shared/links'
