@@ -17,10 +17,10 @@ describe Image do
     image.title = 'a' * 31
     expect(image).to_not be_valid
   end
-  # it 'is not valid without a picture' do
-  #   image.picture = nil
-  #   expect(image).to_not be_valid
-  # end
+  it 'is not valid without a picture' do
+    image.picture = nil
+    expect(image).to_not be_valid
+  end
   it 'is not valid with long description' do
     image.title = 'a' * 141
     expect(image).to_not be_valid
@@ -52,7 +52,7 @@ describe Image do
   describe 'Validations' do
     it { is_expected.to validate_presence_of(:category) }
     it { is_expected.to validate_presence_of(:title) }
-    #it { is_expected.to validate_presence_of(:picture) }
+    it { is_expected.to validate_presence_of(:picture) }
     it { is_expected.to validate_length_of(:title) }
     it { is_expected.to validate_length_of(:description) }
     it { is_expected.to validate_uniqueness_of (:title) }
