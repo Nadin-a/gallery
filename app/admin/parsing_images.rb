@@ -6,16 +6,18 @@ ActiveAdmin.register_page 'Get images' do
     begin
       Nokogiri::HTML(open(url)).xpath('//img/@src').each do |src|
         host = URI(params['my_field']).host
-        if host == 'localhost'
-          images << "http://#{host}:3000/#{src}"
-        else
-          if src.to_s.start_with?('http')
-            images << src
+        p src
+        pic =
+          if host == 'localhost'
+            "http://#{host}:3000/#{src}"
           else
-            new_src = URI::HTTP.build({host: host, path: src})
-            images << new_src
+            if src.to_s.start_with?('http')
+              src
+            else
+              URI::HTTP.build({host: host, path: src})
+            end
           end
-        end
+        images << pic
       end
       render 'found_pictures', locals: {images: images}
     rescue Errno::ENOENT => e
