@@ -15,7 +15,7 @@
     = render 'layouts/header'
     - if action_name != 'home'
       .container
-        .row
+        .row.well
           .col-sm-12
             = render partial: 'shared/flash_messages'
             = yield

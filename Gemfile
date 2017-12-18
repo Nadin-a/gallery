@@ -18,13 +18,17 @@ gem 'jquery-rails'
 gem "pundit"
 gem 'activeadmin'
 gem 'ahoy_matey'
+gem 'omniauth-facebook'
+gem "recaptcha", require: "recaptcha/rails"
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'rubocop-rspec'
   gem 'faker'
   gem 'factory_bot_rails'
   gem 'pundit-matchers'
   gem 'rails-controller-testing'
+  gem 'capybara'
 end
 
 group :test do

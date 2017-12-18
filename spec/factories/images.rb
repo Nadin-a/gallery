@@ -4,7 +4,8 @@ FactoryBot.define do
   factory :image do
     title 'title'
     description 'some description'
-    picture { fixture_file_upload(Rails.root.join('spec', 'fixtures', 'test_picture.jpg'), 'image/jpg') }
+    picture { Rack::Test::UploadedFile.new(Rails.root.join('spec', 'fixtures', 'test_picture.jpg'), 'image/jpeg') }
+    #remote_picture_url Faker::Avatar.image
     category
 
     factory :random_image do

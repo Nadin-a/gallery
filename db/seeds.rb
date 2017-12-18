@@ -24,14 +24,14 @@ Category.create!(name: 'cities',
 
 15.times do
   rand = Random.rand(1..2)
-  title = Faker::Lorem.word
+  title = Faker::Name.first_name
   description = Faker::Lorem.sentence
   picture =
-    if rand == 1
-      Rails.root.join('app/assets/images/big_image.jpg').open
-    else
-      Rails.root.join('app/assets/images/large-photo.jpeg').open
-    end
+  if rand == 1
+    Rails.root.join('app/assets/images/big_image.jpg').open
+  else
+    Rails.root.join('app/assets/images/large-photo.jpeg').open
+  end
   Image.create!(title: title,
                 description: description,
                 picture: picture,
@@ -44,6 +44,11 @@ end
                   user_id: Random.rand(1..3),
                   image_id: Random.rand(1..15))
 end
+
+15.times do |n|
+    Like.create!(user_id: Random.rand(1..3), image_id: n+1)
+end
+
 
 users = User.all
 users.each do |user|

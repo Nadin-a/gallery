@@ -14,7 +14,7 @@ class LikePolicy < ApplicationPolicy
   end
 
   def destroy?
-    true if user && user == like.user
+    user == like.user
   end
 
   private

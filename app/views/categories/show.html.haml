@@ -24,15 +24,17 @@
     .separator
 - if user_signed_in?
   - if current_user == @category.owner
-    %a{remote: true, "data-target": '#createImageModal', "data-toggle": 'modal', href: new_category_image_path(@category)}
-      Add image
-    |
+    .col-sm-12.text-center.item-menu
+      %a{remote: true, "data-target": '#createImageModal', "data-toggle": 'modal', href: new_category_image_path(@category)}
+        Add image
+      |
 
-    %a{remote: true, "data-target": '#updateCategoryModal', "data-toggle": 'modal', href: edit_category_path(@category)}
-      Update
-    |
-    =link_to('Delete', category_path, method: :delete, data: { confirm: 'You sure?', toggle:'tooltip',placement:'left' }, title:'Delete this category')
+      %a{remote: true, "data-target": '#updateCategoryModal', "data-toggle": 'modal', href: edit_category_path(@category)}
+        Update
+      |
+      =link_to('Delete', category_path, method: :delete, data: { confirm: 'You sure?', toggle:'tooltip',placement:'left' }, title:'Delete this category')
   %br
-  = render partial: 'shared/list_of_images'
+  %br
+= render partial: 'shared/list_of_images'
 = render partial: 'images/new'
 = render partial: 'categories/edit'

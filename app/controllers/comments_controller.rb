@@ -1,15 +1,17 @@
 # frozen_string_literal: true
 
+include Recaptcha::Verify
 class CommentsController < ApplicationController
   before_action :set_category
   before_action :set_image
   before_action :authenticate_user!, only: %i[create destroy]
 
   def create
-    @comment = @image.comments.build(comment_params)
+    @user = current_user
+    @comment = @image.comments.new(comment_params)
     authorize @comment
     current_user.comments << @comment
-    if @comment.save
+    if @comment.save && verify_recaptcha(model: @comment, message: 'Please enter the correct captcha!')
       flash[:success] = 'Comment created!'
     else
       flash[:error] = @comment.errors.full_messages.first

@@ -1,3 +1,5 @@
+require: rubocop-rspec
+
 AbcSize:
   Max: 25
 ClassLength:

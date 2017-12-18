@@ -6,15 +6,15 @@ class ImagePolicy < ApplicationPolicy
   end
 
   def create?
-    user && image.category.owner == user
+    image.category.owner == user
   end
 
   def update?
-    true if user && image.category.owner == user
+    image.category.owner == user
   end
 
   def destroy?
-    true if user && image.category.owner == user
+    image.category.owner == user
   end
 
   private

@@ -6,7 +6,7 @@ class CategoriesController < ApplicationController
   before_action :set_new_category, only: %i[new index owned favorite]
 
   def index
-    @categories = Category.ordered_by_popularity
+    @categories = Category.ordered_by_popularity.paginate(page: params[:page], per_page: 15)
     authorize @categories
   end
 
@@ -48,13 +48,13 @@ class CategoriesController < ApplicationController
   end
 
   def owned
-    @categories = current_user.owned_categories
+    @categories = current_user.owned_categories.paginate(page: params[:page], per_page: 15)
     authorize @categories
     authorize @category
   end
 
   def favorite
-    @categories = current_user.categories
+    @categories = current_user.categories.paginate(page: params[:page], per_page: 15)
     authorize @categories
   end
 

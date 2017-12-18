@@ -3,7 +3,7 @@
     Title:
   %br
   = @image.title
-.col-sm-4
+.col-sm-4.item-menu
   %b
     Category:
   %br
@@ -13,6 +13,8 @@
     Owner:
   %br
   = @category.owner.name
+  %br
+  %br
 .col-sm-12
   = image_tag(@image.picture.show_thumb.url)
 .col-sm-12
@@ -27,7 +29,7 @@
 .col-sm-2
   .pull-right
     = render partial: 'images/like_form'
-.col-sm-12
+.col-sm-12.item-menu
   - if user_signed_in?
     - if current_user == @category.owner
       %a{remote: true, "data-target": '#updateImageModal', "data-toggle": 'modal', href: edit_category_image_path(@category, @image)}
