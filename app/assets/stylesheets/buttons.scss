@@ -1,21 +1,24 @@
-
-/***********************
-  OUTLINE BUTTONS
-************************/
-
 .btn.outline {
   background: none;
   padding: 12px 22px;
 }
+
 .btn-primary.outline {
   border: 2px solid #00b6eb;
   color: #00a7de;
 }
-.btn-primary.outline:hover, .btn-primary.outline:focus, .btn-primary.outline:active, .btn-primary.outline.active, .open > .dropdown-toggle.btn-primary {
-  color: #37b6df;
+
+.btn-primary.outline:hover,
+.btn-primary.outline:focus,
+.btn-primary.outline:active,
+.btn-primary.outline.active,
+.open > .dropdown-toggle.btn-primary {
   border-color: #35afd7;
+  color: #37b6df;
 }
-.btn-primary.outline:active, .btn-primary.outline.active {
+
+.btn-primary.outline:active,
+.btn-primary.outline.active {
   border-color: #008bba;
   color: #008cb8;
   box-shadow: none;

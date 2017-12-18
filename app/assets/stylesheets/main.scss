@@ -1,51 +1,56 @@
 
 body {
-  background: url(https://i.stack.imgur.com/pMAiU.jpg) repeat center center fixed;
-  -webkit-background-size: cover;
+  background: url('https://i.stack.imgur.com/pMAiU.jpg') repeat center center fixed;
+  background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
-  color: #ecf0f1;
+  -webkit-background-size: cover;
+  color: #3f3f3f;
 }
 
-h1,h2
-{
-  color: #ecf0f1;
+h1,
+h2 {
+  color: #3f3f3f;
 }
 
-a {
-  color: #f9fff9; /* Цвет ссылок */
-}
-a:visited {
-  color: #f9fff9; /* Цвет посещенных ссылок */
-}
-a:active {
-  color: #f9fff9 /* Цвет активных ссылок */
+.item-menu a {
+    color: #f9fff9;
+
+  a:visited {
+    color: #f9fff9;
+  }
+
+  a:active {
+    color: #f9fff9
+  }
 }
 
 body {
   padding-top: 50px;
 }
 
-/* Dropdown menu background color*/
+// Dropdown menu background color
 
-.navbar-nav > li > .dropdown-menu {  background-color: #282828;  }
-
-/* Dropdown menu font color*/
-
-.navbar-nav > li > .dropdown-menu a{   color: #e7e7e7;  }
-
-.container{
-  padding-top: 20px;
-  padding-bottom: 30px;
-  background: rgba(71, 71, 71, 0.5);
+.navbar-nav > li > .dropdown-menu {
+  background-color: #282828;
 }
 
-:target:before {
+// Dropdown menu font color
+
+.navbar-nav > li > .dropdown-menu a {
+  color: #e7e7e7;
+}
+
+.container {
+  padding-bottom: 30px;
+  padding-top: 20px;
+}
+
+:target::before {
   display: block;
-  content: " ";
-  margin-top: -70px;
   height: 70px;
+  margin-top: -70px;
+  content: ' ';
   visibility: hidden;
 }
 
@@ -66,53 +71,58 @@ body {
   width: 100% !important;
 }
 
-/*Correct images in all sizes*/
+//Correct images in all sizes
 img {
   //display: block;
   height: auto;
   max-width: 100%;
 }
 
-
 .navbar-toggle {
-  border: none;
   background: transparent !important;
+  border: 0;
 }
+
 .navbar-toggle:hover {
   background: transparent !important;
 }
+
 .navbar-toggle .icon-bar {
+  -webkit-transition: all .2s;
+  transition: all .2s;
   width: 22px;
-  -webkit-transition: all 0.2s;
-  transition: all 0.2s;
 }
+
 .navbar-toggle.collapsed .icon-bar:nth-of-type(1) {
-  transform: translate3d(0,0,0) rotate(0deg);
+  transform: translate3d(0, 0, 0) rotate(0deg);
   width: 22px;
 }
+
 .navbar-toggle.collapsed .icon-bar:nth-of-type(2) {
-  transform: translate3d(0,0,0) rotate(0deg);
+  transform: translate3d(0, 0, 0) rotate(0deg);
 }
+
 .navbar-toggle.collapsed .icon-bar:nth-of-type(3) {
-  transform: translate3d(0,0,0) rotate(0deg);
+  transform: translate3d(0, 0, 0) rotate(0deg);
   width: 22px;
 }
+
 .navbar-toggle .icon-bar:nth-of-type(1) {
-  transform: translate3d(1px,0,0) rotate(-45deg);
+  transform: translate3d(1px, 0, 0) rotate(-45deg);
   transform-origin: center center;
   width: 11px;
 }
+
 .navbar-toggle .icon-bar:nth-of-type(2) {
   transform: rotate(-90deg);
   transform-origin: center center;
 }
+
 .navbar-toggle .icon-bar:nth-of-type(3) {
-  transform: translate3d(0px,-14px,0) rotate(-135deg);
+  transform: translate3d(0, -14px, 0) rotate(-135deg);
   transform-origin: right top;
   width: 11px;
 }
-
-
 
 //
 ///* цвет фона и рамки навигационного меню */
@@ -197,3 +207,5 @@ img {
 //  }
 //}
 //
+
+
