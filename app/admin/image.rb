@@ -1,6 +1,8 @@
 ActiveAdmin.register Image do
   actions :all
   permit_params :title, :description, :picture, :category_id
+
+
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
