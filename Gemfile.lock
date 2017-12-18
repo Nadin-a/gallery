@@ -66,6 +66,8 @@ GEM
       uuidtools
     arbre (1.1.1)
       activesupport (>= 3.0.0)
+    archive-zip (0.7.0)
+      io-like (~> 0.3.0)
     arel (8.0.0)
     ast (2.3.0)
     autoprefixer-rails (7.1.6)
@@ -95,6 +97,8 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    childprocess (0.8.0)
+      ffi (~> 1.0, >= 1.0.11)
     coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -287,6 +291,8 @@ GEM
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
     formtastic_i18n (0.6.0)
+    geckodriver-helper (0.0.4)
+      archive-zip (~> 0.7.0)
     geocoder (1.4.5)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -318,6 +324,7 @@ GEM
       has_scope (~> 0.6)
       railties (>= 4.2, <= 5.2)
       responders
+    io-like (0.3.0)
     ipaddress (0.8.3)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
@@ -490,6 +497,7 @@ GEM
     ruby_dep (1.5.0)
     ruby_parser (3.10.1)
       sexp_processor (~> 4.9)
+    rubyzip (1.2.1)
     safely_block (0.2.0)
       errbase
     sass (3.4.25)
@@ -502,6 +510,9 @@ GEM
     scss_lint (0.55.0)
       rake (>= 0.9, < 13)
       sass (~> 3.4.20)
+    selenium-webdriver (3.8.0)
+      childprocess (~> 0.5)
+      rubyzip (~> 1.0)
     sexp_processor (4.10.0)
     shoulda-matchers (3.1.2)
       activesupport (>= 4.0.0)
@@ -558,6 +569,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   fog
+  geckodriver-helper
   haml-rails
   jbuilder
   jquery-rails
@@ -577,6 +589,7 @@ DEPENDENCIES
   rubocop-rspec
   sass-rails
   scss_lint
+  selenium-webdriver
   shoulda-matchers
   spring
   spring-watcher-listen

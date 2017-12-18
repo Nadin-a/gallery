@@ -11,6 +11,7 @@ FactoryBot.define do
     factory :random_image do
       title Faker::Name.first_name
       description Faker::Lorem.sentence
+      remote_picture_url Faker::Avatar.image
     end
 
     factory :invalid_image do

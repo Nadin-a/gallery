@@ -18,6 +18,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'pundit/matchers'
 require 'support/controller_helpers'
+require 'capybara/rspec'
 include ActionDispatch::TestProcess
 
 
@@ -106,4 +107,8 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+end
+
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(app, browser: :firefox)
 end

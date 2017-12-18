@@ -19,7 +19,8 @@ gem "pundit"
 gem 'activeadmin'
 gem 'ahoy_matey'
 gem 'omniauth-facebook'
-gem "recaptcha", require: "recaptcha/rails"
+gem "recaptcha", require: 'recaptcha/rails'
+gem 'geckodriver-helper'
 
 group :development, :test do
   gem 'rspec-rails'
@@ -29,6 +30,7 @@ group :development, :test do
   gem 'pundit-matchers'
   gem 'rails-controller-testing'
   gem 'capybara'
+  gem 'selenium-webdriver'
 end
 
 group :test do
