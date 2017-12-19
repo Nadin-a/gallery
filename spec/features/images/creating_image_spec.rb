@@ -2,7 +2,7 @@ require 'spec_helper'
 
 feature 'Creating image' do
 
-  image_title = Faker::Lorem.word
+  let!(:image_title) { Faker::Lorem.word }
   before(:all) {
     @user = FactoryBot.create(:random_user)
     @category = FactoryBot.create(:random_category, owner: @user)
