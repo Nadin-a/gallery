@@ -5,6 +5,8 @@ class ImagesController < ApplicationController
   before_action :set_image, except: %i[new create]
   before_action :authenticate_user!, except: %i[show]
 
+  def new; end
+
   def show
     @comment = current_user.comments.build if user_signed_in?
     @comments = @image.comments.paginate(page: params[:page], per_page: 10)

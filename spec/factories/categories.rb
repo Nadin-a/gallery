@@ -10,7 +10,7 @@ FactoryBot.define do
     end
 
     factory :random_category do
-      name Faker::Witcher.monster
+      name Faker::Name.first_name
     end
   end
 end

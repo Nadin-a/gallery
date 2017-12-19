@@ -1,25 +1,12 @@
 require 'spec_helper'
 
 feature 'Visitor signs up' do
-
   let!(:user) { FactoryBot.create(:random_user) }
 
   scenario 'with valid email and password', js: true do
     log_in_with user.email, user.password
 
-    expect(page).to have_content('Sign out')
-  end
-
-  scenario 'with valid email and password get my categories', js: true  do
-    log_in_with user.email, user.password
-
-    expect(page).to have_content('My categories')
-  end
-
-  scenario 'with valid email and password get favorite categories', js: true  do
-    log_in_with user.email, user.password
-
-    expect(page).to have_content('Favorite categories')
+    expect(page).to have_content 'You have not any images. Subscribe on any category or add own image and you will see it here!'
   end
 
   scenario 'with invalid email', js: true  do
@@ -33,6 +20,13 @@ feature 'Visitor signs up' do
 
     expect(page).to have_content('Log in')
   end
+
+  scenario 'can sign out after login', js: true do
+    log_in_with user.email, user.password
+    click_link 'Sign out'
+    expect(current_path).to eq(root_path)
+    expect(page).to have_content('Log In')
+    end
 
   def log_in_with(email, password)
     visit new_user_session_path

@@ -22,6 +22,7 @@ gem 'omniauth-facebook'
 gem "recaptcha", require: 'recaptcha/rails'
 gem 'geckodriver-helper'
 
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'rubocop-rspec'
@@ -29,12 +30,12 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'pundit-matchers'
   gem 'rails-controller-testing'
-  gem 'capybara'
-  gem 'selenium-webdriver'
 end
 
 group :test do
   gem 'shoulda-matchers'
+  gem 'capybara'
+  gem 'selenium-webdriver'
 end
 
 group :development do

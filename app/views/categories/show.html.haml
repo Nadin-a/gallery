@@ -24,7 +24,7 @@
     .separator
 - if user_signed_in?
   - if current_user == @category.owner
-    .col-sm-12.text-center.item-menu
+    .col-sm-12.text-center
       %a{remote: true, "data-target": '#createImageModal', "data-toggle": 'modal', href: new_category_image_path(@category)}
         Add image
       |

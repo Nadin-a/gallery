@@ -18,7 +18,7 @@
                 = f.label :description
                 = f.text_field :description, autofocus: true, class:'form-control', placeholder:'Description of the picture'
               %br
-                = f.file_field :picture, accept: 'image/jpeg,image/gif,image/png'
+                = f.file_field :picture, accept: 'image/jpeg,image/gif,image/png', id: :uploaded_picture
               %br
               .actions
                 .modal-footer

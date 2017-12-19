@@ -15,7 +15,7 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
-  validates :name, presence: true, length: { maximum: 20 }, uniqueness: true
+  validates :name, presence: true, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validate  :avatar_size
 
   def feed

@@ -14,6 +14,10 @@ describe User do
     user.name = nil
     expect(user).to_not be_valid
   end
+  it 'is invalid with short name' do
+    user.name = 'a'
+    expect(user).to_not be_valid
+  end
   it 'is invalid with long name' do
     user.name = 'a' * 21
     expect(user).to_not be_valid

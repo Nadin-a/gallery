@@ -3,7 +3,7 @@
     Title:
   %br
   = @image.title
-.col-sm-4.item-menu
+.col-sm-4
   %b
     Category:
   %br
@@ -29,7 +29,7 @@
 .col-sm-2
   .pull-right
     = render partial: 'images/like_form'
-.col-sm-12.item-menu
+.col-sm-12
   - if user_signed_in?
     - if current_user == @category.owner
       %a{remote: true, "data-target": '#updateImageModal', "data-toggle": 'modal', href: edit_category_image_path(@category, @image)}

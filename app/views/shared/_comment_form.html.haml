@@ -5,6 +5,6 @@
       = hidden_field_tag :image_id, @image.id
       = f.text_area :content, placeholder: 'New comment...', class: 'form-control'
     %br
-      = recaptcha_tags theme: :dark, ajax: true
+      = recaptcha_tags theme: :dark, ajax: true if Rails.env.production?
     .actions
       = f.submit 'Post', class: 'btn btn-success btn-lg'
