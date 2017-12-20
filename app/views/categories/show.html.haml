@@ -1,25 +1,25 @@
 .well
   .col-sm-3
     %b
-      Name:
+      =t('name')
     %br
       = @category.name
   .col-sm-3
     %b
-      Created by:
+      = t('created_by')
     %br
     =  @category.owner.name
   .col-sm-3
     %b
-      Created at:
+      = t('created_at')
     %br
     = time_ago_in_words(@category.created_at)
-    ago
+    = t('ago')
   .col-sm-3
     .pull-right
       = render 'shared/subscribe_form', category: @category
       %label_tag{ class: 'js-count-followers-label' }
-        Followers:
+        = t('followers')
         = @category.users.count
   %hr
     .separator
@@ -27,13 +27,13 @@
   - if current_user == @category.owner
     .col-sm-12.text-center
       %a{remote: true, "data-target": '#createImageModal', "data-toggle": 'modal', href: new_category_image_path(@category)}
-        Add image
+        = t('add_image')
       |
 
-      %a{remote: true, "data-target": '#updateCategoryModal', "data-toggle": 'modal', href: edit_category_path(@category)}
-        Update
+      %a{remote: true, "data-target": '#updateCategoryModal', "data-toggle": 'modal', href: edit_category_path(@category), title: t('update_this_category_tooltip') }
+        = t('update')
       |
-      =link_to('Delete', category_path, method: :delete, data: { confirm: 'You sure?', toggle:'tooltip',placement:'left' }, title:'Delete this category')
+      =link_to(t('delete'), category_path, method: :delete, data: { confirm: t('you_sure'), toggle:'tooltip',placement:'left' }, title: t('delete_this_category_tooltip'))
   %br
   %br
 = render partial: 'shared/list_of_images'

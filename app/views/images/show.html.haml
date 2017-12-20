@@ -3,17 +3,17 @@
     .col-lg-12.text-center
       .col-sm-4
         %b
-          Title:
+          =t('title') + ':'
         %br
         = @image.title
       .col-sm-4
         %b
-          Category:
+          =t('category') + ':'
         %br
         = link_to(@category.name,category_path(@category), {data:{ toggle:'tooltip',placement:'left' }, title:'Category of this image'})
       .col-sm-4
         %b
-          Owner:
+          =t('owner') + ':'
         %br
         = @category.owner.name
         %br
@@ -24,9 +24,9 @@
       %br
       = @image.description
     .col-sm-10
-      Uploaded
+      =t('uploaded')
       = time_ago_in_words(@image.created_at)
-      ago
+      =t('ago')
     .col-sm-2
       .pull-right
         = render partial: 'images/like_form'
@@ -36,9 +36,9 @@
         - if user_signed_in?
           - if current_user == @category.owner
             %a{remote: true, "data-target": '#updateImageModal', "data-toggle": 'modal', href: edit_category_image_path(@category, @image)}
-              Update
+              =t('update')
             |
-            =link_to('Delete', category_image_path(@category, @image), method: :delete, data: { confirm: 'You sure?', toggle:'tooltip',placement:'right' }, title: 'Delete this image')
+            =link_to(t('delete'), category_image_path(@category, @image), method: :delete, data: { confirm: t('you_sure'), toggle:'tooltip',placement:'right' }, title: t('delete_this_image_tooltip'))
             %hr
               .separator
     .col-sm-12

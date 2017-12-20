@@ -3,8 +3,8 @@
     = render 'shared/error_messages', object: f.object
     .field
       = hidden_field_tag :image_id, @image.id
-      = f.text_area :content, placeholder: 'New comment...', class: 'form-control', rows:'3'
+      = f.text_area :content, placeholder: t('new_comment'), class: 'form-control', rows:'3'
     %br
       = recaptcha_tags theme: :dark, ajax: true if Rails.env.production?
     .actions
-      = f.submit 'Post', class: 'btn btn-success btn-lg'
+      = f.submit t('post'), class: 'btn btn-success btn-lg'

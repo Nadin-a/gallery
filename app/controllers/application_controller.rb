@@ -6,8 +6,28 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   after_action :track_action
   protect_from_forgery with: :null_session, if: ->{request.format.json?}
+  before_action :set_locale
+
+  def default_url_options
+    { locale: I18n.locale }
+  end
+  #
+  # def set_locale
+  #   I18n.locale = current_user.try(:locale) || I18n.default_locale
+  # end
+
+
+  def set_locale
+    logger.debug "* Accept-Language: #{request.env['HTTP_ACCEPT_LANGUAGE']}"
+    I18n.locale = locale_from_language_header
+    logger.debug "* Locale set to '#{I18n.locale}'"
+  end
 
   protected
+
+  def locale_from_language_header
+    request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+  end
 
   def configure_permitted_parameters
     added_attrs = %i[name email password password_confirmation remember_me]

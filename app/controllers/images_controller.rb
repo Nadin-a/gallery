@@ -23,7 +23,7 @@ class ImagesController < ApplicationController
     @image = @category.images.build(image_params)
     authorize @image
     if @image.save
-      flash[:success] = 'Image uploaded'
+      flash[:success] = t(:image_created)
     else
       flash[:error] = @image.errors.full_messages
     end
@@ -34,7 +34,7 @@ class ImagesController < ApplicationController
 
   def update
     if @image.update(image_params)
-      flash[:success] = 'Image updated'
+      flash[:success] = t(:image_updated)
     else
       flash[:error] = @image.errors.full_messages
     end
@@ -43,7 +43,7 @@ class ImagesController < ApplicationController
 
   def destroy
     if @image.destroy
-      flash[:success] = 'Image deleted'
+      flash[:success] = t(:image_deleted)
     else
       flash[:error] = @image.errors.full_messages
     end

@@ -3,9 +3,9 @@
   .container.text-center.row.well
     %h2
       - if user_signed_in?
-        You have not any images. Subscribe on any category or add own image and you will see it here!
+        = t('you_have_no_images')
       - else
-        No images on site
+        = t('no_images_on_site')
 - else
   #carousel-example-generic.carousel.slide{'data-ride': 'carousel'}
     / Indicators

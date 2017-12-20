@@ -21,6 +21,7 @@ gem 'ahoy_matey'
 gem 'omniauth-facebook'
 gem "recaptcha", require: 'recaptcha/rails'
 gem 'geckodriver-helper'
+gem 'devise-i18n'
 
 
 group :development, :test do

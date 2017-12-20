@@ -23,7 +23,7 @@ class CategoriesController < ApplicationController
     @category = current_user.owned_categories.build(categories_params)
     authorize @category
     if @category.save
-      flash[:success] = 'Category created'
+      flash[:success] = t(:category_created)
       redirect_to @category
     else
       flash[:error] = @category.errors.full_messages
@@ -33,7 +33,7 @@ class CategoriesController < ApplicationController
 
   def update
     if @category.update(categories_params)
-      flash[:success] = 'Category updated'
+      flash[:success] = t(:category_updated)
     else
       flash[:error] = @category.errors.full_messages
     end
@@ -42,9 +42,9 @@ class CategoriesController < ApplicationController
 
   def destroy
     if current_user.owned_categories.destroy @category
-      flash[:success] = 'Category deleted!'
+      flash[:success] = t(:category_deleted)
     else
-      flash[:error] = 'Category was not deleted!'
+      flash[:error] = t(:category_not_deleted)
     end
     redirect_to owned_categories_path
   end

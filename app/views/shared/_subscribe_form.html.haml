@@ -1,6 +1,7 @@
-- path = category.has_subscriber?(current_user) ? unsubscribe_category_path(category) : subscribe_category_path(category)
-- method  = category.has_subscriber?(current_user) ? 'delete' : 'post'
-- subscribed = category.has_subscriber?(current_user) ? 1 : 0
-%button{role: 'button',class: "js-subscribtion-category btn#{subscribed == 1 ? '' : ' btn-success'}", data: {subscribed: subscribed},
-action: path, method: method, id:'subscribe' }
-%br
+- if user_signed_in? && current_user != category.owner
+  - path = category.has_subscriber?(current_user) ? unsubscribe_category_path(category) : subscribe_category_path(category)
+  - method  = category.has_subscriber?(current_user) ? 'delete' : 'post'
+  - subscribed = category.has_subscriber?(current_user) ? 1 : 0
+  %button{role: 'button',class: "js-subscribtion-category btn#{subscribed == 1 ? '' : ' btn-success'}", data: {subscribed: subscribed},
+  action: path, method: method, id:'subscribe' }
+  %br

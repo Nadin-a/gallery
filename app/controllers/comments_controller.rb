@@ -10,8 +10,8 @@ class CommentsController < ApplicationController
     @comment = @image.comments.new(comment_params)
     authorize @comment
     current_user.comments << @comment
-    if @comment.save && verify_recaptcha(model: @comment, message: 'Please enter the correct captcha!')
-      flash[:success] = 'Comment created!'
+    if @comment.save && verify_recaptcha(model: @comment)
+      flash[:success] = t(:comment_created)
     else
       flash[:error] = @comment.errors.full_messages.first
     end

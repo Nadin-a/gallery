@@ -2,20 +2,20 @@
   .modal-dialog{role: 'document'}
     .modal-content
       .modal-header
-        %button.close{"aria-label": 'Close', "data-dismiss": 'modal', type: 'button'}
+        %button.close{"aria-label": t('close'), "data-dismiss": 'modal', type: 'button'}
           %span{"aria-hidden": 'true'} ×
         %h4#updateImageModalLabel.modal-title
-          Edit image
+          =t('edit_image')
         .modal-body
         .col-lg-12
           = form_for [@category, @image] do |f|
             = render 'shared/error_messages', object: f.object
             .field
-              = f.label :title
-              = f.text_field :title, autofocus: true, class:'form-control', placeholder:'Title of the picture'
+              = f.label t('title')
+              = f.text_field :title, autofocus: true, class:'form-control', placeholder:t('title_image')
             .field
-              = f.label :description
-              = f.text_field :description, autofocus: true, class:'form-control', placeholder:'Description of the picture'
+              = f.label t('description')
+              = f.text_field :description, autofocus: true, class:'form-control', placeholder:t('description_image')
             %br
             .field
               = image_tag(@image.picture.thumb.url)
@@ -24,5 +24,6 @@
             %br
             .actions
               .modal-footer
-                %button.btn.btn-default{"data-dismiss": 'modal', type: 'button'} Close
-                = f.submit 'Update', class: 'btn btn-primary active'
+                %button.btn.btn-default{"data-dismiss": 'modal', type: 'button'}
+                  =t('close')
+                = f.submit t('update'), class: 'btn btn-primary active'

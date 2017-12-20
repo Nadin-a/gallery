@@ -30,4 +30,80 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  category_created: 'Category created!'
+  category_updated: 'Category updated!'
+  category_deleted: 'Category deleted!'
+  category_not_deleted: 'Category was not deleted!'
+  new_category: 'New category'
+  edit_category: 'Edit category'
+  category: 'Category'
+  owner: 'Owner'
+
+
+  comment_created: 'Comment created!'
+  image_created: 'Image uploaded'
+  image_updated: 'Image updated'
+  image_deleted: 'Image deleted'
+  home: 'Home'
+  categories: 'Categories'
+  all_categories: 'All categories'
+  my_categories: 'My categories'
+  favorite_categories: 'Favorite categories'
+  popular_image: 'Popular images'
+  last_comments: 'Last comments'
+  profile: 'Profile'
+  sign_out: 'Sign out'
+  login: 'Log In'
+  sign_up: 'Sign up'
+  close: 'Close'
+  create: 'Create'
+  add: 'Add'
+  name: 'Name'
+  confirmation: 'Confirmation'
+  update: 'Update'
+  delete: 'Delete'
+  created_by: 'Created by'
+  created_at: 'Created at'
+  uploaded: 'Uploaded'
+  ago: 'ago'
+  followers: 'Followers:'
+  add_image: 'Add image'
+  you_sure: 'You sure?'
+  delete_this_category_tooltip: 'Delete this category'
+  update_this_category_tooltip: 'Update this category'
+  resend_confirmation_instructions: 'Resend confirmation instructions'
+
+  change_your_password: 'Change your password'
+  password: 'Password'
+  new_password: 'New password'
+  confirmation_password: 'Password confirmation'
+  cofirm_new_password: 'Confirm new password'
+  change_my_password: 'Change my password'
+
+  forgot_your_password: 'Forgot your password?'
+  send_reset_password_instructions: 'Send me reset password instructions'
+  leave_blank: "(leave blank if you don't want to change it)"
+  characters_minimum: 'characters minimum'
+  we_need_your_password: '(we need your current password to confirm your changes)'
+  save_changes: 'Save changes'
+  cancel_my_account: 'Cancel my account'
+  unhappy: 'Unhappy?'
+  edit_profile: 'Edit profile'
+  did_not_recive_confirmation_instructions: "Didn't receive confirmation instructions?"
+  sign_in_with: 'Sign in with'
+
+  edit_image: 'Edit image'
+  title: 'Title'
+  description: 'Description'
+  title_image: 'Title of the picture'
+  description_image: 'Description of the picture'
+
+  new_image_in: 'New image in'
+  delete_this_image_tooltip: 'Delete this image'
+
+  you_have_no_images: 'You have not any images. Subscribe on any category or add own image and you will see it here!'
+  no_images_on_site: 'No images on site...'
+
+  post: 'Post'
+  new_comment: 'New comment...'
+
