@@ -1,8 +1,9 @@
 - @comments.each do |comment|
   %br
-  = User.find(comment.user_id).name
-  = image_tag(User.find(comment.user_id).avatar) if User.find(comment.user_id).avatar?
-  say:
+    %b
+      = User.find(comment.user_id).name
+      = image_tag(User.find(comment.user_id).avatar) if User.find(comment.user_id).avatar?
+      say:
   %br
   = comment.content
   %br

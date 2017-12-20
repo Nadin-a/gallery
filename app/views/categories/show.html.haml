@@ -19,6 +19,7 @@
     .pull-right
       = render 'shared/subscribe_form', category: @category
       %label_tag{ class: 'js-count-followers-label' }
+        Followers:
         = @category.users.count
   %hr
     .separator

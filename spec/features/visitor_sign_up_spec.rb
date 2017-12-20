@@ -69,4 +69,5 @@ feature 'Visitor signs up' do
     click_button 'Sign up'
   end
 
+
 end

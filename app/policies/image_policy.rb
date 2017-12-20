@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 class ImagePolicy < ApplicationPolicy
-  def index?
-    true
-  end
 
   def create?
     image.category.owner == user

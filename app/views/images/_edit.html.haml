@@ -19,7 +19,7 @@
             %br
             .field
               = image_tag(@image.picture.thumb.url)
-              = f.file_field :picture, accept: 'image/jpeg,image/gif,image/png'
+              = f.file_field :picture, accept: 'image/jpeg,image/gif,image/png', id:'uploaded_picture'
               = f.hidden_field :picture_cache
             %br
             .actions

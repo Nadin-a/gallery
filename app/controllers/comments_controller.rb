@@ -4,10 +4,9 @@ include Recaptcha::Verify
 class CommentsController < ApplicationController
   before_action :set_category
   before_action :set_image
-  before_action :authenticate_user!, only: %i[create destroy]
+  before_action :authenticate_user!, only: %i[create]
 
   def create
-    @user = current_user
     @comment = @image.comments.new(comment_params)
     authorize @comment
     current_user.comments << @comment
@@ -15,15 +14,6 @@ class CommentsController < ApplicationController
       flash[:success] = 'Comment created!'
     else
       flash[:error] = @comment.errors.full_messages.first
-    end
-    redirect_to category_image_path(@category, @image)
-  end
-
-  def destroy
-    if @comment.destroy
-      flash[:success] = 'Comment deleted'
-    else
-      flash[:error] = @comment.errors.full_messages
     end
     redirect_to category_image_path(@category, @image)
   end

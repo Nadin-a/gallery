@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     end
 
     resources :images do
-      resources :comments, only: %i[create destroy]
+      resources :comments, only: %i[create]
       resources :likes, only: %i[create destroy]
     end
   end

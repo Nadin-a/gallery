@@ -1,45 +1,49 @@
-.col-sm-4
-  %b
-    Title:
-  %br
-  = @image.title
-.col-sm-4
-  %b
-    Category:
-  %br
-  = link_to(@category.name,category_path(@category), {data:{ toggle:'tooltip',placement:'left' }, title:'Category of this image'})
-.col-sm-4
-  %b
-    Owner:
-  %br
-  = @category.owner.name
-  %br
-  %br
-.col-sm-12
-  = image_tag(@image.picture.show_thumb.url)
-.col-sm-12
-  %br
-  = @image.description
-.col-sm-10
-  %b
-    Uploaded at:
-  %br
-  = time_ago_in_words(@image.created_at)
-  ago
-.col-sm-2
-  .pull-right
-    = render partial: 'images/like_form'
-.col-sm-12
-  - if user_signed_in?
-    - if current_user == @category.owner
-      %a{remote: true, "data-target": '#updateImageModal', "data-toggle": 'modal', href: edit_category_image_path(@category, @image)}
-        Update
-      |
-      =link_to('Delete', category_image_path(@category, @image), method: :delete, data: { confirm: 'You sure?', toggle:'tooltip',placement:'right' }, title: 'Delete this image')
+.container-fluid
+  .row.well.show-image
+    .col-lg-12.text-center
+      .col-sm-4
+        %b
+          Title:
+        %br
+        = @image.title
+      .col-sm-4
+        %b
+          Category:
+        %br
+        = link_to(@category.name,category_path(@category), {data:{ toggle:'tooltip',placement:'left' }, title:'Category of this image'})
+      .col-sm-4
+        %b
+          Owner:
+        %br
+        = @category.owner.name
+        %br
+        %br
+    .col-sm-12.text-center
+      = image_tag(@image.picture)
+    .col-sm-12.text-center
+      %br
+      = @image.description
+    .col-sm-10
+      Uploaded
+      = time_ago_in_words(@image.created_at)
+      ago
+    .col-sm-2
+      .pull-right
+        = render partial: 'images/like_form'
+    .col-lg-12.text-center
       %hr
         .separator
-  = render partial: 'shared/list_of_comments'
-  %hr
-    .separator
-      = render partial: 'shared/comment_form'
-  = render 'images/edit', locals: {category: @category, image: @image}
+        - if user_signed_in?
+          - if current_user == @category.owner
+            %a{remote: true, "data-target": '#updateImageModal', "data-toggle": 'modal', href: edit_category_image_path(@category, @image)}
+              Update
+            |
+            =link_to('Delete', category_image_path(@category, @image), method: :delete, data: { confirm: 'You sure?', toggle:'tooltip',placement:'right' }, title: 'Delete this image')
+            %hr
+              .separator
+    .col-sm-12
+      = render partial: 'shared/list_of_comments'
+      %hr
+        .separator
+          = render partial: 'shared/comment_form'
+      = render 'images/edit', locals: {category: @category, image: @image}

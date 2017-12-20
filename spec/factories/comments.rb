@@ -7,7 +7,7 @@ FactoryBot.define do
     image { FactoryBot.build(:image) }
 
     factory :random_comment do
-      content Faker::Lorem.word
+      Faker::Lorem.paragraph
     end
 
     factory :invalid_comment do

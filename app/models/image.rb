@@ -11,7 +11,7 @@ class Image < ApplicationRecord
 
   validates :category, presence: true
   validates :title, presence: true, length: { maximum: 30 }, uniqueness: true
-  validates :description, length: { maximum: 140 }
+  validates :description, length: { maximum: 300 }
   validates :picture, presence: true
   validate  :picture_size
 

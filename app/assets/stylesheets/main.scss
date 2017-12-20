@@ -1,6 +1,6 @@
 
 body {
-  background: url('https://i.stack.imgur.com/pMAiU.jpg') repeat center center fixed;
+  background: url('https://images.pexels.com/photos/713649/pexels-photo-713649.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb') repeat center center fixed;
   background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -12,6 +12,19 @@ h1,
 h2 {
   color: #3f3f3f;
 }
+
+.well {
+  background-color: rgba(245, 245, 245, 0.8);
+  font-size: 11pt;
+  font-family: $my_Revengeance_font;
+}
+
+
+.show-image
+{
+  background-color: rgba(245, 245, 245, 1);
+}
+
 
 .item-menu a {
     color: #f9fff9;

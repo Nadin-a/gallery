@@ -22,7 +22,7 @@ describe Image do
     expect(image).to_not be_valid
   end
   it 'is not valid with long description' do
-    image.title = 'a' * 141
+    image.title = 'a' * 301
     expect(image).to_not be_valid
   end
   it 'is valid with without description' do

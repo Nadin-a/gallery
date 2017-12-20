@@ -15,7 +15,7 @@ describe Category do
     expect(category).to_not be_valid
   end
   it 'is not valid with long name' do
-    category.name = 'a' * 31
+    category.name = 'a' * 21
     expect(category).to_not be_valid
   end
   it 'is not valid without a owner' do

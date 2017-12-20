@@ -25,7 +25,7 @@ Category.create!(name: 'cities',
 15.times do
   rand = Random.rand(1..2)
   title = Faker::Name.first_name
-  description = Faker::Lorem.sentence
+  description =  Faker::Lorem.paragraph
   picture =
   if rand == 1
     Rails.root.join('app/assets/images/big_image.jpg').open
@@ -39,7 +39,7 @@ Category.create!(name: 'cities',
 end
 
 20.times do
-  content = Faker::Lorem.word
+  content = Faker::Lorem.paragraph
   Comment.create!(content: content,
                   user_id: Random.rand(1..3),
                   image_id: Random.rand(1..15))

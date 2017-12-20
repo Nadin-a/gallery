@@ -36,6 +36,8 @@ group :test do
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'selenium-webdriver'
+  gem 'simplecov', require: false
+  gem 'database_cleaner'
 end
 
 group :development do

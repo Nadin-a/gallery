@@ -12,5 +12,10 @@ FactoryBot.define do
     factory :random_category do
       name Faker::Name.first_name
     end
+
+    factory :fake_category do
+      name Faker::Name.first_name
+      owner { FactoryBot.build(:user) }
+    end
   end
 end

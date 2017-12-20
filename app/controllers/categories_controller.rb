@@ -17,6 +17,8 @@ class CategoriesController < ApplicationController
 
   def new; end
 
+  def edit; end
+
   def create
     @category = current_user.owned_categories.build(categories_params)
     authorize @category
