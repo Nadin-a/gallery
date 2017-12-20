@@ -8,5 +8,7 @@
      value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class:'form-control',
      placeholder:'Email'
   .actions
-    = f.submit 'Resend confirmation instructions', class: 'btn btn-primary active'
+    %br
+    = f.submit 'Resend confirmation instructions', class: 'btn btn-primary active outline'
+%br
 = render 'devise/shared/links'
