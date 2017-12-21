@@ -63,6 +63,7 @@ class CategoriesController < ApplicationController
   def subscribe
     current_user.categories << @category
     respond_to do |format|
+      #current_user.send_subscribe_email
       format.html { redirect_to @category }
       format.json { render :show, status: :created }
     end

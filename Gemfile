@@ -22,6 +22,9 @@ gem 'omniauth-facebook'
 gem "recaptcha", require: 'recaptcha/rails'
 gem 'geckodriver-helper'
 gem 'devise-i18n'
+gem 'resque'
+gem 'resque_mailer'
+
 
 group :development, :test do
   gem 'rspec-rails'

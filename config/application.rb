@@ -28,6 +28,8 @@ module Gallery
     # Don't generate system test files.
     config.generators.system_tests = nil
 
+    config.active_job.queue_adapter = :resque
+
     # Include the authenticity token in remote forms.
     config.action_view.embed_authenticity_token_in_remote_forms = true
 

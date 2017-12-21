@@ -22,6 +22,10 @@ class User < ApplicationRecord
     @feed = Image.where(category_id: categories).or(Image.where(category_id: owned_categories))
   end
 
+  def send_subscribe_email
+    MyMailer.subscribe_to_category(params).deliver
+  end
+
   # def self.from_omniauth(auth)
   #   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
   #     user.email = auth.info.email
