@@ -25,7 +25,7 @@ class Category < ApplicationRecord
 
   private
 
-  def picture_size
+  def cover_size
     return unless cover.size > 10.megabytes
     errors.add(:cover, 'should be less than 10MB')
   end
