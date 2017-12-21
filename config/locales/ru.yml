@@ -1,12 +1,14 @@
 ---
 ru:
   category_created: 'Категория создана!'
-  category_updated: 'Категория удалена'
+  category_updated: 'Категория отредактирована!'
+  category_deleted: 'Категория удалена!'
   category_not_deleted: 'Категория не была удалена!'
   new_category: 'Новая категория'
   edit_category: 'Редактировать категорию'
   category: 'Категория'
   owner: 'Владелец'
+  create_own_category: 'Создать свою категорию'
 
   comment_created: 'Комментарий добавлен!'
   image_created: 'Картинка загружена!'
@@ -77,6 +79,11 @@ ru:
 
   post: 'Написать'
   new_comment: 'Новый комментарий...'
+  say: 'написал(а):'
+  will_paginate:
+    previous_label: "&#8592; Назад"
+    next_label: "Впедёд &#8594;"
+    page_gap: "&hellip;"
 
   activerecord:
     errors:

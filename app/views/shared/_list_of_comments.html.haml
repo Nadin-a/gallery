@@ -3,12 +3,12 @@
     %b
       = User.find(comment.user_id).name
       = image_tag(User.find(comment.user_id).avatar) if User.find(comment.user_id).avatar?
-      say:
+      =t('say')
   %br
   = comment.content
   %br
   = time_ago_in_words(comment.created_at)
-  ago
+  = t('ago')
   %br
 %br
 = will_paginate @comments

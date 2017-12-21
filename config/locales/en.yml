@@ -38,6 +38,7 @@ en:
   edit_category: 'Edit category'
   category: 'Category'
   owner: 'Owner'
+  create_own_category: 'Create own category'
 
 
   comment_created: 'Comment created!'
@@ -106,4 +107,9 @@ en:
 
   post: 'Post'
   new_comment: 'New comment...'
+  say: 'say:'
+  will_paginate:
+    previous_label: "&#8592; Previous"
+    next_label: "Next &#8594;"
+    page_gap: "&hellip;"
 

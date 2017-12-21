@@ -18,7 +18,7 @@
           - if current_user != category.owner
             = render 'shared/subscribe_form', category: category
           - else
-            = link_to('delete', category_path(category), method: :delete, data: { confirm: 'You sure?', toggle:'tooltip',placement:'left' }, title:'Delete this category')
+            = link_to(t('delete'), category_path(category), method: :delete, data: { confirm: t('you_sure'), toggle:'tooltip',placement:'left' }, title: t('delete_this_category_tooltip'))
 
 .col-sm-12
   = will_paginate @categories
