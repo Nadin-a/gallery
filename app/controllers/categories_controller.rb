@@ -20,7 +20,7 @@ class CategoriesController < ApplicationController
   def edit; end
 
   def create
-    @category = current_user.owned_categories.build(categories_params)
+    @category = current_user.owned_categories.build(categories_create_params)
     authorize @category
     if @category.save
       flash[:success] = t(:category_created)
@@ -32,7 +32,7 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    if @category.update(categories_params)
+    if @category.update(categories_update_params)
       flash[:success] = t(:category_updated)
     else
       flash[:error] = @category.errors.full_messages
@@ -79,8 +79,12 @@ class CategoriesController < ApplicationController
   private
 
   # Never trust parameters from the scary internet, only allow the white list through.
-  def categories_params
+  def categories_create_params
     params.require(:category).permit(:name)
+  end
+
+  def categories_update_params
+    params.require(:category).permit(:name, :cover)
   end
 
   def set_category

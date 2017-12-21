@@ -23,7 +23,6 @@ gem "recaptcha", require: 'recaptcha/rails'
 gem 'geckodriver-helper'
 gem 'devise-i18n'
 
-
 group :development, :test do
   gem 'rspec-rails'
   gem 'rubocop-rspec'

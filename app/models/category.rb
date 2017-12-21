@@ -7,6 +7,9 @@ class Category < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 20 }, uniqueness: true
   validates :owner, presence: true
+  validate  :cover_size
+
+  mount_uploader :cover, CoverUploader
 
   def self.default_scope
     order(created_at: :desc)
@@ -19,4 +22,12 @@ class Category < ApplicationRecord
   def has_subscriber? user
     user.categories.include? self
   end
+
+  private
+
+  def picture_size
+    return unless cover.size > 10.megabytes
+    errors.add(:cover, 'should be less than 10MB')
+  end
+
 end

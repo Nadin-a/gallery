@@ -1,7 +1,7 @@
 %nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse
   .container-fluid
     .navbar-header
-      %button.navbar-toggle.collapsed{"data-target" => "#navbar-main", "data-toggle" => "collapse", :type => "button"}
+      %button.navbar-toggle.collapsed{'data-target': '#navbar-main', 'data-toggle': 'collapse', type: 'button'}
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
@@ -11,7 +11,7 @@
         %li.active
           =link_to t('home'), root_path
           %li.dropdown
-            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+            %a.dropdown-toggle{'data-toggle': 'dropdown', href: '#'}
               = t('categories')
               %span.caret
             %ul.dropdown-menu
@@ -28,6 +28,16 @@
             %li
               =link_to t('last_comments'), last_comments_path
       %ul.nav.navbar-nav.navbar-right
+        %li.dropdown
+          %a.dropdown-toggle{'data-toggle': 'dropdown', href: '#'}
+            = t('languages')
+            %span.caret
+          %ul.dropdown-menu
+            %li
+              = link_to 'English', { locale:'en' }
+            %li
+              Russian
+              = link_to 'Russian', { locale:'ru' }
         - if user_signed_in?
           %li
             =link_to(t('profile'), edit_user_registration_path(current_user))

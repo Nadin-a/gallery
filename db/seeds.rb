@@ -2,30 +2,36 @@ User.create!(name: 'Nadia',
              email: 'example@example.org',
              password: 'password',
              password_confirmation: 'password',
+             remote_avatar_url: Faker::Avatar.image,
              confirmed_at: Time.now)
 User.create!(name: 'Susan',
              email: 'susan@email.org',
              password: 'password',
              password_confirmation: 'password',
+             remote_avatar_url: Faker::Avatar.image,
              confirmed_at: Time.now)
 User.create!(name: 'Larry',
              email: 'larry@mail.org',
              password: 'password',
              password_confirmation: 'password',
+             remote_avatar_url: Faker::Avatar.image,
              confirmed_at: Time.now)
 
 Category.create!(name: 'cars',
-                 owner_id: 1)
+                 owner_id: 1,
+                 cover: Rails.root.join('app/assets/images/large-photo.jpeg').open)
 Category.create!(name: 'cats',
-                 owner_id: 2)
+                 owner_id: 2,
+                 cover: Rails.root.join('app/assets/images/large-photo.jpeg').open)
 Category.create!(name: 'cities',
-                 owner_id: 3)
+                 owner_id: 3,
+                 cover: Rails.root.join('app/assets/images/big_image.jpg').open)
 
 
 15.times do
   rand = Random.rand(1..2)
   title = Faker::Name.first_name
-  description =  Faker::Lorem.paragraph
+  description = Faker::Lorem.paragraph
   picture =
   if rand == 1
     Rails.root.join('app/assets/images/big_image.jpg').open
@@ -46,7 +52,7 @@ end
 end
 
 15.times do |n|
-    Like.create!(user_id: Random.rand(1..3), image_id: n+1)
+  Like.create!(user_id: Random.rand(1..3), image_id: n+1)
 end
 
 

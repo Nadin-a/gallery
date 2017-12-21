@@ -11,17 +11,24 @@ class ApplicationController < ActionController::Base
   def default_url_options
     { locale: I18n.locale }
   end
-  #
-  # def set_locale
-  #   I18n.locale = current_user.try(:locale) || I18n.default_locale
-  # end
 
 
   def set_locale
-    logger.debug "* Accept-Language: #{request.env['HTTP_ACCEPT_LANGUAGE']}"
-    I18n.locale = locale_from_language_header
-    logger.debug "* Locale set to '#{I18n.locale}'"
+    I18n.locale = params[:locale]|| I18n.default_locale
   end
+
+
+  # def set_locale
+  #   # valid_locales = %w[en ru]
+  #   # if params[:locale].present? && valid_locales.include?(params[:locale])
+  #   #   I18n.locale=params[:locale]
+  #   #   current_user.update_attribute(:locale, I18n.locale) if user_signed_in?
+  #   # elsif user_signed_in? && valid_locales.include?(current_user.locale)
+  #   #   I18n.locale=current_user.locale.to_sym
+  #   # else
+  #   #   I18n.locale=I18n.default_locale
+  #   # end
+  # end
 
   protected
 

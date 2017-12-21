@@ -16,6 +16,7 @@
       %br/
       = f.text_field :name, class:'form-control', placeholder:t('name')
     %br
+      = image_tag(current_user.avatar) if current_user.avatar?
       = f.file_field :avatar, accept: 'image/jpeg,image/gif,image/png'
       = f.hidden_field :avatar_cache
     .field

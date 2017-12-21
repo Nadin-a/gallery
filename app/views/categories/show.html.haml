@@ -1,41 +1,45 @@
-.well
-  .col-sm-3
-    %b
-      =t('name')
-    %br
-      = @category.name
-  .col-sm-3
-    %b
-      = t('created_by')
-    %br
-    =  @category.owner.name
-  .col-sm-3
-    %b
-      = t('created_at')
-    %br
-    = time_ago_in_words(@category.created_at)
-    = t('ago')
-  .col-sm-3
-    .pull-right
-      = render 'shared/subscribe_form', category: @category
-      = t('followers')
-      %label_tag{ class: 'js-count-followers-label' }
-        = @category.users.count
-  %hr
-    .separator
-- if user_signed_in?
-  - if current_user == @category.owner
-    .col-sm-12.text-center
-      %a{remote: true, "data-target": '#createImageModal', "data-toggle": 'modal', href: new_category_image_path(@category)}
-        = t('add_image')
-      |
+%body{style: "background: url(#{@category.cover.present? ? @category.cover : 'https://images.pexels.com/photos/713649/pexels-photo-713649.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb'}) repeat center center fixed"}
+  .container
+    .row.well
+      .col-sm-12
+        .well
+          .col-sm-3
+            %b
+              =t('name')
+            %br
+              = @category.name
+          .col-sm-3
+            %b
+              = t('created_by')
+            %br
+            =  @category.owner.name
+          .col-sm-3
+            %b
+              = t('created_at')
+            %br
+            = time_ago_in_words(@category.created_at)
+            = t('ago')
+          .col-sm-3
+            .pull-right
+              = render 'shared/subscribe_form', category: @category
+              %label_tag{ class: 'js-count-followers-label' }
+                = t('followers')
+                = @category.users.count
+          %hr
+            .separator
+        - if user_signed_in?
+          - if current_user == @category.owner
+            .col-sm-12.text-center
+              %a{remote: true, "data-target": '#createImageModal', "data-toggle": 'modal', href: new_category_image_path(@category)}
+                = t('add_image')
+              |
 
-      %a{remote: true, "data-target": '#updateCategoryModal', "data-toggle": 'modal', href: edit_category_path(@category), title: t('update_this_category_tooltip') }
-        = t('update')
-      |
-      =link_to(t('delete'), category_path, method: :delete, data: { confirm: t('you_sure'), toggle:'tooltip',placement:'left' }, title: t('delete_this_category_tooltip'))
-  %br
-  %br
-= render partial: 'shared/list_of_images'
-= render partial: 'images/new'
-= render partial: 'categories/edit'
+              %a{remote: true, "data-target": '#updateCategoryModal', "data-toggle": 'modal', href: edit_category_path(@category), title: t('update_this_category_tooltip') }
+                = t('update')
+              |
+              =link_to(t('delete'), category_path, method: :delete, data: { confirm: t('you_sure'), toggle:'tooltip',placement:'left' }, title: t('delete_this_category_tooltip'))
+        %br
+        %br
+      = render partial: 'shared/list_of_images'
+      = render partial: 'images/new'
+      = render partial: 'categories/edit'

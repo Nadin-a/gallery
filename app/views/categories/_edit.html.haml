@@ -13,6 +13,10 @@
               .field
                 = f.label t('name')
                 = f.text_field :name, autofocus: true, class:'form-control', placeholder:t('name')
+              .field
+                = f.label t('cover')
+                = f.file_field :cover, accept: 'image/jpg,image/jpeg,image/png', id:'uploaded_cover'
+                = f.hidden_field :cover_cache
               %br
               .actions
                 .modal-footer

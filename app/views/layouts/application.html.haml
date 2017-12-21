@@ -11,14 +11,14 @@
       function onSubmit(token) {
         document.getElementById("demo-form").submit();
       }
-    %body
     = render 'layouts/header'
-    - if action_name != 'home' && "#{controller_path}##{action_name}" != 'images#show'
-      .container
-        .row.well
-          .col-sm-12
-            = render partial: 'shared/flash_messages'
-            = yield
+    - if action_name != 'home' && "#{action_name}" != 'show'
+      %body
+        .container
+          .row.well
+            .col-sm-12
+              = render partial: 'shared/flash_messages'
+              = yield
     -else
       = render partial: 'shared/flash_messages'
       = yield

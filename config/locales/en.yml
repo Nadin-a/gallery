@@ -113,3 +113,5 @@ en:
     next_label: "Next &#8594;"
     page_gap: "&hellip;"
 
+  languages: 'Language'
+  cover: 'Cover'
