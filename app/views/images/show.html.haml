@@ -36,7 +36,7 @@
         %hr
           .separator
           - if user_signed_in?
-            - if current_user == @category.owner
+            - if current_user == @category.owner || current_user.admin?
               %a{remote: true, "data-target": '#updateImageModal', "data-toggle": 'modal', href: edit_category_image_path(@category, @image)}
                 =t('update')
               |

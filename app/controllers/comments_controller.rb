@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
   before_action :set_image
   before_action :authenticate_user!, only: %i[create]
 
+
   def create
     @comment = @image.comments.new(comment_params)
     authorize @comment
@@ -14,6 +15,17 @@ class CommentsController < ApplicationController
       flash[:success] = t(:comment_created)
     else
       flash[:error] = @comment.errors.full_messages.first
+    end
+    redirect_to category_image_path(@category, @image)
+  end
+
+
+  def destroy
+    @comment = @image.comments.find(params[:id])
+    if @comment.destroy
+      flash[:success] = t(:comment_deleted)
+    else
+      flash[:error] = @comment.errors.full_messages
     end
     redirect_to category_image_path(@category, @image)
   end

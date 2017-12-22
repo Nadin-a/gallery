@@ -7,8 +7,13 @@
   %br
   = comment.content
   %br
-  = time_ago_in_words(comment.created_at)
-  = t('ago')
+  .pull-left
+    = time_ago_in_words(comment.created_at)
+    = t('ago')
+  .pull-right
+    - if user_signed_in?
+      - if current_user.admin?
+        = link_to(t('delete'), category_image_comment_path(comment.image.category, comment.image, comment),  method: :delete, data: { confirm: t('you_sure'), toggle:'tooltip',placement:'left' }, title: t('delete_this_comment_tooltip'))
   %br
 %br
 = will_paginate @comments

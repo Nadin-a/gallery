@@ -15,11 +15,10 @@
     .pull-right
       %br
         - if user_signed_in?
-          - if current_user != category.owner
-            = render 'shared/subscribe_form', category: category
-          - else
+          - if current_user == category.owner || current_user.admin?
             = link_to(t('delete'), category_path(category), method: :delete, data: { confirm: t('you_sure'), toggle:'tooltip',placement:'left' }, title: t('delete_this_category_tooltip'))
-
+          - else
+          = render 'shared/subscribe_form', category: category
 .col-sm-12
   = will_paginate @categories
 

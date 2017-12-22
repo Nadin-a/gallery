@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   require 'sidekiq/web'
-  authenticate :user do
+  authenticate :user, lambda { |u| u.admin? } do
     mount Sidekiq::Web => '/sidekiq'
   end
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     end
 
     resources :images do
-      resources :comments, only: %i[create]
+      resources :comments, only: %i[create destroy]
       resources :likes, only: %i[create destroy]
     end
   end

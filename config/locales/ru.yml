@@ -79,6 +79,8 @@ ru:
 
   post: 'Написать'
   new_comment: 'Новый комментарий...'
+  comment_deleted: 'Комментарий удалён!'
+  delete_this_comment_tooltip: 'Удалить этот комментарий'
   say: 'написал(а):'
   will_paginate:
     previous_label: "&#8592; Назад"

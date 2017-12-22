@@ -3,6 +3,7 @@ User.create!(name: 'Nadia',
              password: 'password',
              password_confirmation: 'password',
              remote_avatar_url: Faker::Avatar.image,
+             admin: true,
              confirmed_at: Time.now)
 User.create!(name: 'Susan',
              email: 'susan@email.org',

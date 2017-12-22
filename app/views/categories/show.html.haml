@@ -29,7 +29,7 @@
           %hr
             .separator
         - if user_signed_in?
-          - if current_user == @category.owner
+          - if current_user == @category.owner || current_user.admin?
             .col-sm-12.text-center
               %a{remote: true, "data-target": '#createImageModal', "data-toggle": 'modal', href: new_category_image_path(@category)}
                 = t('add_image')

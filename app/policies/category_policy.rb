@@ -10,7 +10,7 @@ class CategoryPolicy < ApplicationPolicy
   end
 
   def update?
-    user == category.owner
+    user == category.owner || user.admin?
   end
   alias destroy? update?
 

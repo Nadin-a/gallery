@@ -3,7 +3,11 @@
 class CommentPolicy < ApplicationPolicy
 
   def create?
-    true if user
+    user
+  end
+
+  def destroy?
+    user.admin?
   end
 
   private

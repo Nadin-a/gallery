@@ -36,9 +36,11 @@
             %li
               = link_to 'English', { locale:'en' }
             %li
-              Russian
               = link_to 'Russian', { locale:'ru' }
         - if user_signed_in?
+          - if current_user.admin?
+            %li
+              =link_to('Sidekiq', sidekiq_web_path)
           %li
             =link_to(t('profile'), edit_user_registration_path(current_user))
           %li
