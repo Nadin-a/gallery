@@ -28,8 +28,13 @@ class User < ApplicationRecord
   end
 
   def send_email_about_subscribtion
-    SendingEmailsJob.perform_later self.id
+    SendingEmailWhenSubscribeJob.set(queue: :mailers).perform_later self.id
   end
+
+  def send_email_about_new_image(image)
+    SendEmailWhenNewImageJob.set(queue: :mailers).perform_later self.id, image
+  end
+
 
   # def self.from_omniauth(auth)
   #   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

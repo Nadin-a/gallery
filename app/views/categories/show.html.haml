@@ -23,8 +23,8 @@
           .col-sm-3
             .pull-right
               = render 'shared/subscribe_form', category: @category
+              = t('followers')
               %label_tag{ class: 'js-count-followers-label' }
-                = t('followers')
                 = @category.users.count
           %hr
             .separator

@@ -24,6 +24,7 @@ class ImagesController < ApplicationController
     authorize @image
     if @image.save
       flash[:success] = t(:image_created)
+      send_message
     else
       flash[:error] = @image.errors.full_messages
     end
@@ -51,6 +52,13 @@ class ImagesController < ApplicationController
   end
 
   private
+
+  def send_message
+    @image.category.users.each do |user|
+      user.send_email_about_new_image @image.id
+    end
+  end
+
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def image_params

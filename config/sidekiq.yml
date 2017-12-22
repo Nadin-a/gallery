@@ -2,4 +2,5 @@
 :concurrency:  25
 :queues:
   - [mailer, 5]
+  - [mailers, 5]
   - [default, 5]
