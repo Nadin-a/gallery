@@ -12,25 +12,41 @@ class ApplicationController < ActionController::Base
     { locale: I18n.locale }
   end
 
-
-  def set_locale
-    I18n.locale = params[:locale]|| I18n.default_locale
-  end
-
-
+  #
   # def set_locale
-  #   # valid_locales = %w[en ru]
-  #   # if params[:locale].present? && valid_locales.include?(params[:locale])
-  #   #   I18n.locale=params[:locale]
-  #   #   current_user.update_attribute(:locale, I18n.locale) if user_signed_in?
-  #   # elsif user_signed_in? && valid_locales.include?(current_user.locale)
-  #   #   I18n.locale=current_user.locale.to_sym
-  #   # else
-  #   #   I18n.locale=I18n.default_locale
-  #   # end
+  #   I18n.locale = params[:locale]|| I18n.default_locale
   # end
 
+
+  def set_locale
+    valid_locales = %w[en ru]
+    # if params[:locale].present? && valid_locales.include?(params[:locale])
+    #   I18n.locale=params[:locale]
+    #   current_user.update_attribute(:locale, I18n.locale) if user_signed_in?
+    # elsif user_signed_in? && valid_locales.include?(current_user.locale)
+    #   I18n.locale=current_user.locale.to_sym
+    # else
+    #   I18n.locale=I18n.default_locale
+    # end
+
+    #прогрузить пользовтаельскую после логина
+    if user_signed_in?
+      if current_user.locale.present?
+        I18n.locale=current_user.locale.to_sym
+      end
+      if params[:locale].present? && valid_locales.include?(params[:locale])
+        I18n.locale=params[:locale]
+        current_user.update_attribute(:locale, I18n.locale)
+      end
+    else
+      logger.debug "* Accept-Language: #{request.env['HTTP_ACCEPT_LANGUAGE']}"
+      I18n.locale = locale_from_language_header
+      logger.debug "* Locale set to '#{I18n.locale}'"
+    end
+  end
+
   protected
+
 
   def locale_from_language_header
     request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
