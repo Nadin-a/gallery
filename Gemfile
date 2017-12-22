@@ -22,9 +22,10 @@ gem 'omniauth-facebook'
 gem "recaptcha", require: 'recaptcha/rails'
 gem 'geckodriver-helper'
 gem 'devise-i18n'
-gem 'resque'
-gem 'resque_mailer'
-
+gem 'sidekiq'
+gem "devise-async"
+gem 'redis-namespace'
+gem 'sidekiq_mailer'
 
 group :development, :test do
   gem 'rspec-rails'
@@ -53,4 +54,5 @@ group :development do
   gem 'rubocop', require: false
   gem 'scss_lint', require: false
   # gem 'eslint-rails'
+  gem 'foreman'
 end

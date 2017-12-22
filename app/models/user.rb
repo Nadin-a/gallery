@@ -3,7 +3,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, :confirmable,
+  devise :database_authenticatable, :registerable, :confirmable, :async,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: %i[facebook]
 
   has_many :owned_categories, dependent: :destroy, foreign_key: :owner_id, class_name: 'Category'
@@ -22,8 +22,13 @@ class User < ApplicationRecord
     @feed = Image.where(category_id: categories).or(Image.where(category_id: owned_categories))
   end
 
-  def send_subscribe_email
-    MyMailer.subscribe_to_category(params).deliver
+
+  def send_devise_notification(notification, *args)
+    devise_mailer.send(notification, self, *args).deliver_later
+  end
+
+  def send_email_about_subscribtion
+    SendingEmailsJob.perform_later self.id
   end
 
   # def self.from_omniauth(auth)

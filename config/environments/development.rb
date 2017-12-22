@@ -29,7 +29,7 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-  # Don't care if the mailer can't send.
+  # Don't care if the user_mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.perform_caching = false
@@ -48,7 +48,13 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
-  config.action_mailer.default_url_options = { :host => "localhost:3000" }
+  config.active_job.queue_adapter = :sidekiq
+
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+
+  # config.active_job.queue_name_prefix = "mysite"
+  # config.active_job.queue_name_delimiter = "_"
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true

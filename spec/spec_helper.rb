@@ -26,7 +26,7 @@ include ActionDispatch::TestProcess
 require 'database_cleaner'
 
 DatabaseCleaner.strategy = :truncation
-
+Devise.mailer = Devise::Mailer
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
