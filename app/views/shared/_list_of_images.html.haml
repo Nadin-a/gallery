@@ -9,7 +9,7 @@
             %p
               = link_to(image.title, category_image_path(image.category, image), { data:{ toggle:'tooltip',placement:'left'}, title:'Open full size'})
             %p
-              = image.description[0..40]+ '...'
+              = image.description[0..40] unless image.description.empty?
 .col-sm-12.text-center
   = will_paginate @images
 

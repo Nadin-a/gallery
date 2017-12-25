@@ -1,2 +1,4 @@
 %p
   Hello #{@user.name}! In your favorite category #{@image.category.name} was uploaded new image #{@image.title} by #{@image.category.owner.name}
+  %br
+  = link_to(@image.title, category_image_url(@user.categories.first, @image))

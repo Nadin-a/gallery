@@ -1,3 +1,5 @@
 %p
   Hello #{@user.name}!
   You are subscribe to category #{@user.categories.first.name}. On main page you will see new images in this category.
+  %br
+  = link_to(@user.categories.first.name, category_url(@user.categories.first))

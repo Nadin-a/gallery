@@ -18,13 +18,13 @@ User.create!(name: 'Larry',
              remote_avatar_url: Faker::Avatar.image,
              confirmed_at: Time.now)
 
-Category.create!(name: 'cars',
+Category.create!(name: 'category1',
                  owner_id: 1,
                  cover: Rails.root.join('app/assets/images/large-photo.jpeg').open)
-Category.create!(name: 'cats',
+Category.create!(name: 'category2',
                  owner_id: 2,
                  cover: Rails.root.join('app/assets/images/large-photo.jpeg').open)
-Category.create!(name: 'cities',
+Category.create!(name: 'category3',
                  owner_id: 3,
                  cover: Rails.root.join('app/assets/images/big_image.jpg').open)
 
