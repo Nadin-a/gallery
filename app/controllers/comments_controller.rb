@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
-include Recaptcha::Verify
 class CommentsController < ApplicationController
   before_action :set_category
   before_action :set_image
   before_action :authenticate_user!, only: %i[create]
-
+  include Recaptcha::Verify
 
   def create
     @comment = @image.comments.new(comment_params)
@@ -22,6 +21,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = @image.comments.find(params[:id])
+    authorize @comment
     if @comment.destroy
       flash[:success] = t(:comment_deleted)
     else
@@ -43,4 +43,5 @@ class CommentsController < ApplicationController
   def set_category
     @category = Category.find(params[:category_id])
   end
+
 end

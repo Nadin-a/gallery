@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'image_features' do
   before(:all) {
     @user = FactoryBot.create(:random_user)
-    @category = FactoryBot.create(:random_category, owner: @user)
+    @category = FactoryBot.create(:fake_category, owner: @user)
     @image = FactoryBot.create(:random_image, category: @category)
   }
 

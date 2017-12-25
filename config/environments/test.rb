@@ -37,7 +37,13 @@ Rails.application.configure do
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
 
+
   config.action_mailer.default_url_options = { :host => "test.localhost" }
+
+  config.active_job.queue_adapter = :sidekiq
+
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true

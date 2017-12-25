@@ -12,5 +12,12 @@ FactoryBot.define do
       name { Faker::Name.first_name }
       email { Faker::Internet.safe_email }
     end
+
+    factory :admin do
+      name { Faker::Name.first_name }
+      email { Faker::Internet.safe_email }
+      admin true
+    end
+
   end
 end

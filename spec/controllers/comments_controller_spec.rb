@@ -3,13 +3,14 @@
 require 'rails_helper'
 
 RSpec.describe CommentsController, type: :controller do
-  let!(:user) { FactoryBot.create(:user) }
+  let!(:user) { FactoryBot.create(:random_user) }
+  let!(:admin_user) { FactoryBot.create(:admin) }
   let!(:category) { FactoryBot.create(:random_category) }
   let!(:image) { FactoryBot.create(:image, category: category) }
   let!(:comment) { FactoryBot.create(:comment, image: image, user: user) }
   let!(:invalid_comment) { FactoryBot.build(:invalid_comment, image: image, user: user) }
 
-  before { sign_in(user) }
+  before { sign_in(admin_user) }
 
   describe 'POST create' do
     context 'with valid attributes' do
@@ -35,6 +36,15 @@ RSpec.describe CommentsController, type: :controller do
         }.to_not change(Comment, :count)
         expect(flash[:error]).to_not be_nil
       end
+    end
+  end
+
+  describe 'DELETE destroy' do
+    it 'can delete comment' do
+      expect {
+        delete :destroy, params: { category_id: category, image_id: image.id, id: comment }
+      }.to change(Comment, :count).by(-1)
+      expect(flash[:success]).to_not be_nil
     end
   end
 end

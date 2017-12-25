@@ -6,7 +6,7 @@ feature 'Visitor signs up' do
   let!(:email)  { Faker::Internet.safe_email }
   let!(:name) { Faker::Name.first_name }
 
-  scenario 'with valid parameters' do
+  scenario 'with valid parameters', js: true do
     visit root_path
 
     click_link 'Sign up'

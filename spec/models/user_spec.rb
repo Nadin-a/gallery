@@ -46,6 +46,10 @@ describe User do
   it 'is valid with valid attributes' do
     expect(user).to be_valid
   end
+  it 'it has feed' do
+    check_feed = user.feed == user.categories + user.owned_categories
+    expect(check_feed).to be true
+  end
 
 
   describe 'Associations' do
