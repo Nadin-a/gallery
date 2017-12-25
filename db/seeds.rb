@@ -34,11 +34,11 @@ Category.create!(name: 'category3',
   title = Faker::Name.first_name
   description = Faker::Lorem.paragraph
   picture =
-  if rand == 1
-    Rails.root.join('app/assets/images/big_image.jpg').open
-  else
-    Rails.root.join('app/assets/images/large-photo.jpeg').open
-  end
+    if rand == 1
+      Rails.root.join('app/assets/images/big_image.jpg').open
+    else
+      Rails.root.join('app/assets/images/large-photo.jpeg').open
+    end
   Image.create!(title: title,
                 description: description,
                 picture: picture,

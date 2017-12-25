@@ -88,6 +88,7 @@ en:
   we_need_your_password: '(we need your current password to confirm your changes)'
   save_changes: 'Save changes'
   cancel_my_account: 'Cancel my account'
+  canceling_account: 'Cancelling account'
   unhappy: 'Unhappy?'
   edit_profile: 'Edit profile'
   did_not_recive_confirmation_instructions: "Didn't receive confirmation instructions?"
