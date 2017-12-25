@@ -10,11 +10,11 @@ describe Like do
   end
   it 'is not valid without a user' do
     like.user = nil
-    expect(like).to_not be_valid
+    expect(like).not_to be_valid
   end
   it 'is not valid without a user' do
     like.image = nil
-    expect(like).to_not be_valid
+    expect(like).not_to be_valid
   end
   describe 'Associations' do
     it { is_expected.to belong_to(:user) }

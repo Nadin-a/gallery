@@ -1,19 +1,16 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register_page 'Dashboard' do
-
-  menu priority: 1, label: proc { I18n.t("active_admin.dashboard") }
-
-  content title: proc { I18n.t("active_admin.dashboard") } do
-    div class: "blank_slate_container", id: "dashboard_default_message" do
-      span class: "blank_slate" do
-        span I18n.t("active_admin.dashboard_welcome.welcome")
-        small I18n.t("active_admin.dashboard_welcome.call_to_action")
+  menu priority: 1, label: proc { I18n.t('active_admin.dashboard') }
+  content title: proc { I18n.t('active_admin.dashboard') } do
+    div class: 'blank_slate_container', id: 'dashboard_default_message' do
+      span class: 'blank_slate' do
+        span I18n.t('active_admin.dashboard_welcome.welcome')
+        small I18n.t('active_admin.dashboard_welcome.call_to_action')
       end
     end
 
-    # Here is an example of a simple dashboard with columns and panels.
-    #
     columns do
-
       column do
         panel 'Recent commentaries' do
           ul do
@@ -34,7 +31,6 @@ ActiveAdmin.register_page 'Dashboard' do
           end
         end
       end
-
     end
 
     panel 'Recent images' do
@@ -50,12 +46,11 @@ ActiveAdmin.register_page 'Dashboard' do
     table_for events do
       user = User.find_by(id: params[:user_id])
       column 'user', user
-      column (:properties)do |event|
-        link_to(event.properties['action_type'],admin_ahoy_event_path(event))
+      column :properties do |event|
+        link_to(event.properties['action_type'], admin_ahoy_event_path(event))
       end
       column 'URL', :name
       column 'Time', :time
     end
-
   end
 end

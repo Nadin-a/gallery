@@ -1,5 +1,6 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
+require 'spec_helper'
 describe 'category_features' do
   before(:all) {
     @user = FactoryBot.create(:random_user)
@@ -12,9 +13,9 @@ describe 'category_features' do
   category_name = Faker::Lorem.word
 
 
-  feature 'Creating category' do
+  describe 'Creating category' do
 
-    scenario 'with valid parameters', js: true do
+    it 'with valid parameters', js: true do
       visit categories_path
       click_button 'Create own category'
       fill_in 'Name', with: category_name
@@ -31,8 +32,7 @@ describe 'category_features' do
       expect(page).to have_content('Name has already been taken')
     end
 
-
-    scenario 'with empty name', js: true do
+    it 'with empty name', js: true do
       visit categories_path
       click_button 'Create own category'
       fill_in 'Name', with: ''
@@ -41,7 +41,7 @@ describe 'category_features' do
       expect(page).to have_content("Name can't be blank")
     end
 
-    scenario 'with long name', js: true do
+    it 'with long name', js: true do
       visit categories_path
       click_button 'Create own category'
       fill_in 'Name', with: 'a'*21
@@ -51,7 +51,7 @@ describe 'category_features' do
     end
   end
 
-  feature 'Updating category' do
+  describe 'Updating category' do
 
     before {
       visit category_path(@category)
@@ -59,7 +59,7 @@ describe 'category_features' do
 
     new_category_name = Faker::Lorem.word
 
-    scenario 'with valid new parameters', js: true do
+    it 'with valid new parameters', js: true do
       click_link 'Update'
       fill_in 'Name', with: new_category_name
       click_button 'Update'
@@ -67,14 +67,14 @@ describe 'category_features' do
       expect(page).not_to have_content(category_name)
     end
 
-    scenario 'with empty name', js: true do
+    it 'with empty name', js: true do
       click_link 'Update'
       fill_in 'Name', with: ''
       click_button 'Update'
       expect(page).to have_content("Name can't be blank")
     end
 
-    scenario 'with long name', js: true do
+    it 'with long name', js: true do
       click_link 'Update'
       fill_in 'Name', with: 'a'*21
       click_button 'Update'
@@ -82,7 +82,7 @@ describe 'category_features' do
     end
   end
 
-  feature 'Deleting category' do
+  describe 'Deleting category' do
 
     before {
       visit category_path(@category)
@@ -90,7 +90,7 @@ describe 'category_features' do
 
     new_category_name = Faker::Lorem.word
 
-    scenario 'with click on delete', js: true do
+    it 'with click on delete', js: true do
       click_link 'Delete'
       page.driver.browser.switch_to.alert.accept
       expect(page).not_to have_content(new_category_name)

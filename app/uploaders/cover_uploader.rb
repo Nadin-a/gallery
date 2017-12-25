@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CoverUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   process resize_to_limit: [2000, 2000]
@@ -20,5 +22,4 @@ class CoverUploader < CarrierWave::Uploader::Base
   def content_type_whitelist
     %r{image\/}
   end
-
 end

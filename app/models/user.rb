@@ -22,7 +22,6 @@ class User < ApplicationRecord
     @feed = Image.where(category_id: categories).or(Image.where(category_id: owned_categories))
   end
 
-
   def send_devise_notification(notification, *args)
     devise_mailer.send(notification, self, *args).deliver_later
   end

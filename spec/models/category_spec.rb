@@ -12,15 +12,15 @@ describe Category do
   end
   it 'is not valid without a name' do
     category.name = nil
-    expect(category).to_not be_valid
+    expect(category).not_to be_valid
   end
   it 'is not valid with long name' do
     category.name = 'a' * 21
-    expect(category).to_not be_valid
+    expect(category).not_to be_valid
   end
   it 'is not valid without a owner' do
     category.owner = nil
-    expect(category).to_not be_valid
+    expect(category).not_to be_valid
   end
   it 'is valid with valid attributes' do
     expect(category).to be_valid
@@ -31,7 +31,7 @@ describe Category do
   it 'can check own subscribers' do
     user = FactoryBot.build(:user)
     user.categories << category
-    check = category.has_subscriber? user
+    check = category.subscriber? user
     expect(check).to be true
   end
 

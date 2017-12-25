@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register User do
   actions :all
   permit_params :name, :email, :avatar, :admin, :confirmed_at

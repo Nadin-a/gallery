@@ -57,7 +57,7 @@ RSpec.describe CategoriesController, type: :controller do
         category = FactoryBot.build(:random_category)
         post :create, params: {category: category.attributes}
         expect(response).to redirect_to(Category.first)
-        expect(flash[:success]).to_not be_nil
+        expect(flash[:success]).not_to be_nil
       end
     end
 
@@ -65,8 +65,8 @@ RSpec.describe CategoriesController, type: :controller do
       it 'does not save the new category' do
         expect {
           post :create, params: {category: uncorrect_category.attributes}
-        }.to_not change(Category, :count)
-        expect(flash[:error]).to_not be_nil
+        }.not_to change(Category, :count)
+        expect(flash[:error]).not_to be_nil
       end
     end
 
@@ -98,21 +98,21 @@ RSpec.describe CategoriesController, type: :controller do
       it 'redirects to the updated category' do
         put :update, params: category_params
         expect(response).to redirect_to(category)
-        expect(flash[:success]).to_not be_nil
+        expect(flash[:success]).not_to be_nil
       end
     end
 
     context 'invalid attributes' do
       it 'can`t update category' do
         put :update, params: invalid_category_params
-        expect(response).to_not be_success
-        expect(flash[:error]).to_not be_nil
+        expect(response).not_to be_success
+        expect(flash[:error]).not_to be_nil
       end
 
       it 'redirect to index' do
         put :update, params: invalid_category_params
         expect(response).to redirect_to(category)
-        expect(flash[:error]).to_not be_nil
+        expect(flash[:error]).not_to be_nil
       end
     end
   end
@@ -127,7 +127,7 @@ RSpec.describe CategoriesController, type: :controller do
     it 'redirects to owned_categories' do
       delete :destroy, params: {id: category.id}
       expect(response).to redirect_to owned_categories_path
-      expect(flash[:success]).to_not be_nil
+      expect(flash[:success]).not_to be_nil
     end
 
     it 'delete with images' do

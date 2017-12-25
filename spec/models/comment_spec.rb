@@ -10,19 +10,19 @@ describe Comment do
   end
   it 'is not valid without a content' do
     comment.content = nil
-    expect(comment).to_not be_valid
+    expect(comment).not_to be_valid
   end
   it 'is not valid with long content' do
     comment.content = 'a' * 301
-    expect(comment).to_not be_valid
+    expect(comment).not_to be_valid
   end
   it 'is not valid without a user' do
     comment.user = nil
-    expect(comment).to_not be_valid
+    expect(comment).not_to be_valid
   end
   it 'is not valid without a user' do
     comment.image = nil
-    expect(comment).to_not be_valid
+    expect(comment).not_to be_valid
   end
 
   describe 'Associations' do

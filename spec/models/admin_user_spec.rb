@@ -11,19 +11,19 @@ RSpec.describe AdminUser, type: :model do
   end
   it 'is invalid without an e-mail' do
     admin.email = nil
-    expect(admin).to_not be_valid
+    expect(admin).not_to be_valid
   end
   it 'is invalid without a correct e-mail' do
     admin.email = 'uncorrect email'
-    expect(admin).to_not be_valid
+    expect(admin).not_to be_valid
   end
   it 'is invalid without a password' do
     admin.password = nil
-    expect(admin).to_not be_valid
+    expect(admin).not_to be_valid
   end
   it 'is invalid without a correct password' do
     admin.password = 'a' * 3
-    expect(admin).to_not be_valid
+    expect(admin).not_to be_valid
   end
   describe 'Associations' do
     it { is_expected.to have_db_index('confirmation_token') }

@@ -1,5 +1,6 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
+require 'spec_helper'
 describe 'image_features' do
   before(:all) {
     @user = FactoryBot.create(:random_user)
@@ -14,8 +15,8 @@ describe 'image_features' do
 
   comment = Faker::Lorem.sentence
 
-  feature 'Creating comment' do
-    scenario 'with valid parameters', js: true do
+  describe 'Creating comment' do
+    it 'with valid parameters', js: true do
       fill_in 'New comment...', with: comment
       click_button 'Post'
       expect(page).to have_content(comment)

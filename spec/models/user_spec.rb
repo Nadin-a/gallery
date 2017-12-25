@@ -12,36 +12,36 @@ describe User do
   end
   it 'is invalid without a name' do
     user.name = nil
-    expect(user).to_not be_valid
+    expect(user).not_to be_valid
   end
   it 'is invalid with short name' do
     user.name = 'a'
-    expect(user).to_not be_valid
+    expect(user).not_to be_valid
   end
   it 'is invalid with long name' do
     user.name = 'a' * 21
-    expect(user).to_not be_valid
+    expect(user).not_to be_valid
   end
   it 'is invalid without an e-mail' do
     user.email = nil
-    expect(user).to_not be_valid
+    expect(user).not_to be_valid
   end
   it 'is invalid without a correct e-mail' do
     user.email = 'uncorrect email'
-    expect(user).to_not be_valid
+    expect(user).not_to be_valid
   end
   it 'is invalid without a password' do
     user.password = nil
-    expect(user).to_not be_valid
+    expect(user).not_to be_valid
   end
   it 'is invalid without a correct password' do
     user.password = 'a' * 3
-    expect(user).to_not be_valid
+    expect(user).not_to be_valid
   end
   it 'is invalid without a matching password confirmation' do
     user.password = 'password'
     user.password_confirmation = 'foobar'
-    expect(user).to_not be_valid
+    expect(user).not_to be_valid
   end
   it 'is valid with valid attributes' do
     expect(user).to be_valid

@@ -39,7 +39,7 @@ RSpec.describe ImagesController, type: :controller do
         image = FactoryBot.build(:random_image)
         post :create, params: {category_id: category, image: image.attributes}
         expect(response.status).to eq(302)
-        expect(flash[:success]).to_not be_nil
+        expect(flash[:success]).not_to be_nil
       end
     end
 
@@ -47,8 +47,8 @@ RSpec.describe ImagesController, type: :controller do
       it 'does not save the new image' do
         expect {
           post :create, params: {category_id: category, image: invalid_image.attributes}
-        }.to_not change(Image, :count)
-        expect(flash[:error]).to_not be_nil
+        }.not_to change(Image, :count)
+        expect(flash[:error]).not_to be_nil
       end
     end
   end
@@ -67,21 +67,21 @@ RSpec.describe ImagesController, type: :controller do
       it 'redirects to the updated image' do
         put :update, params: image_params
         expect(response).to redirect_to(category_image_path(category, image))
-        expect(flash[:success]).to_not be_nil
+        expect(flash[:success]).not_to be_nil
       end
     end
 
     context 'invalid attributes' do
       it 'can`t update category' do
         put :update, params: invalid_image_params
-        expect(response).to_not be_success
-        expect(flash[:error]).to_not be_nil
+        expect(response).not_to be_success
+        expect(flash[:error]).not_to be_nil
       end
 
       it 'redirect to show' do
         put :update, params: invalid_image_params
         expect(response).to redirect_to(category_image_path(category, image))
-        expect(flash[:error]).to_not be_nil
+        expect(flash[:error]).not_to be_nil
       end
     end
   end
@@ -96,7 +96,7 @@ RSpec.describe ImagesController, type: :controller do
     it 'redirects to category' do
       delete :destroy, params: {category_id: category, id: image.id}
       expect(response).to redirect_to category
-      expect(flash[:success]).to_not be_nil
+      expect(flash[:success]).not_to be_nil
     end
 
     it 'delete with comments and likes' do

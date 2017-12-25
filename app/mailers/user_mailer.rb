@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class UserMailer < ActionMailer::Base
-
   def subscribe_email(user_id)
     @user = User.find(user_id)
     mail(to: @user.email,
@@ -20,7 +19,6 @@ class UserMailer < ActionMailer::Base
       format.text { render plain: 'Render text' }
     end
   end
-
 end
 
 

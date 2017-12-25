@@ -18,7 +18,6 @@ class CommentsController < ApplicationController
     redirect_to category_image_path(@category, @image)
   end
 
-
   def destroy
     @comment = @image.comments.find(params[:id])
     authorize @comment
@@ -43,5 +42,4 @@ class CommentsController < ApplicationController
   def set_category
     @category = Category.find(params[:category_id])
   end
-
 end

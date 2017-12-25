@@ -16,10 +16,11 @@ class Category < ApplicationRecord
   end
 
   def self.ordered_by_popularity
-    unscoped.select('categories.*, count(images.id) AS images_count').joins(:images).group(:id).order('images_count desc')
+    unscoped.select('categories.*, count(images.id) AS images_count').joins(:images)
+    .group(:id).order('images_count desc')
   end
 
-  def has_subscriber? user
+  def subscriber?(user)
     user.categories.include? self
   end
 

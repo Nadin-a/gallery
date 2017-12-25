@@ -1,5 +1,6 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
+require 'spec_helper'
 describe 'Subscribtion' do
   before(:all) {
     @user = FactoryBot.create(:random_user)
@@ -12,7 +13,7 @@ describe 'Subscribtion' do
     visit category_path(@category)
   }
 
-  feature 'Subscribe and unsubscribe' do
+  describe 'Subscribe and unsubscribe' do
     scenario 'opened image', js: true do
       find('#subscribe').click
       expect(page).to have_content('Followers: 1')

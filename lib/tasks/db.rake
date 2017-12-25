@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 namespace :db do
   desc 'From folder to db'
-
   task fill_db: :environment do
     categories = Dir.entries('/home/trofimova/gallery content').reject { |f| File.directory? f }
     categories.each do |category_name|
@@ -24,16 +25,12 @@ namespace :db do
       category.update_attribute(:cover, category.images.sample.picture)
     end
   end
-
   task likes: :environment do
-
     Image.all.each do |image|
       like = Like.new
       like.image_id = image.id
       like.user_id = 1
       like.save!
     end
-
   end
-
 end

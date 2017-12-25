@@ -11,19 +11,19 @@ describe Image do
   end
   it 'is not valid without a title' do
     image.title = nil
-    expect(image).to_not be_valid
+    expect(image).not_to be_valid
   end
   it 'is not valid with long title' do
     image.title = 'a' * 31
-    expect(image).to_not be_valid
+    expect(image).not_to be_valid
   end
   it 'is not valid without a picture' do
     image.picture = nil
-    expect(image).to_not be_valid
+    expect(image).not_to be_valid
   end
   it 'is not valid with long description' do
     image.title = 'a' * 301
-    expect(image).to_not be_valid
+    expect(image).not_to be_valid
   end
   it 'is valid with without description' do
     image.description = nil

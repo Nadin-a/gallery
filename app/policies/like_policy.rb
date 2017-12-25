@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class LikePolicy < ApplicationPolicy
-
   def create?
     true if user
   end

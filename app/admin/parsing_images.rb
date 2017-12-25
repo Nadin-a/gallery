@@ -1,26 +1,23 @@
-ActiveAdmin.register_page 'Get images' do
+# frozen_string_literal: true
 
+ActiveAdmin.register_page 'Get images' do
   page_action :founded_images, method: :post do
     images = []
     url = params['my_field']
     begin
       Nokogiri::HTML(open(url)).xpath('//img/@src').each do |src|
         host = URI(params['my_field']).host
-        p src
         pic =
-          if host == 'localhost'
-            "http://#{host}:3000/#{src}"
+          if src.to_s.start_with?('http')
+            src
           else
-            if src.to_s.start_with?('http')
-              src
-            else
-              URI::HTTP.build({host: host, path: src})
-            end
+            URI::HTTP.build(host: host, path: src)
           end
         images << pic
       end
-      render 'found_pictures', locals: {images: images}
-    rescue Errno::ENOENT => e
+      render 'found_pictures', locals: { images: images }
+    rescue Errno::ENOENT => err
+      p err
       redirect_to admin_get_images_path
     end
   end
@@ -31,5 +28,4 @@ ActiveAdmin.register_page 'Get images' do
       f.input :submit, type: :submit
     end
   end
-
 end

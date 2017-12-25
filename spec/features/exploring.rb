@@ -5,8 +5,7 @@ describe 'Find' do
     @user = FactoryBot.create(:random_user)
   }
 
-
-  feature 'on main page' do
+  describe 'on main page' do
     scenario 'content_instead_carousel', js: true do
       visit root_path
       expect(page).to have_content('No images on site')
@@ -14,6 +13,5 @@ describe 'Find' do
       expect(page).to have_content('You have not any images. Subscribe on any category or add own image and you will see it here!')
     end
   end
-
 
 end
