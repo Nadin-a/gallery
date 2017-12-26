@@ -1,4 +1,4 @@
 %p
-  Hello #{@user.name}! In your favorite category #{@image.category.name} was uploaded new image #{@image.title} by #{@image.category.owner.name}
+  = t('hello') + "#{@user.name}!" + t('in_your_favorite') + "#{@image.category.name}" + t('was_uploaded_new_image') + "#{@image.title}" + '.'
   %br
   = link_to(@image.title, category_image_url(@user.categories.first, @image))

@@ -120,3 +120,17 @@ en:
   languages: 'Language'
   cover: 'Cover'
   what_new: 'What new'
+
+  hello: 'Hello '
+  you_subscribe: 'You are subscribe to category '
+  on_main_page: '. On main page you will see new images in this category.'
+  in_your_favorite: ' In your favorite category '
+  was_uploaded_new_image: ' was uploaded new image '
+  welcome: 'Welcome '
+  you_can_confirm: 'You can confirm your account email through the link below:'
+  confirm_my_account: 'Confirm my account'
+  notify_password_changed: "We're contacting you to notify you that your password has been changed."
+  request_change_password: 'Someone has requested a link to change your password. You can do this through the link below.'
+  change_password: 'Change my password'
+  please_ignore_change_password: "If you didn't request this, please ignore this email."
+  password_wont_change: "Your password won't change until you access the link above and create a new one."

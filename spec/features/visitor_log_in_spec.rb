@@ -25,7 +25,7 @@ describe 'Visitor signs up', type: :feature do
   it 'and can sign out after login', js: true do
     log_in_with @user.email, @user.password
     click_link 'Sign out'
-    expect(page).to have_current_path('/')
+    expect(page).to have_current_path(root_path)
   end
 
   def log_in_with(email, password)
