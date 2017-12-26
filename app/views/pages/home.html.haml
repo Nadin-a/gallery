@@ -1,12 +1,13 @@
 %body
   = content_for(:title, 'Home')
   - if @images.empty?
-    .container.text-center.row.well
-      %h2
-        - if user_signed_in?
-          = t('you_have_no_images')
-        - else
-          = t('no_images_on_site')
+    .container
+      .row.well
+        %h2
+          - if user_signed_in?
+            = t('you_have_no_images')
+          - else
+            = t('no_images_on_site')
   - else
     #carousel-example-generic.carousel.slide{'data-ride': 'carousel'}
       / Indicators

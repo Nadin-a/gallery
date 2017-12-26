@@ -1,15 +1,11 @@
-- @images.each_slice(2) do |images|
-  - images.each do |image|
-    .col-sm-6.col-md-6.col-lg-4.col-xl-4
-      .panel.panel-default.text-center
-        .panel-image.hide-panel-body
-          %img.panel-image-preview
-            = link_to(image_tag(image.picture.thumb.url), category_image_path(image.category, image),{ data:{ toggle:'tooltip',placement:'left'}, title:'Open this image'})
-          .panel-body
-            %p
-              = link_to(image.title, category_image_path(image.category, image), { data:{ toggle:'tooltip',placement:'left'}, title:'Open full size'})
-            %p
-              = image.description[0..30] + '...' unless image.description.empty?
+- @images.each do |image|
+  .col-sm-6.col-md-6.col-lg-4.col-xl-4
+    .panel.panel-default.text-center
+      .panel-image.hide-panel-body
+        %img.panel-image-preview
+          .hover11.column
+            %figure
+              = link_to(image_tag(image.picture.thumb.url), category_image_path(image.category, image),{ data:{ toggle:'tooltip',placement:'left'}, title:'Open this image'})
 .col-sm-12.text-center
   = will_paginate @images
 

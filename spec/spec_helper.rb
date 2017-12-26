@@ -63,7 +63,8 @@ RSpec.configure do |config|
 
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::ControllerHelpers, type: :view
-
+  config.include Rails.application.routes.url_helpers
+  config.include Capybara::DSL
 
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -77,9 +78,15 @@ RSpec.configure do |config|
     DatabaseCleaner.strategy = :transaction
   end
 
+
   config.before(:each, :js => true) do
     DatabaseCleaner.strategy = :truncation
   end
+
+  config.before do
+    default_url_options[:locale] = I18n.default_locale
+  end
+
   #
   # config.before(:each) do
   #   DatabaseCleaner.start

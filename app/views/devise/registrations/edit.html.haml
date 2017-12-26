@@ -21,6 +21,8 @@
       %br
       = f.file_field :avatar, accept: 'image/jpeg,image/gif,image/png'
       = f.hidden_field :avatar_cache
+      %h3
+        = t('password')
     .field
       = f.label :password
       %i
@@ -36,6 +38,7 @@
       = f.label :password_confirmation
       %br/
       = f.password_field :password_confirmation, autocomplete: 'off', class:'form-control', placeholder:t('confirmation_password')
+    %br
     .field
       = f.label :current_password
       %i

@@ -8,6 +8,8 @@ MethodLength:
    Max: 50
 LineLength:
    Max: 120
+BlockLength:
+   Max: 50
 
 Documentation:
   Enabled: false

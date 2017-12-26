@@ -71,6 +71,7 @@ ru:
   description_image: 'Описание картинки'
   title: 'Название'
   description: 'Описание'
+  images: 'Картинки: '
 
   new_image_in: 'Новая картинка в'
   delete_this_image_tooltip: 'Удалить это изображение'
@@ -90,6 +91,7 @@ ru:
 
   languages: 'Язык'
   cover: 'Обложка'
+  what_new: 'Новое'
 
   activerecord:
     errors:

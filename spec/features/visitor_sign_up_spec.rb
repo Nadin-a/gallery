@@ -9,7 +9,7 @@ describe 'Visitor signs up' do
   it 'with valid parameters', js: true do
     visit root_path
     click_link 'Sign up'
-    expect(current_path).to eq(new_user_registration_path)
+    expect(page).to have_current_path('/users/sign_up?locale=en')
     sign_up_with email, name, 'password', 'password'
   end
 

@@ -4,4 +4,3 @@ ActiveAdmin.register Category do
   actions :all
   permit_params :owner_id, :name
 end
-

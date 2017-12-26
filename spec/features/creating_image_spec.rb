@@ -19,8 +19,8 @@ describe 'image_features' do
 
   describe 'Creating image' do
     it 'with valid parameters', js: true do
-      fill_in 'Title', with: image_title
-      fill_in 'Description', with: 'my description'
+      fill_in 'Title of the picture', with: image_title
+      fill_in 'Description of the picture', with: 'my description'
       attach_file('uploaded_picture', Rails.root + 'spec/fixtures/test_picture.jpg')
       click_button 'Add'
       expect(page).to have_content('Image uploaded')
@@ -32,29 +32,29 @@ describe 'image_features' do
     end
 
     it 'without title', js: true do
-      fill_in 'Title', with: ''
+      fill_in 'Title of the picture', with: ''
       attach_file('uploaded_picture', Rails.root + 'spec/fixtures/test_picture.jpg')
       click_button 'Add'
       expect(page).to have_content("Title can't be blank")
     end
 
     it 'with long title', js: true do
-      fill_in 'Title', with: 'a' * 31
+      fill_in 'Title of the picture', with: 'a' * 31
       attach_file('uploaded_picture', Rails.root + 'spec/fixtures/test_picture.jpg')
       click_button 'Add'
       expect(page).to have_content('Title is too long (maximum is 30 characters)')
     end
 
     it 'with long description', js: true do
-      fill_in 'Title', with: image_title
-      fill_in 'Description', with: 'a'*301
+      fill_in 'Title of the picture', with: image_title
+      fill_in 'Description of the picture', with: 'a'*301
       attach_file('uploaded_picture', Rails.root + 'spec/fixtures/test_picture.jpg')
       click_button 'Add'
       expect(page).to have_content('Description is too long (maximum is 300 characters)')
     end
 
     it 'without uploading picture', js: true do
-      fill_in 'Title', with: image_title
+      fill_in 'Title of the picture', with: image_title
       click_button 'Add'
       expect(page).to have_content("Picture can't be blank")
     end
@@ -68,17 +68,16 @@ describe 'image_features' do
     }
 
     it 'with valid parameters', js: true do
-      fill_in 'Title', with: new_image_title
-      fill_in 'Description', with: 'my new description'
+      fill_in 'Title of the picture', with: new_image_title
+      fill_in 'Description of the picture', with: 'my new description'
       attach_file('uploaded_picture', Rails.root + 'spec/fixtures/test_picture.jpg')
       click_button 'Update'
       expect(page).to have_content(new_image_title)
-      expect(page).not_to have_content(image_title)
     end
 
     it 'with invalid patameters', js: true do
-      fill_in 'Title', with: ''
-      fill_in 'Description', with: ''
+      fill_in 'Title of the picture', with: ''
+      fill_in 'Description of the picture', with: ''
       click_button 'Update'
       expect(page).to have_content("Title can't be blank")
     end
@@ -93,7 +92,7 @@ describe 'image_features' do
     it 'with click on delete', js: true do
       click_link 'Delete'
       page.driver.browser.switch_to.alert.accept
-      expect(page).not_to have_content('hghgfhf')
+      expect(page).not_to have_content('Image deleted!')
     end
 
   end

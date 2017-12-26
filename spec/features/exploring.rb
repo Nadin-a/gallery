@@ -10,7 +10,8 @@ describe 'Find' do
       visit root_path
       expect(page).to have_content('No images on site')
       login @user
-      expect(page).to have_content('You have not any images. Subscribe on any category or add own image and you will see it here!')
+      expect(page).to have_content('You have not any images.
+      Subscribe on any category or add own image and you will see it here!')
     end
   end
 

@@ -99,6 +99,7 @@ en:
   description: 'Description'
   title_image: 'Title of the picture'
   description_image: 'Description of the picture'
+  images: 'Images: '
 
   new_image_in: 'New image in'
   delete_this_image_tooltip: 'Delete this image'
@@ -118,3 +119,4 @@ en:
 
   languages: 'Language'
   cover: 'Cover'
+  what_new: 'What new'

@@ -1,24 +1,10 @@
-.panel-image img.panel-image-preview {
-  width: 100%;
-  border-radius: 4px 4px 0 0;
+/*opacity*/
+.hover11 figure img {
+  opacity: 1;
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+}
+.hover11 figure:hover img {
+  opacity: .7;
 }
 
-.panel-heading ~ .panel-image img.panel-image-preview {
-  border-radius: 0;
-}
-
-.panel-image ~ .panel-body,
-.panel-image.hide-panel-body ~ .panel-body {
-  overflow: hidden;
-}
-
-.panel-image ~ .panel-footer a {
-  padding: 0 10px;
-  font-size: 1.3em;
-  color: rgb(100, 100, 100);
-}
-
-.panel-image.hide-panel-body ~ .panel-body {
-  height: 0;
-  padding: 0;
-}

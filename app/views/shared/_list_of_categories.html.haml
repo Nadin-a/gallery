@@ -1,14 +1,18 @@
-- @categories.each do |category|
+- categories.each do |category|
   .col-sm-12.col-md-12.col-lg-12.col-xl-12.text-center
     %h2
       = link_to(category.name, category_path(category.id))
   - images = category.images.count <= 3? category.images.all : category.images.first(3)
   - images.each do |image|
     .col-12.text-center.col-sm-4.col-md-4.col-lg-4.col-xl-4
-      = link_to(image_tag(image.picture.preview_thumb.url), category_image_path(image.category, image))
-      %br
+      .hover11.column
+        %figure
+          = link_to(image_tag(image.picture.preview_thumb.url), category_image_path(image.category, image))
       %br
   .col-lg-12
+    .pull-left
+      %br
+      = link_to(t('images')+category.images.count.to_s, category_path(category))
     .pull-right
       %br
         - if user_signed_in?
@@ -18,9 +22,3 @@
           = render 'shared/subscribe_form', category: category
   %br
   %br
-  %br
-.col-sm-12
-  = will_paginate @categories
-
-
-

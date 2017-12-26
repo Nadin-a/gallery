@@ -14,7 +14,7 @@ describe 'image_features' do
   }
 
   describe 'Like and dislike' do
-    scenario 'opened image', js: true do
+    it 'opened image', js: true do
       find('#like').click
       expect(page).to have_content('1')
       find('#like').click

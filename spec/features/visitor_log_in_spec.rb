@@ -13,20 +13,18 @@ describe 'Visitor signs up' do
 
   it 'with invalid email', js: true do
     log_in_with 'invalid_email', @user.password
-
     expect(page).to have_content('Login')
   end
 
   it 'with blank password', js: true do
     log_in_with @user.email, ''
-
     expect(page).to have_content('Login')
   end
 
   it 'and can sign out after login', js: true do
     log_in_with @user.email, @user.password
     click_link 'Sign out'
-    expect(current_path).to eq(root_path)
+    expect(current_path).to eq('/')
     expect(page).to have_content('Login')
   end
 

@@ -52,9 +52,9 @@ end
                   image_id: Random.rand(1..15))
 end
 
-15.times do |n|
-  Like.create!(user_id: Random.rand(1..3), image_id: n+1)
-end
+# 15.times do |n|
+#   Like.create!(user_id: Random.rand(1..3), image_id: n+1)
+# end
 
 
 users = User.all
