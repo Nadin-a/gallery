@@ -4,8 +4,8 @@
 }
 
 .btn-primary.outline {
-  border: 2px solid #00b6eb;
-  color: #00a7de;
+  border: 2px solid $outline-border-color;
+  color: $outline-color;
 }
 
 .btn-primary.outline:hover,
@@ -13,13 +13,13 @@
 .btn-primary.outline:active,
 .btn-primary.outline.active,
 .open > .dropdown-toggle.btn-primary {
-  border-color: #35afd7;
-  color: #37b6df;
+  border-color: $outline-hover-border-color;
+  color: $outline-hover-color;
 }
 
 .btn-primary.outline:active,
 .btn-primary.outline.active {
-  border-color: #008bba;
-  color: #008cb8;
+  border-color: $outline-active-border-color;
   box-shadow: none;
+  color: $outline-active-color;
 }
