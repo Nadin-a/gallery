@@ -2,9 +2,7 @@
 
 require 'rails_helper'
 RSpec.describe AdminUser, type: :model do
-  subject(:admin) {
-    FactoryBot.build(:admin_user)
-  }
+  subject(:admin) { FactoryBot.build(:admin_user) }
 
   it 'has a valid factory' do
     expect(FactoryBot.build(:admin_user)).to be_valid

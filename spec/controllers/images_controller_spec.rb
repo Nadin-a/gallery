@@ -14,12 +14,12 @@ RSpec.describe ImagesController, type: :controller do
 
   describe 'GET #show' do
     it 'show image' do
-      get :show, params: {category_id: category, id: image.id}
+      get :show, params: { category_id: category, id: image.id }
       expect(assigns(:image)).to eq(image)
     end
 
     it 'render show' do
-      get :show, params: {category_id: category, id: image.id}
+      get :show, params: { category_id: category, id: image.id }
       expect(response).to render_template :show
     end
 
@@ -31,14 +31,20 @@ RSpec.describe ImagesController, type: :controller do
         image = FactoryBot.build(:random_image)
         p image
         expect {
-          post :create, params: {category_id: category, image: image.attributes}
+          post :create, params: { category_id: category, image: image.attributes }
         }.to change(Image, :count).by(1)
       end
 
       it 'redirect to a new image' do
         image = FactoryBot.build(:random_image)
-        post :create, params: {category_id: category, image: image.attributes}
+        post :create, params: { category_id: category, image: image.attributes }
         expect(response.status).to eq(302)
+      end
+
+
+      it 'show success message' do
+        image = FactoryBot.build(:random_image)
+        post :create, params: { category_id: category, image: image.attributes }
         expect(flash[:success]).not_to be_nil
       end
     end
@@ -46,16 +52,19 @@ RSpec.describe ImagesController, type: :controller do
     context 'with invalid attributes' do # add redirect with login
       it 'does not save the new image' do
         expect {
-          post :create, params: {category_id: category, image: invalid_image.attributes}
+          post :create, params: { category_id: category, image: invalid_image.attributes }
         }.not_to change(Image, :count)
+      end
+      it 'show error message' do
+        post :create, params: { category_id: category, image: invalid_image.attributes }
         expect(flash[:error]).not_to be_nil
       end
     end
   end
 
   describe 'PUT update' do
-    let(:image_params) { {id: image.id, category_id: category, image: {title: 'new_image_title'}} }
-    let(:invalid_image_params) { {id: image.id, category_id: category, image: {title: ''}} }
+    let(:image_params) { { id: image.id, category_id: category, image: { title: 'new_image_title' } } }
+    let(:invalid_image_params) { { id: image.id, category_id: category, image: { title: '' } } }
 
     context 'valid attributes' do
       it 'located the requested image' do
@@ -67,6 +76,10 @@ RSpec.describe ImagesController, type: :controller do
       it 'redirects to the updated image' do
         put :update, params: image_params
         expect(response).to redirect_to(category_image_path(category, image))
+      end
+
+      it 'show successful message' do
+        put :update, params: image_params
         expect(flash[:success]).not_to be_nil
       end
     end
@@ -75,12 +88,15 @@ RSpec.describe ImagesController, type: :controller do
       it 'can`t update category' do
         put :update, params: invalid_image_params
         expect(response).not_to be_success
-        expect(flash[:error]).not_to be_nil
       end
 
       it 'redirect to show' do
         put :update, params: invalid_image_params
         expect(response).to redirect_to(category_image_path(category, image))
+      end
+
+      it 'show error message' do
+        put :update, params: invalid_image_params
         expect(flash[:error]).not_to be_nil
       end
     end
@@ -89,19 +105,23 @@ RSpec.describe ImagesController, type: :controller do
   describe 'DELETE destroy' do
     it 'delete the image' do
       expect {
-        delete :destroy, params: {category_id: category, id: image.id}
+        delete :destroy, params: { category_id: category, id: image.id }
       }.to change(Image, :count).by(-1)
     end
 
     it 'redirects to category' do
-      delete :destroy, params: {category_id: category, id: image.id}
+      delete :destroy, params: { category_id: category, id: image.id }
       expect(response).to redirect_to category
+    end
+
+    it 'show successful message' do
+      delete :destroy, params: { category_id: category, id: image.id }
       expect(flash[:success]).not_to be_nil
     end
 
     it 'delete with comments and likes' do
       expect {
-        delete :destroy, params: {category_id: category, id: image.id}
+        delete :destroy, params: { category_id: category, id: image.id }
       }.to change(Comment, :count).by(-1) and change(Like, :count).by(-1)
     end
   end

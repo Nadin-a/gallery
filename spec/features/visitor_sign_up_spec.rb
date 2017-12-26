@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-describe 'Visitor signs up' do
-
-  let!(:email)  { Faker::Internet.safe_email }
+describe 'Visitor signs up', type: :feature do
+  let!(:email) { Faker::Internet.safe_email }
   let!(:name) { Faker::Name.first_name }
 
   it 'with valid parameters', js: true do
@@ -17,7 +16,6 @@ describe 'Visitor signs up' do
     sign_up_with '', 'name', 'password', 'password'
     expect(page).to have_content("Email can't be blank")
   end
-
 
   it 'with invalid name' do
     sign_up_with email, '', 'password', 'password'

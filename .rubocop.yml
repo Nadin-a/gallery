@@ -9,7 +9,7 @@ MethodLength:
 LineLength:
    Max: 120
 BlockLength:
-   Max: 50
+   Max: 130
 
 Documentation:
   Enabled: false

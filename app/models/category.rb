@@ -30,5 +30,4 @@ class Category < ApplicationRecord
     return unless cover.size > 10.megabytes
     errors.add(:cover, 'should be less than 10MB')
   end
-
 end

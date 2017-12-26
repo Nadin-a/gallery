@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_locale
-      I18n.locale = params[:locale] || I18n.default_locale
+    I18n.locale = params[:locale] || I18n.default_locale
   end
 
   protected
@@ -31,18 +31,18 @@ class ApplicationController < ActionController::Base
 
   def track_action
     action_type =
-      case "#{controller_path}##{action_name}"
-      when 'comments#create'
-        'comment'
-      when 'likes#create'
-        'like'
-      when 'likes#destroy'
-        'unlike'
-      when 'devise/sessions#create'
-        'user sign in'
-      else
-        'navigation'
-      end
+    case "#{controller_path}##{action_name}"
+    when 'comments#create'
+      'comment'
+    when 'likes#create'
+      'like'
+    when 'likes#destroy'
+      'unlike'
+    when 'devise/sessions#create'
+      'user sign in'
+    else
+      'navigation'
+    end
     ahoy.track request.original_url.to_s, params: request.path_parameters, action_type: action_type if user_signed_in?
   end
 end

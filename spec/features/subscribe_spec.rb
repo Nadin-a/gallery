@@ -1,25 +1,24 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-describe 'Subscribtion' do
-  before(:all) {
+describe 'Subscribtion', type: :feature do
+  before(:all) do
     @user = FactoryBot.create(:random_user)
     @category = FactoryBot.create(:random_category)
+  end
 
-  }
-
-  before {
+  before do
     login(@user)
     visit category_path(@category)
-  }
+  end
 
   describe 'Subscribe and unsubscribe' do
-    scenario 'opened image', js: true do
+    it 'subscribe category', js: true do
       find('#subscribe').click
       expect(page).to have_content('Followers: 1')
-      visit favorite_categories_path
-      expect(page).to have_content(@category.name)
-      visit category_path(@category)
+    end
+
+    it 'unsubscribe category', js: true do
       find('#subscribe').click
       expect(page).to have_content('Followers: 0')
     end

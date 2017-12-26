@@ -1,14 +1,15 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-describe 'Visitor signs up' do
+describe 'Visitor signs up', type: :feature do
   before(:all) do
     @user = FactoryBot.create(:random_user)
   end
 
   it 'with valid email and password', js: true do
     log_in_with @user.email, @user.password
-    expect(page).to have_content 'You have not any images. Subscribe on any category or add own image and you will see it here!'
+    expect(page).to have_content 'You have not any images. Subscribe on any category
+    or add own image and you will see it here!'
   end
 
   it 'with invalid email', js: true do
@@ -24,8 +25,7 @@ describe 'Visitor signs up' do
   it 'and can sign out after login', js: true do
     log_in_with @user.email, @user.password
     click_link 'Sign out'
-    expect(current_path).to eq('/')
-    expect(page).to have_content('Login')
+    expect(page).to have_current_path('/')
   end
 
   def log_in_with(email, password)

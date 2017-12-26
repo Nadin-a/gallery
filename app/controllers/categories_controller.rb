@@ -17,11 +17,9 @@ class CategoriesController < ApplicationController
     @images = @category.images.paginate(page: params[:page], per_page: 5).order(created_at: :desc)
   end
 
-  def new;
-  end
+  def new; end
 
-  def edit;
-  end
+  def edit; end
 
   def create
     @category = current_user.owned_categories.build(categories_params)
@@ -83,7 +81,6 @@ class CategoriesController < ApplicationController
 
   private
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def categories_params
     params.require(:category).permit(:name, :cover)
   end
@@ -97,5 +94,4 @@ class CategoriesController < ApplicationController
     @category = Category.new
     authorize @category
   end
-
 end

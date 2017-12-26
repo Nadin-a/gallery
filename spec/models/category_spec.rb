@@ -3,9 +3,7 @@
 require 'rails_helper'
 
 describe Category do
-  subject(:category) {
-    FactoryBot.build(:category)
-  }
+  subject(:category) { FactoryBot.build(:category) }
 
   it 'has a valid factory' do
     expect(FactoryBot.build(:category)).to be_valid
@@ -37,15 +35,15 @@ describe Category do
 
   describe 'Associations' do
     it { is_expected.to belong_to(:owner).with_foreign_key(:owner_id) }
-    it { is_expected.to have_and_belong_to_many(:users) }
-    it { is_expected.to have_many(:images) }
+    it { is_expected.to have_and_belong_to_many :users }
+    it { is_expected.to have_many :images }
     it { is_expected.to have_db_index('name') }
     it { is_expected.to have_db_index('owner_id') }
   end
 
   describe 'Validations' do
-    it { is_expected.to validate_presence_of(:name) }
-    it { is_expected.to validate_presence_of(:owner) }
-    it { is_expected.to validate_length_of(:name) }
+    it { is_expected.to validate_presence_of :name }
+    it { is_expected.to validate_presence_of :owner }
+    it { is_expected.to validate_length_of :name }
   end
 end

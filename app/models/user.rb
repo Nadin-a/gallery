@@ -27,11 +27,11 @@ class User < ApplicationRecord
   end
 
   def send_email_about_subscribtion
-    SendingEmailWhenSubscribeJob.set(queue: :mailers).perform_later self.id
+    SendingEmailWhenSubscribeJob.set(queue: :mailers).perform_later id
   end
 
   def send_email_about_new_image(image)
-    SendEmailWhenNewImageJob.set(queue: :mailers).perform_later self.id, image
+    SendEmailWhenNewImageJob.set(queue: :mailers).perform_later id, image
   end
 
   # def self.from_omniauth(auth)
