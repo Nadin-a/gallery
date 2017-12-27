@@ -2,15 +2,14 @@
 
 require 'spec_helper'
 describe 'image_features', type: :feature do
-  before(:all) do
-    @user = FactoryBot.create(:random_user)
-    @category = FactoryBot.create(:random_category, owner: @user)
-    @image = FactoryBot.create(:random_image, category: @category)
-  end
+
+  let!(:user) { FactoryBot.create(:random_user) }
+  let!(:category) { FactoryBot.create(:random_category, owner: user) }
+  let!(:image) { FactoryBot.create(:random_image, category: category) }
 
   before do
-    login(@user)
-    visit category_image_path(@category, @image)
+    login(user)
+    visit category_image_path(category, image)
   end
 
   comment = Faker::Lorem.sentence

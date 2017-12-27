@@ -98,7 +98,7 @@ RSpec.describe CategoriesController, type: :controller do
     let(:category_params) { { id: category.id, category: { name: 'Houses' } } }
     let(:invalid_category_params) { { id: category.id, category: { name: '' } } }
 
-    context 'valid attributes' do
+    context 'with valid attributes' do
       it 'located the requested category' do
         expect {
           put :update, params: category_params
@@ -116,7 +116,7 @@ RSpec.describe CategoriesController, type: :controller do
       end
     end
 
-    context 'invalid attributes' do
+    context 'with invalid attributes' do
       it 'can`t update category' do
         put :update, params: invalid_category_params
         expect(response).not_to be_success
@@ -144,7 +144,6 @@ RSpec.describe CategoriesController, type: :controller do
     it 'redirects to owned_categories' do
       delete :destroy, params: { id: category.id }
       expect(response).to redirect_to owned_categories_path
-      expect(flash[:success]).not_to be_nil
     end
 
     it 'show successful message' do

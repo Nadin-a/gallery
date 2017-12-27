@@ -28,7 +28,7 @@ RSpec.describe ImagesController, type: :controller do
   describe 'POST create' do
     context 'with valid attributes' do
       it 'creates a new image' do
-        image = FactoryBot.build(:random_image)
+        image = FactoryBot.build(:image)
         p image
         expect {
           post :create, params: { category_id: category, image: image.attributes }
@@ -36,14 +36,14 @@ RSpec.describe ImagesController, type: :controller do
       end
 
       it 'redirect to a new image' do
-        image = FactoryBot.build(:random_image)
+        image = FactoryBot.build(:image)
         post :create, params: { category_id: category, image: image.attributes }
         expect(response.status).to eq(302)
       end
 
 
       it 'show success message' do
-        image = FactoryBot.build(:random_image)
+        image = FactoryBot.build(:image)
         post :create, params: { category_id: category, image: image.attributes }
         expect(flash[:success]).not_to be_nil
       end
@@ -122,7 +122,7 @@ RSpec.describe ImagesController, type: :controller do
     it 'delete with comments and likes' do
       expect {
         delete :destroy, params: { category_id: category, id: image.id }
-      }.to change(Comment, :count).by(-1) and change(Like, :count).by(-1)
+      }.to change(Comment, :count).by(-1) && change(Like, :count).by(-1)
     end
   end
 end

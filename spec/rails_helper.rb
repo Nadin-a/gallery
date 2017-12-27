@@ -10,7 +10,7 @@ require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 # sidekiq
 require 'sidekiq/testing'
-Sidekiq::Testing.fake!  # by default it is fake
+Sidekiq::Testing.fake! # by default it is fake
 Sidekiq::Testing.inline!
 Sidekiq::Testing.disable!
 # Requires supporting ruby files with custom matchers and macros, etc, in

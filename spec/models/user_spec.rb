@@ -5,7 +5,6 @@ require 'rails_helper'
 describe User do
   subject(:user) { FactoryBot.build(:user) }
 
-
   it 'has a valid factory' do
     expect(FactoryBot.build(:user)).to be_valid
   end
@@ -49,7 +48,6 @@ describe User do
     check_feed = user.feed == user.categories + user.owned_categories
     expect(check_feed).to be true
   end
-
 
   describe 'Associations' do
     it { is_expected.to have_many(:owned_categories).with_foreign_key(:owner_id) }

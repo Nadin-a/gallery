@@ -2,28 +2,27 @@
 
 require 'spec_helper'
 describe 'Visitor signs up', type: :feature do
-  before(:all) do
-    @user = FactoryBot.create(:random_user)
-  end
+
+  let!(:user) { FactoryBot.create(:random_user) }
 
   it 'with valid email and password', js: true do
-    log_in_with @user.email, @user.password
+    log_in_with user.email, user.password
     expect(page).to have_content 'You have not any images. Subscribe on any category
     or add own image and you will see it here!'
   end
 
   it 'with invalid email', js: true do
-    log_in_with 'invalid_email', @user.password
+    log_in_with 'invalid_email', user.password
     expect(page).to have_content('Login')
   end
 
   it 'with blank password', js: true do
-    log_in_with @user.email, ''
+    log_in_with user.email, ''
     expect(page).to have_content('Login')
   end
 
   it 'and can sign out after login', js: true do
-    log_in_with @user.email, @user.password
+    log_in_with user.email, user.password
     click_link 'Sign out'
     expect(page).to have_current_path(root_path)
   end

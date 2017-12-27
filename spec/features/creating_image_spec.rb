@@ -2,15 +2,15 @@
 
 require 'spec_helper'
 describe 'image_features', type: :feature do
-  before(:all) do
-    @user = FactoryBot.create(:random_user)
-    @category = FactoryBot.create(:fake_category, owner: @user)
-    @image = FactoryBot.create(:random_image, category: @category)
-  end
+
+  let!(:user) { FactoryBot.create(:random_user) }
+  let!(:category) { FactoryBot.create(:fake_category, owner: user) }
+  let!(:image) { FactoryBot.create(:random_image, category: category) }
+
 
   before do
-    login(@user)
-    visit category_path(@category)
+    login(user)
+    visit category_path(category)
     click_link 'Add image'
   end
 
@@ -26,10 +26,10 @@ describe 'image_features', type: :feature do
       expect(page).to have_css("img[src*='test_picture.jpg']")
     end
 
-    it 'on show page', js: true do
-      visit category_image_path(@category, Image.first)
-      expect(page).to have_css("img[src*='test_picture.jpg']")
-    end
+    # it 'on show page', js: true do
+    #   visit category_image_path(category, image)
+    #   expect(page).to have_css("img[src*='test_picture.jpg']")
+    # end
 
     it 'without title', js: true do
       fill_in 'Title of the picture', with: ''
@@ -62,7 +62,7 @@ describe 'image_features', type: :feature do
 
   describe 'Updating image' do
     before do
-      visit category_image_path(@category, @image)
+      visit category_image_path(category, image)
       click_link 'Update'
     end
 
@@ -84,14 +84,12 @@ describe 'image_features', type: :feature do
 
   describe 'Deleting image' do
 
-    before do
-      visit category_image_path(@category, @image)
-    end
+    before { visit category_image_path(category, image) }
 
     it 'with click on delete', js: true do
       click_link 'Delete'
       page.driver.browser.switch_to.alert.accept
-      expect(page).not_to have_content('Image deleted!')
+      expect(page).to have_content('Image deleted')
     end
   end
 end
