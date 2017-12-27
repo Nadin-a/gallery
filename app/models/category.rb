@@ -7,7 +7,7 @@ class Category < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 20 }, uniqueness: true
   validates :owner, presence: true
-  validate  :cover_size
+  validate :cover_size
 
   mount_uploader :cover, CoverUploader
 
@@ -16,8 +16,17 @@ class Category < ApplicationRecord
   end
 
   def self.ordered_by_popularity
-    unscoped.select('categories.*, count(images.id) AS images_count').joins(:images)
-    .group(:id).order('images_count desc').limit(5)
+    # unscoped.select('categories.*, count(images.id) AS images_count').joins(:images).group(:id).order('images_count desc').limit(5)
+    popular_categories = Category.all.sort_by do |category|
+      count = 0
+      count += category.images.size
+      category.images.each do |imgage|
+        count += imgage.comments.size
+        count += imgage.likes.size
+      end
+      count
+    end
+    popular_categories.last(5).reverse
   end
 
   def subscriber?(user)

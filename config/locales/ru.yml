@@ -107,6 +107,11 @@ ru:
   please_ignore_change_password: "Если это были не вы, игнорируйте это письмо."
   password_wont_change: "Ваш пароль не будет изменён, пока вы не перейдёте по ссылке и не заполните форму."
 
+  recent_categories: 'Последние категории'
+  recent_comments: 'Последние комментарии'
+  recent_images: 'Последние изображения'
+  user_comment: 'Комментарии'
+
   activerecord:
     errors:
       messages:

@@ -134,3 +134,8 @@ en:
   change_password: 'Change my password'
   please_ignore_change_password: "If you didn't request this, please ignore this email."
   password_wont_change: "Your password won't change until you access the link above and create a new one."
+
+  recent_categories: 'Recent categories'
+  recent_comments: 'Recent comments'
+  recent_images: 'Recent images'
+  user_comment: 'Comments of users'

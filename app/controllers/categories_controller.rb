@@ -9,7 +9,6 @@ class CategoriesController < ApplicationController
     @categories = Category.all.paginate(page: params[:page], per_page: 15)
     @popular_categories = Category.ordered_by_popularity
     authorize @categories
-    authorize @popular_categories
   end
 
   def show

@@ -28,7 +28,7 @@
       %i
         =t('leave_blank')
       %br/
-      = f.password_field :password, autocomplete: 'off', class:'form-control', placeholder:t('password')
+      = f.password_field :password, autocomplete: 'off', value: '', class:'form-control', placeholder:t('password')
       - if @minimum_password_length
         %br/
         %em

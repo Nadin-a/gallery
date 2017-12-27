@@ -12,7 +12,7 @@ ActiveAdmin.register_page 'Dashboard' do
 
     columns do
       column do
-        panel 'Recent commentaries' do
+        panel t('recent_comments') do
           ul do
             Comment.first(5).map do |comment|
               li comment.content
@@ -23,7 +23,7 @@ ActiveAdmin.register_page 'Dashboard' do
       end
 
       column do
-        panel 'Recent categories' do
+        panel t('recent_categories') do
           ul do
             Category.first(5).map do |category|
               li link_to(category.name, category_path(category))
@@ -33,7 +33,7 @@ ActiveAdmin.register_page 'Dashboard' do
       end
     end
 
-    panel 'Recent images' do
+    panel t('recent_images') do
       ul do
         Image.first(10).map do |image|
           span link_to(image_tag(image.picture.small_thumb.url), category_image_path(image.category, image))
