@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :commented_images, through: :comments, source: :image
   has_many :likes, dependent: :destroy, class_name: 'Like'
   has_many :liked_images, through: :likes, source: :image
+  has_many :notifications, foreign_key: :recipient
 
   mount_uploader :avatar, AvatarUploader
 

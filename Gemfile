@@ -23,6 +23,7 @@ gem 'recaptcha', require: 'recaptcha/rails'
 gem 'geckodriver-helper'
 gem 'devise-i18n'
 gem 'sidekiq'
+gem 'redis', '~> 3.3'
 gem "devise-async"
 gem 'redis-namespace'
 gem 'sidekiq_mailer'

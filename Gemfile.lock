@@ -472,7 +472,7 @@ GEM
       trollop (~> 2.1)
     recaptcha (4.6.2)
       json
-    redis (4.0.1)
+    redis (3.3.5)
     redis-namespace (1.6.0)
       redis (>= 3.0.4)
     referer-parser (0.3.0)
@@ -619,6 +619,7 @@ DEPENDENCIES
   rails (~> 5.1.4)
   rails-controller-testing
   recaptcha
+  redis (~> 3.3)
   redis-namespace
   rspec-rails
   rubocop

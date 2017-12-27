@@ -17,6 +17,7 @@
         .container
           .row.well
             .col-sm-12
+              #notifications
               = render partial: 'shared/flash_messages'
               = yield
     -else

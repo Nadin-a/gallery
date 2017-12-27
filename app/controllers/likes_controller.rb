@@ -10,6 +10,7 @@ class LikesController < ApplicationController
     @like = @image.likes.build
     authorize @like
     current_user.likes << @like
+    Notification.create(recipient: current_user, user: @like.user, action: 'like', notifiable: current_user)
     return unless @like.save
     respond_to do |format|
       format.html { redirect_to @image }
