@@ -5,12 +5,12 @@ class LikesChannel < ApplicationCable::Channel
   def subscribed
     # image = Image.find(params[:id])
     # stream_for image
-    p '===========1=LikesChannel'
-    stream_from "likes_#{current_user.id}"
+   # stream_from "likes_#{current_user.id}"
+   # stream_for current_user
+    stream_from 'image'
   end
 
   def unsubscribed
-    p '==========1==LikesChannelUNSUBSCRIBED'
     stop_all_streams
   end
 end

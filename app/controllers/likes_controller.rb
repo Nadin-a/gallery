@@ -5,6 +5,7 @@ class LikesController < ApplicationController
   before_action :set_image
   before_action :set_like, only: :destroy
   before_action :authenticate_user!, only: %i[create destroy]
+  after_action -> { LikeJob.perform_later(@image.likes.count, current_user) }
 
   def create
     @like = @image.likes.build
@@ -12,7 +13,6 @@ class LikesController < ApplicationController
     current_user.likes << @like
     return unless @like.save
     respond_to do |format|
-      LikeJob.perform_later(@image.likes.count, current_user)
       format.html { redirect_to @image }
       format.json { render @image, status: :created }
     end
@@ -21,10 +21,10 @@ class LikesController < ApplicationController
   def destroy
     return unless @like.destroy
     respond_to do |format|
-      LikeJob.perform_later(@image.likes.count, current_user)
       format.html { redirect_to @image }
       format.json { render @image, status: :created }
     end
+    LikeJob.perform_later(@image.likes.count, current_user)
   end
 
   private

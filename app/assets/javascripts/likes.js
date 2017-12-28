@@ -27,7 +27,7 @@ $(document).ready(function () {
         else {
           $btn.unlike(image);
         }
-        $like_label.html(image.likes)
+        //$like_label.html(image.likes)
       },
       error: function (error) {
         alert('Error. Please try again ')
