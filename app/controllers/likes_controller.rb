@@ -10,9 +10,9 @@ class LikesController < ApplicationController
     @like = @image.likes.build
     authorize @like
     current_user.likes << @like
-    Notification.create(recipient: current_user, user: @like.user, action: 'like', notifiable: current_user)
     return unless @like.save
     respond_to do |format|
+      LikeJob.perform_later(@image.likes.count, current_user)
       format.html { redirect_to @image }
       format.json { render @image, status: :created }
     end
@@ -21,6 +21,7 @@ class LikesController < ApplicationController
   def destroy
     return unless @like.destroy
     respond_to do |format|
+      LikeJob.perform_later(@image.likes.count, current_user)
       format.html { redirect_to @image }
       format.json { render @image, status: :created }
     end

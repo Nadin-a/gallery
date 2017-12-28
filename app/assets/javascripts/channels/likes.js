@@ -1,4 +1,4 @@
-App.notifications = App.cable.subscriptions.create('NotificationsChannel', {
+App.likes = App.cable.subscriptions.create('LikesChannel', {
   connected: function() {
     // Called when the subscription is ready for use on the server
   },
@@ -9,8 +9,6 @@ App.notifications = App.cable.subscriptions.create('NotificationsChannel', {
 
   received: function(data) {
     // Called when there's incoming data on the websocket for this channel
-    //$('#notifications').prepend(data.html);
-    alert(data);
-   // $like_label.html(image.likes)
+    $like_label.html(data.count);
   }
 });
