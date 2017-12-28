@@ -10,8 +10,8 @@ class LikesController < ApplicationController
     @like = @image.likes.build
     authorize @like
     current_user.likes << @like
-    LikeJob.perform_later(category_image_path(@category, @image),@image.likes.count, current_user)
     return unless @like.save
+    LikeJob.perform_later(category_image_path(@category, @image),@image.likes.count)
     respond_to do |format|
       format.html { redirect_to @image }
       format.json { render @image, status: :created }
@@ -20,12 +20,11 @@ class LikesController < ApplicationController
 
   def destroy
     return unless @like.destroy
-    LikeJob.perform_later(category_image_path(@category, @image),@image.likes.count, current_user)
+    LikeJob.perform_later(category_image_path(@category, @image),@image.likes.count)
     respond_to do |format|
       format.html { redirect_to @image }
       format.json { render @image, status: :created }
     end
-    LikeJob.perform_later(@image.likes.count, current_user)
   end
 
   private

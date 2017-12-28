@@ -36,7 +36,7 @@ ru:
   created_by: 'Автор'
   created_at: 'Создана'
   uploaded: 'Загружена'
-  ago: 'назад'
+  ago: ' назад'
   followers: 'Подписчики:'
   add_image: 'Добавить картинку'
   you_sure: 'Вы уверены?'

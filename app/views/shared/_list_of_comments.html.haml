@@ -2,8 +2,9 @@
   %br
     %b
       = User.find(comment.user_id).name
+      = ':'
       = image_tag(User.find(comment.user_id).avatar) if User.find(comment.user_id).avatar?
-      =t('say')
+      -#=t('say')
   %br
   = comment.content
   %br
@@ -14,6 +15,7 @@
     - if user_signed_in?
       - if current_user.admin?
         = link_to(t('delete'), category_image_comment_path(comment.image.category, comment.image, comment),  method: :delete, data: { confirm: t('you_sure'), toggle:'tooltip',placement:'left' }, title: t('delete_this_comment_tooltip'))
+#new_comments
   %br
 %br
 = will_paginate @comments
