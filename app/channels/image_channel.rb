@@ -1,5 +1,5 @@
 # Be sure to restart your server when you modify this file. Action Cable runs in a loop that does not support auto reloading.
-class LikesChannel < ApplicationCable::Channel
+class ImageChannel < ApplicationCable::Channel
   # Вызывается, когда потребитель успешно
   # стал подписчиком этого канала
   def subscribed
