@@ -26,7 +26,7 @@ describe Category do
   it 'is valid with valid attributes' do
     expect(category).to be_valid
   end
-  it 'can check own subscribers' do
+  it '#subscriber?' do
     user = FactoryBot.build(:user)
     user.categories << category
     check = category.subscriber? user

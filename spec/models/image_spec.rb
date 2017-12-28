@@ -31,7 +31,7 @@ describe Image do
   it 'is valid with valid attributes' do
     expect(image).to be_valid
   end
-  it 'can check who like' do
+  it '#liked_by?' do
     user = FactoryBot.build(:user)
     user.liked_images << image
     check = image.liked_by? user

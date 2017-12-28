@@ -66,7 +66,7 @@ RSpec.describe ImagesController, type: :controller do
     let(:image_params) { { id: image.id, category_id: category, image: { title: 'new_image_title' } } }
     let(:invalid_image_params) { { id: image.id, category_id: category, image: { title: '' } } }
 
-    context 'valid attributes' do
+    context 'with valid attributes' do
       it 'located the requested image' do
         expect {
           put :update, params: image_params
@@ -84,7 +84,7 @@ RSpec.describe ImagesController, type: :controller do
       end
     end
 
-    context 'invalid attributes' do
+    context 'with invalid attributes' do
       it 'can`t update category' do
         put :update, params: invalid_image_params
         expect(response).not_to be_success

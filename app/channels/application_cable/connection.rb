@@ -11,7 +11,8 @@ module ApplicationCable
     protected
 
     def find_verfied_user
-      if current_user = User.find_by(id: cookies.signed['user.id'])
+      current_user = User.find_by(id: cookies.signed['user.id'])
+      if current_user.present?
         current_user
       else
         reject_unauthorized_connection

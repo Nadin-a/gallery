@@ -11,8 +11,10 @@ class CommentsController < ApplicationController
     @comment = @image.comments.new(comment_params)
     authorize @comment
     current_user.comments << @comment
+    unless Rails.env.test?
     CommentJob.perform_later(current_user, category_image_path(@category, @image), @comment,
       @comment.user.name, time_ago_in_words(@comment.created_at) + t('ago'))
+    end
     if @comment.save && verify_recaptcha(model: @comment)
       flash[:success] = t(:comment_created)
     else

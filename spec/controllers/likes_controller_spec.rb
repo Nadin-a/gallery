@@ -20,7 +20,7 @@ RSpec.describe LikesController, type: :controller do
   end
 
   describe 'DELETE destroy' do
-    it 'unlike' do
+    it 'dislike' do
       expect {
         delete :destroy, params: { category_id: category, image_id: image.id, id: like }, format: :json
       }.to change(Like, :count).by(-1)

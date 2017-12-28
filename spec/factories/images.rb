@@ -6,7 +6,7 @@ FactoryBot.define do
     description 'some description'
     picture { Rack::Test::UploadedFile.new(Rails.root.join('spec', 'fixtures', 'test_picture.jpg'), 'image/jpeg') }
     # remote_picture_url Faker::Avatar.image
-    category
+    category { FactoryBot.build(:category) }
 
     factory :random_image do
       title Faker::Name.first_name

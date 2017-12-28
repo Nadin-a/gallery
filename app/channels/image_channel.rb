@@ -1,7 +1,7 @@
+# frozen_string_literal: true
+
 # Be sure to restart your server when you modify this file. Action Cable runs in a loop that does not support auto reloading.
 class ImageChannel < ApplicationCable::Channel
-  # Вызывается, когда потребитель успешно
-  # стал подписчиком этого канала
   def subscribed
     # image = Image.find(params[:id])
     # stream_for image

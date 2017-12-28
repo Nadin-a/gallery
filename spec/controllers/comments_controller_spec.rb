@@ -34,7 +34,7 @@ RSpec.describe CommentsController, type: :controller do
       end
     end
 
-    context 'invalid attributes' do
+    context 'with invalid attributes' do
       it 'does not save with invalid attributes' do
         expect {
           post :create, params: { category_id: category, image_id: image, comment: invalid_comment.attributes }
