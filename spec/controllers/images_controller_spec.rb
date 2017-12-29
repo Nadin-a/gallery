@@ -22,7 +22,6 @@ RSpec.describe ImagesController, type: :controller do
       get :show, params: { category_id: category, id: image.id }
       expect(response).to render_template :show
     end
-
   end
 
   describe 'POST create' do
@@ -30,9 +29,10 @@ RSpec.describe ImagesController, type: :controller do
       it 'creates a new image' do
         image = FactoryBot.build(:image)
         p image
-        expect {
+        expected = expect do
           post :create, params: { category_id: category, image: image.attributes }
-        }.to change(Image, :count).by(1)
+        end
+        expected.to change(Image, :count).by(1)
       end
 
       it 'redirect to a new image' do
@@ -51,9 +51,10 @@ RSpec.describe ImagesController, type: :controller do
 
     context 'with invalid attributes' do # add redirect with login
       it 'does not save the new image' do
-        expect {
+        expected = expect do
           post :create, params: { category_id: category, image: invalid_image.attributes }
-        }.not_to change(Image, :count)
+        end
+        expected.not_to change(Image, :count)
       end
       it 'show error message' do
         post :create, params: { category_id: category, image: invalid_image.attributes }
@@ -68,9 +69,8 @@ RSpec.describe ImagesController, type: :controller do
 
     context 'with valid attributes' do
       it 'located the requested image' do
-        expect {
-          put :update, params: image_params
-        }.to change { image.reload.title }.from('title').to('new_image_title')
+        expected = expect { put :update, params: image_params }
+        expected.to change { image.reload.title }.from('title').to('new_image_title')
       end
 
       it 'redirects to the updated image' do
@@ -104,9 +104,10 @@ RSpec.describe ImagesController, type: :controller do
 
   describe 'DELETE destroy' do
     it 'delete the image' do
-      expect {
+      expected = expect do
         delete :destroy, params: { category_id: category, id: image.id }
-      }.to change(Image, :count).by(-1)
+      end
+      expected.to change(Image, :count).by(-1)
     end
 
     it 'redirects to category' do
@@ -120,9 +121,8 @@ RSpec.describe ImagesController, type: :controller do
     end
 
     it 'delete with comments and likes' do
-      expect {
-        delete :destroy, params: { category_id: category, id: image.id }
-      }.to change(Comment, :count).by(-1) && change(Like, :count).by(-1)
+      expected = expect { delete :destroy, params: { category_id: category, id: image.id } }
+      expected.to change(Comment, :count).by(-1) && change(Like, :count).by(-1)
     end
   end
 end

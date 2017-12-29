@@ -18,6 +18,5 @@ FactoryBot.define do
       email { Faker::Internet.safe_email }
       admin true
     end
-
   end
 end

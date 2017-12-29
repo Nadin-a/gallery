@@ -3,6 +3,7 @@
 require 'spec_helper'
 describe 'Find', type: :feature do
   let!(:user) { FactoryBot.create(:random_user) }
+
   before { login(user) }
 
   describe 'on main page' do

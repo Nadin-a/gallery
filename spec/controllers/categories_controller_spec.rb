@@ -48,9 +48,10 @@ RSpec.describe CategoriesController, type: :controller do
     context 'with valid attributes' do
       it 'creates a new category' do
         category = FactoryBot.build(:random_category)
-        expect {
+        expected = expect do
           post :create, params: { category: category.attributes }
-        }.to change(Category, :count).by(1)
+        end
+        expected.to change(Category, :count).by(1)
       end
 
       it 'redirect to a new category' do
@@ -69,9 +70,10 @@ RSpec.describe CategoriesController, type: :controller do
 
     context 'with invalid attributes' do
       it 'does not save the new category' do
-        expect {
+        expected = expect do
           post :create, params: { category: uncorrect_category.attributes }
-        }.not_to change(Category, :count)
+        end
+        expected.not_to change(Category, :count)
       end
 
       it 'does not save the new category and show error message' do
@@ -100,9 +102,8 @@ RSpec.describe CategoriesController, type: :controller do
 
     context 'with valid attributes' do
       it 'located the requested category' do
-        expect {
-          put :update, params: category_params
-        }.to change { category.reload.name }.from('Cars').to('Houses')
+        expected = expect { put :update, params: category_params }
+        expected.to change { category.reload.name }.from('Cars').to('Houses')
       end
 
       it 'redirects to the updated category' do
@@ -136,9 +137,8 @@ RSpec.describe CategoriesController, type: :controller do
 
   describe 'DELETE destroy' do
     it 'delete the category' do
-      expect {
-        delete :destroy, params: { id: category.id }
-      }.to change(Category, :count).by(-1)
+      expected = expect { delete :destroy, params: { id: category.id } }
+      expected.to change(Category, :count).by(-1)
     end
 
     it 'redirects to owned_categories' do
@@ -152,9 +152,8 @@ RSpec.describe CategoriesController, type: :controller do
     end
 
     it 'delete with images' do
-      expect {
-        delete :destroy, params: { id: category.id }
-      }.to change(Image, :count).by(-1)
+      expected = expect { delete :destroy, params: { id: category.id } }
+      expected.to change(Image, :count).by(-1)
     end
   end
 end

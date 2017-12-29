@@ -2,7 +2,6 @@
 
 require 'spec_helper'
 describe 'category_features', type: :feature do
-
   let!(:user) { FactoryBot.create(:random_user) }
   let!(:category) { FactoryBot.create(:fake_category, owner: user) }
 
@@ -14,9 +13,9 @@ describe 'category_features', type: :feature do
     it 'with valid parameters', js: true do
       visit categories_path
       click_button 'Create own category'
-      fill_in 'Name', with: 'cats'
+      fill_in 'Name', with: category_name
       click_button 'Create'
-      expect(page).to have_content('cats')
+      expect(page).to have_content(category_name)
     end
 
     it 'with empty name', js: true do
@@ -74,8 +73,6 @@ describe 'category_features', type: :feature do
 
   describe 'Deleting category' do
     before { visit category_path(category) }
-
-    new_category_name = Faker::Lorem.word
 
     it 'with click on delete', js: true do
       click_link 'Delete'

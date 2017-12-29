@@ -12,7 +12,7 @@ describe Like do
     like.user = nil
     expect(like).not_to be_valid
   end
-  it 'is not valid without a user' do
+  it 'is not valid without a image' do
     like.image = nil
     expect(like).not_to be_valid
   end

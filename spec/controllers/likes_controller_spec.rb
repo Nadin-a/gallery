@@ -13,17 +13,19 @@ RSpec.describe LikesController, type: :controller do
   describe 'POST create' do
     it 'like' do
       like = FactoryBot.build(:like)
-      expect {
+      expected = expect do
         post :create, params: { category_id: category, image_id: image, like: like.attributes }, format: :json
-      }.to change(Like, :count).by(1)
+      end
+      expected.to change(Like, :count).by(1)
     end
   end
 
   describe 'DELETE destroy' do
     it 'dislike' do
-      expect {
+      expected = expect do
         delete :destroy, params: { category_id: category, image_id: image.id, id: like }, format: :json
-      }.to change(Like, :count).by(-1)
+      end
+      expected.to change(Like, :count).by(-1)
     end
   end
 end

@@ -16,9 +16,10 @@ RSpec.describe CommentsController, type: :controller do
     context 'with valid attributes' do
       it 'creates a new comment' do
         comment = FactoryBot.build(:random_comment)
-        expect {
+        expected = expect do
           post :create, params: { category_id: category, image_id: image, comment: comment.attributes }
-        }.to change(Comment, :count).by(1)
+        end
+        expected.to change(Comment, :count).by(1)
       end
 
       it 'redirect to commented image' do
@@ -36,9 +37,10 @@ RSpec.describe CommentsController, type: :controller do
 
     context 'with invalid attributes' do
       it 'does not save with invalid attributes' do
-        expect {
+        expected = expect do
           post :create, params: { category_id: category, image_id: image, comment: invalid_comment.attributes }
-        }.not_to change(Comment, :count)
+        end
+        expected.not_to change(Comment, :count)
       end
 
       it 'show error message' do
@@ -50,9 +52,11 @@ RSpec.describe CommentsController, type: :controller do
 
   describe 'DELETE destroy' do
     it 'can delete comment' do
-      expect {
-        delete :destroy, params: { category_id: category, image_id: image.id, id: comment }
-      }.to change(Comment, :count).by(-1)
+      expected = expect { delete :destroy, params: { category_id: category, image_id: image.id, id: comment } }
+      expected.to change(Comment, :count).by(-1)
+    end
+    it 'show successful message' do
+      delete :destroy, params: { category_id: category, image_id: image.id, id: comment }
       expect(flash[:success]).not_to be_nil
     end
   end

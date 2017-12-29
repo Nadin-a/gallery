@@ -20,7 +20,7 @@ describe Comment do
     comment.user = nil
     expect(comment).not_to be_valid
   end
-  it 'is not valid without a user' do
+  it 'is not valid without a image' do
     comment.image = nil
     expect(comment).not_to be_valid
   end
