@@ -15,6 +15,11 @@ h2 {
   font-size: 20pt;
 }
 
+.panel{
+  background-color: $panel-background;
+  border: none;
+}
+
 .well {
   background-color: $well-color;
   font-family: $revengeance-font;

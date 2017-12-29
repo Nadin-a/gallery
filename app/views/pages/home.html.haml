@@ -1,4 +1,4 @@
-%body{style: "background: black"}
+%body{style: "background: url('https://hdwallsource.com/img/2014/6/mountain-peaks-wallpaper-hd-33593-34349-hd-wallpapers.jpg'') repeat center center fixed"}
   = content_for(:title, 'Home')
   - if @images.empty?
     .container
@@ -10,12 +10,12 @@
             = t('no_images_on_site')
   - else
     #carousel-example-generic.carousel.slide{'data-ride': 'carousel'}
-      / Indicators
-      %ol.carousel-indicators
-        %li.active{'data-slide-to': '0', 'data-target': '#carousel-example-generic'}
-        - @images.count.times do |n|
-          - next if n == 0
-          %li{'data-slide-to': n, "data-target": '#carousel-example-generic'}
+      -#/ Indicators
+      -#%ol.carousel-indicators
+      -#  %li.active{'data-slide-to': '0', 'data-target': '#carousel-example-generic'}
+      -#  - @images.count.times do |n|
+      -#    - next if n == 0
+      -#    %li{'data-slide-to': n, "data-target": '#carousel-example-generic'}
       / Wrapper for slides
       .carousel-inner{role:'listbox'}
         .item.active
@@ -40,4 +40,5 @@
         %span.sr-only Previous
       %a.right.carousel-control{"data-slide": 'next', href: '#carousel-example-generic', role: 'button'}
         %span.glyphicon.glyphicon-chevron-right{'aria-hidden': 'true'}
-
+    %br
+    = render 'shared/list_of_images'

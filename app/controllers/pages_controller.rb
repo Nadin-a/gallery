@@ -4,9 +4,9 @@ class PagesController < ApplicationController
   def home
     @images =
       if user_signed_in?
-        current_user.feed
+        current_user.feed.paginate(page: params[:page], per_page: 20)
       else
-        Image.all
+        Image.all.paginate(page: params[:page], per_page: 20)
       end
   end
 
