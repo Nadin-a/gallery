@@ -27,7 +27,6 @@ gem "devise-async"
 gem 'redis-namespace'
 gem 'sidekiq_mailer'
 gem "fog-aws"
-gem "asset_sync"
 
 group :development, :test do
   gem 'rspec-rails'
