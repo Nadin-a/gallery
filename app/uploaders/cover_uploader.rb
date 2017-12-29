@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'fog/aws'
 class CoverUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   process resize_to_limit: [2000, 2000]
@@ -12,6 +13,10 @@ class CoverUploader < CarrierWave::Uploader::Base
 
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  end
+
+  def cache_dir
+    "#{Rails.root}/tmp/uploads"
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

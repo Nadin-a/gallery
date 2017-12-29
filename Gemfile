@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'carrierwave'
-gem 'fog'
 gem 'devise'
 gem 'rails', '~> 5.1.4'
 gem 'pg'
@@ -27,6 +26,8 @@ gem 'redis', '~> 3.3'
 gem "devise-async"
 gem 'redis-namespace'
 gem 'sidekiq_mailer'
+gem "fog-aws"
+gem "asset_sync"
 
 group :development, :test do
   gem 'rspec-rails'
@@ -57,3 +58,5 @@ group :development do
   # gem 'eslint-rails'
   gem 'foreman'
 end
+
+

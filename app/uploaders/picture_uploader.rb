@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'fog/aws'
 class PictureUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   process resize_to_limit: [2000, 2000]
@@ -14,6 +15,10 @@ class PictureUploader < CarrierWave::Uploader::Base
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  end
+
+  def cache_dir
+    "#{Rails.root}/tmp/uploads"
   end
 
   # Process files as they are uploaded:
