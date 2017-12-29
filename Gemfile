@@ -27,11 +27,11 @@ gem "devise-async"
 gem 'redis-namespace'
 gem 'sidekiq_mailer'
 gem "fog-aws"
+gem 'faker'
 
 group :development, :test do
   gem 'rspec-rails'
   gem 'rubocop-rspec'
-  gem 'faker'
   gem 'factory_bot_rails'
   gem 'pundit-matchers'
   gem 'rails-controller-testing'
