@@ -16,7 +16,7 @@ namespace :db do
   def migrate_images(category_name)
     category = Category.first
     images = Dir.entries('/home/trofimova/gallery content/' + category_name).reject { |f| File.file? f }
-    images.select { |file_name| file_name.end_with? '.jpg' || '.png' || '.jpeg' }
+    images.select! { |file_name| file_name.end_with? '.jpg' || '.png' || '.jpeg' }
     images.each do |image_title|
       img = Image.new
       img.title = image_title.sub(/\.[^.]+\z/, '')
