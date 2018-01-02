@@ -79,6 +79,8 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'https://vast-temple-36975.herokuapp.com' }
   ActionMailer::Base.delivery_method = :smtp
 
+  config.action_mailer.raise_delivery_errors = true
+
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
