@@ -1,6 +1,7 @@
 Sidekiq::Extensions.enable_delay!
 
 Sidekiq.configure_server do |config|
+  Rails.logger = Sidekiq::Logging.logger
   config.redis =
   {
   url: Redis.new(url: (ENV['REDISTOGO_URL'] || 'redis://localhost:6379/0')),
