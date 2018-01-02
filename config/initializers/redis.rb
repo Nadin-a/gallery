@@ -1,2 +1,5 @@
-uri = URI.parse(ENV["REDISTOGO_URL"] || "redis://localhost:6379/" )
-REDIS = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
+if Rails.env == 'production'
+  redis = Redis.new(url: ENV["REDISTOGO_URL"])
+else
+  redis = Redis.new
+end
