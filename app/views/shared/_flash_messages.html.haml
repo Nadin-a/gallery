@@ -1,7 +1,9 @@
 - if flash[:error]
   .alert.alert-danger
     %p
-      = h flash[:error]
+      - flash[:error].each do |err|
+        = err
+        %br
 - if flash[:success]
   .alert.alert-success
     %p
