@@ -4,4 +4,6 @@ require_relative 'application'
 # Initialize the Rails application.
 Rails.application.initialize!
 
-config.gem 'redis'
+Rails::Initializer.run do |config|
+  config.gem 'redis'
+end
