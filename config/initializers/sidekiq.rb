@@ -11,9 +11,9 @@ if Rails.env.development?
 end
 if Rails.env.production?
   Sidekiq.configure_server do |config|
-    config.redis = { size: 3, url: 'https://vast-temple-36975.herokuapp.com', namespace: 'gallery' }
+    config.redis = { size: 3, url: 'https://polar-atoll-97380.herokuapp.com', namespace: 'gallery' }
   end
   Sidekiq.configure_client do |config|
-    config.redis = { size: 3, url: 'https://vast-temple-36975.herokuapp.com', namespace: 'gallery' }
+    config.redis = { size: 3, url: 'https://polar-atoll-97380.herokuapp.com', namespace: 'gallery' }
   end
 end

@@ -76,7 +76,7 @@ Rails.application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
-  config.action_mailer.default_url_options = { host: 'https://vast-temple-36975.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'https://polar-atoll-97380.herokuapp.com' }
   ActionMailer::Base.delivery_method = :smtp
 
   config.action_mailer.raise_delivery_errors = true
