@@ -10,6 +10,9 @@ if Rails.env.development?
   end
 end
 if Rails.env.production?
+  Sidekiq.configure_server do |config|
+    config.redis = { size: 3, url: 'https://vast-temple-36975.herokuapp.com', namespace: 'gallery' }
+  end
   Sidekiq.configure_client do |config|
     config.redis = { size: 3, url: 'https://vast-temple-36975.herokuapp.com', namespace: 'gallery' }
   end
