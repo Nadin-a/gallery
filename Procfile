@@ -1,2 +1,2 @@
 worker: rails s -p 3000
-sidekiq: sidekiq -L log/sidekiq.log
+worker: sidekiq -L log/sidekiq.log
