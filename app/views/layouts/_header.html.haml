@@ -37,9 +37,9 @@
             %span.caret
           %ul.dropdown-menu
             %li
-              = link_to 'English', {locale:'en' }
+              = link_to 'English', {lang:'en' }
             %li
-              = link_to 'Russian', {locale:'ru' }
+              = link_to 'Russian', {lang:'ru' }
         - if user_signed_in?
           - if current_user.admin?
             %li

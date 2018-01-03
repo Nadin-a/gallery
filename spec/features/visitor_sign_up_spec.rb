@@ -8,7 +8,7 @@ describe 'Visitor signs up', type: :feature do
   it 'with valid parameters', js: true do
     visit root_path
     click_link 'Sign up'
-    expect(page).to have_current_path('/users/sign_up?locale=en')
+    expect(page).to have_current_path('/users/sign_up')
     sign_up_with email, name, 'password', 'password'
   end
 

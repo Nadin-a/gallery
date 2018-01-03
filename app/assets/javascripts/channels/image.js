@@ -11,10 +11,9 @@ App.image = App.cable.subscriptions.create('ImageChannel', {
 
   received: function(data) {
     // Called when there's incoming data on the websocket for this channel
-    //$('#notifications').prepend(data.html);
     console.log(data);
     var current_url = window.location.href;
-    if (current_url.includes(data.url.slice(0,-2))) {
+    if (current_url.includes(data.url)) {
       $like_label.html(data.count);
       if(data.comment) {
         return $('#new_comments').append(this.renderComment(data));

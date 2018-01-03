@@ -89,10 +89,6 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
-
-  config.before do
-    default_url_options[:locale] = I18n.default_locale
-  end
 end
 
 Capybara.register_driver :selenium do |app|

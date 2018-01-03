@@ -11,9 +11,9 @@ class CommentsController < ApplicationController
     @comment = @image.comments.new(comment_params)
     authorize @comment
     current_user.comments << @comment
+    show_comment_to_all unless Rails.env.test? &&  @comment.save
     if @comment.save && verify_recaptcha(model: @comment, secret_key: Rails.application.secrets.recaptcha_secret_key)
     flash[:success] = t(:comment_created)
-      show_comment_to_all unless Rails.env.test?
     else
       flash[:error] = @comment.errors.full_messages.first
     end

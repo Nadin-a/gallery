@@ -1,9 +1,12 @@
 - if flash[:error]
   .alert.alert-danger
     %p
-      - flash[:error].each do |err|
-        = err
-        %br
+      - if flash[:error].is_a? Array
+        - flash[:error].each do |err|
+          = err
+          %br
+      - else
+        = h flash[:error]
 - if flash[:success]
   .alert.alert-success
     %p

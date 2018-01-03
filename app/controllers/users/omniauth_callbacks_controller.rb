@@ -17,6 +17,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def failure
+    p '========================================'
+    p 'ERROR'
     redirect_to root_path
   end
 end
