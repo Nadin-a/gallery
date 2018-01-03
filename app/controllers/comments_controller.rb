@@ -10,12 +10,12 @@ class CommentsController < ApplicationController
   def create
     @comment = @image.comments.new(comment_params)
     authorize @comment
-    current_user.comments << @comment
     if Rails.env.production?
-      create_comment if verify_recaptcha(model: @comment)
+      check_recaptcha
     else
       create_comment
     end
+
     redirect_to category_image_path(@category, @image)
   end
 
@@ -32,10 +32,17 @@ class CommentsController < ApplicationController
 
   private
 
+  def check_recaptcha
+    if verify_recaptcha(model: @comment)
+      create_comment
+    else
+      flash[:error] = @comment.errors.full_messages.first
+    end
+  end
+
   def create_comment
-
+    current_user.comments << @comment
     if @comment.save
-
       flash[:success] = t(:comment_created)
       show_comment_to_all unless Rails.env.test?
     else
