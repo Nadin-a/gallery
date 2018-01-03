@@ -139,3 +139,8 @@ en:
   recent_comments: 'Recent comments'
   recent_images: 'Recent images'
   user_comment: 'Comments of users'
+
+  recaptcha:
+    errors:
+      verification_failed: 'Uncorrect recaptcha'
+      recaptcha.errors.recaptcha_unreachable: 'Timeout error, try again'

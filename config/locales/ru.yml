@@ -112,6 +112,11 @@ ru:
   recent_images: 'Последние изображения'
   user_comment: 'Комментарии'
 
+  recaptcha:
+    errors:
+      verification_failed: 'Неверные данные с капчи'
+      recaptcha.errors.recaptcha_unreachable: 'Время вышло, попробуйте снова'
+
   activerecord:
     errors:
       messages:
