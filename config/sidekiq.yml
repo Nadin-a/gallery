@@ -1,9 +1,14 @@
-:verbose: true
-development:
+default: &default
+  :verbose: true
   :concurrency: 5
+  :queues:
+    - [mailer, 5]
+    - [mailers, 5]
+    - [default, 5]
+
+development:
+  <<: *default
+
 production:
+  <<: *default
   :concurrency: 20
-:queues:
-  - [mailer, 5]
-  - [mailers, 5]
-  - [default, 5]
