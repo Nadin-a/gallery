@@ -1,5 +1,4 @@
 Sidekiq::Extensions.enable_delay!
-
 if Rails.env.development?
   Sidekiq.configure_server do |config|
     config.redis = { url: 'redis://localhost:6379/0', namespace: "gallery_sidekiq_#{Rails.env}" }
