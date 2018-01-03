@@ -9,27 +9,31 @@ if Rails.env.development?
   end
 end
 
+
+
 if Rails.env.production?
 
   Sidekiq.configure_client do |config|
-    config.redis = { url: ENV['REDISTOGO_URL'], size: 1 }
+    config.redis = { url: ENV['REDISTOGO_URL'], size: 2 }
   end
 
   Sidekiq.configure_server do |config|
-    pool_size = ENV['SIDEKIQ_DB_POOL'] || (Sidekiq.options[:concurrency] + 2)
-    config.redis = { url: ENV['REDISTOGO_URL'], size: pool_size }
+    config.redis = { url: ENV['REDISTOGO_URL'], size: 20 }
 
     Rails.application.config.after_initialize do
       Rails.logger.info("DB Connection Pool size for Sidekiq Server before disconnect is: #{ActiveRecord::Base.connection.pool.instance_variable_get('@size')}")
       ActiveRecord::Base.connection_pool.disconnect!
 
       ActiveSupport.on_load(:active_record) do
-        db_config = Rails.application.config.database_configuration[Rails.env]
-        db_config['reaping_frequency'] = ENV['DATABASE_REAP_FREQ'] || 10 # seconds
-        db_config['pool'] = pool_size
-        ActiveRecord::Base.establish_connection(db_config)
+        config = Rails.application.config.database_configuration[Rails.env]
+        config['reaping_frequency'] = ENV['DATABASE_REAP_FREQ'] || 10 # seconds
+        # config['pool'] = ENV['WORKER_DB_POOL_SIZE'] || Sidekiq.options[:concurrency]
+        config['pool'] = 16
+        ActiveRecord::Base.establish_connection(config)
+
         Rails.logger.info("DB Connection Pool size for Sidekiq Server is now: #{ActiveRecord::Base.connection.pool.instance_variable_get('@size')}")
       end
     end
   end
+
 end
