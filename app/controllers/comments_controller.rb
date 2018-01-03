@@ -10,13 +10,11 @@ class CommentsController < ApplicationController
   def create
     @comment = @image.comments.new(comment_params)
     authorize @comment
-    if verify_recaptcha(model: @comment)
-      flash[:success] = t(:comment_created)
-      @comment.save
-      current_user.comments << @comment
-      show_comment_to_all unless Rails.env.test?
+    current_user.comments << @comment
+    if Rails.env.production?
+      create_comment if verify_recaptcha(model: @comment)
     else
-      flash[:error] = @comment.errors.full_messages.first
+      create_comment
     end
     redirect_to category_image_path(@category, @image)
   end
@@ -34,6 +32,17 @@ class CommentsController < ApplicationController
 
   private
 
+  def create_comment
+
+    if @comment.save
+
+      flash[:success] = t(:comment_created)
+      show_comment_to_all unless Rails.env.test?
+    else
+      flash[:error] = @comment.errors.full_messages.first
+    end
+  end
+
   def show_comment_to_all
     CommentJob.perform_later(category_image_path(@category, @image), @comment,
                              @comment.user.name, time_ago_in_words(@comment.created_at) + t('ago'))
@@ -50,4 +59,5 @@ class CommentsController < ApplicationController
   def set_category
     @category = Category.find(params[:category_id])
   end
+
 end
