@@ -2,7 +2,7 @@
 development:
   :concurrency: 5
 production:
-  :concurrency: 30
+  :concurrency: 20
 :queues:
   - [mailer, 5]
   - [mailers, 5]
