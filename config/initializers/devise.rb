@@ -14,7 +14,7 @@ Devise.setup do |config|
   # with default "from" parameter.
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
 
-  config.mailer = 'DeviseBackgrounder'
+  config.mailer = 'DeviseBackgrounder'  unless Rails.env.production?
 
   # Configure the class responsible to send e-mails.
   # config.user_mailer = 'Devise::Mailer'
