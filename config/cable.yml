@@ -8,5 +8,5 @@ test:
 
 production:
   adapter: redis
-  url: <% ENV['REDISTOGO_URL'] %>
+  url: redis://redistogo:a887a28ada2c33265c353af9993c8bc0@soldierfish.redistogo.com:9892/
   channel_prefix: gallery_production
