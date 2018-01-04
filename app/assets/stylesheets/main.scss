@@ -20,6 +20,15 @@ h2 {
   border: none;
 }
 
+.name_category{
+  font-size: 2em;
+}
+
+.col-centered {
+  float: none;
+  margin: 0 auto;
+}
+
 .well {
   background-color: $well-color;
   font-family: $revengeance-font;
@@ -79,6 +88,15 @@ body {
   height: 100%;
   width: 100%;
 }
+
+.carousel .some_text{
+  text-align: center;
+  padding-bottom: 30%;
+  font-size: 4em;
+}
+
+
+
 
 //Correct images in all sizes
 img {

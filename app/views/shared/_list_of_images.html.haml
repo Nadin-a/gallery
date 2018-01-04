@@ -3,13 +3,11 @@
     .panel.panel-default.text-center
       .panel-image.hide-panel-body
         %img.panel-image-preview
-          .hover11.column
-            %figure
-              = link_to(image_tag(image.picture.thumb.url), category_image_path(image.category, image),{ data:{ toggle:'tooltip',placement:'left'}, title:'Open this image'})
-.col-sm-12.text-center
-  = will_paginate @images
+          .wrapper
+            .hover11.column
+              %figure
+                = link_to category_image_path(image.category, image),{ data:{ toggle:'tooltip',placement:'left'}, title:'Open this image'} do
+                  = image_tag(image.picture.thumb.url)
+                -#.text
+                -#  = image.title
 
-:css
-  body{
-    color: #2E2F30;
-  }

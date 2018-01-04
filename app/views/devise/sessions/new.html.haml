@@ -1,6 +1,7 @@
-.col-lg-12
-  %h2
+.col-sm-6.col-md-6.col-lg-6.col-xl-6.well.col-centered.text-center
+  %h1
     =t('login')
+  %br
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     = devise_error_messages!
     .field

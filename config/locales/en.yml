@@ -63,7 +63,7 @@ en:
   confirmation: 'Confirmation'
   update: 'Update'
   delete: 'Delete'
-  created_by: 'Created by'
+  created_by: 'Owner'
   created_at: 'Created at'
   uploaded: 'Uploaded'
   ago: ' ago'
@@ -139,6 +139,9 @@ en:
   recent_comments: 'Recent comments'
   recent_images: 'Recent images'
   user_comment: 'Comments of users'
+
+  no_followers: 'No followers!'
+  welcome_to_gallery: 'Welcome to gallery!'
 
   recaptcha:
     errors:

@@ -22,6 +22,10 @@ class CategoryPolicy < ApplicationPolicy
     user
   end
 
+  def followers?
+    true
+  end
+
   def subscribe?
     user != category.owner
   end

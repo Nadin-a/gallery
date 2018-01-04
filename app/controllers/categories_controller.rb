@@ -78,6 +78,10 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def followers
+    @users = @category.users.paginate(page: params[:page], per_page: 20)
+  end
+
   private
 
   def categories_params

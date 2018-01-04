@@ -1,6 +1,7 @@
-.col-lg-12
+.col-sm-6.col-md-6.col-lg-6.col-xl-6.well.col-centered.text-center
   %h2
     =t('sign_up')
+  %br
   = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     = devise_error_messages!
     .field

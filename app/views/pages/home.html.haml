@@ -22,7 +22,9 @@
           %a{href: category_image_path(@images.first.category, @images.first)}
             %img{alt: @images.first.title, src: @images.first.picture}
               .carousel-caption
-                %h3
+                .some_text
+                  = t('welcome_to_gallery')
+                %h1
                   %p
                     =@images.first.title
         - @images.each do |image|
@@ -31,7 +33,9 @@
             %a{href: category_image_path(image.category, image)}
               %img{alt: image.title, src: image.picture}
                 .carousel-caption
-                  %h3
+                  .some_text
+                    = t('welcome_to_gallery')
+                  %h1
                     %p
                       =image.title
       / Controls
@@ -42,3 +46,15 @@
         %span.glyphicon.glyphicon-chevron-right{'aria-hidden': 'true'}
     %br
     = render 'shared/list_of_images'
+
+:css
+  h1, h2{
+    color: white;
+  }
+
+  .panel{
+  background-color: black;
+  }
+
+
+

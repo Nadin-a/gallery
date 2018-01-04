@@ -4,43 +4,46 @@
       .col-sm-12
         = render partial: 'shared/flash_messages'
         .well
-          .col-sm-3
-            %b
-              =t('name')
-            %br
+          .col-sm-6
+            .name_category
               = @category.name
-          .col-sm-3
+          .col-sm-2
             %b
               = t('created_by')
             %br
             =  @category.owner.name
-          .col-sm-3
+          .col-sm-2
             %b
               = t('created_at')
             %br
             = time_ago_in_words(@category.created_at)
             = t('ago')
-          .col-sm-3
+          .col-sm-2
             .pull-right
               = render 'shared/subscribe_form', category: @category
-              = t('followers')
-              %label_tag{ class: 'js-count-followers-label' }
-                = @category.users.count
+              %h4
+                = link_to(t('followers'), followers_category_path(@category))
+                %label_tag{ class: 'js-count-followers-label' }
+                  = @category.users.count
           %hr
             .separator
         - if user_signed_in?
           - if current_user == @category.owner || current_user.admin?
-            .col-sm-12.text-center
-              %a{remote: true, "data-target": '#createImageModal', "data-toggle": 'modal', href: new_category_image_path(@category)}
-                = t('add_image')
-              |
+            %h4
+              .col-sm-12.text-center
+                %a{remote: true, "data-target": '#createImageModal', "data-toggle": 'modal', href: new_category_image_path(@category)}
+                  = t('add_image')
+                |
 
-              %a{remote: true, "data-target": '#updateCategoryModal', "data-toggle": 'modal', href: edit_category_path(@category), title: t('update_this_category_tooltip') }
-                = t('update')
-              |
-              =link_to(t('delete'), category_path, method: :delete, data: { confirm: t('you_sure'), toggle:'tooltip',placement:'left' }, title: t('delete_this_category_tooltip'))
+                %a{remote: true, "data-target": '#updateCategoryModal', "data-toggle": 'modal', href: edit_category_path(@category), title: t('update_this_category_tooltip') }
+                  = t('update')
+                |
+                =link_to(t('delete'), category_path, method: :delete, data: { confirm: t('you_sure'), toggle:'tooltip',placement:'left' }, title: t('delete_this_category_tooltip'))
         %br
         %br
       = render partial: 'shared/list_of_images'
+      .col-sm-12.col-md-12.col-lg-12.col-xl-12.text-center
+        = will_paginate @images
       = render partial: 'images/new'
       = render partial: 'categories/edit'
+

@@ -2,6 +2,7 @@
 %html
   %head
     %meta{content: 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type'}/
+    = favicon_link_tag asset_path('image-flat.png'), :rel => 'icon', :type =>  'image/png'
     %title Gallery
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all'
@@ -15,10 +16,8 @@
     - if action_name != 'home' && "#{action_name}" != 'show'
       %body
         .container
-          .row.well
-            .col-sm-12
-              #notifications
-              = render partial: 'shared/flash_messages'
-              = yield
+          .row
+            = render partial: 'shared/flash_messages'
+            = yield
     -else
       = yield

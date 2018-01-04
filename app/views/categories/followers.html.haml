@@ -1,0 +1,11 @@
+.col-sm-12.col-md-12.col-lg-12.col-xl-12.well.text-center
+  %h1
+    =t('followers')
+    = @category.name
+  - if @users.empty?
+    %h3
+      = t('no_followers')
+  -else
+    - @users.each do |user|
+      %h3
+        = user.name

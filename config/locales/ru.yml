@@ -112,6 +112,9 @@ ru:
   recent_images: 'Последние изображения'
   user_comment: 'Комментарии'
 
+  no_followers: 'Подписчиков нет!'
+  welcome_to_gallery: 'Добро пожаловать в галлерею!'
+
   recaptcha:
     errors:
       verification_failed: 'Неверные данные с капчи'

@@ -12,8 +12,10 @@ Rails.application.routes.draw do
   root 'pages#home'
   get '/popular_images', to: 'pages#popular_images'
   get '/last_comments', to: 'pages#last_comments'
+  get '/updates', to: 'pages#updates'
 
-  resources :users, only: %i[show destroy]
+  resources :users, only: %i[show destroy] do
+  end
   resources :categories do
     collection do
       get :owned
@@ -23,6 +25,7 @@ Rails.application.routes.draw do
     member do
       post :subscribe
       delete :unsubscribe
+      get :followers
     end
 
     resources :images do

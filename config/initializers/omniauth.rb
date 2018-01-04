@@ -1,3 +1,4 @@
-# Rails.application.config.middleware.use OmniAuth::Builder do
-#   provider :facebook, Rails.application.secrets.facebook_app_id, Rails.application.secrets.facebook_secret
-# end
+Rails.application.config.middleware.use OmniAuth::Builder do
+  provider :github, ENV["GITHUB_ID"], ENV["GITHUB_SECRET"], :scope => 'user:email', :provider_ignores_state => true
+
+end

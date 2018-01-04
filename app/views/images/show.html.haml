@@ -1,38 +1,37 @@
 %body
   .container-fluid
     .row.well.show-image
-      .col-lg-12.text-center
+      .col-sm-12.col-md-12.col-lg-12.col-xl-12.text-center
         = render partial: 'shared/flash_messages'
-        .col-sm-4
-          %b
-            =t('title') + ':'
+        .col-sm-12.col-md-12.col-lg-12.col-xl-12
+          %h2
+            = @image.title
           %br
-          = @image.title
-        .col-sm-4
-          %b
-            =t('category') + ':'
-          %br
-          = link_to(@category.name,category_path(@category), {data:{ toggle:'tooltip',placement:'left' }, title:'Category of this image'})
-        .col-sm-4
-          %b
-            =t('owner') + ':'
-          %br
-          = @category.owner.name
-          %br
-          %br
-      .col-sm-12.text-center
+      .col-sm-12.col-md-12.col-lg-12.col-xl-12.text-center
         = image_tag(@image.picture)
-      .col-sm-12.text-center
+      .col-sm-12.col-md-12.col-lg-12.col-xl-12.text-center
         %br
         = @image.description
-      .col-sm-10
-        =t('uploaded')
-        = time_ago_in_words(@image.created_at)
-        =t('ago')
-      .col-sm-2
-        .pull-right
-          = render partial: 'images/like_form'
-      .col-lg-12.text-center
+      .col-sm-12.col-md-12.col-lg-12.col-xl-12
+        .col-12.col-sm-6.col-md-6.col-lg-6.col-xl-6
+          %b
+            =t('uploaded')
+          = time_ago_in_words(@image.created_at)
+          =t('ago')
+          %br
+          %b
+            =t('category') + ': '
+          = link_to(@category.name,category_path(@category), {data:{ toggle:'tooltip',placement:'left' }, title:'Category of this image'})
+          %br
+          %b
+            =t('owner') + ': '
+          = @category.owner.name
+        .col-12.col-sm-6.col-md-6.col-lg-6.col-xl-6
+          .pull-right
+            = render partial: 'images/like_form'
+      %br
+      %br
+      .col-sm-12.col-md-12.col-lg-12.col-xl-12.text-center
         %hr
           .separator
           - if user_signed_in?
