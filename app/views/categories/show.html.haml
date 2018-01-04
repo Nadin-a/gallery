@@ -5,7 +5,7 @@
       .col-sm-12
         = render partial: 'shared/flash_messages'
         .well
-          .col-sm-6
+          .col-sm-4
             .name_category
               = @category.name
           .col-sm-2
@@ -22,10 +22,11 @@
           .col-sm-2
             .pull-right
               = render 'shared/subscribe_form', category: @category
-              %h4
-                = link_to(t('followers'), followers_category_path(@category))
-                %label_tag{ class: 'js-count-followers-label' }
-                  = @category.users.count
+          .col-sm-2
+            %h4
+              = link_to(t('followers'), followers_category_path(@category))
+              %label_tag{ class: 'js-count-followers-label' }
+                = @category.users.count
           %hr
             .separator
         - if user_signed_in?

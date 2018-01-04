@@ -8,6 +8,6 @@
               %figure
                 = link_to category_image_path(image.category, image),{ data:{ toggle:'tooltip',placement:'left'}, title:'Open this image'} do
                   = image_tag(image.picture.thumb.url)
-                .text
-                  = image.title
+                -#.text
+                -#  = image.title
 
