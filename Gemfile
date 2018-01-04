@@ -48,7 +48,7 @@ end
 group :development do
   gem 'listen'
   gem 'spring'
-  gem 'letter_opener'
+  # gem 'letter_opener'
   gem 'spring-watcher-listen'
   gem 'better_errors'
   gem 'binding_of_caller'

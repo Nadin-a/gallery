@@ -77,8 +77,19 @@ Rails.application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   config.action_mailer.default_url_options = { host: 'https://serene-badlands-59053.herokuapp.com' }
+
   config.action_cable.allowed_request_origins = ['https://serene-badlands-59053.herokuapp.com']
+
   ActionMailer::Base.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  address:              'smtp.gmail.com',
+  port:                 587,
+  domain:               'gmail.com',
+  user_name:            ENV['MAIL'],
+  password:             ENV['MAILPASS'],
+  authentication:       :plain,
+  enable_starttls_auto: true
+  }
 
   config.action_mailer.raise_delivery_errors = true
 

@@ -4,7 +4,8 @@ class UserMailer < ActionMailer::Base
   def subscribe_email(user_id)
     @user = User.find(user_id)
     mail(to: @user.email,
-         subject: 'Subscribtion to new category!') do |format|
+         subject: 'Subscribtion to new category!',
+         from: 'amazing2gallery@gmail.com' ) do |format|
       format.html { render 'user_mailer/subscribe_mail' }
       format.text { render plain: 'Render text' }
     end
@@ -14,7 +15,8 @@ class UserMailer < ActionMailer::Base
     @user = User.find(user_id)
     @image = Image.find(image_id)
     mail(to: @user.email,
-         subject: 'New image in favorite category!') do |format|
+         subject: 'New image in favorite category!',
+         from: 'amazing2gallery@gmail.com') do |format|
       format.html { render 'user_mailer/new_image_mail' }
       format.text { render plain: 'Render text' }
     end

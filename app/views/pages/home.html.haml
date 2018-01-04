@@ -3,20 +3,13 @@
   - if @images.empty?
     .container
       .row.well
-        %h2
+        %h3
           - if user_signed_in?
             = t('you_have_no_images')
           - else
             = t('no_images_on_site')
   - else
     #carousel-example-generic.carousel.slide{'data-ride': 'carousel'}
-      -#/ Indicators
-      -#%ol.carousel-indicators
-      -#  %li.active{'data-slide-to': '0', 'data-target': '#carousel-example-generic'}
-      -#  - @images.count.times do |n|
-      -#    - next if n == 0
-      -#    %li{'data-slide-to': n, "data-target": '#carousel-example-generic'}
-      / Wrapper for slides
       .carousel-inner{role:'listbox'}
         .item.active
           %a{href: category_image_path(@images.first.category, @images.first)}
