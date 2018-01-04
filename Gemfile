@@ -17,7 +17,6 @@ gem 'jquery-rails'
 gem 'pundit'
 gem 'activeadmin'
 gem 'ahoy_matey'
-gem 'omniauth-facebook'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'geckodriver-helper'
 gem 'devise-i18n'
@@ -28,6 +27,7 @@ gem 'redis-namespace'
 gem 'sidekiq_mailer'
 gem "fog-aws"
 gem 'faker'
+gem 'omniauth-github'
 
 group :development, :test do
   gem 'rspec-rails'
