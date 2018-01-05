@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CategoriesController < ApplicationController
-  before_action :authenticate_user!, except: %i[index show]
+  before_action :authenticate_user!, except: %i[index show followers]
   before_action :set_category, except: %i[index new owned favorite create]
   before_action :set_new_category, only: %i[new index owned favorite]
 
