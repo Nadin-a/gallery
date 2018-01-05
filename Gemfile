@@ -27,7 +27,7 @@ gem 'redis-namespace'
 gem 'sidekiq_mailer'
 gem "fog-aws"
 gem 'faker'
-gem 'omniauth-github'
+gem 'omniauth-facebook'
 
 group :development, :test do
   gem 'rspec-rails'
