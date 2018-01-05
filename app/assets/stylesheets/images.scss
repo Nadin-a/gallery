@@ -1,5 +1,6 @@
 //opacity
 
+
 .hover11 figure img {
   opacity: .8;
 }
@@ -9,25 +10,30 @@
 }
 
 .border_image {
-  padding: 2px;
   background-color: $true-black;
+  padding: 2px;
 }
 
 .wrapper {
   position: relative;
+
 }
 
+
+
 .wrapper .text {
-  bottom: 40px;
-  left: 0;
-  visibility: hidden;
+
   position: absolute;
+  visibility: hidden;
 }
 
 .wrapper:hover .text {
-  visibility: visible;
-  color: white;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: $white;
   position: absolute;
-  text-align:  center;
+  text-align: center;
+  visibility: visible;
 }
-
