@@ -72,7 +72,7 @@ ru:
   title: 'Название'
   description: 'Описание'
   images: 'Картинки: '
-
+  no_images: 'На сайте ещё нет картинок с лайками!'
   new_image_in: 'Новая картинка в'
   delete_this_image_tooltip: 'Удалить это изображение'
 
@@ -84,6 +84,7 @@ ru:
   comment_deleted: 'Комментарий удалён!'
   delete_this_comment_tooltip: 'Удалить этот комментарий'
   say: 'написал(а):'
+  no_comments: 'На сайте ещё нет комментариев!'
   will_paginate:
     previous_label: "&#8592; Назад"
     next_label: "Впедёд &#8594;"

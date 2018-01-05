@@ -2,6 +2,9 @@
 .col-sm-12.col-md-12.col-lg-12.col-xl-12.well.text-center
   %h1
     = t('popular_image')
+  - if @images.empty?
+    %h1
+      = t('no_images')
   = render partial: 'shared/list_of_images'
   .col-sm-12.col-md-12.col-lg-12.col-xl-12.text-center
     = will_paginate @images

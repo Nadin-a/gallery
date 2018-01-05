@@ -3,6 +3,9 @@
   .text-center
     %h1
       = t('last_comments')
+    - if @comments.empty?
+      %h1
+        = t('no_comments')
   = render partial: 'shared/list_of_comments_with_picture'
   .col-sm-12.col-md-12.col-lg-12.col-xl-12.text-center
     = will_paginate @comments

@@ -93,6 +93,12 @@ RSpec.describe CategoriesController, type: :controller do
         delete :unsubscribe, params: { id: category.id }, format: :json
         expect(second_user.categories.count).to eq 0
       end
+
+      it 'get followers of category' do
+        get :followers, params: { id: category.id }
+        expect(response).to have_http_status(200)
+      end
+
     end
   end
 
@@ -155,5 +161,6 @@ RSpec.describe CategoriesController, type: :controller do
       expected = expect { delete :destroy, params: { id: category.id } }
       expected.to change(Image, :count).by(-1)
     end
+
   end
 end

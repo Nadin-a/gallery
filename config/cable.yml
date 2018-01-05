@@ -4,7 +4,7 @@ development:
   host: localhost
 
 test:
-  adapter: async
+  adapter: test
 
 production:
   adapter: redis

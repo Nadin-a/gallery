@@ -18,6 +18,20 @@ describe 'Find', type: :feature do
         expect(page).to have_content('You have not any images.
       Subscribe on any category or add own image and you will see it here!')
       end
+
+      it 'visit popular images', js: true do
+        visit popular_images_path
+        expect(page).to have_content('Popular images There are no popular pictures on site!')
+      end
+      it 'visit last comments', js: true do
+        visit last_comments_path
+        expect(page).to have_content('Last comments There are no comments on site!')
+      end
+      it 'visit updates comments', js: true do
+        visit updates_path
+        expect(page).to have_content('Popular images There are no popular pictures on site!
+        Last comments There are no comments on site!')
+      end
     end
   end
 
@@ -47,6 +61,15 @@ describe 'Find', type: :feature do
       it 'content on all categories' do
         visit categories_path
         expect(page).to have_content('All categories ' + second_category.name)
+      end
+
+      it 'visit popular images', js: true do
+        visit popular_images_path
+        expect(page).to have_content('Popular images')
+      end
+      it 'visit last comments', js: true do
+        visit last_comments_path
+        expect(page).to have_content('Last comments')
       end
     end
   end
