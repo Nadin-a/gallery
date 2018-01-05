@@ -4,12 +4,11 @@ $(document).ready(function () {
   $like_label = $('.js-count-like-label');
 
   if (($like_btn.attr('data-liked')) == 1) {
-    $like_btn.html('<span class="glyphicon glyphicon-thumbs-down"></span>');
+    heart();
   }
   else {
-    $like_btn.html('<span class="glyphicon glyphicon-thumbs-up"></span>');
+    heart_empty();
   }
-
 
   $like_btn.click(function () {
 
@@ -33,14 +32,14 @@ $(document).ready(function () {
       }
     });
 
-
     (function ($) {
       $.fn.like = function (image) {
         $btn.addClass('btn-success').val('Like');
         $btn.attr('method', 'post');
         $btn.attr('action', image.like_path);
         $btn.attr('data-liked', 0);
-        $btn.html('<span class="glyphicon glyphicon-thumbs-up"></span></a>');
+        heart_empty();
+
         return this;
       };
     })(jQuery);
@@ -51,11 +50,29 @@ $(document).ready(function () {
         $btn.attr('method', 'delete');
         $btn.attr('action', image.unlike_path);
         $btn.attr('data-liked', 1);
-        $btn.html('<span class="glyphicon glyphicon-thumbs-down"></span>');
+        heart();
         return this;
       };
     })(jQuery);
 
   });
+
+  function heart() {
+    $like_btn.html('<span class="glyphicon glyphicon-heart"></span>');
+    $like_btn.hover(function () {
+      $(this).html('<span class="glyphicon glyphicon-heart-empty"></span>');
+    }, function () {
+      $(this).html('<span class="glyphicon glyphicon-heart"></span>');
+    });
+  }
+
+  function heart_empty() {
+    $like_btn.html('<span class="glyphicon glyphicon-heart-empty"></span>');
+    $like_btn.hover(function () {
+      $(this).html('<span class="glyphicon glyphicon-heart"></span>');
+    }, function () {
+      $(this).html('<span class="glyphicon glyphicon-heart-empty"></span>');
+    });
+  }
 
 });

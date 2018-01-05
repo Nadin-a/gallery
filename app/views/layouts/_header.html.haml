@@ -52,7 +52,7 @@
         - if user_signed_in?
           - if current_user.admin?
             %li
-              =link_to('Sidekiq', sidekiq_web_path)
+              =link_to('Sidekiq', sidekiq_web_path, target: '_blank')
           %li
             =link_to(t('profile'), edit_user_registration_path(current_user))
           %li

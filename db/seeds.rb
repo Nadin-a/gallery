@@ -20,6 +20,7 @@ User.create!(name: 'Larry',
 
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password', confirmed_at: Time.now)
 
+
 if Rails.env.development?
   Category.create!(name: 'category1',
                    owner_id: 1,
@@ -55,9 +56,9 @@ if Rails.env.development?
                     image_id: Random.rand(1..15))
   end
 
-# 15.times do |n|
-#   Like.create!(user_id: Random.rand(1..3), image_id: n+1)
-# end
+15.times do |n|
+  Like.create!(user_id: Random.rand(1..3), image_id: n+1)
+end
 
 
   users = User.all

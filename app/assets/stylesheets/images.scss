@@ -1,6 +1,5 @@
 //opacity
 
-
 .hover11 figure img {
   opacity: .8;
 }
@@ -9,26 +8,26 @@
   opacity: 1;
 }
 
-.wrapper{
-  position:relative;
+.border_image {
+  padding: 2px;
+  background-color: $true-black;
+}
+
+.wrapper {
+  position: relative;
 }
 
 .wrapper .text {
-  bottom:40px;
-  left:0;
-  visibility:hidden;
-  position:absolute;
+  bottom: 40px;
+  left: 0;
+  visibility: hidden;
+  position: absolute;
 }
 
 .wrapper:hover .text {
-  visibility:visible;
+  visibility: visible;
   color: white;
-  position:absolute;
-  font-size: 1.5em;
+  position: absolute;
+  text-align:  center;
 }
 
-
-.panel-image.hide-panel-body{
-  background-color: black;
-  padding: 5px;
-}

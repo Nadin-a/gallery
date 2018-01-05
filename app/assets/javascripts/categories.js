@@ -10,7 +10,6 @@ $(document).ready(function () {
     $subscribe_btn.html('<span class="glyphicon glyphicon-bell"></span>');
   }
 
-
   $subscribe_btn.click(function () {
 
     let $btn = $(this);
@@ -56,8 +55,5 @@ $(document).ready(function () {
       };
     })(jQuery);
 
-
-
   });
-
 });
