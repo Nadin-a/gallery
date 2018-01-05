@@ -1,24 +1,32 @@
-# README
+# Gallery
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple gallery for your pictures.
 
-Things you may want to cover:
+https://serene-badlands-59053.herokuapp.com/
 
-* Ruby version
+## Getting started
 
-* System dependencies
+To get started with the app, clone the repo and then install the needed gems:
 
-* Configuration
+```
+$ bundle install
+```
 
-* Database creation
+Next, migrate the database:
 
-* Database initialization
+```
+$ rails db:migrate
+```
 
-* How to run the test suite
+Finally, run the test suite to verify that everything is working correctly:
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+$ rspec
+```
 
-* Deployment instructions
+If the test suite passes, you'll be ready to run the app in a local server:
 
-* ...
+```
+$ foreman start
+```
+
