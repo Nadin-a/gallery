@@ -7,10 +7,11 @@
       %h2
         = t('no_images')
     = render partial: 'shared/list_of_images'
-  .col-sm-6.col-md-6.col-lg-6.col-xl-6.text-center
-    %h1
-      = t('last_comments')
-    - if @comments.empty?
-      %h2
-        = t('no_comments')
+  .col-sm-6.col-md-6.col-lg-6.col-xl-6
+    .text-center
+      %h1
+        = t('last_comments')
+      - if @comments.empty?
+        %h2
+          = t('no_comments')
     = render partial: 'shared/list_of_comments_with_picture'
