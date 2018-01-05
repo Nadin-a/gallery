@@ -2,7 +2,6 @@
 
 require 'spec_helper'
 describe 'image_features', type: :feature do
-
   let!(:user) { FactoryBot.create(:random_user) }
   let!(:category) { FactoryBot.create(:random_category, owner: user) }
   let!(:image) { FactoryBot.create(:random_image, category: category) }

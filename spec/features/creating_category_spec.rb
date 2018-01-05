@@ -36,7 +36,6 @@ describe 'category_features', type: :feature do
   end
 
   describe 'Updating category' do
-
     before { visit category_path(category) }
 
     new_category_name = Faker::Lorem.word

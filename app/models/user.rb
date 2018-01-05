@@ -5,7 +5,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable, :async,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
-         omniauth_providers:[:facebook]
+         omniauth_providers: [:facebook]
 
   has_many :owned_categories, dependent: :destroy, foreign_key: :owner_id, class_name: 'Category'
   has_and_belongs_to_many :categories
@@ -46,7 +46,7 @@ class User < ApplicationRecord
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
+      user.password = Devise.friendly_token[0, 20]
       user.name = auth.info.name   # assuming the user model has a name
     end
   end

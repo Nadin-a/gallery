@@ -17,14 +17,13 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require 'simplecov'
 SimpleCov.start 'rails'
-ENV["RAILS_ENV"] ||= 'test'
-require File.expand_path("../../config/environment", __FILE__)
+ENV['RAILS_ENV'] ||= 'test'
+require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 require 'pundit/matchers'
 require 'support/controller_helpers'
 require 'support/users_helper'
 require 'capybara/rspec'
-include ActionDispatch::TestProcess
 require 'database_cleaner'
 
 DatabaseCleaner.strategy = :truncation
@@ -70,23 +69,25 @@ RSpec.configure do |config|
 
   config.include UserHelper
 
-  config.before(:suite) do
+  config.include ActionDispatch::TestProcess
+
+  config.before do
     DatabaseCleaner.clean_with(:truncation)
   end
 
-  config.before(:each) do
+  config.before do
     DatabaseCleaner.strategy = :transaction
   end
 
-  config.before(:each, js: true) do
+  config.before do
     DatabaseCleaner.strategy = :truncation
   end
 
-  config.before(:each) do
+  config.before do
     DatabaseCleaner.start
   end
 
-  config.after(:each) do
+  config.after do
     DatabaseCleaner.clean
   end
 end

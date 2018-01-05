@@ -2,11 +2,9 @@
 
 require 'spec_helper'
 describe 'image_features', type: :feature do
-
   let!(:user) { FactoryBot.create(:random_user) }
   let!(:category) { FactoryBot.create(:fake_category, owner: user) }
   let!(:image) { FactoryBot.create(:random_image, category: category) }
-
 
   before do
     login(user)
@@ -25,11 +23,6 @@ describe 'image_features', type: :feature do
       click_button 'Add'
       expect(page).to have_css("img[src*='test_picture.jpg']")
     end
-
-    # it 'on show page', js: true do
-    #   visit category_image_path(category, image)
-    #   expect(page).to have_css("img[src*='test_picture.jpg']")
-    # end
 
     it 'without title', js: true do
       fill_in 'Title of the picture', with: ''
@@ -83,7 +76,6 @@ describe 'image_features', type: :feature do
   end
 
   describe 'Deleting image' do
-
     before { visit category_image_path(category, image) }
 
     it 'with click on delete', js: true do

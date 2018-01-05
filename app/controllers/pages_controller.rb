@@ -3,11 +3,11 @@
 class PagesController < ApplicationController
   def home
     @images =
-    if user_signed_in?
-      current_user.feed.paginate(page: params[:page], per_page: 20)
-    else
-      Image.all.paginate(page: params[:page], per_page: 20)
-    end
+      if user_signed_in?
+        current_user.feed.paginate(page: params[:page], per_page: 20)
+      else
+        Image.all.paginate(page: params[:page], per_page: 20)
+      end
   end
 
   def popular_images
