@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
 class CategoriesController < ApplicationController
-  before_action :authenticate_user!, except: %i[index show followers]
-  before_action :set_category, except: %i[index new owned favorite create]
+  before_action :authenticate_user!, except: %i[index show followers popular]
+  before_action :set_category, except: %i[index new owned favorite create popular]
   before_action :set_new_category, only: %i[new index owned favorite]
 
   def index
     @categories = Category.all.paginate(page: params[:page], per_page: 15)
-    @popular_categories = Category.ordered_by_popularity
     authorize @categories
   end
 
@@ -59,6 +58,10 @@ class CategoriesController < ApplicationController
   def favorite
     @categories = current_user.categories.paginate(page: params[:page], per_page: 15)
     authorize @categories
+  end
+
+  def popular
+    @popular_categories = Category.ordered_by_popularity
   end
 
   def subscribe

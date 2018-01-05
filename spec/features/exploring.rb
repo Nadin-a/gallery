@@ -54,13 +54,13 @@ describe 'Find', type: :feature do
       end
 
       it 'content on all categories top 5' do
-        visit categories_path
+        visit popular_categories_path
         expect(page).to have_content('TOP 5 Cars Images: 1 Delete ' + second_category.name)
       end
 
       it 'content on all categories' do
         visit categories_path
-        expect(page).to have_content('All categories ' + second_category.name)
+        expect(page).to have_content('All categories')
       end
 
       it 'visit popular images', js: true do

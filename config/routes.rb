@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     collection do
       get :owned
       get :favorite
+      get :popular
     end
 
     member do
