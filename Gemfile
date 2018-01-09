@@ -25,7 +25,7 @@ gem 'redis', '~> 3.3'
 gem "devise-async"
 gem 'redis-namespace'
 gem 'sidekiq_mailer'
-gem "fog-aws"
+gem 'fog-aws'
 gem 'faker'
 gem 'omniauth-facebook'
 
@@ -54,7 +54,6 @@ group :development do
   gem 'binding_of_caller'
   gem 'rubocop', require: false
   gem 'scss_lint', require: false
-  # gem 'eslint-rails'
   gem 'foreman'
 end
 
