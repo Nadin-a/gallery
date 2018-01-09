@@ -29,8 +29,8 @@ describe 'Visitor signs up', type: :feature do
   end
 
   it 'with long name' do
-    sign_up_with email, 'a' * 21, 'password', 'password'
-    expect(page).to have_content('Name is too long (maximum is 20 characters)')
+    sign_up_with email, 'a' * 31, 'password', 'password'
+    expect(page).to have_content('Name is too long (maximum is 30 characters)')
   end
 
   it 'with empty password' do

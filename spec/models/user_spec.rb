@@ -17,7 +17,7 @@ describe User do
     expect(user).not_to be_valid
   end
   it 'is invalid with long name' do
-    user.name = 'a' * 21
+    user.name = 'a' * 31
     expect(user).not_to be_valid
   end
   it 'is invalid without an e-mail' do
