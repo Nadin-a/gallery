@@ -15,22 +15,20 @@
           %a{href: category_image_path(@images.first.category, @images.first)}
             %img{alt: @images.first.title, src: @images.first.picture}
               .carousel-caption
-                .some_text
+                .title-carousel-text
                   = t('welcome_to_gallery')
-                %h1
-                  %p
-                    =@images.first.title
+                .carousel-picture-title
+                  = @images.first.title
         - @images.each do |image|
           - next if image == @images.first
           .item
             %a{href: category_image_path(image.category, image)}
               %img{alt: image.title, src: image.picture}
                 .carousel-caption
-                  .some_text
+                  .title-carousel-text
                     = t('welcome_to_gallery')
-                  %h1
-                    %p
-                      =image.title
+                  .carousel-picture-title
+                    = image.title
       / Controls
       %a.left.carousel-control{"data-slide": 'prev', href:'#carousel-example-generic', role: 'button'}
         %span.glyphicon.glyphicon-chevron-left{'aria-hidden': 'true'}

@@ -13,7 +13,7 @@ describe Image do
     expect(image).not_to be_valid
   end
   it 'is not valid with long title' do
-    image.title = 'a' * 31
+    image.title = 'a' * 21
     expect(image).not_to be_valid
   end
   it 'is not valid without a picture' do

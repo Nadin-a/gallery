@@ -10,7 +10,7 @@ class Image < ApplicationRecord
   mount_uploader :picture, PictureUploader
 
   validates :category, presence: true
-  validates :title, presence: true, length: { maximum: 30 }, uniqueness: true
+  validates :title, presence: true, length: { maximum: 20 }, uniqueness: true
   validates :description, length: { maximum: 300 }
   validates :picture, presence: true
   validate  :picture_size

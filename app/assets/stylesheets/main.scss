@@ -16,7 +16,6 @@ h2 {
 }
 
 .panel {
-  //background-color: $panel-background;
   border: 0;
 }
 
@@ -38,7 +37,6 @@ h2 {
 .show-image {
   background-color: $show-image-color;
 }
-
 
 // Dropdown menu background color
 
@@ -81,31 +79,52 @@ body {
   height: 100%;
 }
 
-.carousel,
-.carousel-inner,
-.carousel-inner .item,
-.carousel-inner img {
-  background-color: $true-black;
-  height: auto;
-  width: 100%;
+@media screen and (orientation: portrait) {
+  .carousel,
+  .carousel-inner,
+  .carousel-inner .item,
+  .carousel-inner img {
+    height: auto;
+    width: 100%;
+  }
 }
 
-.carousel .some_text {
-  font-size: 4em;
+@media screen and (orientation: landscape) {
+  .carousel,
+  .carousel-inner,
+  .carousel-inner .item,
+  .carousel-inner img {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1500px) {
+  .carousel,
+  .carousel-inner,
+  .carousel-inner .item,
+  .carousel-inner img {
+    height: auto;
+    width: 100%;
+  }
+}
+
+.carousel .title-carousel-text {
+  font-size: 4.5em;
   padding-bottom: 30%;
   text-align: center;
 }
 
-
-
+.carousel .carousel-picture-title {
+  font-size: 2em;
+  text-align: center;
+}
 
 //Correct images in all sizes
 img {
-  //display: block;
   height: auto;
   max-width: 100%;
 }
-
 
 .navbar-toggle {
   border: 0;
