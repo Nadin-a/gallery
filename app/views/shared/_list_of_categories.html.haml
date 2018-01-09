@@ -8,8 +8,8 @@
       .hover11.column
         %figure
           = link_to(image_tag(image.picture.preview_thumb.url), category_image_path(image.category, image))
-      %br
-  .col-lg-12
+  %br
+  .col-sm-12.col-md-12.col-lg-12.col-xl-12
     .pull-left
       %br
       = link_to(t('images')+category.images.count.to_s, category_path(category))

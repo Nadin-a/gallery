@@ -5,28 +5,29 @@
       .col-sm-12
         = render partial: 'shared/flash_messages'
         .well
-          .col-sm-4
+          .col-sm-4.col-md-4.col-lg-4.col-xl-4
             .name_category
               = @category.name
-          .col-sm-2
+          .col-sm-2.col-md-2.col-lg-2.col-xl-2
             %b
               = t('created_by')
             %br
             =  @category.owner.name
-          .col-sm-2
+          .col-sm-2.col-md-2.col-lg-2.col-xl-2
             %b
               = t('created_at')
             %br
             = time_ago_in_words(@category.created_at)
             = t('ago')
-          .col-sm-2
+          .col-sm-2.col-md-2.col-lg-2.col-xl-2
             .pull-right
               = render 'shared/subscribe_form', category: @category
-          .col-sm-2
+          .col-sm-2.col-md-2.col-lg-2.col-xl-2
             %h4
               = link_to(t('followers'), followers_category_path(@category))
               %label_tag{ class: 'js-count-followers-label' }
-                = @category.users.count
+                .text-center
+                  = @category.users.count
           %hr
             .separator
         - if user_signed_in?
