@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180103141227) do
+ActiveRecord::Schema.define(version: 20180109150701) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -111,6 +111,33 @@ ActiveRecord::Schema.define(version: 20180103141227) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "room_id"
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_messages_on_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["name"], name: "index_rooms_on_name"
+    t.index ["user_id", "created_at"], name: "index_rooms_on_user_id_and_created_at"
+    t.index ["user_id"], name: "index_rooms_on_user_id"
+  end
+
+  create_table "rooms_users", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "room_id"
+    t.index ["room_id"], name: "index_rooms_users_on_room_id"
+    t.index ["user_id"], name: "index_rooms_users_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -171,4 +198,5 @@ ActiveRecord::Schema.define(version: 20180103141227) do
 
   add_foreign_key "categories", "users", column: "owner_id"
   add_foreign_key "images", "categories"
+  add_foreign_key "rooms", "users"
 end

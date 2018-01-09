@@ -1,0 +1,10 @@
+.col-sm-12.col-md-12.col-lg-12.col-xl-12
+  - if user_signed_in?
+    = form_for [@room, @message]  do |f|
+      = render 'shared/error_messages', object: f.object
+      .field
+        = hidden_field_tag :room_id, @room.id
+        = f.text_area :content, placeholder: t('new_comment'), class: 'form-control', rows:'3'
+      .actions
+        .pull-right
+          = f.submit t('post'), class: 'btn btn-success btn-lg'

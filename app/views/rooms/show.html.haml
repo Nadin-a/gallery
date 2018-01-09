@@ -1,0 +1,9 @@
+.col-sm-12.col-md-12.col-lg-12.col-xl-12.well
+  .text-center
+    %h1
+      = @room.name
+  .col-sm-12.col-md-12.col-lg-12.col-xl-12
+    = render partial: 'shared/list_of_messages'
+  %hr
+    .separator
+      = render partial: 'shared/message_form'

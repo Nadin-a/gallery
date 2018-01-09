@@ -1,0 +1,6 @@
+.col-lg-12.text-center
+  %br
+  %br
+  %button{type: 'button', remote: true, href: new_room_path, class:'btn btn-primary btn-block btn-lg outline', data: {target: '#myModal', toggle: 'modal'}}
+    = 'NEW ROOM'
+  = render partial: 'rooms/new'

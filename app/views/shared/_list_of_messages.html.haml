@@ -1,0 +1,14 @@
+- @messages.each do |message|
+  %br
+    %b
+      = message.user.name
+      = ':'
+      = image_tag(message.user.avatar) if message.user.avatar?
+  %br
+  = message.content
+  %br
+  .pull-left
+    = time_ago_in_words(message.created_at)
+    = t('ago')
+  #new_messages
+  %br
