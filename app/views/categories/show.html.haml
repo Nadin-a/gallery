@@ -26,8 +26,7 @@
             %h4
               = link_to(t('followers'), followers_category_path(@category))
               %label_tag{ class: 'js-count-followers-label' }
-                .text-center
-                  = @category.users.count
+                = @category.users.count
           %hr
             .separator
         - if user_signed_in?
