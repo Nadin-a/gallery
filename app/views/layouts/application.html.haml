@@ -13,12 +13,11 @@
         document.getElementById("demo-form").submit();
       }
     = render 'layouts/header'
-    .cover-image
-      - if action_name != 'home' && "#{action_name}" != 'show'
-        %body
-          .container
-            .row
-              = render partial: 'shared/flash_messages'
-              = yield
-      -else
-        = yield
+    - if action_name != 'home' && "#{action_name}" != 'show'
+      %body
+        .container
+          .row
+            = render partial: 'shared/flash_messages'
+            = yield
+    -else
+      = yield
