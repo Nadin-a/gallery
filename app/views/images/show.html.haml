@@ -10,11 +10,13 @@
           %br
       .col-sm-12.col-md-12.col-lg-12.col-xl-12.text-center
         = image_tag(@image.picture)
-      .col-sm-12.col-md-12.col-lg-12.col-xl-12.text-center
-        %br
-        = @image.description
+      .col-sm-12.col-md-12.col-lg-12.col-xl-12
+        .long_text
+          %br
+          = @image.description
       .col-sm-12.col-md-12.col-lg-12.col-xl-12
         .col-12.col-sm-6.col-md-6.col-lg-6.col-xl-6
+          %br
           %b
             =t('uploaded')
           = time_ago_in_words(@image.created_at)
@@ -26,7 +28,7 @@
           %br
           %b
             =t('owner') + ': '
-          = @category.owner.name
+          = link_to(@category.owner.name, user_path(@category.owner))
         .col-12.col-sm-6.col-md-6.col-lg-6.col-xl-6
           .pull-right
             = render partial: 'images/like_form'
@@ -45,6 +47,7 @@
                 .separator
       .col-sm-12
         = render partial: 'shared/list_of_comments'
+        #new_comments
         %hr
           .separator
             = render partial: 'shared/comment_form'

@@ -11,7 +11,7 @@ User.create!(name: 'Susan',
              password_confirmation: 'password',
              remote_avatar_url: Faker::Avatar.image,
              confirmed_at: Time.now)
-User.create!(name: 'Larry',
+User.create!(name: 'a'*30,
              email: 'larry@mail.org',
              password: 'password',
              password_confirmation: 'password',
@@ -22,7 +22,7 @@ AdminUser.create!(email: 'admin@example.com', password: 'password', password_con
 
 
 if Rails.env.development?
-  Category.create!(name: 'category1',
+  Category.create!(name: 'a'*15,
                    owner_id: 1,
                    cover: Rails.root.join('app/assets/images/large-photo.jpeg').open)
   Category.create!(name: 'category2',
@@ -49,12 +49,21 @@ if Rails.env.development?
                   category_id: Random.rand(1..3))
   end
 
+  Image.create!(title: 'a' * 20,
+                description: 'a' * 300,
+                picture: Rails.root.join('app/assets/images/large-photo.jpeg').open,
+                category_id: Random.rand(1..3))
+
   20.times do
     content = Faker::Lorem.paragraph
     Comment.create!(content: content,
                     user_id: Random.rand(1..3),
                     image_id: Random.rand(1..15))
   end
+
+  Comment.create!(content: 'a'*300,
+                  user_id: Random.rand(1..3),
+                  image_id: Random.rand(1..15))
 
 15.times do |n|
   Like.create!(user_id: Random.rand(1..3), image_id: n+1)

@@ -7,12 +7,13 @@
         .well
           .col-sm-3.col-md-3.col-lg-3.col-xl-3
             .name_category
-              = @category.name
+              .long_text
+                = @category.name
           .col-sm-2.col-md-2.col-lg-2.col-xl-2
             %b
               = t('created_by')
             %br
-            =  @category.owner.name
+            =  link_to(@category.owner.name, user_path(@category.owner))
           .col-sm-3.col-md-3.col-lg-3.col-xl-3
             %b
               = t('created_at')

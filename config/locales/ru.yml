@@ -121,6 +121,20 @@ ru:
       verification_failed: 'Неверные данные с капчи'
       recaptcha.errors.recaptcha_unreachable: 'Время вышло, попробуйте снова'
 
+  rooms: 'Чаты'
+  create_new_room: 'Создать новый чат'
+  room_created: 'Чат создан!'
+  room_updated: 'Чат отредактирован!'
+  room_deleted: 'Чат удалён!!'
+  room_not_deleted: 'Чат не был удалён!'
+  random_room: 'Случайный чат'
+  update_room: 'Редактировать чат'
+
+  comments: 'Комментарии: '
+  information: 'Информация'
+  reg_data: 'Дата регистрации:'
+  last_visit: 'Последний визит:'
+
   activerecord:
     errors:
       messages:

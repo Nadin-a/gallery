@@ -72,4 +72,5 @@ class ImagesController < ApplicationController
     @category = Category.find(params[:category_id])
     authorize @category
   end
+
 end

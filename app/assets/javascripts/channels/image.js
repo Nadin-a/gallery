@@ -16,13 +16,12 @@ App.image = App.cable.subscriptions.create('ImageChannel', {
     if (current_url.includes(data.url)) {
       $like_label.html(data.count);
       if(data.comment) {
-        return $('#new_comments').append(this.renderComment(data));
+        return $('#new_comments').append(this.renderComment(data.comment));
       }
     }
   },
 
-  renderComment: function(data) {
-    return "<br><br><p> <b>" + data.author + ": </b><br><br>" + data.comment.content + "</p>" + data.date;
+  renderComment: function(comment) {
+    return comment;
   }
-
 });

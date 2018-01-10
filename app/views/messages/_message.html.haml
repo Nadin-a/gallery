@@ -1,0 +1,17 @@
+.col-sm-12.col-md-12.col-lg-12.col-xl-12
+  %hr
+    .separator
+    .col-sm-1.col-md-1.col-lg-1.col-xl-1
+      .text-center
+        %b
+          = link_to(message.user.name, user_path(message.user))
+        %br
+        = image_tag(message.user.avatar) if message.user.avatar?
+    .col-sm-11.col-md-11.col-lg-11.col-xl-11
+      %br
+        .long_text
+          = message.content
+    .col-sm-12.col-md-12.col-lg-12.col-xl-12
+      .pull-left
+        = time_ago_in_words(message.created_at)
+        = t('ago')

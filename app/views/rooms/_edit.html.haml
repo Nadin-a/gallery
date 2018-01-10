@@ -1,0 +1,21 @@
+#updateRoomModal.modal.fade{"aria-labelledby": 'myModalLabel', role: 'dialog', tabindex: '-1'}
+  .modal-dialog{role: 'document'}
+    .modal-content
+      .modal-header
+        %button.close{"aria-label": t('close'), "data-dismiss": 'modal', type: 'button'}
+          %span{"aria-hidden": 'true'} ×
+        %h4#updateRoomModalLabel.modal-title
+          =t('update_room')
+        .modal-body
+        .col-lg-12
+          = form_for [@room] do |f|
+            = render 'shared/error_messages', object: f.object
+            .field
+              = f.label t('name')
+              = f.text_field :name, autofocus: true, class:'form-control', placeholder:t('name')
+            %br
+            .actions
+              .modal-footer
+                %button.btn.btn-default{"data-dismiss": 'modal', type: 'button'}
+                  =t('close')
+                = f.submit t('update'), class: 'btn btn-primary active'

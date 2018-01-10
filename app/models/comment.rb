@@ -9,6 +9,6 @@ class Comment < ApplicationRecord
   validates :content, presence: true, length: { maximum: 300 }
 
   def self.default_scope
-    order(created_at: :desc)
+    order(created_at: :asc)
   end
 end

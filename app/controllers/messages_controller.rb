@@ -5,10 +5,11 @@ class MessagesController < ApplicationController
   before_action :authenticate_user!, only: %i[create]
 
   def create
-    @message = current_user.messages.new(message_params) if user_signed_in?
+    @message = current_user.messages.new(message_params)
+    authorize @message
     @room.messages << @message
     if @message.save
-      # LikeJob.perform_later(category_image_path(@category, @image), @image.likes.count)
+       MessageJob.perform_later(room_path(@room), @message)
     else
       flash[:error] = @message.errors.full_messages.first
     end
@@ -23,5 +24,6 @@ class MessagesController < ApplicationController
 
   def set_room
     @room = Room.find(params[:room_id])
+    authorize @room
   end
 end

@@ -32,8 +32,16 @@
                 =link_to t('popular_image'), popular_images_path
               %li.text-center
                 =link_to t('last_comments'), last_comments_path
+          %li.dropdown
+            %a.dropdown-toggle{'data-toggle': 'dropdown', href: rooms_path}
+              = t('rooms')
+              %span.caret
+            %ul.dropdown-menu
               %li.text-center
-                =link_to 'ROOMS', rooms_path
+                = link_to t('rooms'), rooms_path
+              - if Room.count > 1
+                %li.text-center
+                  = link_to t('random_room'), room_path(Room.random_room)
       %ul.nav.navbar-nav.navbar-right
         %li.dropdown
           %a.dropdown-toggle{'data-toggle': 'dropdown', href: '#'}

@@ -1,6 +1,5 @@
 %body{style: "background: url('https://hdwallsource.com/img/2014/6/mountain-peaks-wallpaper-hd-33593-34349-hd-wallpapers.jpg'') repeat center center fixed"}
   = content_for(:title, 'Home')
-  = render partial: 'shared/flash_messages'
   - if @images.empty?
     .container
       .row.well

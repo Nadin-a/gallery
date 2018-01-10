@@ -1,23 +1,22 @@
 !!!
 %html
   %head
-    %meta{content: 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type'}/
-    = favicon_link_tag asset_path('image-flat.png'), :rel => 'icon', :type =>  'image/png'
+    %meta{content: 'text/html; charset=UTF-8', 'http-equiv': 'Content-Type'}/
+    = favicon_link_tag asset_path('image-flat.png'), rel: 'icon', type:  'image/png'
     %title= content_for :title
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
-    %script{:async => "", :defer => "defer", :src => "https://www.google.com/recaptcha/api.js"}
+    %script{ async: '', defer: 'defer', src: 'https://www.google.com/recaptcha/api.js'}
     :javascript
       function onSubmit(token) {
         document.getElementById("demo-form").submit();
       }
     = render 'layouts/header'
-    - if action_name != 'home' && "#{action_name}" != 'show'
+    - if action_name != 'home' && "#{controller_path}##{action_name}" != 'images#show'
       %body
         .container
           .row
-            = render partial: 'shared/flash_messages'
             = yield
     -else
       = yield

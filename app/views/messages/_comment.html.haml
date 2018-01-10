@@ -1,0 +1,16 @@
+.col-sm-12.col-md-12.col-lg-12.col-xl-12
+  .col-sm-12.col-md-12.col-lg-12.col-xl-12
+    .col-sm-1.col-md-1.col-lg-1.col-xl-1
+      .text-center
+        %b
+          = link_to(comment.user.name, user_path(comment.user))
+        %br
+        = image_tag(comment.user.avatar) if comment.user.avatar?
+    .col-sm-11.col-md-11.col-lg-11.col-xl-11
+      %br
+        .long_text
+          = comment.content
+  .col-sm-12.col-md-12.col-lg-12.col-xl-12
+    .pull-left
+      = time_ago_in_words(comment.created_at)
+      = t('ago')

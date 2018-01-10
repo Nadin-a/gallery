@@ -51,8 +51,7 @@ class CommentsController < ApplicationController
   end
 
   def show_comment_to_all
-    CommentJob.perform_later(category_image_path(@category, @image), @comment,
-                             @comment.user.name, time_ago_in_words(@comment.created_at) + t('ago'))
+    CommentJob.perform_later(category_image_path(@category, @image), @comment)
   end
 
   def comment_params

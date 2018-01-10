@@ -1,9 +1,19 @@
+= content_for(:title, @room.name)
 .col-sm-12.col-md-12.col-lg-12.col-xl-12.well
+  = render partial: 'shared/flash_messages'
   .text-center
     %h1
       = @room.name
+    - if user_signed_in?
+      - if current_user == @room.user || current_user.admin?
+        %a{remote: true, "data-target": '#updateRoomModal', "data-toggle": 'modal', href: edit_room_path(@room)}
+          =t('update')
+        |
+        = link_to(t('delete'), room_path(@room), method: :delete,  data: { confirm: t('you_sure')})
   .col-sm-12.col-md-12.col-lg-12.col-xl-12
     = render partial: 'shared/list_of_messages'
+    #new_messages
   %hr
     .separator
       = render partial: 'shared/message_form'
+= render 'rooms/edit'

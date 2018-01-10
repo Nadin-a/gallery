@@ -29,9 +29,9 @@ describe 'category_features', type: :feature do
     it 'with long name', js: true do
       visit categories_path
       click_button 'Create own category'
-      fill_in 'Name', with: 'a' * 21
+      fill_in 'Name', with: 'a' * 16
       click_button 'Create'
-      expect(page).to have_content('Name is too long (maximum is 20 characters)')
+      expect(page).to have_content('Name is too long (maximum is 15 characters)')
     end
   end
 
@@ -66,7 +66,7 @@ describe 'category_features', type: :feature do
       click_link 'Update'
       fill_in 'Name', with: 'a' * 21
       click_button 'Update'
-      expect(page).to have_content('Name is too long (maximum is 20 characters')
+      expect(page).to have_content('Name is too long (maximum is 15 characters')
     end
   end
 

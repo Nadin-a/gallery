@@ -27,7 +27,7 @@ class CategoriesController < ApplicationController
       redirect_to @category
     else
       flash[:error] = @category.errors.full_messages
-      redirect_to categories_path
+      redirect_to owned_categories_path
     end
   end
 

@@ -1,16 +1,17 @@
 - @comments.each do |comment|
   .panel.panel-default
     .panel-body
-      .col-sm-10.col-md-10.col-lg-10.col-xl-10
+      .col-sm-6.col-md-6.col-lg-6.col-xl-6
         %br
-          = User.find(comment.user_id).name
-          = image_tag(User.find(comment.user_id).avatar) if User.find(comment.user_id).avatar?
-        %hr
-          .separator
-        = comment.content
-      .col-sm-12.col-md-2.col-lg-2.col-xl-2
+          .long_text
+            = link_to(comment.user.name, user_path(comment.user))
+          = image_tag(comment.user.avatar.thumb.url) if comment.user.avatar?
+      .col-sm-6.col-md-6.col-lg-6.col-xl-6
         .pull-right
           = link_to(image_tag(comment.image.picture.small_thumb.url), category_image_path(comment.image.category, comment.image))
+      .col-sm-12.col-md-12.col-lg-12.col-xl-12
+        .long_text
+          = comment.content
     .panel-footer
       = time_ago_in_words(comment.created_at)
       = t('ago')

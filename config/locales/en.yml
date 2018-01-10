@@ -117,3 +117,17 @@ en:
     errors:
       verification_failed: 'Uncorrect recaptcha'
       recaptcha.errors.recaptcha_unreachable: 'Timeout error, try again'
+
+  rooms: 'Chat rooms'
+  create_new_room: 'Create new room'
+  room_created: 'Room created!'
+  room_updated: 'Room updated!'
+  room_deleted: 'Room deleted!'
+  room_not_deleted: 'Room not deleted!'
+  random_room: 'Random room'
+  update_room: 'Update room'
+
+  comments: 'Comments: '
+  information: 'Information'
+  reg_data: 'Registration data:'
+  last_visit: 'Last visit:'

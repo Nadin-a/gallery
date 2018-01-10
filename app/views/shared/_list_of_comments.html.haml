@@ -1,21 +1,26 @@
 - @comments.each do |comment|
-  %br
-    %b
-      = User.find(comment.user_id).name
-      = ':'
-      = image_tag(User.find(comment.user_id).avatar) if User.find(comment.user_id).avatar?
-      -#=t('say')
-  %br
-  = comment.content
-  %br
-  .pull-left
-    = time_ago_in_words(comment.created_at)
-    = t('ago')
-  .pull-right
-    - if user_signed_in?
-      - if current_user.admin?
-        = link_to(t('delete'), category_image_comment_path(comment.image.category, comment.image, comment),  method: :delete, data: { confirm: t('you_sure'), toggle:'tooltip',placement:'left' }, title: t('delete_this_comment_tooltip'))
+  .col-sm-12.col-md-12.col-lg-12.col-xl-12
+    .col-sm-12.col-md-12.col-lg-12.col-xl-12
+      .col-sm-1.col-md-1.col-lg-1.col-xl-1
+        .text-center
+          %b
+            = link_to(comment.user.name, user_path(comment.user))
+          %br
+          = image_tag(comment.user.avatar) if comment.user.avatar?
+      .col-sm-11.col-md-11.col-lg-11.col-xl-11
+        %br
+          .long_text
+            = comment.content
+    .col-sm-12.col-md-12.col-lg-12.col-xl-12
+      .pull-left
+        = time_ago_in_words(comment.created_at)
+        = t('ago')
+      .pull-right
+        - if user_signed_in?
+          - if current_user.admin?
+            = link_to(t('delete'), category_image_comment_path(comment.image.category, comment.image, comment),  method: :delete, data: { confirm: t('you_sure'), toggle:'tooltip',placement:'left' }, title: t('delete_this_comment_tooltip'))
 #new_comments
-  %br
 %br
-= will_paginate @comments
+%br
+.col-sm-12.col-md-12.col-lg-12.col-xl-12.text-center
+  = will_paginate @comments
