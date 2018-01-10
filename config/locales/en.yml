@@ -126,6 +126,9 @@ en:
   room_not_deleted: 'Room not deleted!'
   random_room: 'Random room'
   update_room: 'Update room'
+  no_rooms: 'There are no rooms!'
+  no_messages: 'There are no messages in this room!'
+  no_categories: 'There are no categories!'
 
   comments: 'Comments: '
   information: 'Information'

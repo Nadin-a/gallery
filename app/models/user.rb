@@ -15,7 +15,6 @@ class User < ApplicationRecord
   has_many :liked_images, through: :likes, source: :image
 
   has_many :owned_rooms, dependent: :destroy, foreign_key: :user_id, class_name: 'Room'
-  has_and_belongs_to_many :rooms
   has_many :messages, dependent: :destroy, class_name: 'Message'
 
 

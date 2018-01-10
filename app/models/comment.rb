@@ -11,4 +11,8 @@ class Comment < ApplicationRecord
   def self.default_scope
     order(created_at: :asc)
   end
+
+  def self.last_comments
+    unscoped.order(created_at: :desc)
+  end
 end

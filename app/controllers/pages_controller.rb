@@ -15,11 +15,11 @@ class PagesController < ApplicationController
   end
 
   def last_comments
-    @comments = Comment.all.paginate(page: params[:page], per_page: 5)
+    @comments = Comment.last_comments.paginate(page: params[:page], per_page: 5)
   end
 
   def updates
     @images = Image.ordered_by_likes.first(24)
-    @comments = Comment.all.first(6)
+    @comments = Comment.last_comments.first(6)
   end
 end

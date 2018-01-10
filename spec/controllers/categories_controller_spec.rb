@@ -161,6 +161,5 @@ RSpec.describe CategoriesController, type: :controller do
       expected = expect { delete :destroy, params: { id: category.id } }
       expected.to change(Image, :count).by(-1)
     end
-
   end
 end

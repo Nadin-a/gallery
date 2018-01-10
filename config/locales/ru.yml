@@ -135,6 +135,10 @@ ru:
   reg_data: 'Дата регистрации:'
   last_visit: 'Последний визит:'
 
+  no_rooms: 'Чатов ещё нет!'
+  no_messages: 'В этом чате ещё нет сообщений!'
+  no_categories: 'Категорий ещё нет!'
+
   activerecord:
     errors:
       messages:
