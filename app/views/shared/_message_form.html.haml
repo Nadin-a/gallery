@@ -2,12 +2,10 @@
   - if user_signed_in?
     %br
     %br
-    = form_for [@room, @message]  do |f|
-      = render 'shared/error_messages', object: f.object
-      .field
-        = hidden_field_tag :room_id, @room.id
-        = f.text_area :content, placeholder: t('new_message'), class: 'form-control', rows:'3'
+    %form.new_message
+      %input{name: 'room_id', type: 'hidden', value: "#{@room.id}"}/
+      %input{name: 'user_id', type: 'hidden', value: "#{current_user.id}"}/
+      %textarea.form-control{name: 'content'}
       %br
-      .actions
         .pull-right
-          = f.submit t('post'), class: 'js-new_message btn btn-success btn-lg', id:'btn-message-post'
+          %input.btn.btn-success.btn-lg{type: 'submit', value: 'Send'}/

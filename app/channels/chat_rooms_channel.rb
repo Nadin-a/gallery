@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChatRoomsChannel < ApplicationCable::Channel
   def subscribed
     stream_from 'room'
@@ -8,6 +10,10 @@ class ChatRoomsChannel < ApplicationCable::Channel
   end
 
   def send_message(data)
-    # process data sent from the page
+    message_params = data['message'].each_with_object({}) do |el, hash|
+      hash[el.values.first] = el.values.last
+    end
+
+    Message.create(message_params)
   end
 end

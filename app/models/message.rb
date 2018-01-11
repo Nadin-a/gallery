@@ -4,6 +4,8 @@ class Message < ApplicationRecord
   belongs_to :user
   belongs_to :room
 
+  after_create_commit { MessageJob.perform_later(self) }
+
   validates :user, presence: true
   validates :room, presence: true
   validates :content, presence: true, length: { maximum: 1000 }

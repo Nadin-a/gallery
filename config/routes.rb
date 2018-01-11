@@ -35,8 +35,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :rooms do
-    resources :messages, only: %i[create]
-  end
+  resources :rooms
 
 end
