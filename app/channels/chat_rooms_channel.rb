@@ -1,6 +1,5 @@
 class ChatRoomsChannel < ApplicationCable::Channel
   def subscribed
-    p '==========subscribed============='
     stream_from 'room'
   end
 

@@ -36,7 +36,10 @@
       %a.right.carousel-control{"data-slide": 'next', href: '#carousel-example-generic', role: 'button'}
         %span.glyphicon.glyphicon-chevron-right{'aria-hidden': 'true'}
     %br
-    = render 'shared/list_of_images'
+    .container-fluid
+      .row
+        .col-sm-12.col-md-12.col-lg-12.col-xl-12.text-center
+          = render 'shared/list_of_images'
 
 :css
   h1, h2{
@@ -44,7 +47,7 @@
   }
 
   .wrapper:hover .text {
-    font-size: 2em;
+    font-size: 1.8em;
   }
 
 

@@ -2,9 +2,9 @@
   = content_for(:title, @category.name)
   .container
     .row.well
-      .col-sm-12
+      .col-sm-12.col-md-12.col-lg-12.col-xl-12
         = render partial: 'shared/flash_messages'
-        .well
+        .col-sm-12.col-md-12.col-lg-12.col-xl-12.well
           .col-sm-3.col-md-3.col-lg-3.col-xl-3
             .name_category
               .long_text
@@ -12,7 +12,6 @@
           .col-sm-2.col-md-2.col-lg-2.col-xl-2
             %b
               = t('created_by')
-            %br
               .long_text
                 =  link_to(@category.owner.name, user_path(@category.owner))
           .col-sm-3.col-md-3.col-lg-3.col-xl-3
@@ -29,8 +28,6 @@
               = link_to(t('followers'), followers_category_path(@category))
               %label_tag{ class: 'js-count-followers-label' }
                 = @category.users.count
-          %hr
-            .separator
         - if user_signed_in?
           - if current_user == @category.owner || current_user.admin?
             %h4
@@ -43,8 +40,8 @@
                   = t('update')
                 |
                 =link_to(t('delete'), category_path, method: :delete, data: { confirm: t('you_sure'), toggle:'tooltip',placement:'left' }, title: t('delete_this_category_tooltip'))
-        %br
-        %br
+                %br
+                %br
       = render partial: 'shared/list_of_images'
       .col-sm-12.col-md-12.col-lg-12.col-xl-12.text-center
         = will_paginate @images
