@@ -10,21 +10,24 @@
     .text-center
       %h1
         = t('information')
-    =t('name') + ':'
-    = @user.name
-    %br
-    = t('comments')
-    = @user.comments.count
-    %br
-    = t('favorite_categories')
-    = @user.categories.count
-    %br
-    = t('reg_data')
-    = time_ago_in_words(@user.created_at) + t('ago')
-    - if @user.last_sign_in_at.present?
+    .col-sm-6.col-md-6.col-lg-6.col-xl-6
+      =t('name') + ':'
+      .long_text
+        = @user.name
       %br
-      = t('last_visit')
-      = time_ago_in_words(@user.last_sign_in_at)+ t('ago')
+      = t('comments')
+      = @user.comments.count
+      %br
+      = t('favorite_categories')
+      = @user.categories.count
+      %br
+      = t('reg_data')
+      = time_ago_in_words(@user.created_at) + t('ago')
+      - if @user.last_sign_in_at.present?
+        %br
+        = t('last_visit')
+        = time_ago_in_words(@user.last_sign_in_at)+ t('ago')
+    .col-sm-6.col-md-6.col-lg-6.col-xl-6
       .text-center
         = image_tag(@user.avatar)
   .col-sm-6.col-md-6.col-lg-6.col-xl-6
