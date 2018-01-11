@@ -3,7 +3,7 @@
 require 'fog/aws'
 class AvatarUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
-  process resize_to_limit: [100, 100]
+  process resize_to_limit: [120, 120]
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
@@ -34,7 +34,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   version :thumb do
-    process resize_to_fill: [50, 50]
+    process resize_to_fill: [70, 70]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
