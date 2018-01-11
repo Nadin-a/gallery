@@ -44,7 +44,9 @@ class User < ApplicationRecord
     user.email = auth.info.email
     user.password = Devise.friendly_token[0, 20]
     user.name = auth.info.name
-    user.remote_avatar_url = auth.info.image
+    url = auth.info.image
+    avatar_url =url.gsub('http','https')
+    user.remote_avatar_url = avatar_url
     user.confirmed_at = Time.now
     user.save!
     user
