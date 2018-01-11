@@ -10,12 +10,12 @@ class MessagesController < ApplicationController
     @room.messages << @message
     if @message.save
        MessageJob.perform_later(room_path(@room), @message)
-       respond_to do |format|
-         format.html { redirect_to @room }
-         format.json { render @room, status: :created }
-       end
     else
       flash[:error] = @message.errors.full_messages.first
+    end
+    respond_to do |format|
+      format.html { redirect_to @room }
+      format.json { render @room, status: :created }
     end
   end
 

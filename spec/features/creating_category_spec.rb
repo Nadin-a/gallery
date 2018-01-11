@@ -18,6 +18,14 @@ describe 'category_features', type: :feature do
       expect(page).to have_content(category_name)
     end
 
+    it 'with successful message', js: true do
+      visit categories_path
+      click_button 'Create own category'
+      fill_in 'Name', with: category_name
+      click_button 'Create'
+      expect(page).to have_content('Category created!')
+    end
+
     it 'with empty name', js: true do
       visit categories_path
       click_button 'Create own category'
@@ -47,6 +55,13 @@ describe 'category_features', type: :feature do
       expect(page).to have_content(new_category_name)
     end
 
+    it 'with successful message', js: true do
+      click_link 'Update'
+      fill_in 'Name', with: new_category_name
+      click_button 'Update'
+      expect(page).to have_content('Category updated!')
+    end
+
     it 'with empty name', js: true do
       click_link 'Update'
       fill_in 'Name', with: ''
@@ -64,7 +79,7 @@ describe 'category_features', type: :feature do
 
     it 'with long name', js: true do
       click_link 'Update'
-      fill_in 'Name', with: 'a' * 21
+      fill_in 'Name', with: 'a' * 16
       click_button 'Update'
       expect(page).to have_content('Name is too long (maximum is 15 characters')
     end

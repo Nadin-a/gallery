@@ -138,6 +138,9 @@ ru:
   no_rooms: 'Чатов ещё нет!'
   no_messages: 'В этом чате ещё нет сообщений!'
   no_categories: 'Категорий ещё нет!'
+  new_message: 'Новое сообщение...'
+
+  current_password: 'Текущий пароль'
 
   activerecord:
     errors:

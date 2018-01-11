@@ -129,8 +129,11 @@ en:
   no_rooms: 'There are no rooms!'
   no_messages: 'There are no messages in this room!'
   no_categories: 'There are no categories!'
+  new_message: 'New message...'
 
   comments: 'Comments: '
   information: 'Information'
   reg_data: 'Registration data:'
   last_visit: 'Last visit:'
+
+  current_password: 'Current password'

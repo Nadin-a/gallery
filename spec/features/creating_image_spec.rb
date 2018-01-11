@@ -24,6 +24,14 @@ describe 'image_features', type: :feature do
       expect(page).to have_css("img[src*='test_picture.jpg']")
     end
 
+    it 'with successful message', js: true do
+      fill_in 'Title of the picture', with: image_title
+      fill_in 'Description of the picture', with: 'my description'
+      attach_file('uploaded_picture', Rails.root + 'spec/fixtures/test_picture.jpg')
+      click_button 'Add'
+      expect(page).to have_content('Image uploaded')
+    end
+
     it 'without title', js: true do
       fill_in 'Title of the picture', with: ''
       attach_file('uploaded_picture', Rails.root + 'spec/fixtures/test_picture.jpg')
@@ -66,6 +74,15 @@ describe 'image_features', type: :feature do
       click_button 'Update'
       expect(page).to have_content(new_image_title)
     end
+
+    it 'with successful message', js: true do
+      fill_in 'Title of the picture', with: new_image_title
+      fill_in 'Description of the picture', with: 'my new description'
+      attach_file('uploaded_picture', Rails.root + 'spec/fixtures/test_picture.jpg')
+      click_button 'Update'
+      expect(page).to have_content('Image updated')
+    end
+
 
     it 'with invalid patameters', js: true do
       fill_in 'Title of the picture', with: ''

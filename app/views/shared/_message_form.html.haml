@@ -6,7 +6,7 @@
       = render 'shared/error_messages', object: f.object
       .field
         = hidden_field_tag :room_id, @room.id
-        = f.text_area :content, placeholder: t('new_comment'), class: 'form-control', rows:'3'
+        = f.text_area :content, placeholder: t('new_message'), class: 'form-control', rows:'3'
       %br
       .actions
         .pull-right
