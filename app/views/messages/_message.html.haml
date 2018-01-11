@@ -3,13 +3,12 @@
     .separator
     .col-sm-2.col-md-2.col-lg-2.col-xl-2
       .text-center
-        %b
-          = link_to(message.user.name, user_path(message.user))
-        %br
-        = image_tag(message.user.avatar) if message.user.avatar?
-        %br
-        = time_ago_in_words(message.created_at)
-        = t('ago')
+        .circle
+          = image_tag(message.user.avatar.thumb.url) if message.user.avatar?
+          %b
+            = link_to(message.user.name, user_path(message.user))
+      = time_ago_in_words(message.created_at)
+      = t('ago')
     .col-sm-10.col-md-10.col-lg-10.col-xl-10
       %br
         .long_text
