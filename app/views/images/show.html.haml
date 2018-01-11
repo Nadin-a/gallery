@@ -45,10 +45,8 @@
               =link_to(t('delete'), category_image_path(@category, @image), method: :delete, data: { confirm: t('you_sure'), toggle:'tooltip',placement:'right' }, title: t('delete_this_image_tooltip'))
               %hr
                 .separator
-      .col-sm-12
+      .col-sm-12.col-md-12.col-lg-12.col-xl-12
         = render partial: 'shared/list_of_comments'
         #new_comments
-        %hr
-          .separator
-            = render partial: 'shared/comment_form'
+        = render partial: 'shared/comment_form'
         = render 'images/edit', locals: {category: @category, image: @image}
