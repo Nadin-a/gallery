@@ -1,10 +1,11 @@
 .col-sm-12.col-md-12.col-lg-12.col-xl-12
+  %br
   .col-sm-12.col-md-12.col-lg-12.col-xl-12
     .col-sm-2.col-md-2.col-lg-2.col-xl-2
       .text-center
-        %b
-          = link_to(comment.user.name, user_path(comment.user))
-        %br
+        .long_text
+          %b
+            = link_to(comment.user.name, user_path(comment.user))
         = image_tag(comment.user.avatar) if comment.user.avatar?
     .col-sm-10.col-md-10.col-lg-10.col-xl-10
       %br

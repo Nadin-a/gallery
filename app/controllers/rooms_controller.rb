@@ -2,7 +2,7 @@
 
 class RoomsController < ApplicationController
   before_action :set_room, except: %i[index new create]
-  before_action :authenticate_user!, except: %i[index show]
+  before_action :authenticate_user!
 
   def index
     @room = Room.new

@@ -1,7 +1,2 @@
-- if @messages.empty?
-  .text-center
-    %h1
-      = t('no_messages')
-- else
-  - @messages.each do |message|
-    = render partial: 'messages/message', locals: {message: message}
+- @messages.each do |message|
+  = render partial: 'messages/message', locals: {message: message}

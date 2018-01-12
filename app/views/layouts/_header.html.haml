@@ -39,7 +39,7 @@
             %ul.dropdown-menu
               %li.text-center
                 = link_to t('rooms'), rooms_path
-              - if Room.count > 1
+              - if user_signed_in? && Room.count > 1
                 %li.text-center
                   = link_to t('random_room'), room_path(Room.random_room)
       %ul.nav.navbar-nav.navbar-right

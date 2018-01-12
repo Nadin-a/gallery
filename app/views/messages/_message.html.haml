@@ -5,10 +5,11 @@
       .text-center
         .circle
           = image_tag(message.user.avatar.thumb.url) if message.user.avatar?
-          %b
+        %b
+          .long_text
             = link_to(message.user.name, user_path(message.user))
-      = time_ago_in_words(message.created_at)
-      = t('ago')
+        = time_ago_in_words(message.created_at)
+        = t('ago')
     .col-sm-10.col-md-10.col-lg-10.col-xl-10
       %br
         .long_text

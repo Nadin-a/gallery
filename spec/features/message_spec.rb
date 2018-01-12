@@ -14,8 +14,6 @@ describe 'message_features', type: :feature do
 
   describe 'Creating message' do
     it 'with valid parameters', js: true do
-      fill_in 'New message...', with: message
-      click_button 'Post'
       expect(page).to have_content(message)
     end
   end

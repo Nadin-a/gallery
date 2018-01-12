@@ -5,7 +5,9 @@
     %form.new_message
       %input{name: 'room_id', type: 'hidden', value: "#{@room.id}"}/
       %input{name: 'user_id', type: 'hidden', value: "#{current_user.id}"}/
-      %textarea.form-control{name: 'content'}
-      %br
-        .pull-right
-          %input.btn.btn-success.btn-lg{type: 'submit', value: 'Send'}/
+      .field
+        %textarea.form-control{name: 'content', class: 'form-control', placeholder: t('new_message')}
+      .action
+        %br
+          .pull-right
+            %input.btn.btn-success.btn-lg{type: 'submit', value: t('post'), id: 'btn-message-post'}

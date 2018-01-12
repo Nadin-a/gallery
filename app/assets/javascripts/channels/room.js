@@ -13,7 +13,7 @@ App.room = App.cable.subscriptions.create('ChatRoomsChannel', {
     // Called when there's incoming data on the websocket for this channel
     console.log(data);
     $current_url = window.location.href;
-    if($current_url.includes('rooms/' + data.room)) {
+    if($current_url.endsWith('rooms/' + data.room)) {
       return $('#new_messages').append(this.renderMessage(data.message));
     }
   },

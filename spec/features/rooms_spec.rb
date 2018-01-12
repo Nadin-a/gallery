@@ -45,14 +45,9 @@ describe 'room_features', type: :feature do
   end
 
   describe 'Visit and updating room' do
-
     before { visit room_path(room) }
 
     new_room_name = Faker::Lorem.word
-
-    it 'has no messages', js: true do
-      expect(page).to have_content('There are no messages in this room!')
-    end
 
     it 'with valid new parameters', js: true do
       click_link 'Update'
@@ -85,12 +80,10 @@ describe 'room_features', type: :feature do
 
   describe 'Deleting room' do
     before { visit room_path(room) }
-
     it 'with click on delete', js: true do
       click_link 'Delete'
       page.driver.browser.switch_to.alert.accept
       expect(page).to have_content('Room deleted!')
     end
   end
-
 end
