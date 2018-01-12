@@ -1,7 +1,7 @@
 require: rubocop-rspec
 
 AbcSize:
-  Max: 25
+  Max: 26
 ClassLength:
   Max: 250
 MethodLength:

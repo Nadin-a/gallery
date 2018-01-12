@@ -1,31 +1,46 @@
 = content_for(:title, t('sign_up'))
-.col-sm-6.col-md-6.col-lg-6.col-xl-6.well.col-centered.text-center
-  %h2
-    =t('sign_up')
+.col-sm-6.col-md-6.col-lg-6.col-xl-6.well.col-centered
+  .text-center
+    %h2
+      =t('sign_up')
   %br
   = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     = devise_error_messages!
+    %br
     .field
       = f.label :email
+      %required
+        *
       %br/
-      = f.email_field :email, autofocus: true, class:'form-control', placeholder:'Email'
+      = f.email_field :email, autofocus: true, class:'form-control', placeholder:'Email', required: true
+    %br
     .field
       = f.label t('name')
+      %required
+        *
       %br/
-      = f.text_field :name, autofocus: true, class:'form-control', placeholder:t('name')
+      = f.text_field :name, autofocus: true, class:'form-control', placeholder:t('name'), required: true
+    %br
     .field
       = f.label :password
+      %required
+        *
       - if @minimum_password_length
         %em
           (#{@minimum_password_length} #{t('characters_minimum')})
       %br/
-      = f.password_field :password, autocomplete: 'off', class:'form-control', placeholder:t('password')
+      = f.password_field :password, autocomplete: 'off', class:'form-control', placeholder:t('password'), required: true
+    %br
     .field
       = f.label t('confirmation_password')
+      %required
+        *
       %br/
-      = f.password_field :password_confirmation, autocomplete: 'off', class:'form-control', placeholder:t('confirmation_password')
+      = f.password_field :password_confirmation, autocomplete: 'off', class:'form-control', placeholder:t('confirmation_password'), required: true
     %br/
+    %br
     .actions
       = f.submit t('sign_up'),class: 'btn btn-primary btn-block btn-lg outline'
     %br
-  = render 'devise/shared/links'
+  .text-center
+    = render 'devise/shared/links'

@@ -5,15 +5,19 @@
         %button.close{"aria-label": 'Close', "data-dismiss": 'modal', type: 'button'}
           %span{"aria-hidden": 'true'} ×
         %h4#createImageModalLabel.modal-title
-          =t('new_image_in')
-          = @category.name
+          .text-center
+            =t('new_image_in')
+            = @category.name
         .modal-body
           .col-lg-12
             = form_for [@category, @image] do |f|
               = render 'shared/error_messages', object: f.object
               .field
                 = f.label t('title')
-                = f.text_field :title, autofocus: true, class:'form-control', placeholder:t('title_image')
+                %required
+                  *
+                = f.text_field :title, autofocus: true, class:'form-control', placeholder:t('title_image'), required: true
+              %br
               .field
                 = f.label t('description')
                 = f.text_field :description, autofocus: true, class:'form-control', placeholder:t('description_image')

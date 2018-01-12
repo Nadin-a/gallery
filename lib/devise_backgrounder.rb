@@ -15,7 +15,10 @@ class DeviseBackgrounder
   end
 
   def initialize(method, record, token, opts = {})
-    @method, @record, @token, @opts = method, record, token, opts
+    @method = method
+    @record = record
+    @token = token
+    @opts = opts
   end
 
   def deliver_later

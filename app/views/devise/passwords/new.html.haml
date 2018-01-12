@@ -1,15 +1,19 @@
 = content_for(:title, t('forgot_your_password'))
-.col-sm-6.col-md-6.col-lg-6.col-xl-6.well.col-centered.text-center
-  %h2
-    = t('forgot_your_password')
+.col-sm-6.col-md-6.col-lg-6.col-xl-6.well.col-centered
+  .text-center
+    %h2
+      = t('forgot_your_password')
   = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
     = devise_error_messages!
     .field
       = f.label :email
+      %required
+        *
       %br/
-      = f.email_field :email, autofocus: true, class:'form-control',type:'text', placeholder:'Email'
+      = f.email_field :email, autofocus: true, class:'form-control',type:'text', placeholder:'Email', required: true
     %br
     .actions
       = f.submit t('send_reset_password_instructions'), class: 'btn btn-primary btn-block btn-lg outline'
     %br
-  = render 'devise/shared/links'
+  .text-center
+    = render 'devise/shared/links'

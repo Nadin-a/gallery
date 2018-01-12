@@ -1,26 +1,30 @@
 = content_for(:title, t('login'))
-.col-sm-6.col-md-6.col-lg-6.col-xl-6.well.col-centered.text-center
-  %h1
-    =t('login')
+.col-sm-6.col-md-6.col-lg-6.col-xl-6.well.col-centered
+  .text-center
+    %h1
+      =t('login')
   %br
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     = devise_error_messages!
     .field
       = f.label :email
       %br/
-      = f.email_field :email, autofocus: true, class:'form-control', placeholder:'Email'
+      = f.email_field :email, autofocus: true, class:'form-control', placeholder:'Email', required: true
+    %br
     .field
       = f.label :password
       %br/
-      = f.password_field :password, autocomplete: 'off', class:'form-control', placeholder:t('password')
+      = f.password_field :password, autocomplete: 'off', class:'form-control', placeholder:t('password'), required: true
       %br
-    - if devise_mapping.rememberable?
-      .field
-        = f.check_box :remember_me, class:'checkbox-inline'
-        = f.label :remember_me
+    .text-center
+      - if devise_mapping.rememberable?
+        .field
+          = f.check_box :remember_me, class:'checkbox-inline'
+          = f.label :remember_me
     %br
     .actions
       = f.submit t('login'), class: 'btn btn-primary btn-block btn-lg outline'
     %br
-  = render 'devise/shared/links'
+  .text-center
+    = render 'devise/shared/links'
 

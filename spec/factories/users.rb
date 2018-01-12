@@ -6,7 +6,7 @@ FactoryBot.define do
     email 'nadia@example.com'
     password 'password'
     password_confirmation 'password'
-    confirmed_at Time.now
+    confirmed_at { Time.now }
 
     factory :random_user do
       name { Faker::Name.first_name }

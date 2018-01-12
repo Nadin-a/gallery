@@ -12,9 +12,15 @@
               = render 'shared/error_messages', object: f.object
               .field
                 = f.label t('name')
-                = f.text_field :name, autofocus: true, class:'form-control', placeholder:t('name')
+                %required
+                  *
+                = f.text_field :name, autofocus: true, class:'form-control', placeholder:t('name'), required: true
+              %br
               .field
                 = f.label t('cover')
+                = image_tag(@category.cover) if @category.cover?
+                %br
+                %br
                 = f.file_field :cover, accept: 'image/jpg,image/jpeg,image/png', id:'uploaded_cover'
                 = f.hidden_field :cover_cache
               %br

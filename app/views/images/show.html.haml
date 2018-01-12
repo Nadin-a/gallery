@@ -32,19 +32,12 @@
         .col-12.col-sm-6.col-md-6.col-lg-6.col-xl-6
           .pull-right
             = render partial: 'images/like_form'
-      %br
-      %br
-      .col-sm-12.col-md-12.col-lg-12.col-xl-12.text-center
-        %hr
-          .separator
-          - if user_signed_in?
-            - if current_user == @category.owner || current_user.admin?
-              %a{remote: true, "data-target": '#updateImageModal', "data-toggle": 'modal', href: edit_category_image_path(@category, @image)}
-                =t('update')
-              |
-              =link_to(t('delete'), category_image_path(@category, @image), method: :delete, data: { confirm: t('you_sure'), toggle:'tooltip',placement:'right' }, title: t('delete_this_image_tooltip'))
-              %hr
-                .separator
+        - if user_signed_in?
+          - if current_user == @category.owner || current_user.admin?
+            %a{remote: true, "data-target": '#updateImageModal', "data-toggle": 'modal', href: edit_category_image_path(@category, @image)}
+              =t('update')
+            |
+            =link_to(t('delete'), category_image_path(@category, @image), method: :delete, data: { confirm: t('you_sure'), toggle:'tooltip',placement:'right' }, title: t('delete_this_image_tooltip'))
       .col-sm-12.col-md-12.col-lg-12.col-xl-12
         = render partial: 'shared/list_of_comments'
         #new_comments

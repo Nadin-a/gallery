@@ -7,7 +7,7 @@ FactoryBot.define do
     room { FactoryBot.build(:room) }
 
     factory :random_message do
-      Faker::Lorem.paragraph
+      content { Faker::Lorem.paragraph }
     end
 
     factory :invalid_message do

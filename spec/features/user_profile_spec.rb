@@ -16,7 +16,7 @@ describe 'user_features', type: :feature do
         fill_in 'Password', with: ''
         fill_in 'Current password', with: 'password'
         click_button 'Update'
-        expect(page.current_path).to eq root_path
+        expect(page).to have_current_path root_path
       end
       it 'show correct name in public profile', js: true do
         fill_in 'Name', with: 'Nadiia Trofymova'
