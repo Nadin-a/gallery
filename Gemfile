@@ -28,6 +28,7 @@ gem 'sidekiq_mailer'
 gem 'fog-aws'
 gem 'faker'
 gem 'omniauth-facebook'
+gem 'action-cable-testing'
 
 group :development, :test do
   gem 'rspec-rails'

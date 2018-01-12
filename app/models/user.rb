@@ -17,7 +17,6 @@ class User < ApplicationRecord
   has_many :owned_rooms, dependent: :destroy, foreign_key: :user_id, class_name: 'Room'
   has_many :messages, dependent: :destroy, class_name: 'Message'
 
-
   mount_uploader :avatar, AvatarUploader
 
   validates :name, presence: true, length: { minimum: 2, maximum: 30 }, uniqueness: true
@@ -45,7 +44,7 @@ class User < ApplicationRecord
     user.password = Devise.friendly_token[0, 20]
     user.name = auth.info.name
     url = auth.info.image
-    avatar_url =url.gsub('http','https')
+    avatar_url = url.gsub('http', 'https')
     user.remote_avatar_url = avatar_url
     user.confirmed_at = Time.now
     user.save!

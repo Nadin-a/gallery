@@ -10,7 +10,6 @@ class CommentJob < ApplicationJob
   private
 
   def render_comment(comment)
-    CommentsController.render partial: 'messages/comment', locals: {comment: comment}
+    CommentsController.render partial: 'messages/comment', locals: { comment: comment }
   end
-
 end

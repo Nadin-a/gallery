@@ -41,7 +41,6 @@ describe 'Find', type: :feature do
     let!(:comment) { FactoryBot.create(:random_comment, image: image) }
     let!(:second_category) { FactoryBot.create(:fake_category, owner: user) }
 
-
     context 'with content' do
       it 'content on my categories' do
         visit owned_categories_path

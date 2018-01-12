@@ -2,7 +2,6 @@
 
 require 'spec_helper'
 describe 'Visitor signs up', type: :feature do
-
   let!(:user) { FactoryBot.create(:random_user) }
 
   it 'with valid email and password', js: true do

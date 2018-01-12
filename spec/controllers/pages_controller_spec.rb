@@ -18,5 +18,10 @@ RSpec.describe PagesController, type: :controller do
       get :last_comments
       expect(response).to render_template('last_comments')
     end
+
+    it 'renders the :updates view' do
+      get :updates
+      expect(response).to render_template('updates')
+    end
   end
 end

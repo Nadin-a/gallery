@@ -21,7 +21,6 @@ class RoomsController < ApplicationController
       flash[:error] = @room.errors.full_messages
       redirect_to rooms_path
     end
-
   end
 
   def show
@@ -29,8 +28,7 @@ class RoomsController < ApplicationController
     @messages = @room.messages.last(7)
   end
 
-  def edit;
-  end
+  def edit; end
 
   def update
     authorize @room

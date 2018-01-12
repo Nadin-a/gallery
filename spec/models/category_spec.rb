@@ -5,6 +5,15 @@ require 'rails_helper'
 describe Category do
   subject(:category) { FactoryBot.build(:category) }
 
+  let!(:th_category) { FactoryBot.create(:fake_category) }
+  let!(:image) { FactoryBot.create(:image, category: th_category) }
+  let!(:second_category) { FactoryBot.create(:random_category) }
+  let!(:second_image) { FactoryBot.create(:random_image, category: second_category) }
+  let!(:like) { FactoryBot.create(:like, image: second_image) }
+  let!(:comment) { FactoryBot.create(:comment, image: second_image) }
+
+  let!(:list) { [second_category, th_category] }
+
   it 'has a valid factory' do
     expect(FactoryBot.build(:category)).to be_valid
   end
@@ -28,6 +37,10 @@ describe Category do
     user.categories << category
     check = category.subscriber? user
     expect(check).to be true
+  end
+
+  it 'ordered_by_popularity' do
+    expect(described_class.ordered_by_popularity == list).to be true
   end
 
   describe 'Associations' do

@@ -5,7 +5,7 @@ class UserMailer < ActionMailer::Base
     @user = User.find(user_id)
     mail(to: @user.email,
          subject: 'Subscribtion to new category!',
-         from: 'amazing2gallery@gmail.com' ) do |format|
+         from: 'amazing2gallery@gmail.com') do |format|
       format.html { render 'user_mailer/subscribe_mail' }
       format.text { render plain: 'Render text' }
     end

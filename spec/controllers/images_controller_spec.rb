@@ -28,7 +28,7 @@ RSpec.describe ImagesController, type: :controller do
     context 'with valid attributes' do
       it 'creates a new image' do
         image = FactoryBot.build(:image)
-        #p image
+        # p image
         expected = expect do
           post :create, params: { category_id: category, image: image.attributes }
         end
@@ -40,7 +40,6 @@ RSpec.describe ImagesController, type: :controller do
         post :create, params: { category_id: category, image: image.attributes }
         expect(response.status).to eq(302)
       end
-
 
       it 'show success message' do
         image = FactoryBot.build(:image)

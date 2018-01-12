@@ -65,7 +65,6 @@ RSpec.describe CategoriesController, type: :controller do
         post :create, params: { category: category.attributes }
         expect(flash[:success]).not_to be_nil
       end
-
     end
 
     context 'with invalid attributes' do
@@ -98,7 +97,6 @@ RSpec.describe CategoriesController, type: :controller do
         get :followers, params: { id: category.id }
         expect(response).to have_http_status(200)
       end
-
     end
   end
 

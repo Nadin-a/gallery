@@ -9,7 +9,9 @@ MethodLength:
 LineLength:
    Max: 120
 BlockLength:
-   Max: 130
+   Max: 135
+ExampleLength:
+   Max: 6
 
 Documentation:
   Enabled: false

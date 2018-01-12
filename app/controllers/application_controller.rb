@@ -11,11 +11,7 @@ class ApplicationController < ActionController::Base
   def set_locale
     locale = params[:lang] || session[:lang] || I18n.default_locale
     I18n.locale = if I18n.locale_available?(locale)
-                    # p  'PARAMS ' + params[:lang].to_s if params[:lang].present?
-                    # p  'SESSION ' + session[:lang].to_s if session[:lang].present?
-                    if params[:lang].present?
-                      session[:lang] = locale
-                    end
+                    session[:lang] = locale if params[:lang].present?
                     locale
                   else
                     I18n.default_locale
@@ -23,6 +19,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
+    p resource
     request.env['omniauth.origin'] || root_path
   end
 
@@ -43,7 +40,7 @@ class ApplicationController < ActionController::Base
       when 'likes#create'
         'like'
       when 'likes#destroy'
-        'unlike'
+        'dislike'
       when 'devise/sessions#create'
         'user sign in'
       else

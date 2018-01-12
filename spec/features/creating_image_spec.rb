@@ -83,7 +83,6 @@ describe 'image_features', type: :feature do
       expect(page).to have_content('Image updated')
     end
 
-
     it 'with invalid patameters', js: true do
       fill_in 'Title of the picture', with: ''
       fill_in 'Description of the picture', with: ''
