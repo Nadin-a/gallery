@@ -3,7 +3,7 @@
     .wrapper
       .hover11.column
         %figure
-          .border_image
+          .border-image
             = link_to category_image_path(image.category, image),{ data:{ toggle:'tooltip',placement:'left'}, title:'Open this image'} do
               = image_tag(image.picture.thumb.url)
           %br
