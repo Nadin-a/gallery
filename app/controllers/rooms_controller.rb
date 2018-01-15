@@ -25,7 +25,7 @@ class RoomsController < ApplicationController
 
   def show
     @message = current_user.messages.build if user_signed_in?
-    @messages = @room.messages.last(7)
+    @messages = @room.messages.last(8)
   end
 
   def edit; end

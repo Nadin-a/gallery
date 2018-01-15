@@ -1,10 +1,10 @@
-#myModal.modal.fade{"aria-labelledby": 'myModalLabel', role: 'dialog', tabindex: '-1'}
+#myRoomModal.modal.fade{"aria-labelledby": 'myModalLabel', role: 'dialog', tabindex: '-1'}
   .modal-dialog{role: 'document'}
     .modal-content
       .modal-header
         %button.close{"aria-label": t('close'), "data-dismiss": 'modal', type: 'button'}
           %span{"aria-hidden": 'true'} ×
-        %h4#myModalLabel.modal-title
+        %h4#RoomModalLabel.modal-title
           = t('create_new_room')
       .modal-body
         .col-lg-12
@@ -12,7 +12,9 @@
           = render 'shared/error_messages', object: f.object
           .field
             = f.label t('name')
-            = f.text_field :name, autofocus: true, class:'form-control', placeholder:t('name')
+            %required
+              *
+            = f.text_field :name, autofocus: true, class:'form-control', placeholder:t('name'), required: true
           %br
           .actions
             .modal-footer

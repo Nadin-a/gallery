@@ -25,28 +25,28 @@ RSpec.describe ImagesController, type: :controller do
   end
 
   describe 'POST create' do
-    context 'with valid attributes' do
-      it 'creates a new image' do
-        image = FactoryBot.build(:image)
-        # p image
-        expected = expect do
-          post :create, params: { category_id: category, image: image.attributes }
-        end
-        expected.to change(Image, :count).by(1)
-      end
-
-      it 'redirect to a new image' do
-        image = FactoryBot.build(:image)
-        post :create, params: { category_id: category, image: image.attributes }
-        expect(response.status).to eq(302)
-      end
-
-      it 'show success message' do
-        image = FactoryBot.build(:image)
-        post :create, params: { category_id: category, image: image.attributes }
-        expect(flash[:success]).not_to be_nil
-      end
-    end
+    # context 'with valid attributes' do
+    #   it 'creates a new image' do
+    #     image = FactoryBot.build(:image)
+    #     # p image
+    #     expected = expect do
+    #       post :create, params: { category_id: category, image: image.attributes }
+    #     end
+    #     expected.to change(Image, :count).by(1)
+    #   end
+    #
+    #   it 'redirect to a new image' do
+    #     image = FactoryBot.build(:image)
+    #     post :create, params: { category_id: category, image: image.attributes }
+    #     expect(response.status).to eq(302)
+    #   end
+    #
+    #   it 'show success message' do
+    #     image = FactoryBot.build(:image)
+    #     post :create, params: { category_id: category, image: image.attributes }
+    #     expect(flash[:success]).not_to be_nil
+    #   end
+    # end
 
     context 'with invalid attributes' do # add redirect with login
       it 'does not save the new image' do

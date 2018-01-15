@@ -34,9 +34,11 @@
             = render partial: 'images/like_form'
         - if user_signed_in?
           - if current_user == @category.owner || current_user.admin?
+            %span.glyphicon.glyphicon-pencil
             %a{remote: true, "data-target": '#updateImageModal', "data-toggle": 'modal', href: edit_category_image_path(@category, @image)}
               =t('update')
             |
+            %span.glyphicon.glyphicon-remove
             =link_to(t('delete'), category_image_path(@category, @image), method: :delete, data: { confirm: t('you_sure'), toggle:'tooltip',placement:'right' }, title: t('delete_this_image_tooltip'))
       .col-sm-12.col-md-12.col-lg-12.col-xl-12
         = render partial: 'shared/list_of_comments'

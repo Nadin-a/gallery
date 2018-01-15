@@ -1,5 +1,7 @@
 - if flash[:error]
   .alert.alert-danger
+    .close
+      %span.glyphicon.glyphicon-remove
     %p
       - if flash[:error].is_a? Array
         - flash[:error].each do |err|
@@ -9,5 +11,7 @@
         = h flash[:error]
 - if flash[:success]
   .alert.alert-success
+    .close
+      %span.glyphicon.glyphicon-remove
     %p
       = h flash[:success]

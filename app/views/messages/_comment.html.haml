@@ -1,17 +1,20 @@
 .col-sm-12.col-md-12.col-lg-12.col-xl-12
   %br
-  .col-sm-12.col-md-12.col-lg-12.col-xl-12
-    .col-sm-2.col-md-2.col-lg-2.col-xl-2
+  .col-sm-2.col-md-2.col-lg-2.col-xl-2
+    .brd
       .text-center
         .long_text
           %b
             = link_to(comment.user.name, user_path(comment.user))
         = image_tag(comment.user.avatar) if comment.user.avatar?
-    .col-sm-10.col-md-10.col-lg-10.col-xl-10
-      %br
-        .long_text
-          = comment.content
-  .col-sm-12.col-md-12.col-lg-12.col-xl-12
-    .pull-left
-      = time_ago_in_words(comment.created_at)
-      = t('ago')
+        %br
+          .long_text
+        = time_ago_in_words(comment.created_at)
+        = t('ago')
+  .col-sm-10.col-md-10.col-lg-10.col-xl-10
+    %br
+      .long_text
+        = comment.content
+
+:javascript
+  document.getElementById('btn-comment-post').scrollIntoView();

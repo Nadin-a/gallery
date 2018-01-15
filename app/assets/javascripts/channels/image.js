@@ -1,27 +1,59 @@
 App.image = App.cable.subscriptions.create('ImageChannel', {
-  connected: function() {
-     console.log('connected');
+  connected: function () {
+    console.log('connected');
     // Called when the subscription is ready for use on the server
   },
 
-  disconnected: function() {
+  disconnected: function () {
     console.log('disconnected');
     // Called when the subscription has been terminated by the server
   },
 
-  received: function(data) {
+  received: function (data) {
     // Called when there's incoming data on the websocket for this channel
     console.log(data);
-    var current_url = window.location.href;
-    if (current_url.includes(data.url)) {
+    $current_url = window.location.href;
+    $url = '';
+    if (data.url) {
+      url = data.url
+    }
+    else {
+      url = 'categories/' + data.category + '/images/' + data.image
+    }
+    if ($current_url.endsWith(url)) {
       $like_label.html(data.count);
-      if(data.comment) {
+      if (data.comment) {
         return $('#new_comments').append(this.renderComment(data.comment));
       }
     }
   },
 
-  renderComment: function(comment) {
+  renderComment: function (comment) {
     return comment;
+  },
+
+  send_comment: function (comment) {
+    return this.perform('send_comment', {
+      comment: comment
+    });
   }
 });
+
+$(document).on('keypress', '.new_comment', function (e) {
+  var code = e.charCode || e.keyCode;
+  if (code == 13) {
+    e.preventDefault();
+    var values = $(this).serializeArray();
+    App.image.send_comment(values);
+    $(this).trigger('reset');
+  }
+});
+
+$(document).on('submit', '.new_comment', function (e) {
+  e.preventDefault();
+  var values = $(this).serializeArray();
+  App.image.send_comment(values);
+  $(this).trigger('reset');
+
+});
+

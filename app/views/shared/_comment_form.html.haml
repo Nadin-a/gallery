@@ -1,11 +1,13 @@
-- if user_signed_in?
-  = form_for [@category, @image, @comment]  do |f|
-    = render 'shared/error_messages', object: f.object
-    .field
-      = hidden_field_tag :image_id, @image.id
-      = f.text_area :content, placeholder: t('new_comment'), class: 'form-control', rows:'3'
+.col-sm-12.col-md-12.col-lg-12.col-xl-12
+  - if user_signed_in?
     %br
-      = recaptcha_tags theme: :dark, ajax: true if Rails.env.production?
-    .actions
-      .pull-right
-        = f.submit t('post'), class: 'btn btn-success btn-lg btn-send-comment'
+    %br
+    %form.new_comment
+      %input{name: 'image_id', type: 'hidden', value: "#{@image.id}"}/
+      %input{name: 'user_id', type: 'hidden', value: "#{current_user.id}"}/
+      .field
+        .col-sm-12.col-md-12.col-lg-12.col-xl-12
+          %textarea.form-control{name: 'content', class: 'form-control', placeholder: t('new_comment'), id: 'comment-input', required: true}
+          %br
+            .pull-right
+              %input.btn.btn-success{type: 'submit', value: t('post'), id: 'btn-comment-post'}

@@ -3,8 +3,9 @@
 class CommentJob < ApplicationJob
   queue_as :default
 
-  def perform(url, comment)
-    ActionCable.server.broadcast('image', url: url, comment: render_comment(comment))
+  def perform(comment)
+    ActionCable.server.broadcast('image', comment: render_comment(comment), category: comment.image.category.id,
+    image: comment.image.id)
   end
 
   private

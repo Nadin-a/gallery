@@ -32,17 +32,24 @@
           - if current_user == @category.owner || current_user.admin?
             %h4
               .col-sm-12.text-center
+                %span.glyphicon.glyphicon-picture
                 %a{remote: true, "data-target": '#createImageModal', "data-toggle": 'modal', href: new_category_image_path(@category)}
                   = t('add_image')
                 |
-
+                %span.glyphicon.glyphicon-pencil
                 %a{remote: true, "data-target": '#updateCategoryModal', "data-toggle": 'modal', href: edit_category_path(@category), title: t('update_this_category_tooltip') }
                   = t('update')
                 |
+                %span.glyphicon.glyphicon-remove
                 =link_to(t('delete'), category_path, method: :delete, data: { confirm: t('you_sure'), toggle:'tooltip',placement:'left' }, title: t('delete_this_category_tooltip'))
                 %br
                 %br
-      = render partial: 'shared/list_of_images'
+      - if @images.empty?
+        .text-center
+          %h1
+            = t('no_images_in_category')
+      - else
+        = render partial: 'shared/list_of_images'
       .col-sm-12.col-md-12.col-lg-12.col-xl-12.text-center
         = will_paginate @images
       = render partial: 'images/new'

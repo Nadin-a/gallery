@@ -21,6 +21,7 @@ ru:
   favorite_categories: 'Избранные категории'
   popular_image: 'Популярные картинки'
   last_comments: 'Последние комментарии'
+  no_images_in_category: 'В этой категории ещё нет картинок!'
   profile: 'Профиль'
   sign_out: 'Выход'
   login: 'Авторизация'
@@ -79,7 +80,7 @@ ru:
   you_have_no_images: 'У вас ещё нет картинок. Подпишитесь на любую категорию или загрузите свои картинки и вы увидите их здесь!'
   no_images_on_site: 'На сайте нет картинок...'
 
-  post: 'Написать'
+  post: 'Отпр.'
   new_comment: 'Новый комментарий...'
   comment_deleted: 'Комментарий удалён!'
   delete_this_comment_tooltip: 'Удалить этот комментарий'

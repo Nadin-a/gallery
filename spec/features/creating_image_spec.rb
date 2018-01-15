@@ -32,13 +32,6 @@ describe 'image_features', type: :feature do
       expect(page).to have_content('Image uploaded')
     end
 
-    it 'without title', js: true do
-      fill_in 'Title of the picture', with: ''
-      attach_file('uploaded_picture', Rails.root + 'spec/fixtures/test_picture.jpg')
-      click_button 'Add'
-      expect(page).to have_content("Title can't be blank")
-    end
-
     it 'with long title', js: true do
       fill_in 'Title of the picture', with: 'a' * 21
       attach_file('uploaded_picture', Rails.root + 'spec/fixtures/test_picture.jpg')
@@ -81,13 +74,6 @@ describe 'image_features', type: :feature do
       attach_file('uploaded_picture', Rails.root + 'spec/fixtures/test_picture.jpg')
       click_button 'Update'
       expect(page).to have_content('Image updated')
-    end
-
-    it 'with invalid patameters', js: true do
-      fill_in 'Title of the picture', with: ''
-      fill_in 'Description of the picture', with: ''
-      click_button 'Update'
-      expect(page).to have_content("Title can't be blank")
     end
   end
 

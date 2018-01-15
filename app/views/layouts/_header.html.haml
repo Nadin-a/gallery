@@ -39,9 +39,14 @@
             %ul.dropdown-menu
               %li.text-center
                 = link_to t('rooms'), rooms_path
-              - if user_signed_in? && Room.count > 1
-                %li.text-center
-                  = link_to t('random_room'), room_path(Room.random_room)
+              - if user_signed_in?
+                -if Room.count > 1
+                  %li.text-center
+                    = link_to t('random_room'), room_path(Room.random_room)
+                %li.divider
+                %li
+                  %a{remote: true, "data-target": '#myRoomModal', "data-toggle": 'modal', href: new_room_path}
+                    = t('create_new_room')
       %ul.nav.navbar-nav.navbar-right
         %li.dropdown
           %a.dropdown-toggle{'data-toggle': 'dropdown', href: '#'}

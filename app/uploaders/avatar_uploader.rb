@@ -3,7 +3,7 @@
 require 'fog/aws'
 class AvatarUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
-  process resize_to_limit: [120, 120]
+  process resize_to_limit: [150, 150]
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick

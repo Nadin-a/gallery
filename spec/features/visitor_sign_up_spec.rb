@@ -12,16 +12,6 @@ describe 'Visitor signs up', type: :feature do
     sign_up_with email, name, 'password', 'password'
   end
 
-  it 'with empty email' do
-    sign_up_with '', 'name', 'password', 'password'
-    expect(page).to have_content("Email can't be blank")
-  end
-
-  it 'with invalid name' do
-    sign_up_with email, '', 'password', 'password'
-    expect(page).to have_content("Name can't be blank")
-  end
-
   it 'with short name' do
     sign_up_with email, 'a', 'password', 'password'
 
@@ -31,11 +21,6 @@ describe 'Visitor signs up', type: :feature do
   it 'with long name' do
     sign_up_with email, 'a' * 31, 'password', 'password'
     expect(page).to have_content('Name is too long (maximum is 30 characters)')
-  end
-
-  it 'with empty password' do
-    sign_up_with email, name, '', ''
-    expect(page).to have_content("Password can't be blank")
   end
 
   it 'with invalid password' do

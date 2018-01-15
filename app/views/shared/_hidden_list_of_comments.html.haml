@@ -1,4 +1,4 @@
-- @comments.each do |comment|
+- comments.each do |comment|
   .col-sm-12.col-md-12.col-lg-12.col-xl-12
     %br
     .col-sm-2.col-md-2.col-lg-2.col-xl-2
@@ -15,9 +15,3 @@
       %br
         .long_text
           = comment.content
-  .col-sm-12.col-md-12.col-lg-12.col-xl-12
-    .pull-right
-      - if user_signed_in?
-        - if current_user.admin?
-          = link_to(t('delete'), category_image_comment_path(comment.image.category, comment.image, comment),  method: :delete, data: { confirm: t('you_sure'), toggle:'tooltip',placement:'left' }, title: t('delete_this_comment_tooltip'))
-

@@ -8,6 +8,8 @@ class Comment < ApplicationRecord
   validates :image, presence: true
   validates :content, presence: true, length: { maximum: 300 }
 
+  after_create_commit { CommentJob.perform_later(self) }
+
   def self.default_scope
     order(created_at: :asc)
   end

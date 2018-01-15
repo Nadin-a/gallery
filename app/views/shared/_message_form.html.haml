@@ -1,4 +1,4 @@
-.col-sm-12.col-md-12.col-lg-12.col-xl-12
+.col-sm-12.col-md-12.col-lg-12.col-xl-12.fixed-bottom
   - if user_signed_in?
     %br
     %br
@@ -6,8 +6,9 @@
       %input{name: 'room_id', type: 'hidden', value: "#{@room.id}"}/
       %input{name: 'user_id', type: 'hidden', value: "#{current_user.id}"}/
       .field
-        %textarea.form-control{name: 'content', class: 'form-control', placeholder: t('new_message')}
-      .action
-        %br
-          .pull-right
-            %input.btn.btn-success.btn-lg{type: 'submit', value: t('post'), id: 'btn-message-post'}
+        .col-sm-12.col-md-12.col-lg-12.col-xl-12
+          .input-group
+            %input.form-control{name: 'content', class: 'form-control', placeholder: t('new_message'), id: 'message_input', required: true}
+            %span.input-group-btn
+              %input.btn.btn-success{type: 'submit', value: t('post'), id: 'btn-message-post'}
+

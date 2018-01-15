@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     end
 
     resources :images do
-      resources :comments, only: %i[create destroy]
+      resources :comments, only: %i[destroy]
       resources :likes, only: %i[create destroy]
     end
   end

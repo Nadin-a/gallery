@@ -21,6 +21,7 @@ en:
   favorite_categories: 'Favorite categories'
   popular_image: 'Popular images'
   last_comments: 'Last comments'
+  no_images_in_category: 'There are no images in category!'
   profile: 'Profile'
   sign_out: 'Sign out'
   login: 'Login'

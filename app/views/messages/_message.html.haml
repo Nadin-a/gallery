@@ -1,16 +1,22 @@
 .col-sm-12.col-md-12.col-lg-12.col-xl-12
   %hr
     .separator
-    .col-sm-2.col-md-2.col-lg-2.col-xl-2
-      .text-center
-        .circle
-          = image_tag(message.user.avatar.thumb.url) if message.user.avatar?
-        %b
-          .long_text
-            = link_to(message.user.name, user_path(message.user))
-        = time_ago_in_words(message.created_at)
-        = t('ago')
-    .col-sm-10.col-md-10.col-lg-10.col-xl-10
-      %br
+  .col-sm-2.col-md-2.col-lg-2.col-xl-2
+    .text-center
+      -#.circle
+      -#  = image_tag(message.user.avatar.thumb.url) if message.user.avatar?
+      %b
         .long_text
-          = message.content
+          = link_to(message.user.name, user_path(message.user)) + ':'
+      -#= time_ago_in_words(message.created_at)
+      -#= t('ago')
+  .col-sm-10.col-md-10.col-lg-10.col-xl-10
+    .long_text
+      = message.content
+
+
+
+:javascript
+    $(document).ready( function() {
+      $('.pre-scrollable').scrollTop($('.pre-scrollable')[0].scrollHeight);
+    } );

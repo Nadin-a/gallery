@@ -1,7 +1,8 @@
 = content_for(:title, t('rooms'))
-.col-sm-12.col-md-12.col-lg-12.col-xl-12.well.text-center
-  = render partial: 'shared/flash_messages'
-  %h1
-    = t('rooms')
-  = render partial: 'shared/list_of_rooms'
+.col-sm-12.col-md-12.col-lg-12.col-xl-12.well
+  .text-center
+    = render partial: 'shared/flash_messages'
+    %h1
+      = t('rooms')
+    = render partial: 'shared/list_of_rooms'
   = render partial: 'shared/create_new_room'

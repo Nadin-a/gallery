@@ -29,7 +29,6 @@ gem 'fog-aws'
 gem 'faker'
 gem 'omniauth-facebook'
 gem 'action-cable-testing'
-gem 'jemoji'
 
 group :development, :test do
   gem 'rspec-rails'

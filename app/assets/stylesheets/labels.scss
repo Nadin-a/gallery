@@ -1,3 +1,30 @@
 required {
   color: red;
 }
+
+.update-label:hover {
+  color: green;
+}
+.delete-label {
+  color: red;
+}
+
+.brd {
+  border: 1px solid black;
+}
+
+#message_input{
+  position: relative;
+}
+
+.btn-message-post{
+  position: absolute;
+}
+
+
+
+.well.well-tall {
+  min-height: 80vh;
+  position: relative;
+}
+

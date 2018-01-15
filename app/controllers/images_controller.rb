@@ -9,7 +9,7 @@ class ImagesController < ApplicationController
 
   def show
     @comment = current_user.comments.build if user_signed_in?
-    @comments = @image.comments.paginate(page: params[:page], per_page: 10)
+    @comments = @image.comments.last(5) # paginate(page: params[:page], per_page: 10)
     return unless user_signed_in?
     @like =
       if @image.liked_by?(current_user)
