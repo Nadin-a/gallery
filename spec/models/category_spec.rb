@@ -6,11 +6,11 @@ describe Category do
   subject(:category) { FactoryBot.build(:category) }
 
   let!(:th_category) { FactoryBot.create(:fake_category) }
-  let!(:image) { FactoryBot.create(:image, category: th_category) }
+  let(:image) { FactoryBot.create(:image, category: th_category) }
   let!(:second_category) { FactoryBot.create(:random_category) }
   let!(:second_image) { FactoryBot.create(:random_image, category: second_category) }
-  let!(:like) { FactoryBot.create(:like, image: second_image) }
-  let!(:comment) { FactoryBot.create(:comment, image: second_image) }
+  let(:like) { FactoryBot.create(:like, image: second_image) }
+  let(:comment) { FactoryBot.create(:comment, image: second_image) }
 
   let!(:sorted_list_of_category) { [second_category, th_category] }
 

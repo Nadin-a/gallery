@@ -138,3 +138,7 @@ en:
   last_visit: 'Last visit:'
 
   current_password: 'Current password'
+  show_all_comments: 'Show all comments'
+
+  enter_name: 'Enter your nickname'
+  enter_email: 'Enter your email'

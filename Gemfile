@@ -29,6 +29,7 @@ gem 'fog-aws'
 gem 'faker'
 gem 'omniauth-facebook'
 gem 'action-cable-testing'
+gem 'bootstrap-popover-rails'
 
 group :development, :test do
   gem 'rspec-rails'

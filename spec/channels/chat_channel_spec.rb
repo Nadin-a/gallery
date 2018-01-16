@@ -3,7 +3,7 @@
 require 'rails_helper'
 RSpec.describe ChatRoomsChannel, type: :channel do
   let!(:user) { FactoryBot.create(:random_user) }
-  let!(:room) { FactoryBot.create(:random_room, user: user) }
+  let(:room) { FactoryBot.create(:random_room, user: user) }
 
   before do
     stub_connection user_id: user.id

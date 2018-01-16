@@ -38,7 +38,7 @@ describe 'Find', type: :feature do
   describe 'other pages', js: true do
     let!(:top_category) { FactoryBot.create(:category, owner: user) }
     let!(:image) { FactoryBot.create(:random_image, category: top_category) }
-    let!(:comment) { FactoryBot.create(:random_comment, image: image) }
+    let(:comment) { FactoryBot.create(:random_comment, image: image) }
     let!(:second_category) { FactoryBot.create(:fake_category, owner: user) }
 
     context 'with content' do

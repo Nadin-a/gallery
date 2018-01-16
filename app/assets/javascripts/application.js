@@ -15,4 +15,6 @@
 //= require bootstrap-sprockets
 //= require_tree .
 //= require ahoy
+//= require bootstrap/bootstrap-rails-tooltip
+//= require bootstrap/bootstrap-rails-popover
 

@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe RoomsController, type: :controller do
   let!(:user) { FactoryBot.create(:user) }
-  let!(:second_user) { FactoryBot.create(:random_user) }
+  let(:second_user) { FactoryBot.create(:random_user) }
   let!(:room) { FactoryBot.create(:room, user: user) }
   let(:uncorrect_room) { FactoryBot.build(:uncorrect_room) }
   let!(:message) { FactoryBot.create(:message, room: room, user: user) }

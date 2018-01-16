@@ -13,6 +13,8 @@ class ChatRoomsChannel < ApplicationCable::Channel
     message_params = data['message'].each_with_object({}) do |el, hash|
       hash[el['name']] = el['value']
     end
-    Message.create(message_params)
+    if verify_recaptcha
+      Message.create(message_params)
+    end
   end
 end

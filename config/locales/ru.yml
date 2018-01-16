@@ -142,6 +142,9 @@ ru:
   new_message: 'Новое сообщение...'
 
   current_password: 'Текущий пароль'
+  show_all_comments: 'Показать все комментарии'
+  enter_name: 'Введите ваше имя'
+  enter_email: 'Введите ваш почтовый адрес'
 
   activerecord:
     errors:

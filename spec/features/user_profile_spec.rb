@@ -6,7 +6,7 @@ describe 'user_features', type: :feature do
 
   before do
     login(user)
-    visit edit_user_registration_path(@user)
+    visit edit_user_registration_path(user)
   end
 
   describe 'Visit own profile' do

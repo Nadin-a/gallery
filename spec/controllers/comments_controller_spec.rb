@@ -8,7 +8,7 @@ RSpec.describe CommentsController, type: :controller do
   let!(:category) { FactoryBot.create(:random_category) }
   let!(:image) { FactoryBot.create(:image, category: category) }
   let!(:comment) { FactoryBot.create(:comment, image: image, user: user) }
-  let!(:invalid_comment) { FactoryBot.build(:invalid_comment, image: image, user: user) }
+  let(:invalid_comment) { FactoryBot.build(:invalid_comment, image: image, user: user) }
 
   before { sign_in(admin_user) }
 

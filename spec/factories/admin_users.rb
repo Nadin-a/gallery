@@ -5,6 +5,6 @@ FactoryBot.define do
     email 'nadia@example.com'
     password 'password'
     password_confirmation 'password'
-    confirmed_at { Time.now }
+    confirmed_at { Time.current }
   end
 end

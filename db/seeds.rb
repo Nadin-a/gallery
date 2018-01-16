@@ -4,21 +4,21 @@ User.create!(name: 'Nadiia',
              password_confirmation: 'password',
              remote_avatar_url: Faker::Avatar.image,
              admin: true,
-             confirmed_at: Time.now)
+             confirmed_at: Time.current)
 User.create!(name: 'Susan',
              email: 'susan@email.org',
              password: 'password',
              password_confirmation: 'password',
              remote_avatar_url: Faker::Avatar.image,
-             confirmed_at: Time.now)
+             confirmed_at: Time.current)
 User.create!(name: 'a'*30,
              email: 'larry@mail.org',
              password: 'password',
              password_confirmation: 'password',
              remote_avatar_url: Faker::Avatar.image,
-             confirmed_at: Time.now)
+             confirmed_at: Time.current)
 
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password', confirmed_at: Time.now)
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password', confirmed_at: Time.current)
 
 
 if Rails.env.development?

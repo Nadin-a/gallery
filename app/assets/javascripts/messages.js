@@ -3,4 +3,5 @@ $(document).ready(function () {
   if ($current_url.includes('rooms/')) {
     document.getElementById('btn-message-post').scrollIntoView();
   }
+
 });

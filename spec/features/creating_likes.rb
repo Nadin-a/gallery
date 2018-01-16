@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-describe 'image_features', type: :feature do
+describe 'like_features', type: :feature do
   let!(:user) { FactoryBot.create(:random_user) }
   let!(:category) { FactoryBot.create(:random_category, owner: user) }
   let!(:image) { FactoryBot.create(:random_image, category: category) }
@@ -19,7 +19,14 @@ describe 'image_features', type: :feature do
 
     it 'dislike image', js: true do
       find('#like').click
+      find('#like').click
       expect(page).to have_content('0')
+    end
+
+    it 'place image in popular', js: true do
+      find('#like').click
+      visit popular_images_path
+      expect(page).not_to have_content('There are no popular pictures')
     end
   end
 end

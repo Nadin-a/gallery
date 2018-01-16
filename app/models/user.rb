@@ -46,7 +46,7 @@ class User < ApplicationRecord
     url = auth.info.image
     avatar_url = url.gsub('http', 'https')
     user.remote_avatar_url = avatar_url
-    user.confirmed_at = Time.now
+    user.confirmed_at = Time.current
     user.save!
     user
   end
