@@ -16,7 +16,10 @@ class ImageChannel < ApplicationCable::Channel
     end
 
     if Rails.env.production?
-      Comment.create(comment_params) if verify_recaptcha
+      @comment = Comment.build(comment_params)
+      if verify_recaptcha(model: @comment)
+        Comment.create(comment_params)
+      end
     else
       Comment.create(comment_params)
     end
