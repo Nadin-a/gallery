@@ -14,6 +14,11 @@ class ImageChannel < ApplicationCable::Channel
     comment_params = data['comment'].each_with_object({}) do |el, hash|
       hash[el['name']] = el['value']
     end
-    Comment.create(comment_params)
+
+    if Rails.env.production?
+      Comment.create(comment_params) if verify_recaptcha
+    else
+      Comment.create(comment_params)
+    end
   end
 end
