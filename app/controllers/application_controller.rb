@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   after_action :track_action
   protect_from_forgery with: :null_session, if: -> { request.format.json? }
   before_action :set_locale
-  before_action :set_new_room
+  #before_action :set_new_room
 
   def set_locale
     locale = params[:lang] || session[:lang] || I18n.default_locale
@@ -33,9 +33,9 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :account_update, keys: upd_attrs
   end
 
-  def set_new_room
-    @room = Room.new
-  end
+  # def set_new_room
+  #   @room = Room.new
+  # end
 
   def track_action
     action_type =

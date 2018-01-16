@@ -41,9 +41,9 @@ ActiveAdmin.register_page 'Dashboard' do
       end
     end
 
-    # events = Ahoy::Event.where('user_id IS NOT ?', nil).order(time: :desc).last(20)
+    # index = Ahoy::Event.where('user_id IS NOT ?', nil).order(time: :desc).last(20)
     #
-    # table_for events do
+    # table_for index do
     #   user = User.find_by(id: params[:user_id])
     #   column 'user', user
     #   column :properties do |event|

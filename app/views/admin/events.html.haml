@@ -1,2 +1,7 @@
 - @events.each do |event|
-  = event.name
+  = event.user.name
+  %br
+  = event.properties['action_type']
+  %br
+  = event.time
+  %br

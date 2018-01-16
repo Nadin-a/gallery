@@ -7,16 +7,16 @@ ActiveAdmin.register Ahoy::Event do
     def index
       respond_to do |format|
         format.html { super }
+        format.csv { super }
         format.pdf do
           @events = Ahoy::Event.all
-          render pdf: 'events', layout: 'pdf', template: 'events'
+          render pdf: 'index', layout: 'pdf', template: 'admin/events.html.haml'
         end
       end
     end
   end
 
-  index download_links: [:pdf]
-  index do
+  index download_links: [:csv, :pdf] do
     column :user
     column 'URL', :name
     column :properties do |event|
