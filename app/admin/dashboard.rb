@@ -41,16 +41,16 @@ ActiveAdmin.register_page 'Dashboard' do
       end
     end
 
-    events = Ahoy::Event.where('user_id IS NOT ?', nil).order(time: :desc).last(20)
-
-    table_for events do
-      user = User.find_by(id: params[:user_id])
-      column 'user', user
-      column :properties do |event|
-        link_to(event.properties['action_type'], admin_ahoy_event_path(event))
-      end
-      column 'URL', :name
-      column 'Time', :time
-    end
+    # events = Ahoy::Event.where('user_id IS NOT ?', nil).order(time: :desc).last(20)
+    #
+    # table_for events do
+    #   user = User.find_by(id: params[:user_id])
+    #   column 'user', user
+    #   column :properties do |event|
+    #     link_to(event.properties['action_type'], admin_ahoy_event_path(event))
+    #   end
+    #   column 'URL', :name
+    #   column 'Time', :time
+    # end
   end
 end
