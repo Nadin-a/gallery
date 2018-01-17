@@ -35,7 +35,7 @@ $(document).ready(function () {
 
     (function ($) {
       $.fn.subscribe = function (category) {
-        $btn.addClass('btn-success').val('Subscribe');
+        $btn.removeClass('btn btn-default').addClass('btn btn-success').val('Subscribe');
         $btn.attr('method', 'post');
         $btn.attr('action', category.subscribe_path);
         $btn.attr('data-subscribed', 0);
@@ -46,7 +46,7 @@ $(document).ready(function () {
 
     (function ($) {
       $.fn.unsubscribe = function (category) {
-        $btn.removeClass('btn-success').val('Unsubscribe');
+        $btn.removeClass('btn btn-success').addClass('btn btn-default').val('Unsubscribe');
         $btn.attr('method', 'delete');
         $btn.attr('action', category.unsubscribe_path);
         $btn.attr('data-subscribed', 1);

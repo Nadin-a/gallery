@@ -2,6 +2,9 @@
   - path = category.subscriber?(current_user) ? unsubscribe_category_path(category) : subscribe_category_path(category)
   - method  = category.subscriber?(current_user) ? 'delete' : 'post'
   - subscribed = category.subscriber?(current_user) ? 1 : 0
-  %button{role: 'button',class: "js-subscribtion-category btn#{subscribed == 1 ? '' : ' btn-success'}", data: {subscribed: subscribed},
-  action: path, method: method, id:'subscribe' }
+  %button{role: 'button',class: "js-subscribtion-category btn#{subscribed == 1 ? 'btn-default' : ' btn-success'}", data: {subscribed: subscribed},
+  action: path, method: method, id:'subscribe', 'data-content': t('subscribe_unsubscribe'),
+            'data-toggle': 'popover',
+            'data-placement': 'left',
+            'data-trigger': 'hover' }
   %br
