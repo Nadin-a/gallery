@@ -16,7 +16,7 @@
       - @events.each do |event|
         %tr
           %td
-            = event.user.name
+            = event.user.name if event.user.present?
           %td
             = event.properties['action_type']
           %td

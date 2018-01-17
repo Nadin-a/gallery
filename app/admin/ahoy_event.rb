@@ -18,7 +18,7 @@ ActiveAdmin.register Ahoy::Event do
 
   csv do
     column(:user) { |event| event.user.name }
-    column :url.map(&:name)
+    column (:url) { |event| event.name }
     column :properties do |event|
       event.properties['action_type']
     end
