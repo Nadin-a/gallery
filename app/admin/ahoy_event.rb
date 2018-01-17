@@ -26,9 +26,6 @@ ActiveAdmin.register Ahoy::Event do
   end
 
   index download_links: [:csv, :pdf] do
-    p '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1'
-    p session[:last_search_filter]
-    p '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
     column :user
     column 'URL', :name
     column :properties do |event|
