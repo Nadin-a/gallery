@@ -26,6 +26,7 @@ ActiveAdmin.register Ahoy::Event do
   end
 
   index download_links: %i[csv pdf] do
+    selectable_column
     column :user
     column 'URL', :name
     column :properties do |event|
