@@ -16,6 +16,15 @@ ActiveAdmin.register Ahoy::Event do
     end
   end
 
+  csv do
+    column(:user) { |event| event.user.name }
+    column (:url) { |event| event.name }
+    column :properties do |event|
+      event.properties['action_type']
+    end
+    column :time
+  end
+
   index download_links: [:csv, :pdf] do
     column :user
     column 'URL', :name
@@ -33,5 +42,4 @@ ActiveAdmin.register Ahoy::Event do
       end
     end
   end
-
 end

@@ -146,6 +146,9 @@ ru:
   enter_name: 'Введите ваше имя'
   enter_email: 'Введите ваш почтовый адрес'
 
+  action_time: 'Время'
+  action: 'Действие'
+
   activerecord:
     errors:
       messages:

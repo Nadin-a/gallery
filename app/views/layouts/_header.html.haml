@@ -45,7 +45,7 @@
                     = link_to t('random_room'), room_path(Room.random_room)
                 %li.divider
                 %li
-                  %a{remote: true, "data-target": '#myRoomModal', "data-toggle": 'modal', href: new_room_path}
+                  %a{href: rooms_path}
                     = t('create_new_room')
       %ul.nav.navbar-nav.navbar-right
         %li.dropdown

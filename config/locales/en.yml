@@ -142,3 +142,6 @@ en:
 
   enter_name: 'Enter your nickname'
   enter_email: 'Enter your email'
+
+  action_time: 'Time'
+  action: 'Action'
