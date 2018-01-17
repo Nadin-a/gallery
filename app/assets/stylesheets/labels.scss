@@ -1,23 +1,24 @@
 required {
-  color: red;
+  color: $red-color;
 }
 
 .update-label:hover {
-  color: green;
+  color: $green-color;
 }
+
 .delete-label {
-  color: red;
+  color: $red-color;
 }
 
 .brd {
-  border: 1px solid black;
+  border: 1px solid $true-black;
 }
 
-#message_input{
+#message_input {
   position: relative;
 }
 
-.btn-message-post{
+.btn-message-post {
   position: absolute;
 }
 

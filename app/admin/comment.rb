@@ -6,7 +6,7 @@ ActiveAdmin.register Comment, as: 'UserComment' do
 
   csv do
     column :content
-    column (:user) {|comment| comment.user.name}
-    column (:image) {|comment| comment.image.title}
+    column(:user) { |comment| comment.user.name }
+    column(:image) { |comment| comment.image.title }
   end
 end

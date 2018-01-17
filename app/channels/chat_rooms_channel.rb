@@ -14,6 +14,5 @@ class ChatRoomsChannel < ApplicationCable::Channel
       hash[el['name']] = el['value']
     end
     Message.create(message_params)
-
   end
 end

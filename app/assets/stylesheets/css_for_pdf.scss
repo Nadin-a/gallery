@@ -1,0 +1,15 @@
+$background-color: #dedede;
+
+.list-style {
+  background-color: $background-color;
+  padding: 3%;
+}
+
+.statisctic-label {
+  font-size: 1.5em;
+  text-align: center;
+}
+
+table, th, td {
+  border: 1px solid black;
+}

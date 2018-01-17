@@ -12,6 +12,9 @@ BlockLength:
    Max: 135
 ExampleLength:
    Max: 6
+CyclomaticComplexity:
+   Max: 9
+
 
 Documentation:
   Enabled: false

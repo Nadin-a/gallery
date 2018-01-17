@@ -148,6 +148,7 @@ ru:
 
   action_time: 'Время'
   action: 'Действие'
+  statistics: 'Статистика'
 
   activerecord:
     errors:

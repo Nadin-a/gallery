@@ -18,14 +18,14 @@ ActiveAdmin.register Ahoy::Event do
 
   csv do
     column(:user) { |event| event.user.name }
-    column (:url) { |event| event.name }
+    column :url.map(&:name)
     column :properties do |event|
       event.properties['action_type']
     end
     column :time
   end
 
-  index download_links: [:csv, :pdf] do
+  index download_links: %i[csv pdf] do
     column :user
     column 'URL', :name
     column :properties do |event|
@@ -35,10 +35,10 @@ ActiveAdmin.register Ahoy::Event do
   end
 
   member_action :pdf do
-    Ahoy::Event.find ( params[:id] )
+    Ahoy::Event.find params[:id]
     respond_to do |format|
       format.pdf do
-        render_to_string :pdf => "pdf"
+        render_to_string pdf: 'pdf'
       end
     end
   end

@@ -8,19 +8,17 @@ ActiveAdmin.register Category do
     column :name
     column :created_at
     column :updated_at
-    column (:owner) {|category| category.owner.name}
-    column (:followers) {|category| category.users.count}
+    column(:owner) { |category| category.owner.name }
+    column(:followers) { |category| category.users.count }
   end
 
-  index  do
+  index do
     selectable_column
     column :name
     column :created_at
     column :updated_at
-    column (:owner) {|category| category.owner.name}
-    column (:followers) {|category| category.users.count}
+    column(:owner) { |category| category.owner.name }
+    column(:followers) { |category| category.users.count }
     actions
   end
-
-
 end

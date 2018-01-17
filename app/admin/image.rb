@@ -7,6 +7,6 @@ ActiveAdmin.register Image do
   csv do
     column :title
     column :description
-    column (:category) {|image| image.category.name}
+    column(:category) { |image| image.category.name }
   end
 end
