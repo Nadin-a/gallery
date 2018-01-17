@@ -4,7 +4,7 @@
       .hover11.column
         %figure
           .border-image
-            = link_to category_image_path(image.category, image),{ data:{ toggle:'tooltip',placement:'left'}, title:'Open this image'} do
+            = link_to category_image_path(image.category, image),{ data:{ toggle:'tooltip',placement:'left'}, title:t('open_this_image')} do
               = image_tag(image.picture.thumb.url)
           %br
       .text

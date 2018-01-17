@@ -4,6 +4,10 @@ ActiveAdmin.register Category do
   actions :all
   permit_params :owner_id, :name
 
+  filter :name
+  filter :created_at
+  filter :owner
+
   csv do
     column :name
     column :created_at

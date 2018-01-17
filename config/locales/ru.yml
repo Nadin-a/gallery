@@ -149,6 +149,15 @@ ru:
   action_time: 'Время'
   action: 'Действие'
   statistics: 'Статистика'
+  all_users: 'Все пользователи'
+  no_users: 'На сайте ещё нет пользователей'
+
+  open_this_image: 'Открыть изображение'
+  open_profile: 'Открыть профиль'
+  update_profile: 'Редактировать профиль'
+  show_all_users: 'Открыть список всех пользователей'
+  category_of_this_image: 'Категория этой картинки'
+
 
   activerecord:
     errors:

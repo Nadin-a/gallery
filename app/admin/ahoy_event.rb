@@ -9,7 +9,7 @@ ActiveAdmin.register Ahoy::Event do
         format.html { super }
         format.csv { super }
         format.pdf do
-          @events = Ahoy::Event.all
+          @events = Ahoy::Event.all.order(time: :desc)
           render pdf: 'index', layout: 'pdf', template: 'admin/events.html.haml'
         end
       end

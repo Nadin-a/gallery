@@ -146,3 +146,11 @@ en:
   action_time: 'Time'
   action: 'Action'
   statistics: 'Statistics'
+  all_users: 'All users'
+  no_users: 'There are no users on site'
+
+  open_this_image: 'Open this image'
+  open_profile: 'Open profile'
+  update_profile: 'Update profile'
+  show_all_users: 'Show list of users'
+  category_of_this_image: 'Category of this image'

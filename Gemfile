@@ -60,6 +60,7 @@ group :development do
   gem 'rubocop', require: false
   gem 'scss_lint', require: false
   gem 'foreman'
+  gem 'ruby-lint'
 end
 
 

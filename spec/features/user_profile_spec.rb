@@ -33,6 +33,17 @@ describe 'user_features', type: :feature do
         expect(page).to have_content('Comments: ' + user.comments.count.to_s +
                                      ' Favorite categories: ' + user.categories.count.to_s)
       end
+      it 'watch link to all user', js: true do
+        visit user_path(user)
+        expect(page).to have_content('All users')
+      end
+    end
+  end
+
+  describe 'Visit all users' do
+    it 'can watch list of users', js: true do
+      visit users_path
+      expect(page).to have_content(user.name)
     end
   end
 end

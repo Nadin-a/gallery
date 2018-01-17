@@ -34,13 +34,6 @@ describe 'room_features', type: :feature do
       click_button 'Create'
       expect(page).to have_content('Name is too long (maximum is 20 characters) ')
     end
-
-    it 'message', js: true do
-      visit room_path(room)
-      fill_in 'New message...', with: 'message'
-      find('#btn-message-post').click
-      expect(page).to have_content('message')
-    end
   end
 
   describe 'Visit and updating room' do

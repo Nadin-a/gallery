@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get '/last_comments', to: 'pages#last_comments'
   get '/updates', to: 'pages#updates'
 
-  resources :users, only: %i[show destroy] do
+  resources :users, only: %i[index show destroy] do
   end
   resources :categories do
     collection do

@@ -4,4 +4,11 @@ $(document).ready(function () {
     document.getElementById('btn-message-post').scrollIntoView();
   }
 
+  $(function () {
+    $('[data-toggle="popover"]').popover({
+      html: true,
+      container: 'body'
+    });
+  })
+
 });

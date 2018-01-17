@@ -4,6 +4,10 @@ ActiveAdmin.register Image do
   actions :all
   permit_params :title, :description, :picture, :category_id
 
+  filter :title
+  filter :description
+  filter :category
+
   csv do
     column :title
     column :description

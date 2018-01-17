@@ -4,6 +4,12 @@ ActiveAdmin.register User do
   actions :all
   permit_params :name, :email, :avatar, :admin, :confirmed_at
 
+  filter :name
+  filter :email
+  filter :admin
+  filter :created_at
+  filter :last_sign_in_at
+
   csv do
     column :name
     column :email
