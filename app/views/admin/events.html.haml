@@ -11,17 +11,13 @@
           = t('name') + ':'
         %th
           = t('action') + ': '
-        -#%th
-        -#  = 'URL: '
         %th
           = t('action_time')+ ': '
       - @events.each do |event|
         %tr
           %td
-            = event.user.name
+            = event.user.name if event.user?
           %td
             = event.properties['action_type']
-          -#%td
-          -#  = event.name
           %td
             = event.time.to_time.strftime('%B %e at %l:%M %p')
