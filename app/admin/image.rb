@@ -9,5 +9,4 @@ ActiveAdmin.register Image do
     column :description
     column (:category) {|image| image.category.name}
   end
-
 end
