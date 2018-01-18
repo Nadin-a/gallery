@@ -4,7 +4,7 @@ A simple gallery for your pictures.
 
 https://serene-badlands-59053.herokuapp.com/
 
-![alt text](https://differentimages.s3.amazonaws.com/uploads/image/picture/43/halo_space.jpg)
+![alt text](https://ibb.co/jFs3Bm"><img src="https://image.ibb.co/mZkOBm/screen1.jpg)
 
 ## Getting started
 
