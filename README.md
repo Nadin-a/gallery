@@ -4,7 +4,7 @@ A simple gallery for your pictures.
 
 https://serene-badlands-59053.herokuapp.com/
 
-![alt text](https://ibb.co/jFs3Bm"><img src="https://image.ibb.co/mZkOBm/screen1.jpg)
+![alt text](https://ibb.co/jFs3Bm)
 
 ## Getting started
 
