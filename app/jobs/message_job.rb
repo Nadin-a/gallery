@@ -4,7 +4,7 @@ class MessageJob < ApplicationJob
   queue_as :default
 
   def perform(message)
-    ActionCable.server.broadcast('room', message: render_message(message), room: message.room.id)
+    ActionCable.server.broadcast('room', message: render_message(message), room: message.room.name.downcase)
   end
 
   private

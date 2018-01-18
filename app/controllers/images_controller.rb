@@ -64,12 +64,12 @@ class ImagesController < ApplicationController
   end
 
   def set_image
-    @image = @category.images.find(params[:id])
+    @image = @category.images.friendly.find(params[:id])
     authorize @image
   end
 
   def set_category
-    @category = Category.find(params[:category_id])
+    @category = Category.friendly.find(params[:category_id])
     authorize @category
   end
 end

@@ -33,6 +33,7 @@ gem 'bootstrap-popover-rails'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary', '~> 0.12.3.1'
 gem 'activeadmin_addons'
+gem 'friendly_id'
 
 group :development, :test do
   gem 'rspec-rails'
@@ -60,7 +61,6 @@ group :development do
   gem 'rubocop', require: false
   gem 'scss_lint', require: false
   gem 'foreman'
-  gem 'ruby-lint'
 end
 
 

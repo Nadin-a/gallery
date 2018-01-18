@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class Room < ApplicationRecord
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
   belongs_to :user, optional: true, foreign_key: :user_id, class_name: 'User'
   has_many :messages, dependent: :destroy, class_name: 'Message'
 

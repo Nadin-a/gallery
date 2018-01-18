@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class Image < ApplicationRecord
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
   belongs_to :category
   has_many :comments, dependent: :destroy, class_name: 'Comment'
   has_many :users, through: :comments

@@ -52,7 +52,7 @@ class RoomsController < ApplicationController
   private
 
   def set_room
-    @room = Room.find(params[:id])
+    @room = Room.friendly.find(params[:id])
     authorize @room
   end
 

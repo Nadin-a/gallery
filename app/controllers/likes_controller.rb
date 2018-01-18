@@ -35,10 +35,10 @@ class LikesController < ApplicationController
   end
 
   def set_image
-    @image = Image.find(params[:image_id])
+    @image = Image.friendly.find(params[:image_id])
   end
 
   def set_category
-    @category = Category.find(params[:category_id])
+    @category = Category.friendly.find(params[:category_id])
   end
 end

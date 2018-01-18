@@ -8,7 +8,7 @@
       .text-center
         %h2
           .long_text
-            = link_to(category.name, category_path(category.id))
+            = link_to(category.name, category_path(category))
     - images = category.images.count <= 3? category.images.all : category.images.first(3)
     - images.each do |image|
       .col-12.text-center.col-sm-4.col-md-4.col-lg-4.col-xl-4

@@ -8,12 +8,11 @@ class UsersController < ApplicationController
     @users = User.where.not(confirmed_at:  nil).paginate(page: params[:page], per_page: 5)
   end
 
-  def show;
-  end
+  def show; end
 
   private
 
   def set_user
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:id])
   end
 end
