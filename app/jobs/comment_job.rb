@@ -4,8 +4,10 @@ class CommentJob < ApplicationJob
   queue_as :default
 
   def perform(comment)
-    ActionCable.server.broadcast('image', comment: render_comment(comment), category: comment.image.category.name.downcase,
-    image: comment.image.title.downcase)
+    category = comment.image.category.name.downcase.gsub(' ', '-')
+    image = comment.image.title.downcase.gsub(' ', '-')
+    ActionCable.server.broadcast('image', comment: render_comment(comment), category: category,
+    image: image)
   end
 
   private
