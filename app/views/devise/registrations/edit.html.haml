@@ -2,8 +2,9 @@
 .col-sm-6.col-md-6.col-lg-6.col-xl-6.well.col-centered
   .form-group
     .text-center
-      %h2
-        = link_to(t('profile'), user_path(@user), data:{ toggle:'tooltip',placement:'left'}, title:t('open_profile'))
+      .hero.flipInX.animated
+        %h2
+          = link_to(t('profile'), user_path(@user), data:{ toggle:'tooltip',placement:'left'}, title:t('open_profile'))
       %h2
         =t('edit_profile')
     %br

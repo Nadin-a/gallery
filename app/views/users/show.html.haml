@@ -1,8 +1,9 @@
 = content_for(:title, @user.name)
 .col-sm-12.col-md-12.col-lg-12.col-xl-12.well
   .text-center
-    %h1
-      = @user.name
+    .hero.flipInX.animated
+      %h1
+        = @user.name
     - if @user == current_user
       .text-center
         = link_to(t('update'), edit_user_registration_path(current_user), data:{ toggle:'tooltip',placement:'left'}, title:t('update_profile'))

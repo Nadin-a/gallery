@@ -6,7 +6,8 @@
         = render partial: 'shared/flash_messages'
         .col-sm-12.col-md-12.col-lg-12.col-xl-12
           %h2
-            = @image.title
+            .hero.zoomIn.animated
+              = @image.title
           %br
       .col-sm-12.col-md-12.col-lg-12.col-xl-12.text-center
         = image_tag(@image.picture)

@@ -10,7 +10,8 @@
           .col-sm-12.col-md-12.col-lg-12.col-xl-12
             .input-group
               %input.form-control{name: 'content', maxlength:'200', class: 'form-control limited-text-input', placeholder: t('new_message'), id: 'message_input', required: true}
-              #count_message
               %span.input-group-btn
                 %input.btn.btn-success{type: 'submit', value: t('post'), id: 'btn-message-post'}
+            %br
+            #count_message
 
