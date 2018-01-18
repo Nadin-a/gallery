@@ -1,8 +1,9 @@
 = content_for(:title, t('last_comments'))
 .col-sm-12.col-md-12.col-lg-12.col-xl-12.well
   .text-center
-    %h1
-      = t('last_comments')
+    .hero.slideInDown.animated
+      %h1
+        = t('last_comments')
     - if @comments.empty?
       %h1
         = t('no_comments')

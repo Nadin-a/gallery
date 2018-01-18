@@ -1,9 +1,8 @@
 = content_for(:title, t('all_categories'))
 .col-sm-12.col-md-12.col-lg-12.col-xl-12.well.text-center
   .col-12.col-sm-12.col-md-12.col-lg-12.col-xl-12
-    .hero.slideInDown.animated
-      %h1
-        = t('all_categories')
+    %h1
+      = t('all_categories')
     = render partial: 'shared/list_of_categories', locals: {categories: @categories}
     .col-sm-12.text-center
       = will_paginate @categories

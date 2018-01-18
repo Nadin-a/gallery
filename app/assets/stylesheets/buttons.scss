@@ -26,15 +26,15 @@
 
 // animation
 
-.btn{
+.btn-effect{
   text-transform: uppercase;
   border-radius: 0;
   border: none;
   position: relative;
 }
-.btn:hover{ color: #fff; }
-.btn:before,
-.btn:after{
+.btn-effect:hover{ color: #fff; }
+.btn-effect:before,
+.btn-effect:after{
   content: "";
   position: absolute;
   top: 0;
@@ -43,12 +43,12 @@
   right: 0;
   transition: all 0.5s ease 0s;
 }
-.btn:hover:before{
+.btn-effect:hover:before{
   background: rgba(255, 255, 255, 0.7);
   left: 60%;
   right: 60%;
 }
-.btn:hover:after{
+.btn-effect:hover:after{
   background: rgba(255, 255, 255, 0.7);
   top: 60%;
   bottom: 60%;
