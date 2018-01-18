@@ -4,6 +4,8 @@ A simple gallery for your pictures.
 
 https://serene-badlands-59053.herokuapp.com/
 
+![alt text](https://differentimages.s3.amazonaws.com/uploads/image/picture/43/halo_space.jpg)
+
 ## Getting started
 
 To get started with the app, clone the repo and then install the needed gems:
