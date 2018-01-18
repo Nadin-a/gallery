@@ -8,7 +8,7 @@ class Message < ApplicationRecord
 
   validates :user, presence: true
   validates :room, presence: true
-  validates :content, presence: true, length: { maximum: 1000 }
+  validates :content, presence: true, length: { maximum: 200 }
 
   def self.default_scope
     order(created_at: :asc)

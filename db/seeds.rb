@@ -61,7 +61,7 @@ if Rails.env.development?
                     image_id: Random.rand(1..15))
   end
 
-  Comment.create!(content: 'a'*300,
+  Comment.create!(content: 'a'*200,
                   user_id: Random.rand(1..3),
                   image_id: Random.rand(1..15))
 

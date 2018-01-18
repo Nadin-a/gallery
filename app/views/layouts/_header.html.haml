@@ -61,11 +61,11 @@
             %li.text-center
               = link_to lang: 'en' do
                 %img{src:'https://lipis.github.io/flag-icon-css/flags/4x3/um.svg', height: 20, width:20}
-                English
+                  English
             %li.text-center
               = link_to lang: 'ru' do
                 %img{src:'https://lipis.github.io/flag-icon-css/flags/4x3/ru.svg', height: 20, width:20}
-                Русский
+                  Русский
         - if user_signed_in?
           - if current_user.admin?
             %li

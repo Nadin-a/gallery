@@ -13,7 +13,7 @@ describe Message do
     expect(message).not_to be_valid
   end
   it 'is not valid with long content' do
-    message.content = 'a' * 1001
+    message.content = 'a' * 201
     expect(message).not_to be_valid
   end
   it 'is not valid without a user' do

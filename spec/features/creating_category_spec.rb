@@ -25,14 +25,6 @@ describe 'category_features', type: :feature do
       click_button 'Create'
       expect(page).to have_content('Category created!')
     end
-
-    it 'with long name', js: true do
-      visit categories_path
-      click_button 'Create own category'
-      fill_in 'Name', with: 'a' * 16
-      click_button 'Create'
-      expect(page).to have_content('Name is too long (maximum is 15 characters)')
-    end
   end
 
   describe 'Updating category' do
@@ -60,13 +52,6 @@ describe 'category_features', type: :feature do
       attach_file('uploaded_cover', Rails.root + 'spec/fixtures/test_picture.jpg')
       click_button 'Update'
       expect(page).to have_content('Category updated!')
-    end
-
-    it 'with long name', js: true do
-      click_link 'Update'
-      fill_in 'Name', with: 'a' * 16
-      click_button 'Update'
-      expect(page).to have_content('Name is too long (maximum is 15 characters')
     end
   end
 

@@ -22,3 +22,10 @@
   $(document).ready( function() {
     $('.pre-scrollable').scrollTop($('.pre-scrollable')[0].scrollHeight);
   });
+
+    $(function () {
+    $('[data-toggle="popover"]').popover({
+      html: true,
+      container: 'body'
+    });
+  })

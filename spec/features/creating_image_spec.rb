@@ -32,21 +32,6 @@ describe 'image_features', type: :feature do
       expect(page).to have_content('Image uploaded')
     end
 
-    it 'with long title', js: true do
-      fill_in 'Title of the picture', with: 'a' * 21
-      attach_file('uploaded_picture', Rails.root + 'spec/fixtures/test_picture.jpg')
-      click_button 'Add'
-      expect(page).to have_content('Title is too long (maximum is 20 characters)')
-    end
-
-    it 'with long description', js: true do
-      fill_in 'Title of the picture', with: image_title
-      fill_in 'Description of the picture', with: 'a' * 301
-      attach_file('uploaded_picture', Rails.root + 'spec/fixtures/test_picture.jpg')
-      click_button 'Add'
-      expect(page).to have_content('Description is too long (maximum is 300 characters)')
-    end
-
     it 'without uploading picture', js: true do
       fill_in 'Title of the picture', with: image_title
       click_button 'Add'

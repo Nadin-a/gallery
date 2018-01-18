@@ -4,8 +4,8 @@ class MessageJob < ApplicationJob
   queue_as :default
 
   def perform(message)
-    room = message.room.name.downcase.gsub(' ', '-')
-    ActionCable.server.broadcast('room', message: render_message(message), room: room)
+    room_param = message.room.name.downcase.tr(' ', '-')
+    ActionCable.server.broadcast('room', message: render_message(message), room: room_param)
   end
 
   private

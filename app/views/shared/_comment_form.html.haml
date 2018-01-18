@@ -7,7 +7,12 @@
       %input{name: 'user_id', type: 'hidden', value: "#{current_user.id}"}/
       .field
         .col-sm-12.col-md-12.col-lg-12.col-xl-12
-          %textarea.form-control{name: 'content', class: 'form-control', placeholder: t('new_comment'), id: 'comment-input', required: true}
+          %textarea.form-control{name: 'content', maxlength:'200', class: 'form-control limited-text-input', placeholder: t('new_comment'), id: 'comment-input', required: true}
+          %br
+          .pull-left
+            #count_message
           %br
             .pull-right
               %input.btn.btn-success{type: 'submit', value: t('post'), id: 'btn-comment-post'}
+
+

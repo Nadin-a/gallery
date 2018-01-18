@@ -24,7 +24,7 @@
         %required
           *
         %br/
-        = f.text_field :name, class:'form-control', placeholder:t('name'), required: true
+        = f.text_field :name, maxlength: '30', minlength: '2', class:'form-control', placeholder:t('name'), required: true
       %br
         .text-center
           = image_tag(current_user.avatar) if current_user.avatar?

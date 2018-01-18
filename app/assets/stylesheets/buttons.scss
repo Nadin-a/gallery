@@ -23,3 +23,33 @@
   box-shadow: none;
   color: $outline-active-color;
 }
+
+// animation
+
+.btn{
+  text-transform: uppercase;
+  border-radius: 0;
+  border: none;
+  position: relative;
+}
+.btn:hover{ color: #fff; }
+.btn:before,
+.btn:after{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  transition: all 0.5s ease 0s;
+}
+.btn:hover:before{
+  background: rgba(255, 255, 255, 0.7);
+  left: 60%;
+  right: 60%;
+}
+.btn:hover:after{
+  background: rgba(255, 255, 255, 0.7);
+  top: 60%;
+  bottom: 60%;
+}

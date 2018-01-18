@@ -1,3 +1,20 @@
+.info-size {
+  font-size: 1.3em;
+}
+
+.long_text {
+  word-wrap: break-word;
+}
+
+h1,
+h2 {
+  color: $true-black;
+}
+
+.name_category {
+  font-size: 2em;
+}
+
 required {
   color: $red-color;
 }

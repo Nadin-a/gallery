@@ -26,14 +26,6 @@ describe 'room_features', type: :feature do
       click_button 'Create'
       expect(page).to have_content('Room created!')
     end
-
-    it 'with long name', js: true do
-      visit rooms_path
-      click_button 'Create new room'
-      fill_in 'Name', with: 'a' * 21
-      click_button 'Create'
-      expect(page).to have_content('Name is too long (maximum is 20 characters) ')
-    end
   end
 
   describe 'Visit and updating room' do
@@ -53,13 +45,6 @@ describe 'room_features', type: :feature do
       fill_in 'Name', with: new_room_name
       click_button 'Update'
       expect(page).to have_content('Room updated!')
-    end
-
-    it 'with long name', js: true do
-      click_link 'Update'
-      fill_in 'Name', with: 'a' * 21
-      click_button 'Update'
-      expect(page).to have_content('Name is too long (maximum is 20 characters')
     end
   end
 

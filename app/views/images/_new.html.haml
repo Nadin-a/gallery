@@ -16,11 +16,11 @@
                 = f.label t('title')
                 %required
                   *
-                = f.text_field :title, autofocus: true, class:'form-control', placeholder:t('title_image'), required: true
+                = f.text_field :title, maxlength: '20', autofocus: true, class:'form-control', placeholder:t('title_image'), required: true
               %br
               .field
                 = f.label t('description')
-                = f.text_field :description, autofocus: true, class:'form-control', placeholder:t('description_image')
+                = f.text_area :description, maxlength: '300', autofocus: true, class:'form-control', placeholder:t('description_image')
               %br
                 = f.file_field :picture, accept: 'image/jpeg,image/gif,image/png', id: :uploaded_picture
               %br

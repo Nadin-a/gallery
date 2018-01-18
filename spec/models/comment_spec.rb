@@ -13,7 +13,7 @@ describe Comment do
     expect(comment).not_to be_valid
   end
   it 'is not valid with long content' do
-    comment.content = 'a' * 301
+    comment.content = 'a' * 201
     expect(comment).not_to be_valid
   end
   it 'is not valid without a user' do

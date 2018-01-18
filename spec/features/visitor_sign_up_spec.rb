@@ -18,11 +18,6 @@ describe 'Visitor signs up', type: :feature do
     expect(page).to have_content('Name is too short (minimum is 2 characters)')
   end
 
-  it 'with long name' do
-    sign_up_with email, 'a' * 31, 'password', 'password'
-    expect(page).to have_content('Name is too long (maximum is 30 characters)')
-  end
-
   it 'with invalid password' do
     sign_up_with email, name, 'a' * 3, 'a' * 3
     expect(page).to have_content('Password is too short (minimum is 6 characters)')

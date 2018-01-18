@@ -14,7 +14,7 @@
             = f.label t('name')
             %required
               *
-            = f.text_field :name, autofocus: true, class:'form-control', placeholder:t('name'), required: true
+            = f.text_field :name, maxlength: '20', autofocus: true, class:'form-control', placeholder:t('name'), required: true
           %br
           .actions
             .modal-footer
