@@ -1,79 +1,90 @@
-User.create!(name: 'Nadiia',
-             email: 'example@example.org',
-             password: 'password',
-             password_confirmation: 'password',
-             remote_avatar_url: Faker::Avatar.image,
-             admin: true,
-             confirmed_at: Time.current)
-User.create!(name: 'Susan',
-             email: 'susan@email.org',
-             password: 'password',
-             password_confirmation: 'password',
-             remote_avatar_url: Faker::Avatar.image,
-             confirmed_at: Time.current)
-User.create!(name: 'a'*30,
-             email: 'larry@mail.org',
-             password: 'password',
-             password_confirmation: 'password',
-             remote_avatar_url: Faker::Avatar.image,
-             confirmed_at: Time.current)
+# frozen_string_literal: true
 
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password', confirmed_at: Time.current)
+User.transaction do
+  User.create!(name: 'Nadiia',
+               email: 'example@example.org',
+               password: 'password',
+               password_confirmation: 'password',
+               remote_avatar_url: Faker::Avatar.image,
+               admin: true,
+               confirmed_at: Time.current)
 
+  User.create!(name: 'Susan',
+               email: 'susan@email.org',
+               password: 'password',
+               password_confirmation: 'password',
+               remote_avatar_url: Faker::Avatar.image,
+               confirmed_at: Time.current)
 
-if Rails.env.development?
-  Category.create!(name: 'a'*15,
-                   owner_id: 1,
-                   cover: Rails.root.join('app/assets/images/large-photo.jpeg').open)
-  Category.create!(name: 'category2',
-                   owner_id: 2,
-                   cover: Rails.root.join('app/assets/images/large-photo.jpeg').open)
-  Category.create!(name: 'category3',
-                   owner_id: 3,
-                   cover: Rails.root.join('app/assets/images/big_image.jpg').open)
-
-
-  15.times do
-    rand = Random.rand(1..2)
-    title = Faker::Name.first_name
-    description = Faker::Lorem.paragraph
-    picture =
-    if rand == 1
-      Rails.root.join('app/assets/images/big_image.jpg').open
-    else
-      Rails.root.join('app/assets/images/large-photo.jpeg').open
-    end
-    Image.create!(title: title,
-                  description: description,
-                  picture: picture,
-                  category_id: Random.rand(1..3))
-  end
-
-  Image.create!(title: 'a' * 20,
-                description: 'a' * 300,
-                picture: Rails.root.join('app/assets/images/large-photo.jpeg').open,
-                category_id: Random.rand(1..3))
-
-  20.times do
-    content = Faker::Lorem.paragraph
-    Comment.create!(content: content,
-                    user_id: Random.rand(1..3),
-                    image_id: Random.rand(1..15))
-  end
-
-  Comment.create!(content: 'a'*200,
-                  user_id: Random.rand(1..3),
-                  image_id: Random.rand(1..15))
-
-15.times do |n|
-  Like.create!(user_id: Random.rand(1..3), image_id: n+1)
+  User.create!(name: 'a' * 30,
+               email: 'larry@mail.org',
+               password: 'password',
+               password_confirmation: 'password',
+               remote_avatar_url: Faker::Avatar.image,
+               confirmed_at: Time.current)
 end
 
+AdminUser.create!(
+email: 'admin@example.com',
+password: 'password',
+password_confirmation: 'password',
+confirmed_at: Time.current
+)
 
-  users = User.all
-  users.each do |user|
-    category = Category.find(Random.rand(1..3))
-    user.categories << category if user != category.owner
+user_ids = User.all.ids
+
+if Rails.env.development?
+  Category.transaction do
+    User.find(user_ids.sample).owned_categories.create(
+      name: 'a' * 15,
+      cover: Rails.root.join('app/assets/images/large-photo.jpeg').open
+    )
+
+    User.find(user_ids.sample).owned_categories.create(
+      name: 'category2',
+      cover: Rails.root.join('app/assets/images/large-photo.jpeg').open
+    )
+
+    User.find(user_ids.sample).owned_categories.create(
+      name: 'category3',
+      cover: Rails.root.join('app/assets/images/big_image.jpg').open
+    )
+
+    category_ids = Category.all.ids
+    15.times do
+      picture_name = %w[big_image.jpg large-photo.jpeg].freeze.sample
+      picture = Rails.root.join('app', 'assets', 'images', picture_name).open
+      Image.create!(title: Faker::Name.first_name,
+                    description: Faker::Lorem.paragraph,
+                    picture: picture,
+                    category_id: category_ids.sample)
+    end
+
+    Image.create!(title: 'a' * 20,
+                  description: 'a' * 300,
+                  picture: Rails.root.join('app/assets/images/large-photo.jpeg').open,
+                  category_id: category_ids.sample)
+
+    image_ids = Image.all.ids
+
+    20.times do
+      content = Faker::Lorem.sentence
+      Comment.create!(content: content,
+                      user_id: user_ids.sample,
+                      image_id: image_ids.sample)
+    end
+
+    Comment.create!(content: 'a' * 200,
+                    user_id: user_ids.sample,
+                    image_id: image_ids.sample)
+
+    15.times { |n| Like.create!(user_id: user_ids.sample, image_id: n + 1) }
+
+
+    User.all.each do |user|
+      category = Category.find(category_ids.sample)
+      user.categories << category if user != category.owner
+    end
   end
 end
 
