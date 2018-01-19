@@ -12,5 +12,6 @@ RSpec.describe ChatRoomsChannel, type: :channel do
   it 'subscribes to a stream when room id is provided' do
     subscribe(room_id: 1)
     expect(subscription).to be_confirmed
+
   end
 end
