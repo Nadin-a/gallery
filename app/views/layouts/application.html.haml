@@ -3,7 +3,7 @@
   %head
     %meta{content: 'text/html; charset=UTF-8', 'http-equiv': 'Content-Type'}/
     = favicon_link_tag asset_path('image-flat.png'), rel: 'icon', type:  'image/png'
-    %link{:href => "https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css", :rel => "stylesheet"}/
+    %link{href: 'https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css', rel: 'stylesheet'}/
     %title= content_for :title
     = csrf_meta_tags
     = stylesheet_link_tag 'application', media: 'all'

@@ -4,13 +4,13 @@ class Image < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: :slugged
 
+  default_scope { order(created_at: :desc) }
+
   belongs_to :category
   has_many :comments, dependent: :destroy, class_name: 'Comment'
   has_many :users, through: :comments
   has_many :likes, dependent: :destroy, class_name: 'Like'
   has_many :liking_users, through: :likes, source: :user
-
-  mount_uploader :picture, PictureUploader
 
   validates :category, presence: true
   validates :title, presence: true, length: { maximum: 20 }, uniqueness: true
@@ -18,9 +18,7 @@ class Image < ApplicationRecord
   validates :picture, presence: true
   validate  :picture_size
 
-  def self.default_scope
-    order(created_at: :desc)
-  end
+  mount_uploader :picture, PictureUploader
 
   def self.ordered_by_likes
     unscoped.select('images.*, count(likes.id) AS likes_count').joins(:likes).group(:id).order('likes_count desc')

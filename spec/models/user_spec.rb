@@ -4,6 +4,7 @@ require 'rails_helper'
 
 describe User do
   subject(:user) { FactoryBot.build(:user) }
+  let!(:no_activated_user) { FactoryBot.create(:random_user, confirmed_at: nil) }
 
   it 'has a valid factory' do
     expect(FactoryBot.build(:user)).to be_valid
@@ -47,6 +48,10 @@ describe User do
   it '.feed' do
     check_feed = user.feed == user.categories + user.owned_categories
     expect(check_feed).to be true
+  end
+
+  it 'active' do
+    expect(described_class.active.include? no_activated_user).to be false
   end
 
   describe 'Associations' do

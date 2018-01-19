@@ -4,10 +4,10 @@ $(document).ready(function () {
   $like_label = $('.js-count-like-label');
 
   if (($like_btn.attr('data-liked')) == 1) {
-    heart();
+    like_icon();
   }
   else {
-    heart_empty();
+    dislike_icon();
   }
 
   $like_btn.click(function () {
@@ -39,7 +39,7 @@ $(document).ready(function () {
         $btn.attr('method', 'post');
         $btn.attr('action', image.like_path);
         $btn.attr('data-liked', 0);
-        heart_empty();
+        dislike_icon();
 
         return this;
       };
@@ -51,14 +51,14 @@ $(document).ready(function () {
         $btn.attr('method', 'delete');
         $btn.attr('action', image.unlike_path);
         $btn.attr('data-liked', 1);
-        heart();
+        like_icon();
         return this;
       };
     })(jQuery);
 
   });
 
-  function heart() {
+  function like_icon() {
     $like_btn.html('<span class="glyphicon glyphicon-heart"></span>');
     $like_btn.hover(function () {
       $(this).html('<span class="glyphicon glyphicon-heart-empty"></span>');
@@ -67,7 +67,7 @@ $(document).ready(function () {
     });
   }
 
-  function heart_empty() {
+  function dislike_icon() {
     $like_btn.html('<span class="glyphicon glyphicon-heart-empty"></span>');
     $like_btn.hover(function () {
       $(this).html('<span class="glyphicon glyphicon-heart"></span>');

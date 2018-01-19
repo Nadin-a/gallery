@@ -4,6 +4,8 @@ class Category < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
 
+  default_scope { order(created_at: :desc) }
+
   belongs_to :owner, optional: true, foreign_key: :owner_id, class_name: 'User'
   has_and_belongs_to_many :users
   has_many :images, dependent: :destroy
@@ -14,17 +16,13 @@ class Category < ApplicationRecord
 
   mount_uploader :cover, CoverUploader
 
-  def self.default_scope
-    order(created_at: :desc)
-  end
-
   def self.ordered_by_popularity
     popular_categories = Category.all.sort_by do |category|
       count = 0
-      count += category.images.size
+      count += category.images.count
       category.images.each do |imgage|
-        count += imgage.comments.size
-        count += imgage.likes.size
+        count += imgage.comments.count
+        count += imgage.likes.count
       end
       count
     end

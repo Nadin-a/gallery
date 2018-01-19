@@ -3,11 +3,8 @@
 class User < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, :confirmable, :async,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
-         omniauth_providers: [:facebook]
+
+  scope :active, -> { where.not(confirmed_at: nil).order(created_at: :desc) }
 
   has_many :owned_categories, dependent: :destroy, foreign_key: :owner_id, class_name: 'Category'
   has_and_belongs_to_many :categories
@@ -19,10 +16,14 @@ class User < ApplicationRecord
   has_many :owned_rooms, dependent: :destroy, foreign_key: :user_id, class_name: 'Room'
   has_many :messages, dependent: :destroy, class_name: 'Message'
 
-  mount_uploader :avatar, AvatarUploader
-
   validates :name, presence: true, length: { minimum: 2, maximum: 30 }, uniqueness: true
   validate :avatar_size
+
+  mount_uploader :avatar, AvatarUploader
+
+  devise :database_authenticatable, :registerable, :confirmable, :async,
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
+         omniauth_providers: [:facebook]
 
   def feed
     @feed = Image.where(category_id: categories).or(Image.where(category_id: owned_categories))

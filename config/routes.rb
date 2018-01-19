@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   require 'sidekiq/web'
 
-  authenticate :user, lambda { |u| u.admin? } do
+  authenticate :user, lambda { |user| user.admin? } do
     mount Sidekiq::Web => '/sidekiq'
   end
 
@@ -14,8 +14,8 @@ Rails.application.routes.draw do
   get '/last_comments', to: 'pages#last_comments'
   get '/updates', to: 'pages#updates'
 
-  resources :users, only: %i[index show destroy] do
-  end
+  resources :users, only: %i[index show destroy]
+
   resources :categories do
     collection do
       get :owned

@@ -57,7 +57,6 @@ describe 'category_features', type: :feature do
       click_button 'Update'
       expect(page).to have_content('Category updated!')
     end
-
   end
 
   describe 'Deleting category' do
@@ -69,7 +68,7 @@ describe 'category_features', type: :feature do
       expect(page).to have_content('Category deleted!')
     end
 
-    it 'with click on delete', js: true do
+    it 'with click on delete categories page', js: true do
       visit categories_path
       click_link 'Delete'
       page.driver.browser.switch_to.alert.accept

@@ -29,7 +29,7 @@ namespace :db do
   end
 
   task likes: :environment do
-    Image.all.each do |image|
+    Image.find_each do |image|
       like = Like.new
       like.image_id = image.id
       like.user_id = 1

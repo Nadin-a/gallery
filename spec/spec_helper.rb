@@ -71,25 +71,17 @@ RSpec.configure do |config|
 
   config.include ActionDispatch::TestProcess
 
-  config.before do
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
   end
 
-  config.before do
-    DatabaseCleaner.strategy = :transaction
+  config.around do |example|
+    DatabaseCleaner.cleaning do
+      example.run
+    end
   end
 
-  config.before do
-    DatabaseCleaner.strategy = :truncation
-  end
-
-  config.before do
-    DatabaseCleaner.start
-  end
-
-  config.after do
-    DatabaseCleaner.clean
-  end
 end
 
 Capybara.register_driver :selenium do |app|

@@ -6,6 +6,7 @@ $(document).ready(function () {
 
   $.ajax({
       dataType: 'JSON',
+    method: 'get',
       success: function (data) {
         $('#hidden_comments').append(data.hidden_comments);
         $show_all_btn.hide();

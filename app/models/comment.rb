@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Comment < ApplicationRecord
+  default_scope { order(created_at: :asc) }
+
   belongs_to :user
   belongs_to :image
 
@@ -9,10 +11,6 @@ class Comment < ApplicationRecord
   validates :content, presence: true, length: { maximum: 200 }
 
   after_create_commit { CommentJob.perform_later(self) }
-
-  def self.default_scope
-    order(created_at: :asc)
-  end
 
   def self.last_comments
     unscoped.order(created_at: :desc)
