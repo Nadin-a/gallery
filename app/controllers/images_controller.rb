@@ -8,8 +8,7 @@ class ImagesController < ApplicationController
   def new; end
 
   def show
-    @comment = current_user.comments.build if user_signed_in?
-    @comments = @image.comments.last(5) # paginate(page: params[:page], per_page: 10)
+    @comments = @image.comments.last(5)
     return unless user_signed_in?
     @like =
       if @image.liked_by?(current_user)
@@ -20,13 +19,13 @@ class ImagesController < ApplicationController
   end
 
   def create
-    @image = @category.images.build(image_params)
-    authorize @image
-    if @image.save
+    image = @category.images.build(image_params)
+    authorize image
+    if image.save
       flash[:success] = t(:image_created)
-      send_message
+      send_message image
     else
-      flash[:error] = @image.errors.full_messages
+      flash[:error] = image.errors.full_messages
     end
     redirect_to category_path(@category)
   end
@@ -53,8 +52,8 @@ class ImagesController < ApplicationController
 
   private
 
-  def send_message
-    @image.category.users.each do |user|
+  def send_message(image)
+    image.category.users.each do |user|
       user.send_email_about_new_image @image.id
     end
   end

@@ -2,8 +2,7 @@
 
 class CategoriesController < ApplicationController
   before_action :authenticate_user!, except: %i[index show followers popular]
-  before_action :set_category, except: %i[index new owned favorite create popular]
-  before_action :set_new_category, only: %i[new index owned favorite]
+  before_action :set_category, only: %i[show update destroy subscribe unsubscribe followers]
 
   def index
     @categories = Category.all.paginate(page: params[:page], per_page: 15)
@@ -11,23 +10,23 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @image = @category.images.build
     @images = @category.images.paginate(page: params[:page], per_page: 5).order(created_at: :desc)
   end
 
-  def new; end
+  def new
+    @category = Category.new
+    authorize @category
+  end
 
   def edit; end
 
   def create
-    @category = current_user.owned_categories.build(categories_params)
-    authorize @category
-    if @category.save
-      flash[:success] = t(:category_created)
-      redirect_to @category
+    category = current_user.owned_categories.build(categories_params)
+    authorize category
+    if category.save
+      redirect_to category, flash: { success: t(:category_created) }
     else
-      flash[:error] = @category.errors.full_messages
-      redirect_to owned_categories_path
+      redirect_to owned_categories_path, flash: { error: category.errors.full_messages }
     end
   end
 
@@ -52,7 +51,6 @@ class CategoriesController < ApplicationController
   def owned
     @categories = current_user.owned_categories.paginate(page: params[:page], per_page: 15)
     authorize @categories
-    authorize @category
   end
 
   def favorite
@@ -66,8 +64,8 @@ class CategoriesController < ApplicationController
 
   def subscribe
     current_user.categories << @category
+    current_user.send_email_about_subscribtion
     respond_to do |format|
-      current_user.send_email_about_subscribtion
       format.html { redirect_to @category }
       format.json { render :show, status: :created }
     end
@@ -93,11 +91,6 @@ class CategoriesController < ApplicationController
 
   def set_category
     @category = Category.friendly.find(params[:id])
-    authorize @category
-  end
-
-  def set_new_category
-    @category = Category.new
     authorize @category
   end
 end

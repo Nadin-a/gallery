@@ -5,7 +5,6 @@ class RoomsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @room = Room.new
     @rooms = Room.all.paginate(page: params[:page], per_page: 5)
   end
 
@@ -24,8 +23,9 @@ class RoomsController < ApplicationController
   end
 
   def show
-    @message = current_user.messages.build if user_signed_in?
     @messages = @room.messages.last(8)
+
+    track_action('chat')
   end
 
   def edit; end
