@@ -155,3 +155,5 @@ en:
   show_all_users: 'Show list of users'
   category_of_this_image: 'Category of this image'
   subscribe_unsubscribe: 'Subscribe or unsubscribe'
+
+  size_error: 'should be less than %{size}'
