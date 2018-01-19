@@ -6,8 +6,8 @@ class Room < ApplicationRecord
 
   default_scope { order(created_at: :desc) }
 
-  belongs_to :user, optional: true, foreign_key: :user_id, class_name: 'User'
-  has_many :messages, dependent: :destroy, class_name: 'Message'
+  belongs_to :user
+  has_many :messages, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 20 }, uniqueness: true
   validates :user, presence: true

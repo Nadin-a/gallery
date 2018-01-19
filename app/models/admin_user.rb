@@ -5,4 +5,6 @@ class AdminUser < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  # FIXME: DESTROY THIs MODEL!!!! ADD FLAG INTO UsER!!!!
 end

@@ -6,12 +6,12 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :image
 
-  validates :user, presence: true
-  validates :image, presence: true
+  validates :user, :image, presence: true
   validates :content, presence: true, length: { maximum: 200 }
 
   after_create_commit { CommentJob.perform_later(self) }
 
+  # FIXME: TO SCOPE
   def self.last_comments
     unscoped.order(created_at: :desc)
   end
