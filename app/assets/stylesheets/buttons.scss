@@ -26,30 +26,33 @@
 
 // animation
 
-.btn-effect{
-  text-transform: uppercase;
+.btn-effect {
+  border: 0;
   border-radius: 0;
-  border: none;
   position: relative;
+  text-transform: uppercase;
 }
-.btn-effect:hover{ color: #fff; }
+
+.btn-effect:hover { color: $white; }
 .btn-effect:before,
-.btn-effect:after{
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
+.btn-effect:after {
   bottom: 0;
+  content: '';
+  left: 0;
+  position: absolute;
   right: 0;
-  transition: all 0.5s ease 0s;
+  top: 0;
+  transition: all .5s ease 0s;
 }
-.btn-effect:hover:before{
-  background: rgba(255, 255, 255, 0.7);
+
+.btn-effect:hover:before {
+  background: $white;
   left: 60%;
   right: 60%;
 }
-.btn-effect:hover:after{
-  background: rgba(255, 255, 255, 0.7);
-  top: 60%;
+
+.btn-effect:hover:after {
+  background: $white;
   bottom: 60%;
+  top: 60%;
 }

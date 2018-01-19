@@ -23,11 +23,9 @@ textarea {
 }
 
 .modal {
+  background-color: $background-modal;
   padding-right: 0;
-  background-color: rgba(2, 2, 2, 0.4);
 }
-
-
 
 .col-centered {
   float: none;

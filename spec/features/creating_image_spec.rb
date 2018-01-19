@@ -62,6 +62,36 @@ describe 'image_features', type: :feature do
     end
   end
 
+  describe 'On show image page' do
+    before { visit category_image_path(category, image) }
+    it 'has link to category', js: true do
+      expect(page).to have_content(image.category.name)
+    end
+    it 'redirect to category', js: true do
+      click_link image.category.name
+      expect(page).to have_content(image.category.name)
+    end
+    it 'redirect to owner profile', js: true do
+      click_link image.category.owner.name
+      expect(page).to have_content(image.category.owner.name)
+    end
+    it 'has link to owner', js: true do
+      expect(page).to have_content(image.category.owner.name)
+    end
+  end
+
+  describe 'On categories page' do
+    it 'has link with count on categories path', js: true do
+      visit categories_path
+      expect(page).to have_content('Images: 1')
+    end
+    it 'redirect to category path', js: true do
+      visit categories_path
+      click_link 'Images: 1'
+      expect(page).not_to have_content('There are no images')
+    end
+  end
+
   describe 'Deleting image' do
     before { visit category_image_path(category, image) }
 

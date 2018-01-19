@@ -13,7 +13,6 @@
         |
         %span.glyphicon.glyphicon-remove
         = link_to(t('delete'), room_path(@room), method: :delete,  data: { confirm: t('you_sure')})
-
   .col-sm-12.col-md-12.col-lg-12.col-xl-12
     .pre-scrollable
       = render partial: 'shared/list_of_messages'
