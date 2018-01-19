@@ -25,7 +25,7 @@ describe Room do
   end
 
   describe 'Associations' do
-    it { is_expected.to belong_to(:user).with_foreign_key(:user_id) }
+    it { is_expected.to belong_to(:user) }
     it { is_expected.to have_many :messages }
     it { is_expected.to have_db_index('name') }
     it { is_expected.to have_db_index('user_id') }

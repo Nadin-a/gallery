@@ -40,6 +40,8 @@ describe Category do
   end
 
   it 'ordered_by_popularity' do
+    p described_class.ordered_by_popularity
+    p sorted_list_of_category
     expect(described_class.ordered_by_popularity == sorted_list_of_category).to be true
   end
 

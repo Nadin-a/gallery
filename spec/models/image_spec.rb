@@ -34,6 +34,7 @@ describe Image do
   it '#liked_by?' do
     user = FactoryBot.build(:user)
     user.liked_images << image
+    image.liking_users << user
     check = image.liked_by? user
     expect(check).to be true
   end
@@ -41,7 +42,6 @@ describe Image do
   describe 'Associations' do
     it { is_expected.to belong_to :category }
     it { is_expected.to have_many :comments }
-    it { is_expected.to have_many :users }
     it { is_expected.to have_many :likes }
     it { is_expected.to have_many :liking_users }
     it { is_expected.to have_db_index('category_id') }
