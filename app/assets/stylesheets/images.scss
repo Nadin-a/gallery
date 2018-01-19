@@ -73,3 +73,7 @@ img {
 .show-image {
   background-color: $show-image-color;
 }
+
+.wrapper:hover .text {
+      font-size: 1.8em;
+}

@@ -8,7 +8,7 @@
           = t('create_new_room')
       .modal-body
         .col-lg-12
-        = form_for @room do |f|
+        = form_for Room.new do |f|
           = render 'shared/error_messages', object: f.object
           .field
             = f.label t('name')

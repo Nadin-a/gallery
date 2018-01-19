@@ -8,7 +8,7 @@
           = t('new_category')
       .modal-body
         .col-lg-12
-        = form_for @category do |f|
+        = form_for current_user.owned_categories.build do |f|
           = render 'shared/error_messages', object: f.object
           .field
             = f.label t('name')

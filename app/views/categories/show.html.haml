@@ -53,6 +53,6 @@
         = render partial: 'shared/list_of_images'
       .col-sm-12.col-md-12.col-lg-12.col-xl-12.text-center
         = will_paginate @images
-      = render partial: 'images/new'
-      = render partial: 'categories/edit'
+      = render 'images/new', image: @category.images.build
+      = render 'categories/edit'
 
