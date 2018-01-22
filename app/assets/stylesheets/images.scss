@@ -20,11 +20,13 @@
 .wrapper:hover .text {
   bottom: 7%;
   color: $white;
+  font-size: 1.8em;
   left: 5%;
   position: absolute;
   text-align: center;
   visibility: visible;
 }
+
 
 .circle {
   img {
@@ -72,8 +74,4 @@ img {
 
 .show-image {
   background-color: $show-image-color;
-}
-
-.wrapper:hover .text {
-      font-size: 1.8em;
 }

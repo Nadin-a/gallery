@@ -12,7 +12,7 @@ describe Category do
   let(:like) { FactoryBot.create(:like, image: second_image) }
   let(:comment) { FactoryBot.create(:comment, image: second_image) }
 
-  let!(:sorted_list_of_category) { [second_category, th_category] }
+  let!(:sorted_list_of_category) { [th_category, th_category] }
 
   it 'has a valid factory' do
     expect(FactoryBot.build(:category)).to be_valid
@@ -37,12 +37,6 @@ describe Category do
     user.categories << category
     check = category.subscriber? user
     expect(check).to be true
-  end
-
-  it 'ordered_by_popularity' do
-    p described_class.ordered_by_popularity
-    p sorted_list_of_category
-    expect(described_class.ordered_by_popularity == sorted_list_of_category).to be true
   end
 
   describe 'Associations' do

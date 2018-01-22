@@ -100,6 +100,21 @@ RSpec.describe CategoriesController, type: :controller do
     end
   end
 
+  describe 'different lists' do
+    it 'get owned categories' do
+      get :owned
+      expect(response).to have_http_status(200)
+    end
+    it 'get favorite categories' do
+      get :favorite
+      expect(response).to have_http_status(200)
+    end
+    it 'get popular categories' do
+      get :popular
+      expect(response).to have_http_status(200)
+    end
+  end
+
   describe 'PUT update' do
     let(:category_params) { { id: category.id, category: { name: 'Houses' } } }
     let(:invalid_category_params) { { id: category.id, category: { name: '' } } }

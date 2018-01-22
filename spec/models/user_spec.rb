@@ -52,7 +52,7 @@ describe User do
   end
 
   it 'active' do
-    expect(described_class.active.include? no_activated_user).to be false
+    expect(described_class.active.include?(no_activated_user)).to be false
   end
 
   describe 'Associations' do

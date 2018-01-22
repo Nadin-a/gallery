@@ -1,4 +1,4 @@
-# spec/capybara_helper.rb
+# frozen_string_literal: true
 
 require 'rails_helper'
 require 'capybara/rspec'

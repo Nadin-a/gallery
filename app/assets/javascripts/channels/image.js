@@ -38,7 +38,7 @@ App.image = App.cable.subscriptions.create('ImageChannel', {
 
 $(document).on('keypress', '.new_comment', function (e) {
   var code = e.charCode || e.keyCode;
-  if (code == 13) {
+  if (code == 13 && !e.shiftKey) {
     e.preventDefault();
     var values = $(this).serializeArray();
     App.image.send_comment(values);

@@ -16,6 +16,11 @@ RSpec.describe RoomsController, type: :controller do
       get :index
       expect(response).to render_template('index')
     end
+
+    it 'have response' do
+      get :index
+      expect(response).to have_http_status(200)
+    end
   end
 
   describe 'GET #show' do
@@ -27,6 +32,11 @@ RSpec.describe RoomsController, type: :controller do
     it 'render show' do
       get :show, params: { id: room.id }
       expect(response).to render_template :show
+    end
+
+    it 'have response' do
+      get :show, params: { id: room.id }
+      expect(response).to have_http_status(200)
     end
   end
 

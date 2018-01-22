@@ -14,4 +14,4 @@
     .col-sm-10.col-md-10.col-lg-10.col-xl-10
       %br
         .long_text
-          = comment.content
+          = Emoji.replace_unicode_moji_with_images(comment.content)

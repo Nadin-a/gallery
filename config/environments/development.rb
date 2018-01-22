@@ -53,7 +53,7 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
 
-  ENV["REDISTOGO_URL"] = 'redis://redistogo:a887a28ada2c33265c353af9993c8bc0@soldierfish.redistogo.com:9892/'
+  ENV['REDISTOGO_URL'] = 'redis://redistogo:a887a28ada2c33265c353af9993c8bc0@soldierfish.redistogo.com:9892/'
 
 
   # config.active_job.queue_name_prefix = "mysite"
