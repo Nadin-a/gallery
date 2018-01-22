@@ -9,7 +9,7 @@
           %br
       - else
         = h flash[:error]
-- if flash[:success]
+- if flash[:success] || flash[:notice]
   .alert.alert-success
     .close
       %span.glyphicon.glyphicon-remove
