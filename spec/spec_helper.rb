@@ -81,7 +81,6 @@ RSpec.configure do |config|
       example.run
     end
   end
-
 end
 
 Capybara.register_driver :selenium do |app|

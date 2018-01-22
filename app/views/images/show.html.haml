@@ -1,58 +1,54 @@
-%body
-  = content_for(:title, @image.title)
-  .container-fluid
-    .row.well.show-image
-      .col-sm-12.col-md-12.col-lg-12.col-xl-12.text-center
-        = render partial: 'shared/flash_messages'
-        .col-sm-12.col-md-12.col-lg-12.col-xl-12
-          %h2
-            .hero.zoomIn.animated
-              = @image.title
-          %br
-      .col-sm-12.col-md-12.col-lg-12.col-xl-12.text-center
-        = image_tag(@image.picture)
+.row.well.show-image
+  .col-sm-12.col-md-12.col-lg-12.col-xl-12.text-center
+    .col-sm-12.col-md-12.col-lg-12.col-xl-12
+      %h2
+        .hero.zoomIn.animated
+          = @image.title
+      %br
+  .col-sm-12.col-md-12.col-lg-12.col-xl-12.text-center
+    = image_tag(@image.picture)
+  .col-sm-12.col-md-12.col-lg-12.col-xl-12
+    .long_text
+      %br
+      = @image.description
+  .col-sm-12.col-md-12.col-lg-12.col-xl-12
+    .col-12.col-sm-6.col-md-6.col-lg-6.col-xl-6
+      %br
+      %b
+        =t('uploaded')
+      = time_ago_in_words(@image.created_at)
+      =t('ago')
+      %br
+      %b
+        =t('category') + ': '
+      = link_to(@category.name,category_path(@category), {data:{ toggle:'tooltip',placement:'left' }, title:t('category_of_this_image')})
+      %br
+      %b
+        =t('owner') + ': '
+      = link_to(@category.owner.name, user_path(@category.owner))
+      %br
+    .col-12.col-sm-6.col-md-6.col-lg-6.col-xl-6
+      .pull-right
+        = render partial: 'images/like_form'
+    .col-sm-12.col-md-12.col-lg-12.col-xl-12
+      - if user_signed_in?
+        - if current_user == @category.owner || current_user.admin?
+          %span.glyphicon.glyphicon-pencil
+          %a{remote: true, "data-target": '#updateImageModal', "data-toggle": 'modal', href: edit_category_image_path(@category, @image)}
+            =t('update')
+          |
+          %span.glyphicon.glyphicon-remove
+          =link_to(t('delete'), category_image_path(@category, @image), method: :delete, data: { confirm: t('you_sure'), toggle:'tooltip',placement:'right' }, title: t('delete_this_image_tooltip'))
+      - if @image.comments.count > 5
+        %br
+        %br
+          .text-center
+            %a{class: 'btn-show-all-comments', id: 'show_all_comments_link'}
+              %span.glyphicon.glyphicon-list
+              = t('show_all_comments')
+      #hidden_comments
+      = render partial: 'shared/list_of_comments'
+      #new_comments
       .col-sm-12.col-md-12.col-lg-12.col-xl-12
-        .long_text
-          %br
-          = @image.description
-      .col-sm-12.col-md-12.col-lg-12.col-xl-12
-        .col-12.col-sm-6.col-md-6.col-lg-6.col-xl-6
-          %br
-          %b
-            =t('uploaded')
-          = time_ago_in_words(@image.created_at)
-          =t('ago')
-          %br
-          %b
-            =t('category') + ': '
-          = link_to(@category.name,category_path(@category), {data:{ toggle:'tooltip',placement:'left' }, title:t('category_of_this_image')})
-          %br
-          %b
-            =t('owner') + ': '
-          = link_to(@category.owner.name, user_path(@category.owner))
-          %br
-        .col-12.col-sm-6.col-md-6.col-lg-6.col-xl-6
-          .pull-right
-            = render partial: 'images/like_form'
-        .col-sm-12.col-md-12.col-lg-12.col-xl-12
-          - if user_signed_in?
-            - if current_user == @category.owner || current_user.admin?
-              %span.glyphicon.glyphicon-pencil
-              %a{remote: true, "data-target": '#updateImageModal', "data-toggle": 'modal', href: edit_category_image_path(@category, @image)}
-                =t('update')
-              |
-              %span.glyphicon.glyphicon-remove
-              =link_to(t('delete'), category_image_path(@category, @image), method: :delete, data: { confirm: t('you_sure'), toggle:'tooltip',placement:'right' }, title: t('delete_this_image_tooltip'))
-          - if @image.comments.count > 5
-            %br
-            %br
-              .text-center
-                %a{class: 'btn-show-all-comments', id: 'show_all_comments_link'}
-                  %span.glyphicon.glyphicon-list
-                  = t('show_all_comments')
-          #hidden_comments
-          = render partial: 'shared/list_of_comments'
-          #new_comments
-          .col-sm-12.col-md-12.col-lg-12.col-xl-12
-            = render partial: 'shared/comment_form'
+        = render partial: 'shared/comment_form'
 = render 'images/edit', locals: {category: @category, image: @image}

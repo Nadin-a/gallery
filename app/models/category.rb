@@ -18,11 +18,11 @@ class Category < ApplicationRecord
 
   def self.ordered_by_popularity
     unscoped
-    .joins(images: [:likes, :comments])
-    .select('categories.*, (COUNT(images.id) + COUNT(comments.id) + COUNT(likes.id)) AS performance')
-    .group('categories.id')
-    .order('performance DESC')
-    .limit(5)
+      .joins(images: %i[likes comments])
+      .select('categories.*, (COUNT(images.id) + COUNT(comments.id) + COUNT(likes.id)) AS performance')
+      .group('categories.id')
+      .order('performance DESC')
+      .limit(5)
   end
 
   def subscriber?(user)

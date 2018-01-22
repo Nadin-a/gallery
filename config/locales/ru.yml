@@ -161,6 +161,7 @@ ru:
   category_of_this_image: 'Категория этой картинки'
   subscribe_unsubscribe: 'Подписаться или отписаться'
 
+  for_admin: 'Админ панель'
 
   activerecord:
     errors:

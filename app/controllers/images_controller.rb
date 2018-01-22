@@ -8,6 +8,7 @@ class ImagesController < ApplicationController
   def new; end
 
   def show
+    track_action('watch image')
     @comments = @image.comments.last(5)
     return unless user_signed_in?
     @like =

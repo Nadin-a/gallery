@@ -12,6 +12,7 @@ class LikesController < ApplicationController
     current_user.likes << @like
     return unless @like.save
     LikeJob.perform_later(category_image_path(@category, @image), @image.likes.count)
+    track_action('like')
     respond_to do |format|
       format.html { redirect_to @image }
       format.json { render @image, status: :created }
@@ -21,6 +22,7 @@ class LikesController < ApplicationController
   def destroy
     return unless @like.destroy
     LikeJob.perform_later(category_image_path(@category, @image), @image.likes.count)
+    track_action('dislike')
     respond_to do |format|
       format.html { redirect_to @image }
       format.json { render @image, status: :created }

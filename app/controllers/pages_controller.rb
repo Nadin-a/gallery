@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class PagesController < ApplicationController
+  before_action :navigation
+
   def home
     @images =
       if user_signed_in?
@@ -21,5 +23,11 @@ class PagesController < ApplicationController
   def updates
     @images = Image.ordered_by_likes.first(24)
     @comments = Comment.last_comments.first(6)
+  end
+
+  private
+
+  def navigation
+    track_action('navigation')
   end
 end

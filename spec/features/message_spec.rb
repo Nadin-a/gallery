@@ -17,7 +17,7 @@ describe 'messages_features', type: :feature do
   end
 
   describe 'Create message' do
-    before {    visit room_path(room) }
+    before { visit room_path(room) }
 
     it 'Send message', js: true do
       Sidekiq::Testing.inline! do

@@ -68,8 +68,15 @@
                   Русский
         - if user_signed_in?
           - if current_user.admin?
-            %li
-              =link_to('Sidekiq', sidekiq_web_path, target: '_blank')
+            %li.dropdown
+              %a.dropdown-toggle{'data-toggle': 'dropdown', href: admin_root_path }
+                = t('for_admin')
+                %span.caret
+              %ul.dropdown-menu
+                %li.text-center
+                  =link_to('Sidekiq', sidekiq_web_path, target: '_blank')
+                %li.text-center
+                  =link_to(t('for_admin'), admin_root_path, target: '_blank')
           %li
             =link_to(t('profile'), edit_user_registration_path(current_user),
             'data-content': current_user.name,

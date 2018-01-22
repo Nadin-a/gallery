@@ -24,13 +24,6 @@ User.transaction do
                confirmed_at: Time.current)
 end
 
-AdminUser.create!(
-email: 'admin@example.com',
-password: 'password',
-password_confirmation: 'password',
-confirmed_at: Time.current
-)
-
 user_ids = User.all.ids
 
 if Rails.env.development?

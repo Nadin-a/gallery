@@ -21,10 +21,10 @@ class Image < ApplicationRecord
 
   def self.ordered_by_likes
     unscoped
-    .select('images.*, count(likes.id) AS likes_count')
-    .joins(:likes)
-    .group('images.id')
-    .order('likes_count desc')
+      .select('images.*, count(likes.id) AS likes_count')
+      .joins(:likes)
+      .group('images.id')
+      .order('likes_count desc')
   end
 
   def liked_by?(user)

@@ -4,6 +4,7 @@ require 'rails_helper'
 
 describe User do
   subject(:user) { FactoryBot.build(:user) }
+
   let!(:no_activated_user) { FactoryBot.create(:random_user, confirmed_at: nil) }
 
   it 'has a valid factory' do

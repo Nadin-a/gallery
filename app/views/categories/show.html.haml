@@ -1,58 +1,56 @@
-%body{style: "background: url(#{set_cover}) repeat center center fixed"}
-  = content_for(:title, @category.name)
-  .container
-    .row.well
-      .col-sm-12.col-md-12.col-lg-12.col-xl-12
-        = render partial: 'shared/flash_messages'
-        .col-sm-12.col-md-12.col-lg-12.col-xl-12.well
-          .col-sm-3.col-md-3.col-lg-3.col-xl-3
-            .name_category
-              .hero.zoomIn.animated
-                .long_text
-                  = @category.name
-          .col-sm-2.col-md-2.col-lg-2.col-xl-2
-            %b
-              = t('created_by')
+= content_for(:title, @category.name)
+.container
+  .row.well
+    .col-sm-12.col-md-12.col-lg-12.col-xl-12
+      .col-sm-12.col-md-12.col-lg-12.col-xl-12.well
+        .col-sm-3.col-md-3.col-lg-3.col-xl-3
+          .name_category
+            .hero.zoomIn.animated
               .long_text
-                =  link_to(@category.owner.name, user_path(@category.owner))
-          .col-sm-3.col-md-3.col-lg-3.col-xl-3
-            %b
-              = t('created_at')
-            %br
-            = time_ago_in_words(@category.created_at)
-            = t('ago')
-          .col-sm-2.col-md-2.col-lg-2.col-xl-2
-            .pull-right
-              = render 'shared/subscribe_form', category: @category
-          .col-sm-2.col-md-2.col-lg-2.col-xl-2
-            %h4
-              = link_to(t('followers'), followers_category_path(@category))
-              %label_tag{ class: 'js-count-followers-label' }
-                = @category.users.count
-        - if user_signed_in?
-          - if current_user == @category.owner || current_user.admin?
-            %h4
-              .col-sm-12.text-center
-                %span.glyphicon.glyphicon-picture
-                %a{remote: true, "data-target": '#createImageModal', "data-toggle": 'modal', href: new_category_image_path(@category)}
-                  = t('add_image')
-                |
-                %span.glyphicon.glyphicon-pencil
-                %a{remote: true, "data-target": '#updateCategoryModal', "data-toggle": 'modal', href: edit_category_path(@category), title: t('update_this_category_tooltip') }
-                  = t('update')
-                |
-                %span.glyphicon.glyphicon-remove
-                =link_to(t('delete'), category_path, method: :delete, data: { confirm: t('you_sure'), toggle:'tooltip',placement:'left' }, title: t('delete_this_category_tooltip'))
-                %br
-                %br
-      - if @images.empty?
-        .text-center
-          %h1
-            = t('no_images_in_category')
-      - else
-        = render partial: 'shared/list_of_images'
-      .col-sm-12.col-md-12.col-lg-12.col-xl-12.text-center
-        = will_paginate @images
-      = render 'images/new', image: @category.images.build
-      = render 'categories/edit'
+                = @category.name
+        .col-sm-2.col-md-2.col-lg-2.col-xl-2
+          %b
+            = t('created_by')
+            .long_text
+              =  link_to(@category.owner.name, user_path(@category.owner))
+        .col-sm-3.col-md-3.col-lg-3.col-xl-3
+          %b
+            = t('created_at')
+          %br
+          = time_ago_in_words(@category.created_at)
+          = t('ago')
+        .col-sm-2.col-md-2.col-lg-2.col-xl-2
+          .pull-right
+            = render 'shared/subscribe_form', category: @category
+        .col-sm-2.col-md-2.col-lg-2.col-xl-2
+          %h4
+            = link_to(t('followers'), followers_category_path(@category))
+            %label_tag{ class: 'js-count-followers-label' }
+              = @category.users.count
+      - if user_signed_in?
+        - if current_user == @category.owner || current_user.admin?
+          %h4
+            .col-sm-12.text-center
+              %span.glyphicon.glyphicon-picture
+              %a{remote: true, "data-target": '#createImageModal', "data-toggle": 'modal', href: new_category_image_path(@category)}
+                = t('add_image')
+              |
+              %span.glyphicon.glyphicon-pencil
+              %a{remote: true, "data-target": '#updateCategoryModal', "data-toggle": 'modal', href: edit_category_path(@category), title: t('update_this_category_tooltip') }
+                = t('update')
+              |
+              %span.glyphicon.glyphicon-remove
+              =link_to(t('delete'), category_path, method: :delete, data: { confirm: t('you_sure'), toggle:'tooltip',placement:'left' }, title: t('delete_this_category_tooltip'))
+              %br
+              %br
+    - if @images.empty?
+      .text-center
+        %h1
+          = t('no_images_in_category')
+    - else
+      = render partial: 'shared/list_of_images'
+    .col-sm-12.col-md-12.col-lg-12.col-xl-12.text-center
+      = will_paginate @images
+    = render 'images/new', image: @category.images.build
+    = render 'categories/edit'
 

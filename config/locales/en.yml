@@ -157,3 +157,5 @@ en:
   subscribe_unsubscribe: 'Subscribe or unsubscribe'
 
   size_error: 'should be less than %{size}'
+
+  for_admin: 'AdminPanel'

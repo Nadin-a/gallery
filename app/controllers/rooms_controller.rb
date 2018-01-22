@@ -24,7 +24,6 @@ class RoomsController < ApplicationController
 
   def show
     @messages = @room.messages.last(8)
-
     track_action('chat')
   end
 
