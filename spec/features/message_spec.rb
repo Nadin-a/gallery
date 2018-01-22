@@ -13,7 +13,6 @@ describe 'messages_features', type: :feature do
 
   before do
     login(user)
-    Sidekiq::Worker.drain_all
   end
 
   describe 'Create message' do
