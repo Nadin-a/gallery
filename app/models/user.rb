@@ -27,7 +27,7 @@ class User < ApplicationRecord
 
   def self.create_with_omniauth(auth)
     user = find_or_create_by(uid: auth['uid'], provider: auth['provider'])
-    user.email = auth.info.email
+    email ? auth.info.email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com"
     user.password = Devise.friendly_token[0, 20]
     user.name = auth.info.nickname
     url = auth.info.image
