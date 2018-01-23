@@ -35,6 +35,7 @@ gem 'wkhtmltopdf-binary', '~> 0.12.3.1'
 gem 'activeadmin_addons'
 gem 'friendly_id'
 gem 'emoji'
+gem 'omniauth-twitter'
 
 group :development, :test do
   gem 'rspec-rails'
