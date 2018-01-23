@@ -20,8 +20,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if @user.persisted?
       sign_in_and_redirect @user, event: :authentication
     else
-      #session['devise.facebook_data'] = request.env['omniauth.auth']
-      flash[:error] = @user.errors.full_messages.join('. ')
+      session['devise.facebook_data'] = request.env['omniauth.auth']
       redirect_to root_path
     end
   end
