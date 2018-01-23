@@ -2,27 +2,27 @@
 
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
-    @user = User.create_with_omniauth(request.env['omniauth.auth'])
-    if @user.persisted?
-      sign_in_and_redirect @user, event: :authentication
-    else
-      session['devise.facebook_data'] = request.env['omniauth.auth']
-      redirect_to new_user_registration_url
-    end
+    authentication_user
   end
 
   def twitter
+    authentication_user
+  end
+
+  def failure
+    redirect_to root_path
+  end
+
+  private
+
+  def authentication_user
     @user = User.create_with_omniauth(request.env['omniauth.auth'])
     if @user.persisted?
       sign_in_and_redirect @user, event: :authentication
     else
-      session['devise.facebook_data'] = request.env['omniauth.auth']
-      redirect_to new_user_registration_url
+      #session['devise.facebook_data'] = request.env['omniauth.auth']
+      flash[:error] = @user.errors.full_messages.join('. ')
+      redirect_to root_path
     end
-  end
-
-
-  def failure
-    redirect_to root_path
   end
 end
