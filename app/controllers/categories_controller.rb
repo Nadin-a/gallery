@@ -26,7 +26,7 @@ class CategoriesController < ApplicationController
     if category.save
       redirect_to category, flash: { success: t(:category_created) }
     else
-      redirect_to owned_categories_path, flash: { error: category.errors.full_messages }
+      redirect_to owned_categories_path, flash: { error: category.errors.full_messages.join('. ') }
     end
   end
 
@@ -34,7 +34,7 @@ class CategoriesController < ApplicationController
     if @category.update(categories_params)
       flash[:success] = t(:category_updated)
     else
-      flash[:error] = @category.errors.full_messages
+      flash[:error] = @category.errors.full_messages.join('. ')
     end
     redirect_to @category
   end

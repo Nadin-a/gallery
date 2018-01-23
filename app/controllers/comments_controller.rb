@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
     if @comment.destroy
       flash[:success] = t(:comment_deleted)
     else
-      flash[:error] = @comment.errors.full_messages
+      flash[:error] = @comment.errors.full_messages.join('. ')
     end
     redirect_to category_image_path(@category, @image)
   end

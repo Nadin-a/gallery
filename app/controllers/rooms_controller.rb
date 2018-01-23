@@ -11,14 +11,12 @@ class RoomsController < ApplicationController
   def new; end
 
   def create
-    @room = current_user.owned_rooms.build(room_params)
-    authorize @room
-    if @room.save
-      flash[:success] = t('room_created')
-      redirect_to room_path(@room)
+    room = current_user.owned_rooms.build(room_params)
+    authorize room
+    if room.save
+      redirect_to room_path(room), flash: { success: t('room_created') }
     else
-      flash[:error] = @room.errors.full_messages
-      redirect_to rooms_path
+      redirect_to rooms_path, flash: { error: room.errors.full_messages.join('. ') }
     end
   end
 
@@ -34,7 +32,7 @@ class RoomsController < ApplicationController
     if @room.update(room_params)
       flash[:success] = t('room_updated')
     else
-      flash[:error] = @room.errors.full_messages
+      flash[:error] = @room.errors.full_messages.join('. ')
     end
     redirect_to @room
   end

@@ -26,7 +26,7 @@ class ImagesController < ApplicationController
       flash[:success] = t(:image_created)
       send_message image
     else
-      flash[:error] = image.errors.full_messages
+      flash[:error] = image.errors.full_messages.join('. ')
     end
     redirect_to category_path(@category)
   end
@@ -37,7 +37,7 @@ class ImagesController < ApplicationController
     if @image.update(image_params)
       flash[:success] = t(:image_updated)
     else
-      flash[:error] = @image.errors.full_messages
+      flash[:error] = @image.errors.full_messages.join('. ')
     end
     redirect_to category_image_path(@category, @image)
   end
