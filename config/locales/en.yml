@@ -159,3 +159,5 @@ en:
   size_error: 'File size should be less than %{size}'
 
   for_admin: 'AdminPanel'
+
+  error: 'Error! Check your data and try agaon, please.'
