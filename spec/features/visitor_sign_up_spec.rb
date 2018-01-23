@@ -8,8 +8,8 @@ describe 'Visitor signs up', type: :feature do
   it 'with valid parameters', js: true do
     visit root_path
     click_link 'Sign up'
-    expect(page).to have_current_path('/users/sign_up')
     sign_up_with email, name, 'password', 'password'
+    expect(page).to have_content('A message with a confirmation link has been sent to your email address. Please follow the link to activate your account.')
   end
 
   it 'with short name' do

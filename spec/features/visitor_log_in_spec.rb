@@ -4,10 +4,16 @@ require 'spec_helper'
 describe 'Visitor signs up', type: :feature do
   let!(:user) { FactoryBot.create(:random_user) }
 
-  it 'with valid email and password', js: true do
+  it 'with valid email and password have info message', js: true do
     log_in_with user.email, user.password
     expect(page).to have_content 'You have not any images. Subscribe on any category
     or add own image and you will see it here!'
+  end
+
+
+  it 'with valid email and password have success message', js: true do
+    log_in_with user.email, user.password
+    expect(page).to have_content 'Signed in successfully.'
   end
 
   it 'with invalid email', js: true do

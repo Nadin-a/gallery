@@ -5,6 +5,7 @@ require 'spec_helper'
 describe 'room_features', type: :feature do
   let!(:user) { FactoryBot.create(:random_user) }
   let!(:room) { FactoryBot.create(:random_room, user: user) }
+  let!(:second_room) { FactoryBot.create(:random_room, user: user) }
 
   before { login(user) }
 
@@ -26,6 +27,14 @@ describe 'room_features', type: :feature do
       click_button 'Create'
       expect(page).to have_content('Room created!')
     end
+
+    it 'with error message when room with same name exist', js: true do
+      visit rooms_path
+      click_button 'Create new room'
+      fill_in 'Name', with: room.name
+      click_button 'Create'
+      expect(page).to have_content('Name has already been taken')
+    end
   end
 
   describe 'Visit and updating room' do
@@ -45,6 +54,13 @@ describe 'room_features', type: :feature do
       fill_in 'Name', with: new_room_name
       click_button 'Update'
       expect(page).to have_content('Room updated!')
+    end
+
+    it 'with error message when room with same name exist', js: true do
+      click_link 'Update'
+      fill_in 'Name', with: second_room.name
+      click_button 'Update'
+      expect(page).to have_content('Name has already been taken')
     end
   end
 

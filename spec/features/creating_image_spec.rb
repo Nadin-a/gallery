@@ -5,6 +5,7 @@ describe 'image_features', type: :feature do
   let!(:user) { FactoryBot.create(:random_user) }
   let!(:category) { FactoryBot.create(:fake_category, owner: user) }
   let!(:image) { FactoryBot.create(:random_image, category: category) }
+  let!(:second_image) { FactoryBot.create(:random_image, category: category) }
 
   before do
     login(user)
@@ -32,6 +33,14 @@ describe 'image_features', type: :feature do
       expect(page).to have_content('Image uploaded')
     end
 
+    it 'with error message when image with same title exist', js: true do
+      fill_in 'Title of the picture', with: image.title
+      fill_in 'Description of the picture', with: 'my description'
+      attach_file('uploaded_picture', Rails.root + 'spec/fixtures/test_picture.jpg')
+      click_button 'Add'
+      expect(page).to have_content('Title has already been taken')
+    end
+
     it 'without uploading picture', js: true do
       fill_in 'Title of the picture', with: image_title
       click_button 'Add'
@@ -52,6 +61,15 @@ describe 'image_features', type: :feature do
       click_button 'Update'
       expect(page).to have_content(new_image_title)
     end
+
+    it 'with valid parameters', js: true do
+      fill_in 'Title of the picture', with: second_image.title
+      fill_in 'Description of the picture', with: 'my new description'
+      attach_file('uploaded_picture', Rails.root + 'spec/fixtures/test_picture.jpg')
+      click_button 'Update'
+      expect(page).to have_content('Title has already been taken')
+    end
+
 
     it 'with successful message', js: true do
       fill_in 'Title of the picture', with: new_image_title
@@ -83,11 +101,11 @@ describe 'image_features', type: :feature do
   describe 'On categories page' do
     it 'has link with count on categories path', js: true do
       visit categories_path
-      expect(page).to have_content('Images: 1')
+      expect(page).to have_content('Images: 2')
     end
     it 'redirect to category path', js: true do
       visit categories_path
-      click_link 'Images: 1'
+      click_link 'Images: 2'
       expect(page).not_to have_content('There are no images')
     end
   end
