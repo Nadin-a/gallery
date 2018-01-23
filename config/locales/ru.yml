@@ -446,15 +446,15 @@ ru:
       unconfirmed: "Вы должны подтвердить вашу учётную запись."
     mailer:
       confirmation_instructions:
-        subject: "Confirmation instructions"
+        subject: "Инструкции по подтверждению аккаунта"
       reset_password_instructions:
-        subject: "Reset password instructions"
+        subject: "Заново отправить письмо для смены пароля"
       unlock_instructions:
-        subject: "Unlock instructions"
+        subject: "Инструкции по разблокировке"
       email_changed:
-        subject: "Email Changed"
+        subject: "Email изменён"
       password_change:
-        subject: "Password Changed"
+        subject: "Пароль изменён"
     omniauth_callbacks:
       failure: "Вы не можете войти в систему с учётной записью из %{kind}б так как \"%{reason}\"."
       success: "Вход в систему выполнен с учётной записью из %{kind}."
