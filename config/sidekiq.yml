@@ -11,4 +11,4 @@ development:
 
 production:
   <<: *default
-  :concurrency: 10
+  :concurrency: 5
