@@ -29,7 +29,7 @@ class User < ApplicationRecord
     user = find_or_create_by(uid: auth['uid'], provider: auth['provider'])
     user.email = auth.info.email
     user.password = Devise.friendly_token[0, 20]
-    user.name = auth.info.name
+    user.name = auth.info.nickname
     url = auth.info.image
     avatar_url = url.gsub('http', 'https')
     user.remote_avatar_url = avatar_url
