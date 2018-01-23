@@ -23,13 +23,13 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable, :confirmable, :async,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
-         omniauth_providers: %i[facebook twitter]
+         omniauth_providers: %i[facebook]
 
   def self.create_with_omniauth(auth)
     user = find_or_create_by(uid: auth['uid'], provider: auth['provider'])
-    user.email = auth.info.email.present? ? auth.info.email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com"
+    user.email = auth.info.email
     user.password = Devise.friendly_token[0, 20]
-    user.name = auth.info.nickname
+    user.name = auth.info.name
     url = auth.info.image
     avatar_url = url.gsub('http', 'https')
     user.remote_avatar_url = avatar_url
