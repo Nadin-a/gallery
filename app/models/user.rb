@@ -34,11 +34,8 @@ class User < ApplicationRecord
     avatar_url = url.gsub('http', 'https')
     user.remote_avatar_url = avatar_url
     user.confirmed_at = Time.current
-    if user.save!
-      user
-    else
-      nil
-    end
+    user.save!
+    user
   end
 
   def feed
