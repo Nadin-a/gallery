@@ -23,7 +23,7 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable, :confirmable, :async,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
-         omniauth_providers: %i[facebook twitter]
+         omniauth_providers: %i[facebook twitter google_oauth2]
 
   def self.create_with_omniauth(auth)
     user = find_or_create_by(uid: auth['uid'], provider: auth['provider'])

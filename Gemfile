@@ -36,6 +36,7 @@ gem 'activeadmin_addons'
 gem 'friendly_id'
 gem 'emoji'
 gem 'omniauth-twitter'
+gem 'omniauth-google-oauth2'
 
 group :development, :test do
   gem 'rspec-rails'
