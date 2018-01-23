@@ -37,7 +37,7 @@ class User < ApplicationRecord
     if user.save!
       user
     else
-      error
+      nil
     end
   end
 
