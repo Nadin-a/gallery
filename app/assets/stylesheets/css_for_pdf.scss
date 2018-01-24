@@ -1,4 +1,5 @@
 $background-color: #dedede;
+$black: #000;
 
 .list-style {
   background-color: $background-color;
@@ -11,5 +12,5 @@ $background-color: #dedede;
 }
 
 table, th, td {
-  border: 1px solid $true-black;
+  border: 1px solid $black;
 }
