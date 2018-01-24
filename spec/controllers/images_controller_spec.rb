@@ -74,7 +74,7 @@ RSpec.describe ImagesController, type: :controller do
 
       it 'redirects to the updated image' do
         put :update, params: image_params
-        expect(response).to redirect_to(category_image_path(category, image))
+        expect(response).to redirect_to(category_image_path(category, image.reload))
       end
 
       it 'show successful message' do

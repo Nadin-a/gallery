@@ -10,7 +10,6 @@ describe 'Visitor signs up', type: :feature do
     or add own image and you will see it here!'
   end
 
-
   it 'with valid email and password have success message', js: true do
     log_in_with user.email, user.password
     expect(page).to have_content 'Signed in successfully.'

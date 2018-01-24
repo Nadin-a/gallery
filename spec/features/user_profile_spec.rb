@@ -23,7 +23,7 @@ describe 'user_features', type: :feature do
         fill_in 'Password', with: ''
         fill_in 'Current password', with: 'password'
         click_button 'Update'
-        visit user_path(user)
+        visit user_path(user.reload)
         expect(page).to have_content('Nadiia Trofymova')
       end
     end

@@ -62,14 +62,13 @@ describe 'image_features', type: :feature do
       expect(page).to have_content(new_image_title)
     end
 
-    it 'with valid parameters', js: true do
+    it 'with error message', js: true do
       fill_in 'Title of the picture', with: second_image.title
       fill_in 'Description of the picture', with: 'my new description'
       attach_file('uploaded_picture', Rails.root + 'spec/fixtures/test_picture.jpg')
       click_button 'Update'
       expect(page).to have_content('Title has already been taken')
     end
-
 
     it 'with successful message', js: true do
       fill_in 'Title of the picture', with: new_image_title

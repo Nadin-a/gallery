@@ -90,7 +90,7 @@ RSpec.describe RoomsController, type: :controller do
 
       it 'redirects to the updated room' do
         put :update, params: room_params
-        expect(response).to redirect_to(room)
+        expect(response).to redirect_to(room.reload)
       end
 
       it 'show successful message' do

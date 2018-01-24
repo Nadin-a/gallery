@@ -26,7 +26,7 @@ RSpec.describe UserMailer, type: :mailer do
 
     it 'assigns @confirmation_url' do
       expect(mail.body.encoded)
-      .to match('You are subscribe to category ' + category.name)
+        .to match('You are subscribe to category ' + category.name)
     end
   end
 end

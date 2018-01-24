@@ -127,7 +127,7 @@ RSpec.describe CategoriesController, type: :controller do
 
       it 'redirects to the updated category' do
         put :update, params: category_params
-        expect(response).to redirect_to(category)
+        expect(response).to redirect_to(category.reload)
       end
 
       it 'show successful message' do

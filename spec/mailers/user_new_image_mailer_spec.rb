@@ -27,7 +27,7 @@ RSpec.describe UserMailer, type: :mailer do
 
     it 'assigns @confirmation_url' do
       expect(mail.body.encoded)
-      .to match('In your favorite category ' + category.name +
+        .to match('In your favorite category ' + category.name +
                 ' was uploaded new image ' + image.title)
     end
   end
