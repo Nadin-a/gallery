@@ -25,7 +25,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       sign_in_and_redirect @user, event: :authentication
     else
       session['devise.facebook_data'] = request.env['omniauth.auth']
-      redirect_to root_path, flash: { error: t('error')}
+      redirect_to root_path, flash: { error: t('error') }
     end
   end
 end
