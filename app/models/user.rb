@@ -12,9 +12,9 @@ class User < ApplicationRecord
   has_many :commented_images, through: :comments, source: :image
   has_many :likes, dependent: :destroy
   has_many :liked_images, through: :likes, source: :image
-
   has_many :owned_rooms, dependent: :destroy, class_name: 'Room'
   has_many :messages, dependent: :destroy
+  has_many :ahoy_events, dependent: :destroy, class_name: 'Ahoy::Event'
 
   validates :name, presence: true, length: { minimum: 2, maximum: 30 }, uniqueness: true
   validate :avatar_size
@@ -52,6 +52,10 @@ class User < ApplicationRecord
 
   def send_email_about_new_image(image)
     SendEmailWhenNewImageJob.set(queue: :mailers).perform_later id, image
+  end
+
+  def should_generate_new_friendly_id?
+    name_changed?
   end
 
   private

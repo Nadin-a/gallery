@@ -31,6 +31,10 @@ class Image < ApplicationRecord
     liking_users.include? user
   end
 
+  def should_generate_new_friendly_id?
+    title_changed?
+  end
+
   private
 
   # Validates the size of an uploaded picture.

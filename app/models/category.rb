@@ -29,6 +29,10 @@ class Category < ApplicationRecord
     user.categories.include? self
   end
 
+  def should_generate_new_friendly_id?
+    name_changed?
+  end
+
   private
 
   def cover_size
