@@ -118,7 +118,7 @@ ru:
   welcome_to_gallery: 'Добро пожаловать!'
 
   size_error: 'картинка должна быть меньше %{size}'
-
+  sign_in_with: 'Зайти с помощью'
   recaptcha:
     errors:
       verification_failed: 'Неверные данные с капчи'
@@ -161,9 +161,16 @@ ru:
   category_of_this_image: 'Категория этой картинки'
   subscribe_unsubscribe: 'Подписаться или отписаться'
 
-  for_admin: 'Админ панель'
+  for_admin: 'АдминПанель'
 
   error: 'Произошла ошибка. Проверьте свои данные и попытайтесь ещё раз.'
+
+  received: 'Получено'
+
+  started_following: ' подписался(ась) на вашу категорию '
+  liked_your_image: ' оценил(а) вашу картинку '
+  comment_your_image: ' откоменнтировал(а) вашу картинку '
+  last_notifications: 'Последние уведомления'
 
   activerecord:
     errors:

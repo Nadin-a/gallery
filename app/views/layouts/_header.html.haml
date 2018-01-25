@@ -78,11 +78,15 @@
                 %li.text-center
                   =link_to(t('for_admin'), admin_root_path, target: '_blank')
           %li
+            %a{remote: true, href: '', data: {target: '#myNotififcationModal', toggle: 'modal'}}
+              #couner_of_notification
+
+          %li
             =link_to(t('profile'), edit_user_registration_path(current_user),
             'data-content': current_user.name,
             'data-toggle': 'popover',
             'data-placement': 'bottom',
-            'data-trigger': 'hover',)
+            'data-trigger': 'hover')
           %li
             =link_to t('sign_out'), destroy_user_session_path, method: :delete
         - else
@@ -90,3 +94,5 @@
             = link_to t('login'), new_user_session_path
           %li
             = link_to t('sign_up'), new_user_registration_path
+- if user_signed_in?
+  = render partial: 'notifications/read_all_notifications'

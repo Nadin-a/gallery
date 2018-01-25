@@ -35,6 +35,10 @@ class Image < ApplicationRecord
     title_changed?
   end
 
+  def normalize_friendly_id(text)
+    text.to_slug.transliterate(:russian).normalize.to_s
+  end
+
   private
 
   # Validates the size of an uploaded picture.

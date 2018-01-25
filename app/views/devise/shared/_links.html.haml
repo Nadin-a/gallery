@@ -13,8 +13,8 @@
 - if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
   = link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name)
   %br/
-= link_to 'Sign in with Facebook', user_facebook_omniauth_authorize_path
+= link_to t('sign_in_with') + ' Facebook', user_facebook_omniauth_authorize_path
 %br
-= link_to 'Sign in with Twitter', user_twitter_omniauth_authorize_path
+= link_to t('sign_in_with') + ' Twitter', user_twitter_omniauth_authorize_path
 %br
-= link_to 'Sign in with Google', user_google_oauth2_omniauth_authorize_path
+= link_to t('sign_in_with') + ' Google', user_google_oauth2_omniauth_authorize_path

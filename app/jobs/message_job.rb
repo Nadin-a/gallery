@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class MessageJob < ApplicationJob
-  queue_as :default
+  queue_as :chats
 
   def perform(message)
     room_param = message.room.name.downcase.tr(' ', '-')

@@ -7,7 +7,7 @@
         %h4#RoomModalLabel.modal-title
           = t('create_new_room')
       .modal-body
-        .col-lg-12
+        .col-sm-12.col-md-12.col-lg-12.col-xl-12
         = form_for Room.new do |f|
           = render 'shared/error_messages', object: f.object
           .field

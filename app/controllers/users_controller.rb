@@ -10,6 +10,10 @@ class UsersController < ApplicationController
 
   def show; end
 
+  def read_all
+    current_user.read_all
+  end
+
   private
 
   def set_user

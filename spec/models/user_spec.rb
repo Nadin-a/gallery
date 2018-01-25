@@ -62,6 +62,10 @@ describe User do
     it { is_expected.to have_many :commented_images }
     it { is_expected.to have_many :likes }
     it { is_expected.to have_many :liked_images }
+    it { is_expected.to have_many :owned_rooms }
+    it { is_expected.to have_many :messages }
+    it { is_expected.to have_many :ahoy_events }
+    it { is_expected.to have_many :notifications }
     it { is_expected.to have_db_index('confirmation_token') }
     it { is_expected.to have_db_index('email') }
     it { is_expected.to have_db_index('reset_password_token') }

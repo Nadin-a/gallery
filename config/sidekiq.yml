@@ -5,6 +5,8 @@ default: &default
     - [mailer, 5]
     - [mailers, 5]
     - [default, 5]
+    - [notify, 5]
+    - [chats, 5]
 
 development:
   <<: *default

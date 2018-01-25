@@ -25,6 +25,13 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def send_notification(recipient, type, participant, object)
+    if current_user != recipient
+      Notification.create(recipient: recipient, type_of_notification: type,
+                          participant: participant, object: object)
+    end
+  end
+
   def configure_permitted_parameters
     added_attrs = %i[name email password password_confirmation remember_me]
     upd_attrs = %i[name email avatar password password_confirmation remember_me]

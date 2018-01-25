@@ -1,0 +1,16 @@
+- current_user.read_all
+#myNotififcationModal.modal.fade{"aria-labelledby": 'myModalLabel', role: 'dialog', tabindex: '-1'}
+  .modal-dialog{role: 'document'}
+    .modal-content
+      .modal-header
+        %button.close{"aria-label": t('close'), "data-dismiss": 'modal', type: 'button'}
+          %span{"aria-hidden": 'true'} ×
+        .modal-title
+          = t('last_notifications')
+      .modal-body
+        .notifications
+        = render partial: 'shared/list_of_notifications', locals: { user: current_user }
+        %span.glyphicon.glyphicon-fire
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss": 'modal', type: 'button'}
+          =t('close')

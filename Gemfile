@@ -37,6 +37,7 @@ gem 'friendly_id'
 gem 'emoji'
 gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
+gem 'babosa'
 
 group :development, :test do
   gem 'rspec-rails'

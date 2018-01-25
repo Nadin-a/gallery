@@ -1,6 +1,4 @@
 App.room = App.cable.subscriptions.create('ChatRoomsChannel', {
-
-
   connected: function () {
     // Called when the subscription is ready for use on the server
   },
@@ -29,7 +27,7 @@ App.room = App.cable.subscriptions.create('ChatRoomsChannel', {
 });
 
   $(document).on('keypress', '.new_message', function (e) {
-    var code = e.charCode || e.keyCode;
+    let code = e.charCode || e.keyCode;
     if (code == 13) {
       e.preventDefault();
       var values = $(this).serializeArray();
@@ -40,7 +38,7 @@ App.room = App.cable.subscriptions.create('ChatRoomsChannel', {
 
   $(document).on('submit', '.new_message', function (e) {
     e.preventDefault();
-    var values = $(this).serializeArray();
+    let values = $(this).serializeArray();
     App.room.send_message(values);
     $(this).trigger('reset');
   });

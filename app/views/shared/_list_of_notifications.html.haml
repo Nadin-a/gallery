@@ -1,0 +1,3 @@
+.new_notification
+- current_user.notifications.last(9).reverse.each do |notification|
+  = render partial: 'notifications/notification', locals: {notification: notification}

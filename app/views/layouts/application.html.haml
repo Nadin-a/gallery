@@ -18,6 +18,8 @@
       %body{style: "background: url(#{set_cover}) repeat center center fixed"}
     - else
       %body
+        #snackbar
+          .new_notification
     - if action_name == 'home' || "#{controller_path}##{action_name}" == 'images#show'
       = render partial: 'shared/flash_messages'
       = yield

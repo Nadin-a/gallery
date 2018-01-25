@@ -161,3 +161,11 @@ en:
   for_admin: 'AdminPanel'
 
   error: 'Error! Check your data and try again, please.'
+  sign_in_with: 'Sign in with'
+
+  received: 'Received'
+  started_following: ' started following your category '
+  liked_your_image: ' liked your image '
+  comment_your_image: ' commented your image '
+  last_notifications: 'Last notifications'
+

@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_many :owned_rooms, dependent: :destroy, class_name: 'Room'
   has_many :messages, dependent: :destroy
   has_many :ahoy_events, dependent: :destroy, class_name: 'Ahoy::Event'
+  has_many :notifications, dependent: :destroy, foreign_key: :recipient_id, class_name: 'Notification'
 
   validates :name, presence: true, length: { minimum: 2, maximum: 30 }, uniqueness: true
   validate :avatar_size
@@ -56,6 +57,15 @@ class User < ApplicationRecord
 
   def should_generate_new_friendly_id?
     name_changed?
+  end
+
+  def normalize_friendly_id(text)
+    text.to_slug.transliterate(:russian).normalize.to_s
+  end
+
+  def read_all
+    p '&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&'
+    notifications.where(readed: false).update_all(readed: true)
   end
 
   private

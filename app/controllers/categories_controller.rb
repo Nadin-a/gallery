@@ -65,6 +65,8 @@ class CategoriesController < ApplicationController
   def subscribe
     current_user.categories << @category
     current_user.send_email_about_subscribtion
+    send_notification(@category.owner, 'subscribe',
+                      @category.users.last.name, @category.name)
     respond_to do |format|
       format.html { redirect_to @category }
       format.json { render :show, status: :created }
