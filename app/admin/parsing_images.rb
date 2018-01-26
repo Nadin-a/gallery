@@ -2,29 +2,26 @@
 
 ActiveAdmin.register_page 'Get images' do
   page_action :founded_images, method: :post do
-    images = []
-    url = params['my_field']
+    url = params['field_for_link']
     begin
-      Nokogiri::HTML(open(url)).xpath('//img/@src').each do |src|
-        host = URI(params['my_field']).host
-        pic =
-          if src.to_s.start_with?('http')
-            src
-          else
-            URI::HTTP.build(host: host, path: src)
-          end
-        images << pic
-      end
-      render 'found_pictures', locals: { images: images }
+      category = Category.new
+      category.name = params['category_name']
+      category.owner = current_user
+      category.save!
+      ParsingImagesJob.perform_later(url, category.id)
+      redirect_to admin_get_images_path
     rescue Errno::ENOENT => err
-      p err
+      redirect_to admin_get_images_path
+    rescue ActiveRecord::RecordInvalid  => err
       redirect_to admin_get_images_path
     end
   end
 
   content do
     form action: 'get_images/founded_images', method: :post do |f|
-      f.input :my_field, type: :text, name: 'my_field'
+      f.label :name
+      f.input :category_name, type: :text, name: 'category_name'
+      f.input :field_for_link, type: :text, name: 'field_for_link'
       f.input :submit, type: :submit
     end
   end

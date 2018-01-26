@@ -5,6 +5,6 @@
   - liked = @image.liked_by?(current_user)  ? 1 : 0
   %a.btn{class: "js-like-image #{liked == 1 ? ' btn-default' : ' btn-success'}", data: {liked: liked}, id: 'like',
   action: path, method: method }
-  %label_tag{ class: "js-count-like-label" }
+  %label_tag{ class: 'js-count-like-label', data: { image_id: "#{@image.id}" } }
     = @image.likes.count
 

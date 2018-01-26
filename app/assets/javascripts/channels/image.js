@@ -3,21 +3,13 @@ App.image = App.cable.subscriptions.create('ImageChannel', {
     // Called when the subscription is ready for use on the server
   },
 
-  disconnected: function () {;
+  disconnected: function () {
     // Called when the subscription has been terminated by the server
   },
 
   received: function (data) {
     // Called when there's incoming data on the websocket for this channel
-    $current_url = window.location.href;
-    $url = '';
-    if (data.url) {
-      url = data.url
-    }
-    else {
-      url = 'categories/' + data.category + '/images/' + data.image
-    }
-    if ($current_url.endsWith(url)) {
+    if ($("#new_comments").attr('data-image-id') == data.image) {
       $like_label.html(data.count);
       if (data.comment) {
         return $('#new_comments').append(this.renderComment(data.comment));
@@ -51,6 +43,5 @@ $(document).on('submit', '.new_comment', function (e) {
   var values = $(this).serializeArray();
   App.image.send_comment(values);
   $(this).trigger('reset');
-
 });
 

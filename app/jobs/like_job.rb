@@ -3,7 +3,7 @@
 class LikeJob < ApplicationJob
   queue_as :default
 
-  def perform(url, like_count)
-    ActionCable.server.broadcast('image', url: url, count: like_count)
+  def perform(image_id, like_count)
+    ActionCable.server.broadcast('image', image: image_id, count: like_count)
   end
 end

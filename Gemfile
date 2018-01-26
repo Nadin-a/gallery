@@ -38,6 +38,7 @@ gem 'emoji'
 gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
 gem 'babosa'
+gem "sidekiq-cron", "~> 0.6.3"
 
 group :development, :test do
   gem 'rspec-rails'
@@ -58,7 +59,6 @@ end
 group :development do
   gem 'listen'
   gem 'spring'
-  gem 'letter_opener'
   gem 'spring-watcher-listen'
   gem 'better_errors'
   gem 'binding_of_caller'

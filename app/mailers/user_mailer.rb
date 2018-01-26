@@ -21,4 +21,14 @@ class UserMailer < ActionMailer::Base
       format.text { render plain: 'Render text' }
     end
   end
+
+  def news(user_id)
+    @user = User.find(user_id)
+    mail(to: @user.email,
+         subject: 'Subscribtion to new category!',
+         from: 'amazing2gallery@gmail.com') do |format|
+      format.html { render 'user_mailer/news' }
+      format.text { render plain: 'Render text' }
+    end
+  end
 end

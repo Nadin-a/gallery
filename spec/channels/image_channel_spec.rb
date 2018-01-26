@@ -8,7 +8,7 @@ RSpec.describe ImageChannel, type: :channel do
     stub_connection user_id: user.id
   end
 
-  it 'subscribes to a stream image room id is provided' do
+  it 'subscribes to a stream image' do
     subscribe(image_id: 1)
     expect(subscription).to be_confirmed
   end

@@ -17,3 +17,4 @@ App.notifications = App.cable.subscriptions.create('NotificationChannel', {
     $("#couner_of_notification").html('🔔 ' + data.counter);
   }
 });
+

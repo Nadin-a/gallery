@@ -138,6 +138,8 @@ GEM
     errbase (0.0.3)
     erubi (1.7.0)
     erubis (2.7.0)
+    et-orbi (1.0.9)
+      tzinfo
     excon (0.60.0)
     execjs (2.7.0)
     factory_bot (4.8.2)
@@ -226,10 +228,6 @@ GEM
       activerecord
       kaminari-core (= 1.1.1)
     kaminari-core (1.1.1)
-    launchy (2.4.3)
-      addressable (~> 2.3)
-    letter_opener (1.5.0)
-      launchy (~> 2.2)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -381,6 +379,8 @@ GEM
     ruby_parser (3.10.1)
       sexp_processor (~> 4.9)
     rubyzip (1.2.1)
+    rufus-scheduler (3.4.2)
+      et-orbi (~> 1.0)
     safely_block (0.2.0)
       errbase
     sass (3.5.4)
@@ -410,6 +410,9 @@ GEM
       connection_pool (~> 2.2, >= 2.2.0)
       rack-protection (>= 1.5.0)
       redis (>= 3.3.4, < 5)
+    sidekiq-cron (0.6.3)
+      rufus-scheduler (>= 3.3.0)
+      sidekiq (>= 4.2.1)
     sidekiq_mailer (0.0.8)
       actionmailer (>= 3.0)
       activesupport (>= 3.0)
@@ -486,7 +489,6 @@ DEPENDENCIES
   haml-rails
   jbuilder
   jquery-rails
-  letter_opener
   listen
   mini_magick
   omniauth-facebook
@@ -509,6 +511,7 @@ DEPENDENCIES
   selenium-webdriver
   shoulda-matchers
   sidekiq
+  sidekiq-cron (~> 0.6.3)
   sidekiq_mailer
   simplecov
   spring

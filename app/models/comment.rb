@@ -13,7 +13,7 @@ class Comment < ApplicationRecord
 
   after_create_commit do
     CommentJob.perform_later(id)
-    if self.user != image.category.owner
+    if user != image.category.owner
       Notification.create(recipient: image.category.owner,
                           type_of_notification: 'comment', participant: user.name,
                           object: image.title + ': ' + content)

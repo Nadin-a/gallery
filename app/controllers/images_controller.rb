@@ -24,7 +24,7 @@ class ImagesController < ApplicationController
     authorize image
     if image.save
       flash[:success] = t(:image_created)
-      send_message image
+      send_email image
     else
       flash[:error] = image.errors.full_messages
     end
@@ -53,7 +53,7 @@ class ImagesController < ApplicationController
 
   private
 
-  def send_message(image)
+  def send_email(image)
     image.category.users.each do |user|
       user.send_email_about_new_image image.id
     end

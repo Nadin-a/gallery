@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
 class NotificationJob < ApplicationJob
-  queue_as :notify
+  queue_as :notification
 
   def perform(notification)
     recipient = notification.recipient
-    ActionCable.server.broadcast("notifications:#{notification.recipient_id}", notification: render_notification(notification),
+    ActionCable.server.broadcast("notifications:#{notification.recipient_id}",
+                                 notification: render_notification(notification),
                                  counter: recipient.notifications.where(readed: false).count)
   end
 

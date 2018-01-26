@@ -9,8 +9,7 @@ App.room = App.cable.subscriptions.create('ChatRoomsChannel', {
 
   received: function (data) {
     // Called when there's incoming data on the websocket for this channel
-    $current_url = window.location.href;
-    if ($current_url.endsWith('rooms/' + data.room)) {
+    if ($("#new_messages").attr('data-room-id') == data.room) {
       return $('#new_messages').append(this.renderMessage(data.message));
     }
   },
@@ -20,6 +19,7 @@ App.room = App.cable.subscriptions.create('ChatRoomsChannel', {
   },
 
   send_message: function (message) {
+    console.log(message);
     return this.perform('send_message', {
       message: message
     });
@@ -42,4 +42,3 @@ App.room = App.cable.subscriptions.create('ChatRoomsChannel', {
     App.room.send_message(values);
     $(this).trigger('reset');
   });
-

@@ -4,7 +4,7 @@ class MessageJob < ApplicationJob
   queue_as :chats
 
   def perform(message)
-    room_param = message.room.name.downcase.tr(' ', '-')
+    room_param = message.room.id
     ActionCable.server.broadcast('room', message: render_message(message), room: room_param)
   end
 

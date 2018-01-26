@@ -1,5 +1,5 @@
 .col-sm-12.col-md-12.col-lg-12.col-xl-12
-  = translate(notification)
+  = translate_notification(notification)
   %br
   = time_ago_in_words(notification.created_at) + t('ago')
   .text-center

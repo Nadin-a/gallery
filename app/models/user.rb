@@ -48,11 +48,11 @@ class User < ApplicationRecord
   end
 
   def send_email_about_subscribtion
-    SendingEmailWhenSubscribeJob.set(queue: :mailers).perform_later id
+    SendingEmailWhenSubscribeJob.set(queue: :mailer).perform_later id
   end
 
   def send_email_about_new_image(image)
-    SendEmailWhenNewImageJob.set(queue: :mailers).perform_later id, image
+    SendEmailWhenNewImageJob.set(queue: :mailer).perform_later id, image
   end
 
   def should_generate_new_friendly_id?
@@ -64,7 +64,6 @@ class User < ApplicationRecord
   end
 
   def read_all
-    p '&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&'
     notifications.where(readed: false).update_all(readed: true)
   end
 

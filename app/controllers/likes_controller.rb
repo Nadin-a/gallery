@@ -11,8 +11,7 @@ class LikesController < ApplicationController
     authorize @like
     current_user.likes << @like
     return unless @like.save
-    LikeJob.perform_later(category_image_path(@category, @image), @image.likes.count)
-    send_notification(@like.image.category.owner,  'like',
+    send_notification(@like.image.category.owner, 'like',
                       @like.user.name, @like.image.title)
     track_action('like')
     respond_to do |format|
@@ -23,7 +22,6 @@ class LikesController < ApplicationController
 
   def destroy
     return unless @like.destroy
-    LikeJob.perform_later(category_image_path(@category, @image), @image.likes.count)
     track_action('dislike')
     respond_to do |format|
       format.html { redirect_to @image }

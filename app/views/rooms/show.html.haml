@@ -15,8 +15,7 @@
   .col-sm-12.col-md-12.col-lg-12.col-xl-12
     .pre-scrollable
       = render partial: 'shared/list_of_messages'
-      #new_messages{'data-chat-room-id': "#{@room.id}"}
+      #new_messages{data: { room_id: "#{@room.id}" }}
     = render partial: 'shared/message_form'
 
 = render 'rooms/edit'
-  

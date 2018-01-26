@@ -48,7 +48,7 @@
               = t('show_all_comments')
       #hidden_comments
       = render partial: 'shared/list_of_comments'
-      #new_comments
+      #new_comments{data: { image_id: "#{@image.id}" }}
       .col-sm-12.col-md-12.col-lg-12.col-xl-12
         = render partial: 'shared/comment_form'
 = render 'images/edit', locals: {category: @category, image: @image}

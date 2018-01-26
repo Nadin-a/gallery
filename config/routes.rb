@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   require 'sidekiq/web'
-
+  require 'sidekiq/cron/web'
   authenticate :user, lambda { |user| user.admin? } do
     mount Sidekiq::Web => '/sidekiq'
     ActiveAdmin.routes(self)
@@ -35,6 +35,5 @@ Rails.application.routes.draw do
       resources :likes, only: %i[create destroy]
     end
   end
-
   resources :rooms
 end

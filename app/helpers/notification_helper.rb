@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module NotificationHelper
-  def translate(notification)
+  def translate_notification(notification)
     case notification.type_of_notification
     when 'like'
       notification.participant + t('liked_your_image') + notification.object
@@ -10,7 +10,7 @@ module NotificationHelper
     when 'comment'
       notification.participant + t('comment_your_image') + notification.object
     else
-     notification.type
+      notification.type
     end
   end
 end
