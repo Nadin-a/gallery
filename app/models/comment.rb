@@ -2,11 +2,10 @@
 
 class Comment < ApplicationRecord
   default_scope { order(created_at: :asc) }
+  scope :last_comments, -> { unscoped.order(created_at: :desc) }
 
   belongs_to :user
   belongs_to :image
-
-  scope :last_comments, -> { unscoped.order(created_at: :desc) }
 
   validates :user, :image, presence: true
   validates :content, presence: true, length: { maximum: 200 }

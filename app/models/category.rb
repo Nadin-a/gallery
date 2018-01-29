@@ -5,6 +5,7 @@ class Category < ApplicationRecord
   friendly_id :name, use: :slugged
 
   default_scope { order(created_at: :desc) }
+  scope :new_categories_in_24, -> { unscoped.where(created_at: (Time.current - 24.hours)..Time.current) }
 
   belongs_to :owner, foreign_key: :owner_id, class_name: 'User'
   has_and_belongs_to_many :users

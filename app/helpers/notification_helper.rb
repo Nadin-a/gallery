@@ -10,7 +10,7 @@ module NotificationHelper
     when 'comment'
       notification.participant + t('comment_your_image') + notification.object
     else
-      notification.type
+      notification.object
     end
   end
 end

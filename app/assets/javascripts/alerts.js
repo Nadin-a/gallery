@@ -1,7 +1,4 @@
 $(document).ready(function () {
-
-  $("#couner_of_notification").html('🔔');
-
   $('.alert').fadeIn('slow', function () {
     $('.alert').delay(5000).fadeOut();
   });

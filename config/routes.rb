@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get '/updates', to: 'pages#updates'
 
   resources :users, only: %i[index show destroy] do
-    post :read_all, on: :member
+    get :read_all, on: :member
   end
 
   resources :categories do

@@ -1,0 +1,17 @@
+%h3
+  = t('all_requested_images')
+%br
+= main_report[:all]
+%br
+%h3
+  = t('uploaded_images')
+%br
+= main_report[:succeed]
+%br
+%h3
+  = t('img_errors')
+%br
+= main_report[:errors]
+- errors_report.each do |error_hash|
+  = error_hash[:error]
+  %br

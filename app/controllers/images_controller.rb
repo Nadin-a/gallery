@@ -54,7 +54,7 @@ class ImagesController < ApplicationController
   private
 
   def send_email(image)
-    image.category.users.each do |user|
+    image.category.users.find_each do |user|
       user.send_email_about_new_image image.id
     end
   end

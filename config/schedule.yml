@@ -1,0 +1,4 @@
+send_news:
+  cron: '* 1 * * *'
+  class: "SendNewsJob"
+  active_job: true

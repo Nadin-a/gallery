@@ -172,6 +172,22 @@ ru:
   comment_your_image: ' откоменнтировал(а) вашу картинку '
   last_notifications: 'Последние уведомления'
 
+  pictures_started_uploaded: 'Картинки начали загружаться... Вы получите отчёт о загрузке на почту.'
+
+  mail_subscription: 'Подписка на новую категорию!'
+  mail_new_image: 'Новая картинка в любимой категории!'
+  mail_news: "Новое в галерее за день"
+
+  updates: 'Обновления за последние 24 часа'
+  new_categories: 'Новые категории:'
+  new_images: 'Новые картинки:'
+  new_rooms: 'Новые чаты:'
+
+  error_report: 'Отчёт об ошибках'
+  all_requested_images: 'Все запрашиваемые картинки:'
+  uploaded_images: 'Загруженные картинки:'
+  img_errors: 'Ошибки:'
+
   activerecord:
     errors:
       messages:

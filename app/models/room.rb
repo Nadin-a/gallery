@@ -5,6 +5,7 @@ class Room < ApplicationRecord
   friendly_id :name, use: :slugged
 
   default_scope { order(created_at: :desc) }
+  scope :new_rooms_in_24, -> { unscoped.where(created_at: (Time.current - 24.hours)..Time.current) }
 
   belongs_to :user
   has_many :messages, dependent: :destroy

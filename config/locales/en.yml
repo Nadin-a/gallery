@@ -114,6 +114,8 @@ en:
   no_followers: 'No followers!'
   welcome_to_gallery: 'Welcome to Gallery!'
 
+  pictures_started_uploaded: 'The pictures started to load... You will receive a report on email.'
+
   recaptcha:
     errors:
       verification_failed: 'Uncorrect recaptcha'
@@ -163,9 +165,23 @@ en:
   error: 'Error! Check your data and try again, please.'
   sign_in_with: 'Sign in with'
 
+  mail_subscription: 'Subscribtion to new category!'
+  mail_new_image: 'New image in favorite category!'
+  mail_news: "Today's news in gallery"
+
   received: 'Received'
   started_following: ' started following your category '
   liked_your_image: ' liked your image '
   comment_your_image: ' commented your image '
   last_notifications: 'Last notifications'
 
+  updates: 'Updates in the last 24 hours'
+  new_categories: 'New categories:'
+  new_images: 'New images:'
+  new_rooms: 'New chat-rooms:'
+
+  error_report: 'Error report'
+
+  all_requested_images: 'All requested images:'
+  uploaded_images: 'Uploaded images:'
+  img_errors: 'Errors:'

@@ -69,7 +69,7 @@
         - if user_signed_in?
           - if current_user.admin?
             %li.dropdown
-              %a.dropdown-toggle{'data-toggle': 'dropdown', href: admin_root_path }
+              %a.dropdown-toggle{'data-toggle': 'dropdown', href: admin_root_path, target: '_blank' }
                 = t('for_admin')
                 %span.caret
               %ul.dropdown-menu
@@ -78,8 +78,9 @@
                 %li.text-center
                   =link_to(t('for_admin'), admin_root_path, target: '_blank')
           %li
-            %a{remote: true, href: '', data: {target: '#myNotififcationModal', toggle: 'modal'}}
+            %a{remote: true, href: read_all_user_path(current_user)}
               #couner_of_notification
+                = '🔔 ' + current_user.notifications.not_readed.count.to_s
           %li
             =link_to(t('profile'), edit_user_registration_path(current_user),
             'data-content': current_user.name,
@@ -93,5 +94,3 @@
             = link_to t('login'), new_user_session_path
           %li
             = link_to t('sign_up'), new_user_registration_path
-- if user_signed_in?
-  = render partial: 'notifications/read_all_notifications'

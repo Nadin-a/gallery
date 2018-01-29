@@ -3,6 +3,7 @@ default: &default
   :concurrency: 5
   :queues:
     - [mailer, 5]
+    - [mailers, 5]
     - [default, 5]
     - [notification, 5]
     - [chats, 5]

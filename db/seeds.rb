@@ -5,7 +5,7 @@ User.transaction do
                email: 'example@example.org',
                password: 'password',
                password_confirmation: 'password',
-               remote_avatar_url: Faker::Avatar.image,
+               #remote_avatar_url: Faker::Avatar.image,
                admin: true,
                confirmed_at: Time.current)
 
@@ -13,14 +13,14 @@ User.transaction do
                email: 'susan@email.org',
                password: 'password',
                password_confirmation: 'password',
-               remote_avatar_url: Faker::Avatar.image,
+               #remote_avatar_url: Faker::Avatar.image,
                confirmed_at: Time.current)
 
   User.create!(name: 'a' * 30,
                email: 'larry@mail.org',
                password: 'password',
                password_confirmation: 'password',
-               remote_avatar_url: Faker::Avatar.image,
+               #remote_avatar_url: Faker::Avatar.image,
                confirmed_at: Time.current)
 end
 

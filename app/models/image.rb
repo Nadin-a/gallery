@@ -5,6 +5,7 @@ class Image < ApplicationRecord
   friendly_id :title, use: :slugged
 
   default_scope { order(created_at: :desc) }
+  scope :new_images_in_24, -> { unscoped.where(created_at: (Time.current - 24.hours)..Time.current) }
 
   belongs_to :category
   has_many :comments, dependent: :destroy
