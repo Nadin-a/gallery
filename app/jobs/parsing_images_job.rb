@@ -27,8 +27,5 @@ class ParsingImagesJob < ApplicationJob
     end
     main_report = { all: images.count, succeed: succeed, errors: errors }
     ReportMailer.report_about_parsing(user.email, main_report, errors_report).deliver_later
-    # Notification.create(recipient: user,
-    #                     type_of_notification: 'report',
-    #                     object: 'Succeed: ' + succeed.to_s + 'Errors: ' + errors.to_s)
   end
 end

@@ -5,26 +5,29 @@
 %h2
   = t('updates')
 %br
-  - unless Category.new_categories_in_24.empty?
-    %h2
-      = t('new_categories')
-    - Category.new_categories_in_24.each do |category|
-      %br
-      = link_to(category.name, category_url(category))
-      %br
-  %br
-  - unless Image.new_images_in_24.empty?
-    %h2
-      = t('new_images')
-    - Image.new_images_in_24.each do |image|
-      %br
-      = link_to(image_tag(image.picture.thumb.url), category_image_url(image.category, image))
-      %br
-  %br
-  - unless Room.new_rooms_in_24.empty?
-    %h2
-      = t('new_rooms')
-    - Room.new_rooms_in_24.each do |room|
-      %br
-      = link_to(room.name, room_url(room))
-      %br
+- unless Category.new_categories_in_24.empty?
+  %h2
+    = t('new_categories')
+  - Category.new_categories_in_24.each do |category|
+    %br
+    = link_to(category.name, category_url(category))
+    %br
+%br
+- unless Image.new_images_in_24.empty?
+  %h2
+    = t('new_images')
+  - Image.new_images_in_24.each do |image|
+    %br
+    = link_to(image_tag(image.picture.thumb), category_image_url(image.category, image))
+    %br
+%br
+- unless Room.new_rooms_in_24.empty?
+  %h2
+    = t('new_rooms')
+  - Room.new_rooms_in_24.each do |room|
+    %br
+    = link_to(room.name, room_url(room))
+    %br
+%h2
+  = t('unread_notifications')
+- link_to(user.notifications.new_notifications_in_24.not_readed.count, read_all_user_url(user))

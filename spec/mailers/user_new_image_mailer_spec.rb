@@ -21,11 +21,11 @@ RSpec.describe UserMailer, type: :mailer do
       expect(mail.from).to eq(['amazing2gallery@gmail.com'])
     end
 
-    it 'assigns @name' do
+    it 'assigns name' do
       expect(mail.body.encoded).to match(user.name)
     end
 
-    it 'assigns @confirmation_url' do
+    it 'check content of email' do
       expect(mail.body.encoded)
         .to match('In your favorite category ' + category.name +
                 ' was uploaded new image ' + image.title)

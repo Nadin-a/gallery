@@ -38,6 +38,12 @@ class Category < ApplicationRecord
     text.to_slug.transliterate(:russian).normalize.to_s
   end
 
+  def self.copy_category(attr)
+    attr['name'] = attr['name'][0...-5] if attr['name'].length + 5 > 15
+    Category.create!(name: Faker::Number.number(5).to_s + attr['name'],
+                     owner_id: attr['owner_id'], cover: attr['cover'])
+  end
+
   private
 
   def cover_size

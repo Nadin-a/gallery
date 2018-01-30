@@ -14,7 +14,7 @@ App.notifications = App.cable.subscriptions.create('NotificationChannel', {
     // Called when there's incoming data on the websocket for this channel
     show_notification();
     $(".new_notification").append(data.notification);
+    $(".new_notification_in_snackbar").append(data.notification);
     $("#couner_of_notification").html('🔔 ' + data.counter);
   }
 });
-

@@ -39,6 +39,12 @@ describe Category do
     expect(check).to be true
   end
 
+  it '.copy?' do
+    attr = second_category.attributes
+    expected = expect { described_class.copy_category(attr) }
+    expected.to change(described_class, :count).by(1)
+  end
+
   describe 'Associations' do
     it { is_expected.to belong_to(:owner).with_foreign_key(:owner_id) }
     it { is_expected.to have_and_belong_to_many :users }

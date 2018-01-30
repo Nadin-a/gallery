@@ -5,7 +5,7 @@ require 'capybara_helper'
 require 'sidekiq/testing'
 Sidekiq::Testing.fake!
 
-describe 'messages_features', type: :feature do
+describe 'action_cable_features', type: :feature do
   let!(:user) { FactoryBot.create(:random_user) }
   let!(:room) { FactoryBot.create(:random_room, user: user) }
   let!(:category) { FactoryBot.create(:fake_category, owner: user) }
@@ -49,6 +49,24 @@ describe 'messages_features', type: :feature do
         fill_in 'New comment...', with: 'Hello!'
         click_button 'Post'
         expect(page).to have_content(user.name)
+      end
+    end
+  end
+
+  describe 'Create like' do
+    before { visit category_image_path(category, image) }
+
+    it 'Send like', js: true do
+      Sidekiq::Testing.inline! do
+        find('#like').click
+        expect(page).to have_content('1')
+      end
+    end
+    it 'Send dislike', js: true do
+      Sidekiq::Testing.inline! do
+        find('#like').click
+        find('#like').click
+        expect(page).to have_content('0')
       end
     end
   end

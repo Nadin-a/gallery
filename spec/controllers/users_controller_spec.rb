@@ -34,4 +34,11 @@ RSpec.describe UsersController, type: :controller do
       expect(response).to have_http_status(200)
     end
   end
+
+  describe 'Read all notifications' do
+    it 'can read all' do
+      post :read_all, params: { id: user.id }
+      expect(response).to have_http_status(200)
+    end
+  end
 end

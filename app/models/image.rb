@@ -40,6 +40,13 @@ class Image < ApplicationRecord
     text.to_slug.transliterate(:russian).normalize.to_s
   end
 
+  def self.copy_image(attr, new_category_id, picture)
+    attr['title'] = attr['title'][0...-5] if attr['title'].length + 5 > 20
+    Image.create!(title: Faker::Number.number(5).to_s + attr['title'], category_id: new_category_id,
+                  picture: File.new(picture),
+                  description: attr['description'])
+  end
+
   private
 
   # Validates the size of an uploaded picture.

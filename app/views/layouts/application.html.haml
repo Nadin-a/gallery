@@ -19,7 +19,7 @@
     - else
       %body
         #snackbar
-          .new_notification
+          .new_notification_in_snackbar
     - if action_name == 'home' || "#{controller_path}##{action_name}" == 'images#show'
       = render partial: 'shared/flash_messages'
       = yield

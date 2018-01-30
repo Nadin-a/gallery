@@ -182,8 +182,9 @@ ru:
   new_categories: 'Новые категории:'
   new_images: 'Новые картинки:'
   new_rooms: 'Новые чаты:'
+  unread_notifications: 'Непрочитанные уведомления'
 
-  error_report: 'Отчёт об ошибках'
+  pictures_upload_report: 'Отчёт об загрузке картинок'
   all_requested_images: 'Все запрашиваемые картинки:'
   uploaded_images: 'Загруженные картинки:'
   img_errors: 'Ошибки:'

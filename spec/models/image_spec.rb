@@ -39,6 +39,14 @@ describe Image do
     expect(check).to be true
   end
 
+  it '.copy?' do
+    new_category = FactoryBot.create(:category)
+    image = FactoryBot.create(:image)
+    attr = image.attributes
+    expected = expect { described_class.copy_image(attr, new_category.id, image.picture.current_path) }
+    expected.to change(described_class, :count).by(1)
+  end
+
   describe 'Associations' do
     it { is_expected.to belong_to :category }
     it { is_expected.to have_many :comments }

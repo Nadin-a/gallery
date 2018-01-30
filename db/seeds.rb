@@ -10,7 +10,7 @@ User.transaction do
                confirmed_at: Time.current)
 
   User.create!(name: 'Susan',
-               email: 'susan@email.org',
+               email: 'susan100500@email.org',
                password: 'password',
                password_confirmation: 'password',
                #remote_avatar_url: Faker::Avatar.image,

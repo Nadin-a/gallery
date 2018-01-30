@@ -20,5 +20,5 @@ function show_notification() {
 
   // After 3 seconds, remove the show class from DIV
   setTimeout(function(){  x.className =  x.className.replace('show', ''); }, 3000);
-  $(".new_notification").html('');
+  $(".new_notification_in_snackbar").html('');
 }

@@ -12,7 +12,7 @@ if Rails.env.development?
   end
 
   Sidekiq.configure_client do |config|
-    config.redis = { url: 'redis://localhost:6379/0', namespace: "gallery_sidekiq_#{Rails.env}", size: 1 }
+    config.redis = { url: 'redis://localhost:6379/0', namespace: "gallery_sidekiq_#{Rails.env}", size: 2 }
   end
 end
 

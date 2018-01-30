@@ -167,7 +167,7 @@ en:
 
   mail_subscription: 'Subscribtion to new category!'
   mail_new_image: 'New image in favorite category!'
-  mail_news: "Today's news in gallery"
+  mail_news: "Today's updates in gallery"
 
   received: 'Received'
   started_following: ' started following your category '
@@ -180,8 +180,9 @@ en:
   new_images: 'New images:'
   new_rooms: 'New chat-rooms:'
 
-  error_report: 'Error report'
+  pictures_upload_report: 'Report about uploading of pictures'
 
   all_requested_images: 'All requested images:'
   uploaded_images: 'Uploaded images:'
   img_errors: 'Errors:'
+  unread_notifications: 'Unread notifications'

@@ -2,7 +2,9 @@
 
 FactoryBot.define do
   factory :notification do
-    recipient { FactoryBot.build(:user) }
-    type_of_notification 'like'
+    type_of_notification 'default'
+    recipient { FactoryBot.build(:random_user) }
+    participant { FactoryBot.build(:random_user) }
+    object 'file'
   end
 end

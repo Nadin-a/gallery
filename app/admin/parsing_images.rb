@@ -19,8 +19,5 @@ ActiveAdmin.register_page 'Get images' do
       f.input :field_for_link, type: :text, name: 'field_for_link'
       f.input :submit, type: :submit
     end
-    div id: 'snackbar' do
-      div class: 'new_notification'
-    end
   end
 end
