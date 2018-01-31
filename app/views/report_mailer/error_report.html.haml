@@ -13,5 +13,7 @@
 %br
 = main_report[:errors]
 - errors_report.each do |error_hash|
-  = error_hash[:error]
+  - error_hash[:error].each do |err|
+    = err
+    %br
   %br

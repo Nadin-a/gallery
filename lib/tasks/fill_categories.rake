@@ -34,10 +34,9 @@ namespace :fill_with do
 
   def create_category(name, category_path)
     category = Category.create(name: name, owner_id: User.all.ids.sample)
-    if category.persisted?
-      p 'Category ' + name + ' created!'
-      migrate_images(name, category_path)
-    end
+    return if category.persisted?
+    p 'Category ' + name + ' created!'
+    migrate_images(name, category_path)
   end
 
   def migrate_images(category_name, path)

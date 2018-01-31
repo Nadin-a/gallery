@@ -18,7 +18,7 @@
     = t('new_images')
   - Image.new_images_in_24.each do |image|
     %br
-    = link_to(image_tag(image.picture.thumb), category_image_url(image.category, image))
+    = link_to(image.title, category_image_url(image.category, image))
     %br
 %br
 - unless Room.new_rooms_in_24.empty?
@@ -30,4 +30,4 @@
     %br
 %h2
   = t('unread_notifications')
-- link_to(user.notifications.new_notifications_in_24.not_readed.count, read_all_user_url(user))
+= link_to(user.notifications.new_notifications_in_24.not_readed.count, read_all_user_url(user))
