@@ -44,7 +44,7 @@ class Image < ApplicationRecord
     attr['title'] = attr['title'][0...-5] if attr['title'].length + 5 > 20
     if Rails.env.production?
       Image.create!(title: Faker::Number.number(5).to_s + attr['title'], category_id: new_category_id,
-                    remote_picture_url: picture.url,
+                    remote_picture_url: picture,
                     description: attr['description'])
     else
       Image.create!(title: Faker::Number.number(5).to_s + attr['title'], category_id: new_category_id,

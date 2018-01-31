@@ -7,7 +7,13 @@ class CopyWorker
     category = Category.find(category_id)
     new_category = Category.copy_category(category.attributes)
     category.images.find_each do |image|
-      Image.copy_image(image.attributes, new_category.id, image.picture.current_path)
+      picture =
+        if Rails.env.production?
+          image.picture.url
+        else
+          image.picture.current_path
+        end
+      Image.copy_image(image.attributes, new_category.id, picture)
     end
   end
 end
