@@ -2,11 +2,12 @@
 
 ActiveAdmin.register User do
   actions :all
-  permit_params :name, :email, :avatar, :admin, :confirmed_at
+  permit_params :name, :email, :avatar, :admin, :receive_emails, :confirmed_at
 
   filter :name
   filter :email
   filter :admin
+  filter :receive_emails
   filter :created_at
   filter :last_sign_in_at
 
@@ -14,6 +15,7 @@ ActiveAdmin.register User do
     column :name
     column :email
     column :admin
+    column :receive_emails
     column :sign_in_count
     column :last_sign_in_at
     column :created_at
@@ -28,6 +30,7 @@ ActiveAdmin.register User do
     column :email
     column :avatar
     bool_column :admin
+    bool_column :receive_emails
     column :sign_in_count
     column :last_sign_in_at
     column :created_at
@@ -42,6 +45,7 @@ ActiveAdmin.register User do
       f.input :email
       f.input :avatar
       f.input :admin
+      f.input :receive_emails
       f.input :confirmed_at, as: :date_time_picker
       f.actions
     end

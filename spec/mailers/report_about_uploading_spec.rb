@@ -18,8 +18,7 @@ RSpec.describe ReportMailer, type: :mailer do
     end
 
     it 'check content of email' do
-      expect(mail.body.encoded)
-      .to match('All requested images:')
+      expect(mail.body.encoded).to match('All requested images:')
     end
   end
 end

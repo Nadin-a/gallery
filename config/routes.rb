@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     ActiveAdmin.routes(self)
   end
 
-  devise_for :users, controllers:{ omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   root 'pages#home'
   get '/popular_images', to: 'pages#popular_images'
@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   get '/updates', to: 'pages#updates'
 
   resources :users, only: %i[index show destroy] do
-    get :read_all, on: :member
+    member do
+      get :read_all
+    end
   end
 
   resources :categories do

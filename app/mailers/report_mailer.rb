@@ -2,7 +2,7 @@
 
 class ReportMailer < ActionMailer::Base
   def news
-    User.active.each do |user|
+    User.active.subscribe_on_emails.each do |user|
       mail(to: user.email,
            subject: t('mail_news'),
            from: 'amazing2gallery@gmail.com') do |format|

@@ -5,6 +5,7 @@ class User < ApplicationRecord
   friendly_id :name, use: :slugged
 
   scope :active, -> { where.not(confirmed_at: nil).order(created_at: :desc) }
+  scope :subscribe_on_emails, -> { where(receive_emails: true) }
 
   has_many :owned_categories, dependent: :destroy, foreign_key: :owner_id, class_name: 'Category'
   has_and_belongs_to_many :categories
@@ -48,11 +49,11 @@ class User < ApplicationRecord
   end
 
   def send_email_about_subscribtion
-    SendingEmailWhenSubscribeJob.set(queue: :mailer).perform_later id
+    SendingEmailWhenSubscribeJob.set(queue: :mailer).perform_later id if receive_emails?
   end
 
   def send_email_about_new_image(image)
-    SendEmailWhenNewImageJob.set(queue: :mailer).perform_later id, image
+    SendEmailWhenNewImageJob.set(queue: :mailer).perform_later id, image if receive_emails?
   end
 
   def should_generate_new_friendly_id?

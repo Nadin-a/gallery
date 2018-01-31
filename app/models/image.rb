@@ -16,7 +16,7 @@ class Image < ApplicationRecord
   validates :category, :picture, presence: true
   validates :title, presence: true, length: { maximum: 20 }, uniqueness: true
   validates :description, length: { maximum: 300 }
-  validate  :picture_size
+  validate :picture_size
 
   mount_uploader :picture, PictureUploader
 
@@ -40,17 +40,17 @@ class Image < ApplicationRecord
     text.to_slug.transliterate(:russian).normalize.to_s
   end
 
-  def self.copy_image(attr, new_category_id, picture)
+  def self.copy_image(attr, new_category_id, pic)
     attr['title'] = attr['title'][0...-5] if attr['title'].length + 5 > 20
-    if Rails.env.production?
-      Image.create!(title: Faker::Number.number(5).to_s + attr['title'], category_id: new_category_id,
-                    remote_picture_url: picture,
-                    description: attr['description'])
-    else
-      Image.create!(title: Faker::Number.number(5).to_s + attr['title'], category_id: new_category_id,
-                    picture: File.new(picture),
-                    description: attr['description'])
-    end
+    picture =
+      if Rails.env.production?
+        pic
+      else
+        File.new(pic)
+      end
+    Image.create!(title: Faker::Number.number(5).to_s + attr['title'], category_id: new_category_id,
+                  picture: picture,
+                  description: attr['description'])
   end
 
   private
