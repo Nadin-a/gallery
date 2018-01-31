@@ -55,6 +55,15 @@ describe User do
     expect(described_class.active.include?(no_activated_user)).to be false
   end
 
+  it 'can read all' do
+    new_user = FactoryBot.create(:user)
+    create_list(:notification, 25, recipient_id: new_user.id)
+    new_user.read_all
+    new_user.notifications.each do |notification|
+      expect(notification.readed).to be true
+    end
+  end
+
   describe 'Associations' do
     it { is_expected.to have_many(:owned_categories).with_foreign_key(:owner_id) }
     it { is_expected.to have_and_belong_to_many :categories }

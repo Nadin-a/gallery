@@ -6,6 +6,7 @@ describe NotificationHelper, type: :helper do
   let!(:like_notification) { FactoryBot.create(:notification, type_of_notification: 'like') }
   let!(:subscribe_notification) { FactoryBot.create(:notification, type_of_notification: 'subscribe') }
   let!(:comment_notification) { FactoryBot.create(:notification, type_of_notification: 'comment') }
+
   describe 'forming notification' do
     it 'form like notification' do
       expect(helper.form_notification(like_notification)).to have_content('liked your image')

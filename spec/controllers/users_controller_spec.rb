@@ -36,7 +36,7 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe 'Read all notifications' do
-    it 'can read all' do
+    it 'when notification page open' do
       post :read_all, params: { id: user.id }
       expect(response).to have_http_status(200)
     end

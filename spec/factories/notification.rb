@@ -6,5 +6,6 @@ FactoryBot.define do
     recipient { FactoryBot.build(:random_user) }
     participant { FactoryBot.build(:random_user) }
     object 'file'
+    readed false
   end
 end
