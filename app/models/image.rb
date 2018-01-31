@@ -42,9 +42,15 @@ class Image < ApplicationRecord
 
   def self.copy_image(attr, new_category_id, picture)
     attr['title'] = attr['title'][0...-5] if attr['title'].length + 5 > 20
-    Image.create!(title: Faker::Number.number(5).to_s + attr['title'], category_id: new_category_id,
-                  picture: File.new(picture),
-                  description: attr['description'])
+    if Rails.env.production?
+      Image.create!(title: Faker::Number.number(5).to_s + attr['title'], category_id: new_category_id,
+                    remote_picture_url: picture.url,
+                    description: attr['description'])
+    else
+      Image.create!(title: Faker::Number.number(5).to_s + attr['title'], category_id: new_category_id,
+                    picture: File.new(picture),
+                    description: attr['description'])
+    end
   end
 
   private
