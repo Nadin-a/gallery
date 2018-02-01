@@ -2,7 +2,7 @@
 
 class RoomPolicy < ApplicationPolicy
   def index?
-    user
+    true
   end
 
   def create?
@@ -10,7 +10,7 @@ class RoomPolicy < ApplicationPolicy
   end
 
   def show?
-    user
+    true
   end
 
   def update?
