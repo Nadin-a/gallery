@@ -28,11 +28,16 @@ class User < ApplicationRecord
          omniauth_providers: %i[facebook twitter google_oauth2]
 
   def self.create_with_omniauth(auth)
+    user = find_or_create_by(uid: auth['uid'], provider: auth['provider'])
+    user.email = auth.info.email
+    user.password = Devise.friendly_token[0, 20]
+    user.name = auth.info.name
     url = auth.info.image
     avatar_url = url.gsub('http', 'https') unless url.include? 'https'
-    User.find_or_create_by(uid: auth['uid'], provider: auth['provider'],
-                             email: auth.info.email, password: Devise.friendly_token[0, 20],
-                             name: auth.info.name, remote_avatar_url: avatar_url, confirmed_at: Time.current)
+    user.remote_avatar_url = avatar_url
+    user.confirmed_at = Time.current
+    user.save!
+    user
   end
 
   def feed
