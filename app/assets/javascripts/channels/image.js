@@ -1,13 +1,13 @@
 App.image = App.cable.subscriptions.create('ImageChannel', {
-  connected: function () {
+  connected: () =>  {
     // Called when the subscription is ready for use on the server
   },
 
-  disconnected: function () {
+  disconnected: () =>  {
     // Called when the subscription has been terminated by the server
   },
 
-  received: function (data) {
+  received: function(data) {
     // Called when there's incoming data on the websocket for this channel
     if ($("#new_comments").attr('data-image-id') == data.image) {
       $like_label.html(data.count);

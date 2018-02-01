@@ -1,9 +1,9 @@
 App.room = App.cable.subscriptions.create('ChatRoomsChannel', {
-  connected: function () {
+  connected: () => {
     // Called when the subscription is ready for use on the server
   },
 
-  disconnected: function () {
+  disconnected: () => {
     // Called when the subscription has been terminated by the server
   },
 
