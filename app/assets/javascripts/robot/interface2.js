@@ -4,12 +4,14 @@ class Interface {
     this.robot = new Robot({x: 0, y: 0, dir: 'NORTH'}); //make null
     this.table = new Table(x, y);
     // this.read();
+    console.log($command_text);
+    console.log($('#command_text'));
   }
 
   read() {
     console.log('Enter your command');
     console.log('Help: ' + (this.robot == null ? 'Place the robot! (PLACE X Y DIRECTION)' : 'Move robot! MOVE/REPORT/RIGHT/LEFT'));
-    this.command = new Command($command_text); // get data
+    this.command = new Command('MOVE'); // get data
 
     if (this.command.validate(this.robot != null, this.table != null)) {
       this.execute();

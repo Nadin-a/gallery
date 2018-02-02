@@ -14,7 +14,8 @@ $(document).ready(function () {
 
 
   $command_button.on('click', function () {
-    mInterface.read();
+    console.log('click');
+   mInterface.read();
   });
 });
 
