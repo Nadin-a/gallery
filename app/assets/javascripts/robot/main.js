@@ -10,13 +10,11 @@ $(document).ready(function () {
 
 
   $info.html('Hello. Do you want to use 5x6 (press 1) or enter X and Y (press 2) ?');
+  var mInterface = new Interface(5, 5);
 
-  function func() {
-    $interface = new Interface(5, 5);
-  }
 
   $command_button.on('click', function () {
-    $interface.read();
+    mInterface.read();
   });
 });
 

@@ -1,8 +1,8 @@
 class Table {
 
-  constructor(x, y) {
-    this.height = x;
-    this.width = y;
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
   }
 
   check_borders(coord) {
