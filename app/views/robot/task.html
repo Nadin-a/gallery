@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Robot</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="/gallery/app/assets/javascripts/robot/main.js" type='text/javascript'></script>
+    <script src="/gallery/app/assets/javascripts/robot/robot.js" type='text/javascript'></script>
+    <script src="/gallery/app/assets/javascripts/robot/interface.js" type='text/javascript'></script>
+    <script src="/gallery/app/assets/javascripts/robot/table.js" type='text/javascript'></script>
+    <script src="/gallery/app/assets/javascripts/robot/graphic.js" type='text/javascript'></script>
+</head>
+<body class="text-center">
+<br>
+<label id="info"> Enter sizes of field </label>
+<br>
+
+    <input name="height" class='form-control' value="5" id="height" min='1' max='10' required type="number"><br>
+    <input name="width" class='form-control' value="5" id="width" min='1' max='10' required type="number"><br>
+    <br>
+    <select id="sides" class="custom-select">
+        <option value="SOUTH">SOUTH</option>
+        <option value="NORTH">NORTH</option>
+        <option value="EAST">EAST</option>
+        <option value="WEST">WEST</option>
+    </select>
+<br>
+<br>
+<button id="send_sizes_button" class="btn btn-primary">
+    Send
+</button>
+
+<button id="move_button" value="MOVE" class="command btn btn-info">
+    MOVE
+</button>
+<button id="left_button" value="LEFT" class="command btn btn-info">
+    LEFT
+</button>
+<button id="right_button" value="RIGHT" class="command btn btn-info">
+    RIGHT
+</button>
+<button id="report_button" value="REPORT" class="command btn btn-warning">
+    REPORT
+</button>
+<button id="reload_button" value="RELOAD" class="command btn btn-danger">
+    RELOAD
+</button>
+<button id="help_button" value="RELOAD" class="command btn btn-info">
+    HELP
+</button>
+
+<br>
+<br>
+<div class="alert alert-secondary" role="alert">
+    <p><- move left </p>
+    <p> -> move right </p>
+    <p> space - step </p>
+    <p> enter - report </p>
+</div>
+
+</body>
+</html>

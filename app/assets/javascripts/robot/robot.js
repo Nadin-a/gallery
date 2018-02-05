@@ -10,8 +10,12 @@ class Robot {
   }
 
   change_direction(rotation) {
-    var previous_value = Robot.SIDES[Robot.SIDES.index(this.direction) - 1];
-    var next_value = Robot.SIDES[Robot.SIDES.index(this.direction) + 1];
+    var previous_value = Robot.SIDES[Robot.SIDES.indexOf(this.direction) - 1];
+    if ((Robot.SIDES.indexOf(this.direction) - 1) < 0) {
+      previous_value = 'WEST';
+    }
+
+    var next_value = Robot.SIDES[Robot.SIDES.indexOf(this.direction) + 1];
     switch (rotation) {
       case 'LEFT': {
         this.direction = previous_value;
@@ -22,20 +26,21 @@ class Robot {
         break;
       }
     }
+    updateGameArea(this.coord, this.direction);
   }
 
   move() {
+    updateGameArea(this.check_next_position(), this.direction);
     this.coord = this.check_next_position();
   }
 
   check_next_position() {
-    console.log('check_next_position');
     var next_x = this.coord['x'];
     var next_y = this.coord['y'];
 
     switch (this.direction) {
       case 'NORTH': {
-        next_y += 1;
+        next_y -= 1;
         break;
       }
       case 'EAST': {
@@ -43,7 +48,7 @@ class Robot {
         break;
       }
       case 'SOUTH': {
-        next_y -= 1;
+        next_y += 1;
         break;
       }
       case 'WEST': {
@@ -55,7 +60,7 @@ class Robot {
   }
 
   report() {
-    console.log(this.coord['x'] + ':' + this.coord['y'] + ' ' + this.direction);
+    $info.html(this.coord['x'] + ':' + this.coord['y'] + ' ' + this.direction);
   }
 
 }
