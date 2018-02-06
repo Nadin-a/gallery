@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(() => {
 
   $subscribe_btn = $('.js-subscribtion-category');
   $followers_label = $('.js-count-followers-label');

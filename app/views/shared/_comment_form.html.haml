@@ -7,7 +7,7 @@
       %input{name: 'user_id', type: 'hidden', value: "#{current_user.id}"}/
       .field
         .col-sm-12.col-md-12.col-lg-12.col-xl-12
-          %textarea.form-control{name: 'content', maxlength:'200', class: 'form-control limited-text-input', placeholder: t('new_comment'), id: 'comment-input', required: true}
+          %textarea.form-control{name: 'content', maxlength:'200', class: 'form-control limited-text-input', placeholder: t('new_comment'), id: 'comment_input', required: true}
           %br
           .pull-left
             #count_message

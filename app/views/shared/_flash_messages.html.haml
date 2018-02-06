@@ -1,6 +1,6 @@
 - flash.each do |type, message|
-  %div{class: "alert #{bootstrap_class_for(type)}"}
-    .close
+  %div{id: 'alert', class: "alert #{bootstrap_class_for(type)}"}
+    .close{onclick: 'close_alert()'}
       %span.glyphicon.glyphicon-remove
     %p
       = message

@@ -14,7 +14,7 @@ $(document).ready(function () {
   $sides = $('#sides');
   $reload_btn = $('#reload_button');
   $help_button = $('#help_button');
-  $alert = $('.alert');
+  $alert = $('.robot_rules');
   $info.html('Enter sizes of field');
 
   $action_btn.hide();

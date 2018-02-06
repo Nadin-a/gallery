@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(() => {
   $show_all_btn = $('.btn-show-all-comments');
   $show_all_label = $('#show_all_label');
 

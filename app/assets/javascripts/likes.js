@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(() => {
 
   $like_btn = $('.js-like-image');
   $like_label = $('.js-count-like-label');
