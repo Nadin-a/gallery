@@ -25,6 +25,10 @@ function Robot_component(width, height, x, y) {
     ctx = myGameArea.context;
     let pic = new Image();
 
+    pic.onload = function() {
+      ctx.fillStyle = ctx.createPattern(pic, 'repeat');
+    };
+
     switch (dir) {
       case 'NORTH': {
         pic.src = 'http://i.piccy.info/i9/08e85506d50eae32e3226699d8f1cf3c/1517837323/17756/1214116/2.png';
@@ -44,7 +48,6 @@ function Robot_component(width, height, x, y) {
       }
     }
 
-    ctx.fillStyle = ctx.createPattern(pic, 'repeat');
     ctx.fillRect(this.x, this.y, this.width, this.height);
   }
 }

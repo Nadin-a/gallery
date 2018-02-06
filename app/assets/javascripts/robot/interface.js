@@ -15,7 +15,6 @@ class Interface {
     }
   }
 
-
   execute() {
     $info.html('Execution command: ' + this.command);
     switch (this.command) {
