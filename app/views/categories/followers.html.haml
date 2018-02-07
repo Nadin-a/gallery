@@ -1,6 +1,7 @@
+= content_for(:title, t('followers'));
 .col-sm-12.col-md-12.col-lg-12.col-xl-12.well.text-center
   %h1
-    =t('followers')
+    =t('followers') + ': '
     = @category.name
   - if @users.empty?
     %h3

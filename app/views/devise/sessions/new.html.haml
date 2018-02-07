@@ -14,7 +14,8 @@
     .field
       = f.label :password
       %br/
-      = f.password_field :password, autocomplete: 'off', class:'form-control', placeholder:t('password'), required: true
+      = f.password_field :password, autocomplete: 'off', class:'form-control',
+       placeholder:t('password'), required: true
       %br
     .text-center
       - if devise_mapping.rememberable?

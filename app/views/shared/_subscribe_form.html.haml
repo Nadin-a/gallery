@@ -3,6 +3,7 @@
   - method  = category.subscriber?(current_user) ? 'delete' : 'post'
   - subscribed = category.subscriber?(current_user) ? 1 : 0
   = button_tag '', role: 'button', class: "js-subscribtion-category btn#{subscribed == 1 ? 'btn-default' : ' btn-success'}",
-           data: {subscribed: subscribed, toggle: 'popover', placement: 'left', trigger: 'hover', content: t('subscribe_unsubscribe'),
+           data: {subscribed: subscribed, toggle: 'popover', placement: 'left', trigger: 'hover',
+           content: t('subscribe_unsubscribe'),
             action: path, method: method }, id: 'js-subscribe'
   %br

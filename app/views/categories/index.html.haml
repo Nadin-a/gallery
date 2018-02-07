@@ -3,8 +3,8 @@
   .col-12.col-sm-12.col-md-12.col-lg-12.col-xl-12
     %h1
       = t('all_categories')
-    = render partial: 'shared/list_of_categories', locals: {categories: @categories}
-    .col-sm-12.text-center
+    = render partial: 'shared/list_of_categories', locals: { categories: @categories }
+    .col-12.col-sm-12.col-md-12.col-lg-12.col-xl-12.text-center
       = will_paginate @categories
     - if user_signed_in?
       = render 'shared/create_new_category'

@@ -32,15 +32,19 @@
           %h4
             .col-sm-12.text-center
               %span.glyphicon.glyphicon-picture
-              %a{remote: true, "data-target": '#createImageModal', "data-toggle": 'modal', href: new_category_image_path(@category)}
+              %a{remote: true, data: {target: '#createImageModal', toggle: 'modal'},
+              href: new_category_image_path(@category)}
                 = t('add_image')
               |
               %span.glyphicon.glyphicon-pencil
-              %a{remote: true, "data-target": '#updateCategoryModal', "data-toggle": 'modal', href: edit_category_path(@category), title: t('update_this_category_tooltip') }
+              %a{remote: true, data: { target: '#updateCategoryModal', toggle: 'modal'},
+               href: edit_category_path(@category), title: t('update_this_category_tooltip') }
                 = t('update')
               |
               %span.glyphicon.glyphicon-remove
-              =link_to(t('delete'), category_path, method: :delete, data: { confirm: t('you_sure'), toggle:'tooltip',placement:'left' }, title: t('delete_this_category_tooltip'))
+              =link_to(t('delete'), category_path, method: :delete,
+               data: { confirm: t('you_sure'), toggle:'tooltip',placement:'left' },
+               title: t('delete_this_category_tooltip'))
               %br
               %br
     - if @images.empty?

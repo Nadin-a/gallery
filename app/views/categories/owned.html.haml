@@ -2,6 +2,6 @@
 .col-sm-12.col-md-12.col-lg-12.col-xl-12.well.text-center
   %h1
     = t('my_categories')
-  = render partial: 'shared/list_of_categories', locals: {categories: @categories}
+  = render partial: 'shared/list_of_categories', locals: { categories: @categories }
   = render 'shared/create_new_category'
 

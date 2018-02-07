@@ -12,14 +12,16 @@
       %required
         *
       %br/
-      = f.email_field :email, autofocus: true, class:'form-control', placeholder:t('enter_email'), required: true
+      = f.email_field :email, autofocus: true, class:'form-control',
+       placeholder:t('enter_email'), required: true
     %br
     .field
       = f.label t('name')
       %required
         *
       %br/
-      = f.text_field :name, maxlength: '30', minlength: '2', autofocus: true, class:'form-control', placeholder:t('enter_name'), required: true
+      = f.text_field :name, maxlength: '30', minlength: '2',
+      autofocus: true, class:'form-control', placeholder:t('enter_name'), required: true
     %br
     .field
       = f.label :password
@@ -29,14 +31,16 @@
         %em
           (#{@minimum_password_length} #{t('characters_minimum')})
       %br/
-      = f.password_field :password, autocomplete: 'off', class:'form-control', placeholder:t('password'), required: true
+      = f.password_field :password, autocomplete: 'off',
+       class:'form-control', placeholder:t('password'), required: true
     %br
     .field
       = f.label t('confirmation_password')
       %required
         *
       %br/
-      = f.password_field :password_confirmation, autocomplete: 'off', class:'form-control', placeholder:t('confirmation_password'), required: true
+      = f.password_field :password_confirmation, autocomplete: 'off',
+      class:'form-control', placeholder:t('confirmation_password'), required: true
     %br/
     %br
     .actions

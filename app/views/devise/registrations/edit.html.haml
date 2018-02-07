@@ -4,7 +4,8 @@
     .text-center
       .hero.flipInX.animated
         %h2
-          = link_to(t('profile'), user_path(@user), data:{ toggle:'tooltip',placement:'left'}, title:t('open_profile'))
+          = link_to(t('profile'), user_path(@user), data:{ toggle:'tooltip',placement:'left'},
+           title:t('open_profile'))
       %h2
         =t('edit_profile')
     %br
@@ -25,7 +26,8 @@
         %required
           *
         %br/
-        = f.text_field :name, maxlength: '30', minlength: '2', class:'form-control', placeholder:t('name'), required: true
+        = f.text_field :name, maxlength: '30', minlength: '2', class:'form-control',
+        placeholder:t('name'), required: true
       %br
         .text-center
           = image_tag(current_user.avatar) if current_user.avatar?
@@ -40,7 +42,8 @@
         %i
           =t('leave_blank')
         %br/
-        = f.password_field :password, autocomplete: 'off', value: '', class:'form-control', placeholder:t('password')
+        = f.password_field :password, autocomplete: 'off', value: '', class:'form-control',
+         placeholder:t('password')
         - if @minimum_password_length
           %br/
           %em
@@ -49,7 +52,8 @@
       .field
         = f.label :password_confirmation
         %br/
-        = f.password_field :password_confirmation, autocomplete: 'off', class:'form-control', placeholder:t('confirmation_password')
+        = f.password_field :password_confirmation, autocomplete: 'off', class:'form-control',
+        placeholder:t('confirmation_password')
       %br
       .field
         = f.label :current_password
@@ -59,10 +63,12 @@
         %i
           =t('we_need_your_password')
         %br/
-        = f.password_field :current_password, autocomplete: 'off', required: true, class:'form-control', placeholder:t('current_password')
+        = f.password_field :current_password, autocomplete: 'off', required: true,
+         class:'form-control', placeholder:t('current_password')
       %br/
       .actions
-        = f.submit t('update'), class: 'btn btn-effect btn-primary btn-block btn-lg outline', data:{ toggle:'tooltip',placement:'right'}, title:t('save_changes')
+        = f.submit t('update'), class: 'btn btn-effect btn-primary btn-block btn-lg outline',
+        data:{ toggle:'tooltip',placement:'right'}, title:t('save_changes')
     %h3
       =t('canceling_account')
     %p

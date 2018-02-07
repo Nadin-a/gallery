@@ -37,7 +37,7 @@ en:
   created_at: 'Created at'
   uploaded: 'Uploaded'
   ago: ' ago'
-  followers: 'Followers:'
+  followers: 'Followers'
   add_image: 'Add image'
   you_sure: 'You sure?'
   delete_this_category_tooltip: 'Delete this category'

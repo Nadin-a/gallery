@@ -1,7 +1,8 @@
 - if user_signed_in?
-  .col-lg-12.text-center
+  .col-sm-12.col-md-12.col-lg-12.col-xl-12.text-center
     %br
     %br
-    %button{type: 'button', remote: true, href: new_room_path, class:'btn btn-effect btn-primary btn-block btn-lg outline', data: {target: '#myRoomModal', toggle: 'modal'}}
-      = t('create_new_room')
+    =button_tag t('create_new_room'), type: 'button', remote: true, href: new_room_path,
+    class:'btn btn-effect btn-primary btn-block btn-lg outline',
+    data: { target: '#myRoomModal', toggle: 'modal'}
     = render partial: 'rooms/new'
