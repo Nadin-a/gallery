@@ -79,7 +79,7 @@
                   =link_to(t('for_admin'), admin_root_path, target: '_blank')
           %li
             %a{remote: true, href: read_all_user_path(current_user)}
-              #couner_of_notification
+              #counter_of_notification
                 = '🔔 ' + current_user.notifications.not_readed.count.to_s
           %li
             =link_to(t('profile'), edit_user_registration_path(current_user),

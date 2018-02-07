@@ -1,7 +1,7 @@
 $(document).ready(() => {
 
   $subscribe_btn = $('.js-subscribtion-category');
-  $followers_label = $('.js-count-followers-label');
+  $followers_label = $('#js-count-followers-label');
 
   if (($subscribe_btn.attr('data-subscribed')) == 1) {
     $subscribe_btn.html('<span class="glyphicon glyphicon-bell"></span>');
@@ -17,8 +17,8 @@ $(document).ready(() => {
 
     $.ajax({
       dataType: 'JSON',
-      method: $btn.attr('method'),
-      url: $btn.attr('action'),
+      method: $btn.attr('data-method'),
+      url: $btn.attr('data-action'),
       success: function (category) {
         if (flag == 1) {
           $btn.subscribe(category);
@@ -36,8 +36,8 @@ $(document).ready(() => {
     (function ($) {
       $.fn.subscribe = function (category) {
         $btn.removeClass('btn btn-default').addClass('btn btn-success').val('Subscribe');
-        $btn.attr('method', 'post');
-        $btn.attr('action', category.subscribe_path);
+        $btn.attr('data-method', 'post');
+        $btn.attr('data-action', category.subscribe_path);
         $btn.attr('data-subscribed', 0);
         $btn.html('<span class="glyphicon glyphicon-bell"></span>'); //subscribe
         return this;
@@ -47,8 +47,8 @@ $(document).ready(() => {
     (function ($) {
       $.fn.unsubscribe = function (category) {
         $btn.removeClass('btn btn-success').addClass('btn btn-default').val('Unsubscribe');
-        $btn.attr('method', 'delete');
-        $btn.attr('action', category.unsubscribe_path);
+        $btn.attr('data-method', 'delete');
+        $btn.attr('data-action', category.unsubscribe_path);
         $btn.attr('data-subscribed', 1);
         $btn.html('<span class="glyphicon glyphicon-bell"></span>'); //unsubscribe
         return this;

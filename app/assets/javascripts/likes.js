@@ -1,7 +1,7 @@
 $(document).ready(() => {
 
   $like_btn = $('.js-like-image');
-  $like_label = $('.js-count-like-label');
+  $like_label = $('#js-count-like-label');
 
   if (($like_btn.attr('data-liked')) == 1) {
     like_icon();

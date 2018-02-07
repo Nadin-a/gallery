@@ -1,18 +1,22 @@
 App.image = App.cable.subscriptions.create('ImageChannel', {
-  connected: () =>  {
+  connected: () => {
     // Called when the subscription is ready for use on the server
   },
 
-  disconnected: () =>  {
+  disconnected: () => {
     // Called when the subscription has been terminated by the server
   },
 
-  received: function(data) {
+  received: function (data) {
     // Called when there's incoming data on the websocket for this channel
-    if ($("#new_comments").attr('data-image-id') == data.image) {
-      $like_label.html(data.count);
+    let newComment = document.getElementById('new_comments');
+    let like_label = document.getElementById('js-count-like-label');
+    if (newComment.getAttribute('data-image-id') == data.image) {
+      like_label.innerHTML = data.count;
       if (data.comment) {
-        return $('#new_comments').append(this.renderComment(data.comment));
+        let content = document.createElement('div');
+        content.innerHTML = this.renderComment(data.comment);
+        return newComment.appendChild(content);
       }
     }
   },
@@ -28,20 +32,21 @@ App.image = App.cable.subscriptions.create('ImageChannel', {
   }
 });
 
-$(document).on('keypress', '.new_comment', function (e) {
-  var code = e.charCode || e.keyCode;
-  if (code == 13 && !e.shiftKey) {
-    e.preventDefault();
-    var values = $(this).serializeArray();
-    App.image.send_comment(values);
-    $(this).trigger('reset');
+const pressKeySendComment = (event) => {
+  let code = event.charCode || event.keyCode;
+  if (code === 13 && !event.shiftKey) {
+    event.preventDefault();
+    send_comment_form();
   }
-});
+};
 
-$(document).on('submit', '.new_comment', function (e) {
-  e.preventDefault();
-  var values = $(this).serializeArray();
+const pressBtnSendComment = () => {
+  send_comment_form();
+};
+
+const send_comment_form = () => {
+  let formComment = document.getElementById('comment_input');
+  let values = $(formComment).serializeArray();
   App.image.send_comment(values);
-  $(this).trigger('reset');
-});
-
+  formComment.reset();
+};

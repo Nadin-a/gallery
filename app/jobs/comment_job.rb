@@ -5,7 +5,8 @@ class CommentJob < ApplicationJob
 
   def perform(comment_id)
     comment = Comment.find(comment_id)
-    ActionCable.server.broadcast('image', comment: render_comment(comment), image: comment.image.id)
+    ActionCable.server.broadcast('image', comment: render_comment(comment), image: comment.image.id,
+      count: comment.image.likes.count)
   end
 
   private

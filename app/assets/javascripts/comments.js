@@ -1,20 +1,18 @@
-$(document).ready(() => {
-  $show_all_btn = $('.btn-show-all-comments');
-  $show_all_label = $('#show_all_label');
-
-  $show_all_btn.click(function () {
+const show_hidden_comments = () => {
+  let showAllComments = document.getElementById('show_all_comments_link');
+  let hiddenComments = document.getElementById('hidden_comments');
 
   $.ajax({
-      dataType: 'JSON',
+    dataType: 'JSON',
     method: 'get',
-      success: function (data) {
-        $('#hidden_comments').append(data.hidden_comments);
-        $show_all_btn.hide();
-      },
-      error: function (error) {
-        console.log('error');
-        console.log(error);
-      }
-    });
+    success: function (data) {
+      hiddenComments.innerHTML = data.hidden_comments;
+      showAllComments.style.display = "none";
+    },
+    error: function (error) {
+      console.log(error);
+    }
   });
-});
+};
+
+

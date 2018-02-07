@@ -3,15 +3,17 @@
     - if user_signed_in?
       %br
       %br
-      %form.new_message
+      %form.new_message_form{id: 'message_input', onsubmit: 'pressBtnSendMessage()'}
         %input{name: 'room_id', type: 'hidden', value: "#{@room.id}"}/
         %input{name: 'user_id', type: 'hidden', value: "#{current_user.id}"}/
         .field
           .col-sm-12.col-md-12.col-lg-12.col-xl-12
             .input-group
-              %input.form-control{name: 'content', maxlength:'200', class: 'form-control limited-text-input', placeholder: t('new_message'), id: 'message_input', required: true}
+              %input.form-control{name: 'content', maxlength:'200', class: 'form-control limited-text-input',
+               placeholder: t('new_message'),
+               required: true, onkeypress: 'pressKeySendMessage(event)'}
               %span.input-group-btn
-                %input.btn.btn-success{type: 'submit', value: t('post'), id: 'btn-message-post'}
+                %input.btn.btn-success{type: 'submit', name: 'post_message', value: t('post'), id: 'btn-message-post'};
             %br
             #count_message
 

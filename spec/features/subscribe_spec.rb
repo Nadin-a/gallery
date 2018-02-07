@@ -12,20 +12,20 @@ describe 'Subscribtion', type: :feature do
 
   describe 'Subscribtion and unsubscribtion' do
     it 'subscribe to category', js: true do
-      find('#subscribe').click
+      find('#js-subscribe').click
       expect(page).to have_content('Followers: 1')
     end
 
     it 'visit followers page', js: true do
-      find('#subscribe').click
+      find('#js-subscribe').click
       visit followers_category_path(category)
       expect(page).to have_content(user.name)
     end
 
     it 'unsubcribe to category', js: true do
       visit category_path(category)
-      find('#subscribe').click
-      find('#subscribe').click
+      find('#js-subscribe').click
+      find('#js-subscribe').click
       expect(page).to have_content('Followers: 0')
     end
   end

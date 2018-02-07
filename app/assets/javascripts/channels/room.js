@@ -9,8 +9,13 @@ App.room = App.cable.subscriptions.create('ChatRoomsChannel', {
 
   received: function (data) {
     // Called when there's incoming data on the websocket for this channel
-    if ($("#new_messages").attr('data-room-id') == data.room) {
-      return $('#new_messages').append(this.renderMessage(data.message));
+    let newMessage = document.getElementById('new_messages');
+    if (newMessage.getAttribute('data-room-id') == data.room) {
+
+      let content = document.createElement('div');
+      content.innerHTML = this.renderMessage(data.message);
+      newMessage.appendChild(content);
+      return $('#pre-scrollable').scrollTop($('#pre-scrollable')[0].scrollHeight);
     }
   },
 
@@ -19,26 +24,27 @@ App.room = App.cable.subscriptions.create('ChatRoomsChannel', {
   },
 
   send_message: function (message) {
-    console.log(message);
     return this.perform('send_message', {
       message: message
     });
   }
 });
 
-  $(document).on('keypress', '.new_message', function (e) {
-    let code = e.charCode || e.keyCode;
-    if (code == 13) {
-      e.preventDefault();
-      var values = $(this).serializeArray();
-      App.room.send_message(values);
-      $(this).trigger('reset');
-    }
-  });
+const pressKeySendMessage = (event) => {
+  let code = event.charCode || event.keyCode;
+  if (code === 13) {
+    event.preventDefault();
+    send_message_form();
+  }
+};
 
-  $(document).on('submit', '.new_message', function (e) {
-    e.preventDefault();
-    let values = $(this).serializeArray();
-    App.room.send_message(values);
-    $(this).trigger('reset');
-  });
+const pressBtnSendMessage = () => {
+  send_message_form();
+};
+
+const send_message_form = () => {
+  let formMessage = document.getElementById('message_input');
+  let values = $(formMessage).serializeArray();
+  App.room.send_message(values);
+  formMessage.reset();
+};

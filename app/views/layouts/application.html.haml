@@ -9,17 +9,17 @@
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
     %script{ async: '', defer: 'defer', src: 'https://www.google.com/recaptcha/api.js'}
-    :javascript
-      function onSubmit(token) {
-        document.getElementById("demo-form").submit();
-      }
+    -#:javascript
+    -#  function onSubmit(token) {
+    -#    document.getElementById("demo-form").submit();
+    -#  }
     = render 'layouts/header'
     - if "#{controller_path}##{action_name}" == 'categories#show'
       %body{style: "background: url(#{set_cover}) repeat center center fixed"}
     - else
       %body
         #snackbar
-          .new_notification_in_snackbar
+          #new_notification_in_snackbar
     - if action_name == 'home' || "#{controller_path}##{action_name}" == 'images#show'
       = render partial: 'shared/flash_messages'
       = yield

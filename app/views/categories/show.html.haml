@@ -25,7 +25,7 @@
         .col-sm-2.col-md-2.col-lg-2.col-xl-2
           %h4
             = link_to(t('followers'), followers_category_path(@category))
-            %label_tag{ class: 'js-count-followers-label' }
+            %label_tag{ id: 'js-count-followers-label' }
               = @category.users.count
       - if user_signed_in?
         - if current_user == @category.owner || current_user.admin?
