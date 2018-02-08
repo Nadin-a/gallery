@@ -10,12 +10,12 @@ class Robot {
   }
 
   change_direction(rotation) {
-    var previous_value = Robot.SIDES[Robot.SIDES.indexOf(this.direction) - 1];
+    let previous_value = Robot.SIDES[Robot.SIDES.indexOf(this.direction) - 1];
     if ((Robot.SIDES.indexOf(this.direction) - 1) < 0) {
       previous_value = 'WEST';
     }
 
-    var next_value = Robot.SIDES[Robot.SIDES.indexOf(this.direction) + 1];
+    let next_value = Robot.SIDES[Robot.SIDES.indexOf(this.direction) + 1];
     switch (rotation) {
       case 'LEFT': {
         this.direction = previous_value;
@@ -35,8 +35,8 @@ class Robot {
   }
 
   check_next_position() {
-    var next_x = this.coord['x'];
-    var next_y = this.coord['y'];
+    let next_x = this.coord['x'];
+    let next_y = this.coord['y'];
 
     switch (this.direction) {
       case 'NORTH': {
