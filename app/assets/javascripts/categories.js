@@ -1,59 +1,46 @@
-$(document).ready(() => {
+document.addEventListener('DOMContentLoaded', () => {
+  $subscribeBtn = $('.js-subscribtion-category');
+  $followersLabel = $('#js-count-followers-label');
 
-  $subscribe_btn = $('.js-subscribtion-category');
-  $followers_label = $('#js-count-followers-label');
-
-  if (($subscribe_btn.attr('data-subscribed')) == 1) {
-    $subscribe_btn.html('<span class="glyphicon glyphicon-bell"></span>');
-  }
-  else {
-    $subscribe_btn.html('<span class="glyphicon glyphicon-bell"></span>');
+  if (($subscribeBtn.attr('data-subscribed')) === 1) {
+    $subscribeBtn.html('<span class="glyphicon glyphicon-bell"></span>');
+  } else {
+    $subscribeBtn.html('<span class="glyphicon glyphicon-bell"></span>');
   }
 
-  $subscribe_btn.click(function () {
+  $subscribeBtn.click(function () {
+    const $btn = $(this);
+    const flag = $btn.attr('data-subscribed');
 
-    let $btn = $(this);
-    let flag = $btn.attr('data-subscribed');
+    const subscribe = (category) => {
+      $btn.removeClass('btn btn-default').addClass('btn btn-success').val('Subscribe');
+      $btn.attr('data-method', 'post');
+      $btn.attr('data-action', category.subscribe_path);
+      $btn.attr('data-subscribed', 0);
+      $btn.html('<span class="glyphicon glyphicon-bell"></span>'); // subscribe
+    };
+
+    const unsubscribe = (category) => {
+      $btn.removeClass('btn btn-success').addClass('btn btn-default').val('Unsubscribe');
+      $btn.attr('data-method', 'delete');
+      $btn.attr('data-action', category.unsubscribe_path);
+      $btn.attr('data-subscribed', 1);
+      $btn.html('<span class="glyphicon glyphicon-bell"></span>'); // unsubscribe
+      return this;
+    };
 
     $.ajax({
       dataType: 'JSON',
       method: $btn.attr('data-method'),
       url: $btn.attr('data-action'),
-      success: function (category) {
-        if (flag == 1) {
-          $btn.subscribe(category);
+      success(category) {
+        if (flag === '1') {
+          subscribe(category);
+        } else {
+          unsubscribe(category);
         }
-        else {
-          $btn.unsubscribe(category);
-        }
-        $followers_label.html(category.followers)
+        $followersLabel.html(category.followers);
       },
-      error: function (error) {
-        alert('Error. Please try again')
-      }
     });
-
-    (function ($) {
-      $.fn.subscribe = function (category) {
-        $btn.removeClass('btn btn-default').addClass('btn btn-success').val('Subscribe');
-        $btn.attr('data-method', 'post');
-        $btn.attr('data-action', category.subscribe_path);
-        $btn.attr('data-subscribed', 0);
-        $btn.html('<span class="glyphicon glyphicon-bell"></span>'); //subscribe
-        return this;
-      };
-    })(jQuery);
-
-    (function ($) {
-      $.fn.unsubscribe = function (category) {
-        $btn.removeClass('btn btn-success').addClass('btn btn-default').val('Unsubscribe');
-        $btn.attr('data-method', 'delete');
-        $btn.attr('data-action', category.unsubscribe_path);
-        $btn.attr('data-subscribed', 1);
-        $btn.html('<span class="glyphicon glyphicon-bell"></span>'); //unsubscribe
-        return this;
-      };
-    })(jQuery);
-
   });
 });

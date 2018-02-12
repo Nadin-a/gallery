@@ -66,5 +66,3 @@ group :development do
   gem 'scss_lint', require: false
   gem 'foreman'
 end
-
-

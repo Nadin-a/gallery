@@ -1,14 +1,13 @@
-$(document).ready(() => {
-  $current_url = window.location.href;
-  if ($current_url.includes('rooms/')) {
+document.addEventListener('DOMContentLoaded', () => {
+  const currentUrl = window.location.href;
+  if (currentUrl.includes('rooms/')) {
     document.getElementById('btn-message-post').scrollIntoView();
   }
 
   $(() => {
     $('[data-toggle="popover"]').popover({
       html: true,
-      container: 'body'
+      container: 'body',
     });
-  })
-
+  });
 });

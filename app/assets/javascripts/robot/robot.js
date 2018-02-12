@@ -1,28 +1,30 @@
 class Robot {
-
   static get SIDES() {
     return ['NORTH', 'EAST', 'SOUTH', 'WEST'];
   }
 
   constructor(properties) {
-    this.coord = {x: properties['x'], y: properties['y']};
-    this.direction = properties['dir'];
+    this.coord = { x: properties.x, y: properties.y };
+    this.direction = properties.dir;
   }
 
-  change_direction(rotation) {
-    let previous_value = Robot.SIDES[Robot.SIDES.indexOf(this.direction) - 1];
+  changeDirection(rotation) {
+    let previousValue = Robot.SIDES[Robot.SIDES.indexOf(this.direction) - 1];
     if ((Robot.SIDES.indexOf(this.direction) - 1) < 0) {
-      previous_value = 'WEST';
+      previousValue = 'WEST';
     }
 
-    let next_value = Robot.SIDES[Robot.SIDES.indexOf(this.direction) + 1];
+    const nextValue = Robot.SIDES[Robot.SIDES.indexOf(this.direction) + 1];
     switch (rotation) {
       case 'LEFT': {
-        this.direction = previous_value;
+        this.direction = previousValue;
         break;
       }
       case 'RIGHT': {
-        this.direction = next_value == null ? Robot.SIDES[0] : next_value;
+        this.direction = nextValue === undefined ? Robot.SIDES[0] : nextValue;
+        break;
+      }
+      default: {
         break;
       }
     }
@@ -30,37 +32,39 @@ class Robot {
   }
 
   move() {
-    updateGameArea(this.check_next_position(), this.direction);
-    this.coord = this.check_next_position();
+    updateGameArea(this.checkNextPosition(), this.direction);
+    this.coord = this.checkNextPosition();
   }
 
-  check_next_position() {
-    let next_x = this.coord['x'];
-    let next_y = this.coord['y'];
+  checkNextPosition() {
+    let nextX = this.coord.x;
+    let nextY = this.coord.y;
 
     switch (this.direction) {
       case 'NORTH': {
-        next_y -= 1;
+        nextY -= 1;
         break;
       }
       case 'EAST': {
-        next_x += 1;
+        nextX += 1;
         break;
       }
       case 'SOUTH': {
-        next_y += 1;
+        nextY += 1;
         break;
       }
       case 'WEST': {
-        next_x -= 1;
+        nextX -= 1;
+        break;
+      }
+      default: {
         break;
       }
     }
-    return {x: next_x, y: next_y};
+    return { x: nextX, y: nextY };
   }
 
   report() {
-    $info.html(this.coord['x'] + ':' + this.coord['y'] + ' ' + this.direction);
+    $info.html(`${this.coord.x}:${this.coord.y} ${this.direction}`);
   }
-
 }

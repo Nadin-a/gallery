@@ -1,19 +1,10 @@
-const close_alert = () => {
-  var obj = document.getElementById('alert');
-  obj.style.display = "none";
+const closeAlert = () => {
+  const obj = document.getElementById('alert');
+  if(obj !== null) {
+    obj.style.display = 'none';
+  }
 };
 
 setTimeout(() => {
-  close_alert();
+  closeAlert();
 }, 5000);
-
-// $(document).ready(function () {
-//   $('.alert').fadeIn('slow', function () {
-//     $('.alert').delay(5000).fadeOut();
-//   });
-//
-//   $('.close').on('click', function () {
-//     $('.alert').hide();
-//   });
-//
-// });

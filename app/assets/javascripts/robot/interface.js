@@ -1,5 +1,4 @@
 class Interface {
-
   constructor(x, y, properties) {
     this.robot = new Robot(properties);
     this.table = new Table(x, y);
@@ -9,14 +8,13 @@ class Interface {
     this.command = command;
     if (this.robot && this.table) {
       this.execute();
-    }
-    else {
+    } else {
       this.read(command);
     }
   }
 
   execute() {
-    $info.html('Execution command: ' + this.command);
+    $info.html(`Execution command: ${this.command}`);
     switch (this.command) {
       case 'MOVE': {
         this.step();
@@ -27,18 +25,21 @@ class Interface {
         break;
       }
       case 'RIGHT': {
-        this.robot.change_direction(this.command);
+        this.robot.changeDirection(this.command);
         break;
       }
       case 'LEFT': {
-        this.robot.change_direction(this.command);
+        this.robot.changeDirection(this.command);
+        break;
+      }
+      default: {
         break;
       }
     }
   }
 
   step() {
-    if (this.table.check_borders(this.robot.check_next_position())) {
+    if (this.table.checkBorders(this.robot.checkNextPosition())) {
       this.robot.move();
     }
   }

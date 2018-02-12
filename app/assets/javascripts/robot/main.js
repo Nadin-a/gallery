@@ -1,99 +1,95 @@
-let height = '', width = '';
+let height = '';
+let width = '';
 let properties;
 let mInterface;
-$(document).ready(function () {
-
+$(document).ready(() => {
   let gameStart = false;
-  let show_help = true;
+  let showHelp = true;
 
   $info = $('#info');
   $height = $('#height');
   $width = $('#width');
-  $send_sizes_button = $('#send_sizes_button');
-  $action_btn = $('.command');
+  $sendSizesButton = $('#send_sizes_button');
+  $actionBtn = $('.command');
   $sides = $('#sides');
-  $reload_btn = $('#reload_button');
-  $help_button = $('#help_button');
+  $reloadBtn = $('#reload_button');
+  $helpButton = $('#help_button');
   $alert = $('.robot_rules');
   $info.html('Enter sizes of field');
 
-  $action_btn.hide();
+  $actionBtn.hide();
   $sides.hide();
   $alert.hide();
 
-  $send_sizes_button.on('click', function () {
+  $sendSizesButton.on('click', () => {
     if (height === '' && width === '') {
       height = $height.val();
       width = $width.val();
       $height.attr({
-        'max': height,
-        'value': 1
+        max: height,
+        value: 1,
       });
       $width.attr({
-        'max': width,
-        'value': 1
+        max: width,
+        value: 1,
       });
       $info.html('Place the robot!');
       $sides.show();
-    }
-    else {
-      let robot_x = parseInt($height.val());
-      let robot_y = parseInt($width.val());
-      let side = $sides.val();
+    } else {
+      const robotX = parseInt($height.val(), 10);
+      const robotY = parseInt($width.val(), 10);
+      const side = $sides.val();
 
       $height.hide();
       $width.hide();
-      $send_sizes_button.hide();
+      $sendSizesButton.hide();
       $sides.hide();
 
-      $action_btn.show();
+      $actionBtn.show();
       $info.html('');
 
-      properties = {x: robot_x - 1, y: robot_y - 1, dir: side};
+      properties = { x: robotX - 1, y: robotY - 1, dir: side };
       mInterface = new Interface(height, width, properties);
       gameStart = true;
       myGameArea.start();
-      mRobot = new Robot_component(100, 100, robot_x, robot_y);
-      updateGameArea({x: robot_x - 1, y: robot_y - 1}, side);
-
+      mRobot = new Robot_component(100, 100, robotX, robotY);
+      updateGameArea({ x: robotX - 1, y: robotY - 1 }, side);
     }
   });
 
-  $reload_btn.on('click', function () {
+  $reloadBtn.on('click', () => {
     location.reload();
   });
 
-  $help_button.on('click', function () {
-    if(show_help) {
+  $helpButton.on('click', () => {
+    if (showHelp) {
       $alert.show();
-    }
-    else {
+    } else {
       $alert.hide();
     }
-    show_help =! show_help;
+    showHelp = !showHelp;
   });
 
 
-  $action_btn.bind('click', function () {
+  $actionBtn.bind('click', function () {
     mInterface.read(this.value);
   });
 
-  $(document).keypress(function(e) {
-    if(gameStart) {
-      let keycode = (e.keyCode ? e.keyCode : e.which);
-      if (keycode == '37') {
+  $(document).keypress((e) => {
+    if (gameStart) {
+      const keycode = (e.keyCode ? e.keyCode : e.which);
+      if (keycode === 37) {
         mInterface.read('LEFT');
       }
-      if (keycode == '39') {
+      if (keycode === 39) {
         mInterface.read('RIGHT');
       }
-      if (keycode == '32') {
+      if (keycode === 32) {
         mInterface.read('MOVE');
       }
-      if (keycode == '13') {
+      if (keycode === 13) {
         mInterface.read('REPORT');
       }
     }
   });
-
 });

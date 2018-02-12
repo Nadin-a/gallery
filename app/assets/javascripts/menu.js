@@ -1,4 +1,4 @@
-$(function () {
+$(() => {
   function onNavbar() {
     if (window.innerWidth >= 768) {
       $('.navbar-default .dropdown').on('mouseover', function () {
@@ -16,15 +16,15 @@ $(function () {
     }
   }
 
-  $(window).resize(function () {
+  $(window).resize(() => {
     onNavbar();
   });
   onNavbar();
 });
 
-( function( $ ) {
-  $( document ).ready(function() {
+(function ($) {
+  $(document).ready(() => {
     $('#navbar-main').prepend('<div id="bg-one"></div><div id="bg-two"></div><div id="bg-three"></div><div id="bg-four"></div>');
   });
-} )( jQuery );
+}(jQuery));
 
