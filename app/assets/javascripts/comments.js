@@ -8,7 +8,7 @@ const showHiddenComments = () => {
     success(data) {
       hiddenComments.innerHTML = data.hidden_comments;
       showAllComments.style.display = 'none';
-    }
+    },
   });
 };
 

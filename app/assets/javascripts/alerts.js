@@ -1,6 +1,6 @@
 const closeAlert = () => {
   const obj = document.getElementById('alert');
-  if(obj !== null) {
+  if (obj !== null) {
     obj.style.display = 'none';
   }
 };

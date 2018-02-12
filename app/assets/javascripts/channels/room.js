@@ -10,11 +10,12 @@ App.room = App.cable.subscriptions.create('ChatRoomsChannel', {
   received(data) {
     // Called when there's incoming data on the websocket for this channel
     const newMessage = document.getElementById('new_messages');
-    if (newMessage.getAttribute('data-room-id') == data.room) {
+    if (parseInt(newMessage.getAttribute('data-room-id'), 10) === parseInt(data.room, 10)) {
       const content = document.createElement('div');
       content.innerHTML = this.renderMessage(data.message);
       newMessage.appendChild(content);
-      return $('#pre-scrollable').scrollTop($('#pre-scrollable')[0].scrollHeight);
+      $preScrollable = $('#pre-scrollable');
+      return $preScrollable.scrollTop($preScrollable[0].scrollHeight);
     }
     return true;
   },
@@ -30,7 +31,7 @@ App.room = App.cable.subscriptions.create('ChatRoomsChannel', {
   },
 });
 
-const send_message_form = () => {
+const sendMessageForm = () => {
   const formMessage = document.getElementById('message_input');
   const values = $(formMessage).serializeArray();
   App.room.send_message(values);
@@ -42,11 +43,11 @@ const pressKeySendMessage = (event) => {
   const code = event.charCode || event.keyCode;
   if (code === 13) {
     event.preventDefault();
-    send_message_form();
+    sendMessageForm();
   }
 };
 
 const pressBtnSendMessage = () => {
-  send_message_form();
+  sendMessageForm();
 };
 

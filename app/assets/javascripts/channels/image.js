@@ -11,7 +11,7 @@ App.image = App.cable.subscriptions.create('ImageChannel', {
     // Called when there's incoming data on the websocket for this channel
     const newComment = document.getElementById('new_comments');
     const likeLabel = document.getElementById('js-count-like-label');
-    if (newComment.getAttribute('data-image-id') == data.image) {
+    if (parseInt(newComment.getAttribute('data-image-id'),10) === parseInt(data.image, 10)) {
       likeLabel.innerHTML = data.count;
       if (data.comment) {
         const content = document.createElement('div');
@@ -33,7 +33,7 @@ App.image = App.cable.subscriptions.create('ImageChannel', {
   },
 });
 
-const send_comment_form = () => {
+const sendCommentForm = () => {
   const formComment = document.getElementById('comment_input');
   const values = $(formComment).serializeArray();
   App.image.send_comment(values);
@@ -46,11 +46,11 @@ const pressKeySendComment = (event) => {
   const code = event.charCode || event.keyCode;
   if (code === 13 && !event.shiftKey) {
     event.preventDefault();
-    send_comment_form();
+    sendCommentForm();
   }
 };
 
 const pressBtnSendComment = () => {
-  send_comment_form();
+  sendCommentForm();
 };
 
