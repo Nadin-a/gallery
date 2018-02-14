@@ -9,5 +9,4 @@ class Table {
       return true;
     }
   }
-
 }

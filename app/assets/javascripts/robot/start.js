@@ -51,8 +51,9 @@ $(document).ready(() => {
       properties = { x: robotX - 1, y: robotY - 1, dir: side };
       mInterface = new Interface(height, width, properties);
       gameStart = true;
+      myGameArea = new GameArea();
       myGameArea.start();
-      mRobot = new Robot_component(100, 100, robotX, robotY);
+      mRobot = new RobotComponent(100, 100, robotX, robotY);
       updateGameArea({ x: robotX - 1, y: robotY - 1 }, side);
     }
   });
