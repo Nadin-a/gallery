@@ -7,7 +7,6 @@ class RobotComponent {
     this.y = y;
   }
 
-
   update(dir) {
     let ctx = myGameArea.context;
     const pic = new Image();

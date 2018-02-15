@@ -5,7 +5,7 @@ class Category < ApplicationRecord
   friendly_id :name, use: :slugged
 
   default_scope { order(created_at: :desc) }
-  scope :new_categories_in_24, -> { unscoped.where(created_at: (Time.current - 24.hours)..Time.current) }
+  scope :new_categories_in_24, -> { unscoped.where(created_at: 1.days.ago..Time.current) }
 
   belongs_to :owner, foreign_key: :owner_id, class_name: 'User'
   has_and_belongs_to_many :users
@@ -38,10 +38,10 @@ class Category < ApplicationRecord
     text.to_slug.transliterate(:russian).normalize.to_s
   end
 
-  def self.copy_category(attr)
-    attr['name'] = attr['name'][0...-5] if attr['name'].length + 5 > 15
-    Category.create!(name: Faker::Number.number(5).to_s + attr['name'],
-                     owner_id: attr['owner_id'], cover: attr['cover'])
+  def self.copy_category(attributes)
+    attributes['name'] = attributes['name'][0...-5] if attributes['name'].length + 5 > 15
+    Category.create!(name: Faker::Number.number(5).to_s + attributes['name'],
+                     owner_id: attributes['owner_id'], cover: attributes['cover'])
   end
 
   private

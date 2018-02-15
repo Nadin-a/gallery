@@ -40,17 +40,17 @@ class Image < ApplicationRecord
     text.to_slug.transliterate(:russian).normalize.to_s
   end
 
-  def self.copy_image(attr, new_category_id, pic)
-    attr['title'] = attr['title'][0...-5] if attr['title'].length + 5 > 20
+  def self.copy_image(attrs, new_category_id, pic)
+    attrs['title'] = attrs['title'][0...-5] if attrs['title'].length + 5 > 20
     picture =
       if Rails.env.production?
         pic
       else
         File.new(pic)
       end
-    Image.create!(title: Faker::Number.number(5).to_s + attr['title'], category_id: new_category_id,
+    Image.create!(title: Faker::Number.number(5).to_s + attrs['title'], category_id: new_category_id,
                   picture: picture,
-                  description: attr['description'])
+                  description: attrs['description'])
   end
 
   private

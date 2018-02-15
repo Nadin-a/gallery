@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   include Pundit
 
   protect_from_forgery with: :exception
-  protect_from_forgery with: :null_session, if: -> { request.format.json? } # FIXME: DONT NEED DISABLE CSRF
+  # protect_from_forgery with: :null_session, if: -> { request.format.json? } # FIXME: DONT NEED DISABLE CSRF
 
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_locale
